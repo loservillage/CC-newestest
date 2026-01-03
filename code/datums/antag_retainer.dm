@@ -56,19 +56,19 @@
 	if(!forced && (world.time < SSticker.next_lord_check))
 		return
 	SSticker.next_lord_check = world.time + 1 MINUTES
-	var/lord_found = FALSE
+	//var/lord_found = FALSE
 	var/lord_dead = FALSE
 	for(var/mob/living/carbon/human/H in GLOB.human_list)
 		if(H.mind)
 			if(H.job == "Grand Duke")
-				lord_found = TRUE
+				//lord_found = TRUE
 				if(H.stat == DEAD)
 					lord_dead = TRUE
 				else
 					if(lord_dead)
 						lord_dead = FALSE
 					break
-	if(lord_dead || !lord_found)
+	if(lord_dead) //|| !lord_found) -- Edit to stop it from ever rolling the Bad Omen just because no one assumed the Regency - Jon
 		if(!SSticker.missing_lord_time)
 			SSticker.missing_lord_time = world.time
 		if(world.time > SSticker.missing_lord_time + 10 MINUTES)
