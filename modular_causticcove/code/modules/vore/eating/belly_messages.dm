@@ -260,11 +260,7 @@ GLOBAL_LIST_INIT(vore_words_snake, list("snake","serpent","reptilian","noodle","
 
 	for(var/mob/living/P in contents)
 		if(!P.absorbed) //This is required first, in case there's a person absorbed and not absorbed in a stomach.
-			var/fullness_to_add = 1
-			if(ishuman(P))
-				var/mob/living/carbon/human/humanvar = P
-				fullness_to_add = humanvar.get_size() / 3
-			total_bulge += fullness_to_add
+			total_bulge += P.size_multiplier
 
 	if(total_bulge < bulge_size || bulge_size == 0)
 		return ""

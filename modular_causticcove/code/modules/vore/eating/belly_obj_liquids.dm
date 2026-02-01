@@ -3,10 +3,11 @@
 /obj/belly/proc/HandleBellyReagents()
 	if(show_liquids && reagentbellymode && reagent_mode_flags & DM_FLAG_REAGENTSNUTRI && reagents.total_volume < custom_max_volume && !isnewplayer(owner))
 		if(owner.nutrition >= gen_cost && gen_interval >= gen_time)
-			GenerateBellyReagents()
+			if(owner.nutrition_percent() >= reagent_gen_cost_limit)
+				GenerateBellyReagents()
 			gen_interval = 0
-		else
-			gen_interval++
+			return
+		gen_interval++
 
 /obj/belly/proc/HandleBellyReagentEffects(var/list/touchable_atoms)
 	if(LAZYLEN(contents))
@@ -90,7 +91,7 @@
 //////////////////////////// REAGENT SELECTION /////////////////////
 
 //This is gonna end up a long proc, but its gonna have to make do for now
-//TODO extend this!
+
 /obj/belly/proc/ReagentSwitch()
 	var/list/our_reagents = list()
 	for(var/entry in reagent_choices)

@@ -1,17 +1,19 @@
 /datum/vore_look/import_panel/proc/open_import_panel(mob/user)
-	ui_interact(user)
+	tgui_interact(user)
 
-/datum/vore_look/import_panel/ui_interact(mob/user, datum/tgui/ui)
+/datum/vore_look/import_panel/tgui_interact(mob/user, datum/tgui/ui)
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
 		ui = new(user, src, "VorePanelImport", "Vore Import Panel")
 		ui.open()
 
-/datum/vore_look/import_panel/ui_act(action, list/params, datum/tgui/ui)
+/datum/vore_look/import_panel/tgui_act(action, list/params, datum/tgui/ui, datum/tgui_state/state)
 	if(..())
 		return TRUE
 
 	switch(action)
+		if("import_soulcatcher")
+			import_soulcatcher(host, params["data"])
 		if("import_bellies")
 			import_belly(ui.user, params["data"])
 
@@ -739,7 +741,7 @@
 				if (new_belly_sprite_to_affect in host.vore_icon_bellies)
 					new_belly.belly_sprite_to_affect = new_belly_sprite_to_affect
 
-		/*if(istext(belly_data["undergarment_chosen"]))
+		/*if(istext(belly_data["undergarment_chosen"])) //This was commented out before, likely because roguecode already has this...?
 			var/new_undergarment_chosen = sanitize(belly_data["undergarment_chosen"],MAX_MESSAGE_LEN,0,0,0)
 			if(new_undergarment_chosen)
 				for(var/datum/category_group/underwear/U in global_underwear.categories)
@@ -767,7 +769,7 @@
 		if(istext(belly_data["undergarment_color"]))
 			var/new_undergarment_color = sanitize_hexcolor(belly_data["undergarment_color"],new_belly.undergarment_color)
 			new_belly.undergarment_color = new_undergarment_color*/
-		/* These don't seem to actually be available yet
+		/* These don't seem to actually be available yet -- This was commented out already from Chompers!
 		if(istext(belly_data["tail_to_change_to"]))
 			var/new_tail_to_change_to = sanitize(belly_data["tail_to_change_to"],MAX_MESSAGE_LEN,0,0,0)
 			if(new_tail_to_change_to)
@@ -826,9 +828,9 @@
 			if(new_disable_hud == 1)
 				new_belly.disable_hud = TRUE
 
-		var/possible_fullscreens = cached_icon_states('modular_causticcove/icons/mob/vore_fullscreens/screen_full_vore_list.dmi')
+		var/possible_fullscreens = icon_states_fast('icons/mob/vore_fullscreens/ui_lists/screen_full_vore_list_base.dmi')
 		if(!new_belly.colorization_enabled)
-			possible_fullscreens = cached_icon_states('modular_causticcove/icons/mob/vore_fullscreens/screen_full_vore.dmi')
+			possible_fullscreens = icon_states_fast('icons/mob/vore_fullscreens/ui_lists/screen_full_vore.dmi')
 		if(!(new_belly.belly_fullscreen in possible_fullscreens))
 			new_belly.belly_fullscreen = ""
 
@@ -842,9 +844,11 @@
 		if(isnum(belly_data["escapable"]))
 			var/new_escapable = belly_data["escapable"]
 			if(new_escapable == 0)
-				new_belly.escapable = FALSE
+				new_belly.escapable = B_ESCAPABLE_NONE
 			if(new_escapable == 1)
-				new_belly.escapable = TRUE
+				new_belly.escapable = B_ESCAPABLE_DEFAULT
+			if(new_escapable == 2)
+				new_belly.escapable = B_ESCAPABLE_INTENT
 
 		if(isnum(belly_data["escapechance"]))
 			var/new_escapechance = belly_data["escapechance"]
@@ -999,6 +1003,10 @@
 			if(new_show_liquids == 1)
 				new_belly.show_liquids = TRUE
 
+		if(isnum(belly_data["reagent_gen_cost_limit"]))
+			var/new_reagent_gen_cost_limit = belly_data["reagent_gen_cost_limit"]
+			new_belly.reagent_gen_cost_limit = sanitize_integer(new_reagent_gen_cost_limit, 0, 100, initial(new_belly.reagent_gen_cost_limit))
+
 		if(isnum(belly_data["reagentbellymode"]))
 			var/new_reagentbellymode = belly_data["reagentbellymode"]
 			if(new_reagentbellymode == 0)
@@ -1050,7 +1058,7 @@
 
 		if(isnum(belly_data["custom_max_volume"]))
 			var/new_custom_max_volume = belly_data["custom_max_volume"]
-			new_belly.custom_max_volume = CLAMP(new_custom_max_volume, 1, 1000)
+			new_belly.custom_max_volume = CLAMP(new_custom_max_volume, 10, 300)
 
 		if(isnum(belly_data["vorefootsteps_sounds"]))
 			var/new_vorefootsteps_sounds = belly_data["vorefootsteps_sounds"]

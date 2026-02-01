@@ -382,70 +382,6 @@ GLOBAL_LIST_INIT(contamination_colors, list("green",
 				"pink"
 				))
 
-#define VORE_PREF_TRANSFER(target, source)												\
-	target.digestable = source.digestable;												\
-	target.devourable = source.devourable;												\
-	target.feeding = source.feeding;													\
-	target.absorbable = source.absorbable;												\
-	target.allowmobvore = source.allowmobvore;											\
-	target.permit_healbelly = source.permit_healbelly;									\
-																						\
-	target.vore_taste = source.vore_taste;												\
-	target.vore_smell = source.vore_smell;												\
-	target.noisy = source.noisy;														\
-	target.show_vore_fx = source.show_vore_fx;											\
-	target.selective_preference = source.selective_preference;							\
-	target.digest_leave_remains = source.digest_leave_remains;							\
-	target.digest_pain = source.digest_pain;											\
-	target.noisy_full = source.noisy_full;												\
-	target.eating_privacy_global = source.eating_privacy_global;						\
-	target.vore_death_privacy = source.vore_death_privacy;								\
-																						\
-	target.can_be_drop_prey = source.can_be_drop_prey;									\
-	target.can_be_drop_pred = source.can_be_drop_pred;									\
-	target.throw_vore = source.throw_vore;												\
-	target.food_vore = source.food_vore;												\
-	target.drop_vore = source.drop_vore;												\
-	target.slip_vore = source.slip_vore;												\
-	target.stumble_vore = source.stumble_vore;											\
-	target.phase_vore = source.phase_vore;												\
-																						\
-	target.resizable = source.resizable;												\
-	target.step_mechanics_pref = source.step_mechanics_pref;							\
-	target.pickup_pref = source.pickup_pref;											\
-	target.allow_spontaneous_tf = source.allow_spontaneous_tf;							\
-	target.allow_mind_transfer = source.allow_mind_transfer;							\
-	target.allow_mimicry = source.allow_mimicry;										\
-																						\
-	target.consume_liquid_belly = source.consume_liquid_belly;							\
-	target.receive_reagents = source.receive_reagents;									\
-	target.apply_reagents = source.apply_reagents;										\
-	target.give_reagents = source.give_reagents;										\
-																						\
-	target.nutrition_messages = source.nutrition_messages;								\
-	target.nutrition_message_visible = source.nutrition_message_visible;				\
-	target.weight_message_visible = source.weight_message_visible;						\
-	target.weight_messages = source.weight_messages;									\
-																						\
-	target.latejoin_vore = source.latejoin_vore;										\
-	target.latejoin_prey = source.latejoin_prey;										\
-	target.no_latejoin_vore_warning = source.no_latejoin_vore_warning;					\
-	target.no_latejoin_prey_warning = source.no_latejoin_prey_warning;					\
-	target.no_latejoin_vore_warning_time = source.no_latejoin_vore_warning_time;		\
-	target.no_latejoin_prey_warning_time = source.no_latejoin_prey_warning_time;		\
-	target.no_latejoin_vore_warning_persists = source.no_latejoin_vore_warning_persists;\
-	target.no_latejoin_prey_warning_persists = source.no_latejoin_prey_warning_persists;\
-	target.max_voreoverlay_alpha = source.max_voreoverlay_alpha;						\
-																						\
-	target.autotransferable = source.autotransferable;									\
-	target.strip_pref = source.strip_pref;												\
-	target.vore_sprite_multiply = source.vore_sprite_multiply;							\
-	target.vore_sprite_color = source.vore_sprite_color;								\
-	target.belly_rub_target = source.belly_rub_target;									\
-																						\
-	target.persistend_edit_mode = source.persistend_edit_mode;							\
-	target.allowtemp = source.allowtemp;												\
-
 
 //Lactation bits
 #define REAGENT_WATER "Water"
@@ -523,15 +459,6 @@ GLOBAL_LIST_INIT(contamination_colors, list("green",
 #define LOG_CATEGORY_VORE "vore"
 
 
-// Bellies
-///from /obj/belly/HandleBellyReagents() and /obj/belly/update_internal_overlay()
-#define COMSIG_BELLY_UPDATE_VORE_FX "update_vore_fx"
-///from /obj/belly/process()
-#define COMSIG_BELLY_UPDATE_PREY_LOOP "update_prey_loop"
-/// COMSIG used to get messages where they need to go
-#define COMSIG_VISIBLE_MESSAGE "visible_message"
-
-
 #define ITEMSIZE_COST_TINY			1
 #define ITEMSIZE_COST_SMALL			2
 #define ITEMSIZE_COST_NORMAL		4
@@ -542,15 +469,11 @@ GLOBAL_LIST_INIT(contamination_colors, list("green",
 #define CHANNEL_PREYLOOP 1011	//VORESTATION ADD - Fancy Sound Loop channel
 
 
-
+// Vore Lists
 GLOBAL_LIST_INIT(item_digestion_blacklist, list(
 	/obj/item/roguekey,
 	/obj/item/clothing/head/roguetown/crown/serpcrown
-	))
-
-#define VORE_SOUND_FALLOFF 0.1
-#define VORE_SOUND_RANGE 3
-#define VOLUME_CHANNEL_VORE "Vore"
+))
 
 GLOBAL_LIST_INIT(slosh, list(
 	"modular_causticcove/sound/cvore/vore/walkslosh1.ogg",
@@ -566,6 +489,108 @@ GLOBAL_LIST_INIT(slosh, list(
 ))
 
 
+// Vore Pref Defines
+#define VORE_PREF_TRANSFER(target, source)												\
+	target.digestable = source.digestable;												\
+	target.devourable = source.devourable;												\
+	target.feeding = source.feeding;													\
+	target.absorbable = source.absorbable;												\
+	target.allowmobvore = source.allowmobvore;											\
+	target.permit_healbelly = source.permit_healbelly;									\
+	target.allowtemp = source.allowtemp;												\
+																						\
+	target.vore_taste = source.vore_taste;												\
+	target.vore_smell = source.vore_smell;												\
+	target.noisy = source.noisy;														\
+	target.show_vore_fx = source.show_vore_fx;											\
+	target.selective_preference = source.selective_preference;							\
+	target.size_strip_preference = source.size_strip_preference;						\
+	target.digest_leave_remains = source.digest_leave_remains;							\
+	target.digest_pain = source.digest_pain;											\
+	target.noisy_full = source.noisy_full;												\
+	target.eating_privacy_global = source.eating_privacy_global;						\
+	target.vore_death_privacy = source.vore_death_privacy;								\
+																						\
+	target.can_be_drop_prey = source.can_be_drop_prey;									\
+	target.can_be_drop_pred = source.can_be_drop_pred;									\
+	target.can_be_afk_prey = source.can_be_afk_prey;									\
+	target.can_be_afk_pred = source.can_be_afk_pred;									\
+	target.throw_vore = source.throw_vore;												\
+	target.food_vore = source.food_vore;												\
+	target.drop_vore = source.drop_vore;												\
+	target.slip_vore = source.slip_vore;												\
+	target.stumble_vore = source.stumble_vore;											\
+	target.phase_vore = source.phase_vore;												\
+																						\
+	target.spont_belly_rear = source.spont_belly_rear;									\
+	target.spont_belly_left = source.spont_belly_left;									\
+	target.spont_belly_front = source.spont_belly_front;								\
+	target.spont_belly_right = source.spont_belly_right;								\
+																						\
+	target.resizable = source.resizable;												\
+	target.step_mechanics_pref = source.step_mechanics_pref;							\
+	target.pickup_pref = source.pickup_pref;											\
+	target.allow_spontaneous_tf = source.allow_spontaneous_tf;							\
+	target.allow_mind_transfer = source.allow_mind_transfer;							\
+	target.allow_mimicry = source.allow_mimicry;										\
+																						\
+	target.consume_liquid_belly = source.consume_liquid_belly;							\
+	target.receive_reagents = source.receive_reagents;									\
+	target.apply_reagents = source.apply_reagents;										\
+	target.give_reagents = source.give_reagents;										\
+																						\
+	target.nutrition_messages = source.nutrition_messages;								\
+	target.nutrition_message_visible = source.nutrition_message_visible;				\
+	target.weight_message_visible = source.weight_message_visible;						\
+	target.weight_messages = source.weight_messages;									\
+																						\
+	target.latejoin_vore = source.latejoin_vore;										\
+	target.latejoin_prey = source.latejoin_prey;										\
+	target.no_latejoin_vore_warning = source.no_latejoin_vore_warning;					\
+	target.no_latejoin_prey_warning = source.no_latejoin_prey_warning;					\
+	target.no_latejoin_vore_warning_time = source.no_latejoin_vore_warning_time;		\
+	target.no_latejoin_prey_warning_time = source.no_latejoin_prey_warning_time;		\
+	target.no_latejoin_vore_warning_persists = source.no_latejoin_vore_warning_persists;\
+	target.no_latejoin_prey_warning_persists = source.no_latejoin_prey_warning_persists;\
+	target.max_voreoverlay_alpha = source.max_voreoverlay_alpha;						\
+																						\
+	target.autotransferable = source.autotransferable;									\
+	target.strip_pref = source.strip_pref;												\
+	target.contaminate_pref = source.contaminate_pref;									\
+	target.vore_sprite_multiply = source.vore_sprite_multiply;							\
+	target.vore_sprite_color = source.vore_sprite_color;								\
+	target.belly_rub_target = source.belly_rub_target;									\
+																						\
+	target.soulcatcher_pref_flags = source.soulcatcher_pref_flags;						\
+	target.persistend_edit_mode = source.persistend_edit_mode;
+
+
+// Vore Signals
+///from /obj/belly/HandleBellyReagents() and /obj/belly/update_internal_overlay()
+#define COMSIG_BELLY_UPDATE_VORE_FX "update_vore_fx"
+///from /obj/belly/process()
+#define COMSIG_BELLY_UPDATE_PREY_LOOP "update_prey_loop"
+
+// Spontaneous vore stuff.
+///from /mob/living/stumble_into(mob/living/M)
+#define COMSIG_LIVING_STUMBLED_INTO "living_stumbled_into"
+		///Something has special handling. Don't continue.
+	#define CANCEL_STUMBLED_INTO	(1<<0)
+///from /mob/living/handle_fall(var/turf/landing) args: landing, drop_mob)
+#define COMSIG_LIVING_FALLING_DOWN "living_falling_down"
+		//Special handling. Cancel the fall chain.
+	#define COMSIG_CANCEL_FALL	(1<<0)
+///from /mob/living/hitby(atom/movable/source, datum/thrownthing/throwingdatum).
+#define COMSIG_LIVING_HIT_BY_THROWN_ENTITY "hit_by_thrown_entity"
+		//Special handling. Cancel the hitby proc.
+	#define COMSIG_CANCEL_HITBY	(1<<0)
+
+
+// Vore Reg Defines
+#define VORE_SOUND_FALLOFF 0.1
+#define VORE_SOUND_RANGE 3
+#define VOLUME_CHANNEL_VORE "Vore"
+
 #define BELLIES_MAX 40
 #define BELLIES_NAME_MIN 2
 #define BELLIES_NAME_MAX 40
@@ -576,12 +601,8 @@ GLOBAL_LIST_INIT(slosh, list(
 #define BELLIES_MESSAGE_COMBINED 1024 * 10 + 18
 #define FLAVOR_MAX 400
 
-/*// General Examine Messages
-#define GENERAL_EXAMINE_NUTRI "en"
-#define GENERAL_EXAMINE_WEIGHT "ew"
-
-#define VPPREF_MESSAGE_SANITY(type) ASSERT(type == GENERAL_EXAMINE_NUTRI || type == GENERAL_EXAMINE_WEIGHT)*/
-
+#define VORE_SC_MAX 2048
+#define VORE_SC_DESC_MAX 8192
 
 #define VORE_VERSION	2	//This is a Define so you don't have to worry about magic numbers.
 
@@ -597,5 +618,13 @@ GLOBAL_LIST_INIT(slosh, list(
 #define VPANEL_IDLE_TAB 9
 #define VPANEL_LIQUIDS_TAB 10
 
+#define VORE_RESIZE_COST 125
+
 #define MAX_VOICE_FREQ 70000
 #define MIN_VOICE_FREQ 15000
+
+
+// I don't think these are used anywhere??? I don't know who did what with this port but damn
+
+/// COMSIG used to get messages where they need to go
+#define COMSIG_VISIBLE_MESSAGE "visible_message"

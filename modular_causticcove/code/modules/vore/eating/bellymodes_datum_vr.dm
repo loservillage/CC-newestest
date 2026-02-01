@@ -30,7 +30,7 @@ GLOBAL_LIST_INIT(digest_modes, list())
 	//Person just died in guts!
 	if(L.stat == DEAD)
 		if(!L.digestion_in_progress)
-			if(L.client && L.client.prefs.digestion_noises)
+			if(L.check_sound_preference(/datum/preference/toggle/digestion_noises))
 				if(!B.fancy_vore)
 					SEND_SOUND(L, sound(get_sfx("classic_death_sounds")))
 				else
@@ -71,6 +71,7 @@ GLOBAL_LIST_INIT(digest_modes, list())
 	L.adjustOxyLoss(B.digest_oxy)
 	L.adjustToxLoss(B.digest_tox)
 	L.adjustCloneLoss(B.digest_clone)
+	L.attempt_multishock(SHOCKFLAG_DIGESTION)
 	// Send a message when a prey-thing enters hard crit.
 	if(iscarbon(L) && old_health > 0 && L.getActualFuckingHealth() <= 0)
 		to_chat(B.owner, span_notice("You feel [L] go still within your [lowertext(B.name)]."))
@@ -84,6 +85,7 @@ GLOBAL_LIST_INIT(digest_modes, list())
 		damage_gain = damage_gain * 0.5
 	var/offset = (1 + ((L.weight - 137) / 137)) // 130 pounds = .95 140 pounds = 1.02
 	var/difference = B.owner.size_multiplier() / L.size_multiplier()
+	
 	if(B.health_impacts_size)
 		B.owner.handle_belly_update()
 
@@ -97,8 +99,6 @@ GLOBAL_LIST_INIT(digest_modes, list())
 			B.owner_adjust_nutrition(offset * (4.5 * damage_gain / difference) * L.get_digestion_nutrition_modifier() * B.owner.get_digestion_efficiency_modifier()) //4.5 nutrition points per health point. Normal same size 100+100 health prey with average weight would give 900 points if the digestion was instant. With all the size/weight offset taxes plus over time oxyloss+hunger taxes deducted with non-instant digestion, this should be enough to not leave the pred starved.
 	else
 		B.owner_adjust_nutrition(offset * (4.5 * damage_gain / difference) * L.get_digestion_nutrition_modifier() * B.owner.get_digestion_efficiency_modifier())
-	if((L.getActualFuckingHealth()) <= -100)
-		B.handle_digestion_death(L)
 	if(L.stat != oldstat)
 		return list("to_update" = TRUE)
 
@@ -140,18 +140,18 @@ GLOBAL_LIST_INIT(digest_modes, list())
 	B.steal_nutrition(L)
 	consider_healthbar(L, old_nutrition, B.owner)
 
-/*/datum/digest_mode/drain/shrink
+/datum/digest_mode/drain/shrink
 	id = DM_SHRINK
 
 /datum/digest_mode/drain/shrink/process_mob(obj/belly/B, mob/living/L)
 	if(L.size_multiplier > B.shrink_grow_size)
 		L.resize(L.size_multiplier - 0.01) // Shrink by 1% per tick
 		if(L.size_multiplier <= B.shrink_grow_size) // Adds some feedback so the pred knows their prey has stopped shrinking.
-			to_chat(B.owner, span_notice("You feel [L] get as small as you would like within your [lowertext(B.name)]."))
+			to_chat(B.owner, span_vnotice("You feel [L] get as small as you would like within your [lowertext(B.name)]."))
 		B.owner.handle_belly_update()
-		. = ..()*/
+		. = ..()
 
-/*/datum/digest_mode/grow
+/datum/digest_mode/grow
 	id = DM_GROW
 	noise_chance = 10
 
@@ -159,22 +159,22 @@ GLOBAL_LIST_INIT(digest_modes, list())
 	if(L.size_multiplier < B.shrink_grow_size)
 		L.resize(L.size_multiplier + 0.01) // Shrink by 1% per tick
 		if(L.size_multiplier >= B.shrink_grow_size) // Adds some feedback so the pred knows their prey has stopped growing.
-			to_chat(B.owner, span_notice("You feel [L] get as big as you would like within your [lowertext(B.name)]."))
-	B.owner.handle_belly_update()*/
+			to_chat(B.owner, span_vnotice("You feel [L] get as big as you would like within your [lowertext(B.name)]."))
+	B.owner.handle_belly_update()
 
-/*/datum/digest_mode/drain/sizesteal
+/datum/digest_mode/drain/sizesteal
 	id = DM_SIZE_STEAL
 
 /datum/digest_mode/drain/sizesteal/process_mob(obj/belly/B, mob/living/L)
-	if(L.size_multiplier > B.shrink_grow_size && B.owner.size_multiplier() < RESIZE_MAXIMUM) //Grow until either pred is large or prey is small.
+	if(L.size_multiplier > B.shrink_grow_size && B.owner.size_multiplier < RESIZE_MAXIMUM) //Grow until either pred is large or prey is small.
 		B.owner.resize(B.owner.size_multiplier + 0.01) //Grow by 1% per tick.
 		if(B.owner.size_multiplier >= RESIZE_MAXIMUM) // Adds some feedback so the pred knows they can't grow anymore.
-			to_chat(B.owner, span_notice("You feel you have grown as much as you can."))
+			to_chat(B.owner, span_vnotice("You feel you have grown as much as you can."))
 		L.resize(L.size_multiplier - 0.01) //Shrink by 1% per tick
 		if(L.size_multiplier <= B.shrink_grow_size) // Adds some feedback so the pred knows their prey has stopped shrinking.
-			to_chat(B.owner, span_notice("You feel [L] get as small as you would like within your [lowertext(B.name)]."))
+			to_chat(B.owner, span_vnotice("You feel [L] get as small as you would like within your [lowertext(B.name)]."))
 		B.owner.handle_belly_update()
-		. = ..()*/
+		. = ..()
 
 /datum/digest_mode/heal
 	id = DM_HEAL
@@ -250,13 +250,14 @@ GLOBAL_LIST_INIT(digest_modes, list())
 			if(isitem(C) && egg_contents.len == 1) //Only egging one item
 				var/obj/item/I = C
 				B.ownegg.w_class = I.w_class
+				B.ownegg.max_storage_space = B.ownegg.w_class
 				I.forceMove(B.ownegg)
-				/*if(B.egg_size)
+				if(B.egg_size) //This was previous commented out? - Jon
 					B.ownegg.icon_scale_x = B.egg_size
 					B.ownegg.icon_scale_y = B.egg_size
 				else
 					B.ownegg.icon_scale_x = 0.2 * B.ownegg.w_class
-					B.ownegg.icon_scale_y = 0.2 * B.ownegg.w_class*/
+					B.ownegg.icon_scale_y = 0.2 * B.ownegg.w_class //Comment Block ended here.
 				B.ownegg.update_transform()
 				egg_contents -= I
 				B.ownegg = null
@@ -267,12 +268,12 @@ GLOBAL_LIST_INIT(digest_modes, list())
 				I.forceMove(B.ownegg)
 			if(isliving(C))
 				var/mob/living/M = C
-				//var/mob_holder_type = /obj/item/micro
-				B.ownegg.w_class += M.size_multiplier() * 4 //Egg size and weight scaled to match occupant.
-				if(M.size_multiplier() > scale_clamp)
-					scale_clamp = M.size_multiplier()
-				//var/obj/item/micro/H = new mob_holder_type(B.ownegg, M)
-				//B.ownegg.max_storage_space = H.w_class
+				var/mob_holder_type = M.holder_type || /obj/item/holder
+				B.ownegg.w_class += M.size_multiplier * 4 //Egg size and weight scaled to match occupant.
+				if(M.size_multiplier > scale_clamp)
+					scale_clamp = M.size_multiplier
+				var/obj/item/holder/H = new mob_holder_type(B.ownegg, M)
+				B.ownegg.max_storage_space = H.w_class
 				//B.ownegg.icon_scale_x = 0.25 * B.ownegg.w_class
 				//B.ownegg.icon_scale_y = 0.25 * B.ownegg.w_class
 				//B.ownegg.update_transform()
@@ -281,7 +282,7 @@ GLOBAL_LIST_INIT(digest_modes, list())
 				//	B.ownegg.slowdown = B.ownegg.w_class - 4
 				//B.ownegg = null
 				//return list("to_update" = TRUE)
-		/*B.ownegg.calibrate_size()
+		B.ownegg.calibrate_size()
 		B.ownegg.orient2hud()
 		B.ownegg.w_class = clamp(B.ownegg.w_class * 0.25, 1, 8) //A total w_class of 16 will result in a backpack sized egg.
 		if(B.egg_size)
@@ -289,7 +290,7 @@ GLOBAL_LIST_INIT(digest_modes, list())
 			B.ownegg.icon_scale_y = B.egg_size
 		else
 			B.ownegg.icon_scale_x = clamp(0.25 * B.ownegg.w_class, 0.25, scale_clamp)
-			B.ownegg.icon_scale_y = clamp(0.25 * B.ownegg.w_class, 0.25, scale_clamp)*/
+			B.ownegg.icon_scale_y = clamp(0.25 * B.ownegg.w_class, 0.25, scale_clamp)
 		B.ownegg.update_transform()
 		if(B.ownegg.w_class > 4)
 			B.ownegg.slowdown = 4
