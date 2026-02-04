@@ -1299,8 +1299,7 @@ GLOBAL_VAR_INIT(mobids, 1)
 	//Caustic edit
 	/*if(nutrition > NUTRITION_LEVEL_FULL)
 		nutrition = NUTRITION_LEVEL_FULL*/
-	if(nutrition > maxnutrition)
-		nutrition = maxnutrition
+	verify_nutrition()
 	//Caustic edit end
 
 ///Force set the mob nutrition
@@ -1311,9 +1310,20 @@ GLOBAL_VAR_INIT(mobids, 1)
 	//Caustic edit
 	/*if(nutrition > NUTRITION_LEVEL_FULL)
 		nutrition = NUTRITION_LEVEL_FULL*/
+	verify_nutrition()
+	//Caustic edit end
+
+// Caustic edit - Adds set_max_nutrition and verify_nutrition
+///Sets maximum mob nutrition
+/mob/proc/set_max_nutrition(change)
+	maxnutrition = max(0, change)
+	verify_nutrition()
+
+///Sets the mob's nutrition to the maximum if it is currently above the maximum
+/mob/proc/verify_nutrition()
 	if(nutrition > maxnutrition)
 		nutrition = maxnutrition
-	//Caustic edit end
+// Caustic edit end
 
 /mob/proc/adjust_hydration(change)
 	if(HAS_TRAIT(src, TRAIT_NOHUNGER))

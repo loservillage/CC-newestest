@@ -396,12 +396,12 @@
 
 /datum/component/knotting/proc/handle_knot_removal_effects(mob/living/carbon/human/top, mob/living/carbon/human/btm, forceful_removal, notify, keep_btm_status)
 	if(forceful_removal)
-		var/damage = 40
+		//var/damage = 40 //Caustic Edit - removing this var since we don't want damage anyway.
 		var/list/arousal_data = list()
 		SEND_SIGNAL(top, COMSIG_SEX_GET_AROUSAL, arousal_data)
 
 		if(arousal_data["arousal"] > MAX_AROUSAL / 2)
-			damage += 30
+			//damage += 30 //Caustic Edit - removing this var since we don't want damage anyway.
 			btm.Knockdown(10)
 			if(notify && !keep_btm_status && !btm.has_status_effect(/datum/status_effect/knot_gaped))
 				btm.apply_status_effect(/datum/status_effect/knot_gaped)

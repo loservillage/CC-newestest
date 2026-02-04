@@ -72,6 +72,10 @@
 	W.bleedsuppress = bleedsuppress
 	bleed_rate = 0
 	bleedsuppress = TRUE
+	// Caustic Edit - Account for Bottomless trait or else our hunger is RESET when we transform back!
+	if(has_flaw(/datum/charflaw/bottomless))
+		W.set_max_nutrition(maxnutrition)
+	// Caustic Edit End
 	W.set_nutrition(nutrition)
 	W.set_hydration(hydration)
 

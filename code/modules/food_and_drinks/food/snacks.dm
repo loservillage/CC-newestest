@@ -404,7 +404,7 @@ All foods are distributed among various categories. Use common sense.
 		else
 			if(!isbrain(M))		//If you're feeding it to someone else.
 //				if(fullness <= (600 * (1 + M.overeatduration / 1000)))
-				if(M.nutrition in NUTRITION_LEVEL_FAT to INFINITY)
+				if(!M.has_flaw(/datum/charflaw/bottomless) && (M.nutrition in NUTRITION_LEVEL_FAT to INFINITY)) // Caustic edit - bottomless characters can be fed as much as we please!
 					M.visible_message(span_warning("[user] cannot force any more of [src] down [M]'s throat!"), \
 										span_warning("[user] cannot force any more of [src] down your throat!"))
 					return FALSE
