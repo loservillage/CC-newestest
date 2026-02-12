@@ -2866,6 +2866,7 @@ Slots: [job.spawn_positions] [job.round_contrib_points ? "RCP: +[job.round_contr
 					load_character()
 
 				if("changeslot")
+					// Caustic Edit - Fixes duplicate slot names not showing up + different slot name presentation
 					var/list/choices = list()
 					var/choices_default
 					if(path)
@@ -2883,6 +2884,7 @@ Slots: [job.spawn_positions] [job.round_contrib_points ? "RCP: +[job.round_contr
 									choices_default = name
 								choices[name] = i
 					var/choice = tgui_input_list(user, "CHOOSE A HERO","AZURE PEAK", choices, choices_default)
+					// Caustic Edit End
 					if(choice)
 						choice = choices[choice]
 						if(!load_character(choice))
