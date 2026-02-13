@@ -2880,7 +2880,7 @@ Slots: [job.spawn_positions] [job.round_contrib_points ? "RCP: +[job.round_contr
 								if(!realname)
 									name = "[i] - \[EMPTY SLOT\]"
 								else
-									name = "[i] - [nickname ? nickname : realname]"
+									name = "[i] - [realname][nickname ? " ([nickname])" : ""]"
 								if(loaded_slot == i)
 									choices_default = name
 								choices[name] = i
