@@ -363,7 +363,7 @@
 	load_character(slotnum)
 	user.client?.prefs_vr.load_vore()
 	//attempt_vr(user.client?.prefs_vr,"load_vore","")
-	sanitize_preferences()
+	//sanitize_preferences()
 
 	return remember_default
 
@@ -371,7 +371,7 @@
 	load_character(remembered_default)
 	user.client?.prefs_vr.load_vore()
 	//attempt_vr(user.client?.prefs_vr,"load_vore","")
-	sanitize_preferences()
+	//sanitize_preferences()
 
 //
 // Release everything in every vore organ
