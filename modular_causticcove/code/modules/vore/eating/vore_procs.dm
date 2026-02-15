@@ -53,8 +53,9 @@
 	
 	// Their AI should get notified so they can stab us
 	//prey.ai_holder?.react_to_attack(user)
-	if(istype(prey, /mob/living/simple_animal/retaliate))
-		prey.Retaliate()
+	if(istype(prey, /mob/living/simple_animal/hostile/retaliate))
+		var/mob/living/simple_animal/hostile/retaliate/retaliatePrey = prey
+		retaliatePrey.Retaliate()
 	
 	//Timer and progress bar
 	if(!do_after(user, swallow_time, target = prey))
@@ -91,9 +92,9 @@
 
 	// Inform Admins
 	if(pred == user)
-		log_attack(pred, prey, "Eaten via [belly.name]")
+		log_combat(pred, prey, "Eaten via [belly.name]")
 	else
-		log_attack(user, pred, "Forced to eat [key_name(prey)]")
+		log_combat(user, pred, "Forced to eat [key_name(prey)]")
 	return TRUE
 
 ///VORE HELPER PROCS UNDER HERE

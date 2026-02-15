@@ -22,6 +22,8 @@
 
 /obj/item
 	var/digestable = TRUE
+	var/list/possessed_voice //Allows for items to be possessed/inhabited by voices.
+	var/list/warned_of_possession //Checks to see who has been informed this item is possessed.
 
 	//Vorestuff
 	var/trash_eatable = FALSE

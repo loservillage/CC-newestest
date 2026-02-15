@@ -111,9 +111,9 @@
 			source.on_throw_vore_special(TRUE, thrown_mob)
 
 			if(thrower)
-				log_attack(thrower,source,"Devoured [thrown_mob.name] via throw vore.")
+				log_combat(thrower,source,"Devoured [thrown_mob.name] via throw vore.")
 			else
-				log_attack("[source] devoured [thrown_mob.name] via throw vore.")
+				log_combat("[source] devoured [thrown_mob.name] via throw vore.")
 			return COMSIG_CANCEL_HITBY //We can stop here. We don't need to calculate damage or anything else. They're eaten.
 
 		// PERSON BEING HIT: CAN BE DROP PREY, ALLOWS THROW VORE, AND IS DEVOURABLE.
@@ -127,9 +127,9 @@
 			if(source.loc != thrown_mob.vore_selected)
 				source.forceMove(thrown_mob.vore_selected) //Double check. Should never happen but...Weirder things have happened!
 			if(thrower)
-				log_attack(thrower,source,"Was Devoured by [thrown_mob.name] via throw vore.")
+				log_combat(thrower,source,"Was Devoured by [thrown_mob.name] via throw vore.")
 			else
-				log_attack("[source] Was Devoured by [thrown_mob.name] via throw vore.")
+				log_combat("[source] Was Devoured by [thrown_mob.name] via throw vore.")
 			return COMSIG_CANCEL_HITBY
 
 //source = person standing up

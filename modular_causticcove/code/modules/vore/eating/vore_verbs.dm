@@ -34,7 +34,7 @@
 
 	return ..(G.grabbed)
 
-/mob/living/simple_mob/can_shred(var/mob/living/carbon/human/target)
+/mob/living/simple_animal/can_shred(var/mob/living/carbon/human/target)
 	if(!target)
 		var/list/choices = list()
 		for(var/mob/living/carbon/human/M in oviewers(1))
@@ -123,7 +123,7 @@
 			T.apply_damage(25, BRUTE, T_ext)
 			visible_message(span_danger("[src] severely damages [T]'s [T_ext.name]!"))
 
-		log_attack(src,T,"Shredded (hardvore)")
+		log_combat(src,T,"Shredded (hardvore)")
 
 /mob/living/proc/shred_limb_temp()
 	set name = "Damage/Remove Prey's Organ (beartrap)"

@@ -195,7 +195,7 @@
 			to_chat(attacker, span_warning("You stop writing on [canvas_user]."))
 			return TRUE
 
-		log_attack(attacker, canvas_user, "wrote \"[message]\"")
+		log_combat(attacker, canvas_user, "wrote \"[message]\"")
 
 		LAZYSET(canvas_user.body_writing, affecting.body_part, message)
 
@@ -545,7 +545,7 @@
 		muffled = FALSE		//Removes Muffling
 		forceMove(get_turf(src)) //Just move me up to the turf, let's not cascade through bellies, there's been a problem, let's just leave.
 		SetSleeping(0) //Wake up instantly if asleep
-		for(var/mob/living/simple_mob/SA in range(10))
+		for(var/mob/living/simple_animal/SA in range(10))
 			LAZYSET(SA.prey_excludes, src, world.time)
 		log_and_message_admins("[key_name(src)] used the OOC escape button to get out of [key_name(B.owner)] ([B.owner ? "<a href='byond://?_src_=holder;[HrefToken()];adminplayerobservecoodjump=1;X=[B.owner.x];Y=[B.owner.y];Z=[B.owner.z]'>JMP</a>" : "null"])", src)
 
@@ -952,7 +952,7 @@
 			else
 				log_admin("VORE: [src] used Eat Minerals to swallow [I].")
 			//Eat the ore using the vorebelly for the sound then get rid of the ore to prevent infinite nutrition.
-			drop_from_inventory(I, vore_selected) //Never touches the ground - straight to the gut.
+			dropItemToGround(I, vore_selected) //Never touches the ground - straight to the gut.
 			visible_message("[src] crunches [I] to pieces and swallows it down.",
 				span_notice("[nom["remark"]]"),
 				span_notice("You hear the gnashing of jaws with some ominous grinding and crunching noises, then... Swallowing?"))
@@ -1462,7 +1462,7 @@
 				user.emote(1, span_notice("[RTB.reagent_transfer_verb] [RTB.reagent_name] from [TG]'s [RTB.get_belly_name()] into [T]."))
 
 			RTB.reagents.vore_trans_to_con(T, transfer_amount, 1, 0)
-			log_attack(user, T,"Transfered [RTB.reagent_name] from [TG]'s [RTB] to a [T]")	//Bonus for staff so they can see if people have abused transfer and done pref breaks
+			log_combat(user, T,"Transfered [RTB.reagent_name] from [TG]'s [RTB] to a [T]")	//Bonus for staff so they can see if people have abused transfer and done pref breaks
 			if(RTB.count_liquid_for_sprite)
 				handle_belly_update()
 		if("Floor")

@@ -111,3 +111,6 @@
 
 	var/away_from_keyboard = FALSE	//are we at, or away, from our keyboard?
 	var/manual_afk = FALSE			//did we set afk manually or was it automatic?
+
+	var/size_multiplier = 1 //multiplier for the mob's icon size
+	var/faction_bump_vore = FALSE	// Don't bump nom mobs of the same faction

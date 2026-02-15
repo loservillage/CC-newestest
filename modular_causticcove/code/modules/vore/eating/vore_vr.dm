@@ -150,7 +150,7 @@
 /proc/is_vore_predator(mob/living/O)
 	if(isliving(O))
 		if(isanimal(O)) //On-demand belly loading.
-			var/mob/living/simple_mob/SM = O
+			var/mob/living/simple_animal/SM = O
 			if(SM.vore_active && !SM.voremob_loaded)
 				SM.init_vore(TRUE)
 		if(O.vore_organs.len > 0)

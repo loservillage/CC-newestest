@@ -313,7 +313,7 @@
 		return TRUE
 	if(moving_diagonally)// no pushing during diagonal moves.
 		return TRUE
-	if(!client && (mob_size < MOB_SIZE_SMALL))
+	if(!client && (mob_size < MOB_SMALL))
 		return
 	now_pushing = TRUE
 	var/t = get_dir(src, AM)

@@ -755,12 +755,12 @@
 					user.vore_attackby(user, dragged, src) // User, Pulled, Predator target (which can be user, pulling, or src)
 					return TRUE*/
 			//Pick them up. Pick. Them. Up.
-			if(ishuman(dragged) && ishuman(user))
+			/*if(ishuman(dragged) && ishuman(user)) //Caustic - We should be handling this the Chomp way now!
 				var/mob/living/carbon/human/userhuman = user
 				var/mob/living/carbon/human/targethuman = dragged
 				if(targethuman.small_enough(userhuman) && user.grab_state)
 					if(targethuman.attempt_scoop(userhuman))
-						return TRUE
+						return TRUE*/
 			//If they dragged themselves and we're currently aggressively grabbing them try to piggyback (not on cmode)
 			if(user == dragged && can_piggyback(target))
 				if(cmode)

@@ -740,7 +740,7 @@
 					return FALSE
 				if(living_host.nutrition >= VORE_RESIZE_COST)
 					living_host.adjust_nutrition(-VORE_RESIZE_COST)
-					living_host.resize(new_size, uncapped = living_host.has_large_resize_bounds(), ignore_prefs = TRUE)
+					living_host.resize(new_size/*, uncapped = living_host.has_large_resize_bounds()*/, ignore_prefs = TRUE)
 			return TRUE
 
 /datum/vore_look/proc/pick_from_inside(mob/user, params)
@@ -1074,8 +1074,8 @@
 					body_backup.teleop = null
 					T.body_backup = null
 					host.vore_selected.release_specific_contents(T, TRUE)
-					if(istype(body_backup, /mob/living/simple_mob))
-						var/mob/living/simple_mob/sm = body_backup
+					if(istype(body_backup, /mob/living/simple_animal))
+						var/mob/living/simple_animal/sm = body_backup
 						if(sm.icon_rest && sm.resting)
 							sm.icon_state = sm.icon_rest
 						else

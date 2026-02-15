@@ -1,4 +1,4 @@
-/mob/living/carbon/human/proc/handle_micro_bump_helping(mob/living/carbon/human/tmob)
+/*/mob/living/carbon/human/proc/handle_micro_bump_helping(mob/living/carbon/human/tmob)
 	//Riding and being moved to us or something similar
 	if(tmob in buckled_mobs)
 		return TRUE
@@ -17,3 +17,4 @@
 		return TRUE
 	else
 		return FALSE
+*/

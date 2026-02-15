@@ -116,11 +116,11 @@
 	)
 
 /datum/vore_look/proc/get_host_mobtype(mob/owner)
-	var/list/host_mobtype = list("is_cyborg" = FALSE, "is_vore_simple_mob" = FALSE)
+	var/list/host_mobtype = list(/*"is_cyborg" = FALSE, */"is_vore_simple_animal" = FALSE)
 	/*if(isrobot(owner))
 		host_mobtype["is_cyborg"] = TRUE */
-	if(istype(owner, /mob/living/simple_mob/vore))	//So far, this does nothing. But, creating this for future belly work
-		host_mobtype["is_vore_simple_mob"] = TRUE
+	if(istype(owner, /mob/living/simple_animal/vore))	//So far, this does nothing. But, creating this for future belly work
+		host_mobtype["is_vore_simple_animal"] = TRUE
 	return host_mobtype
 
 /datum/vore_look/proc/get_selected_data(mob/owner)

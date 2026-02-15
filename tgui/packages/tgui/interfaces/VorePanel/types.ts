@@ -33,8 +33,8 @@ export type abilitySizeChange = {
 };
 
 export type hostMob = {
-  is_cyborg: BooleanLike;
-  is_vore_simple_mob: BooleanLike;
+  //is_cyborg: BooleanLike;
+  is_vore_simple_animal: BooleanLike;
 };
 
 export type insideData = {

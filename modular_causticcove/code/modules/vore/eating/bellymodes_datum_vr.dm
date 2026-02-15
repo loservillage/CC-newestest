@@ -84,7 +84,7 @@ GLOBAL_LIST_INIT(digest_modes, list())
 	if(B.slow_digestion)
 		damage_gain = damage_gain * 0.5
 	var/offset = (1 + ((L.weight - 137) / 137)) // 130 pounds = .95 140 pounds = 1.02
-	var/difference = B.owner.size_multiplier() / L.size_multiplier()
+	var/difference = B.owner.size_multiplier / L.size_multiplier
 	
 	if(B.health_impacts_size)
 		B.owner.handle_belly_update()

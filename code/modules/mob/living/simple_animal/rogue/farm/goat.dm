@@ -150,7 +150,7 @@
 	base_intents = list(/datum/intent/simple/headbutt)
 	health = 20
 	pass_flags = PASSTABLE | PASSMOB
-	mob_size = MOB_SIZE_SMALL
+	mob_size = MOB_SMALL
 	maxHealth = 20
 	milkies = FALSE
 	gender = FEMALE
@@ -403,7 +403,7 @@
 	health = 20
 	maxHealth = 20
 	pass_flags = PASSTABLE | PASSMOB
-	mob_size = MOB_SIZE_SMALL
+	mob_size = MOB_SMALL
 	milkies = FALSE
 	melee_damage_lower = 1
 	melee_damage_upper = 6

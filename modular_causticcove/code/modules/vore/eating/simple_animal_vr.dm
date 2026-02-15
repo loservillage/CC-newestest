@@ -1,9 +1,9 @@
 ///////////////////// Simple Animal /////////////////////
-/mob/living/simple_mob
+/mob/living/simple_animal
 	var/swallowTime = (3 SECONDS)		//How long it takes to eat its prey in 1/10 of a second. The default is 3 seconds.
 	var/list/prey_excludes = null		//For excluding people from being eaten.
 
-/mob/living/simple_mob/insidePanel() //On-demand belly loading.
+/mob/living/simple_animal/insidePanel() //On-demand belly loading.
 	if(vore_active && !voremob_loaded)
 		init_vore(TRUE)
 	..()
@@ -11,7 +11,7 @@
 //
 // Simple nom proc for if you get ckey'd into a simple_mob mob! Avoids grabs.
 //
-/mob/living/simple_mob/proc/animal_nom(mob/living/T in living_mobs_in_view(1))
+/mob/living/simple_animal/proc/animal_nom(mob/living/T in living_mobs_in_view(1))
 	set name = "Animal Nom"
 	set category = "Abilities.Vore" // Moving this to abilities from IC as it's more fitting there
 	set desc = "Since you can't grab, you get a verb!"
@@ -22,7 +22,7 @@
 	if(stat != CONSCIOUS)
 		return
 	// Verbs are horrifying. They don't call overrides. So we're stuck with this.
-	if(istype(src, /mob/living/simple_mob/animal/passive/mouse) && !T.ckey)
+	if(istype(src, /mob/living/simple_animal/animal/passive/mouse) && !T.ckey)
 		// Mice can't eat logged out players!
 		return
 	/*if(client && IsAdvancedToolUser()) Mob QOL, not everything can be grabbed and nobody wants wiseguy gotchas for trying.
@@ -31,22 +31,22 @@
 	*/
 	feed_grabbed_to_self(src,T)
 
-/mob/living/simple_mob/perform_the_nom(mob/living/user, mob/living/prey, mob/living/pred, obj/belly/belly, delay_time)
+/mob/living/simple_animal/perform_the_nom(mob/living/user, mob/living/prey, mob/living/pred, obj/belly/belly, delay_time)
 	if(vore_active && !voremob_loaded && pred == src) //Only init your own bellies.
 		init_vore(TRUE)
 		belly = vore_selected
 	return ..()
 
-/mob/living/simple_mob/begin_instant_nom(mob/living/user, mob/living/prey, mob/living/pred, obj/belly/belly)
+/mob/living/simple_animal/begin_instant_nom(mob/living/user, mob/living/prey, mob/living/pred, obj/belly/belly)
 	if(vore_active && !voremob_loaded && pred == src) //Only init your own bellies.
 		init_vore(TRUE)
 		belly = vore_selected
 	return ..()
 //
 // Simple proc for animals to have their digestion toggled on/off externally
-// Added as a verb in /mob/living/simple_mob/init_vore() if vore is enabled for this mob.
+// Added as a verb in /mob/living/simple_animal/init_vore() if vore is enabled for this mob.
 //
-/mob/living/simple_mob/proc/toggle_digestion()
+/mob/living/simple_animal/proc/toggle_digestion()
 	set name = "Toggle Animal's Digestion"
 	set desc = "Enables digestion on this mob for 20 minutes."
 	set category = "OOC.Mob Settings"
@@ -69,8 +69,8 @@
 		if(confirm == "Disable")
 			vore_selected.digest_mode = DM_HOLD
 
-// Added as a verb in /mob/living/simple_mob/init_vore() if vore is enabled for this mob.
-/mob/living/simple_mob/proc/toggle_fancygurgle()
+// Added as a verb in /mob/living/simple_animal/init_vore() if vore is enabled for this mob.
+/mob/living/simple_animal/proc/toggle_fancygurgle()
 	set name = "Toggle Animal's Gurgle sounds"
 	set desc = "Switches between Fancy and Classic sounds on this mob."
 	set category = "OOC.Mob Settings"
@@ -85,7 +85,7 @@
 	vore_selected.fancy_vore = !vore_selected.fancy_vore
 	to_chat(user, "[src] is now using [vore_selected.fancy_vore ? "Fancy" : "Classic"] vore sounds.")
 
-/mob/living/simple_mob/attackby(var/obj/item/O, var/mob/user)
+/mob/living/simple_animal/attackby(var/obj/item/O, var/mob/user)
 	if(istype(O, /obj/item/newspaper) && !(ckey || (ai_holder.hostile && faction != user.faction)) && isturf(user.loc))
 		if(ai_holder.retaliate && prob(vore_pounce_chance/2)) // This is a gamble!
 			user.Weaken(5) //They get tackled anyway whether they're edible or not.
@@ -106,18 +106,18 @@
 				if(!(LAZYFIND(prey_excludes, L))) // Unless they're already on it, just to avoid fuckery.
 					LAZYSET(prey_excludes, L, world.time)
 					addtimer(CALLBACK(src, PROC_REF(removeMobFromPreyExcludes), WEAKREF(L)), 5 MINUTES)
-	else if(istype(O, /obj/item/healthanalyzer))
+	else if(istype(O, /obj/item/rogueweapon/surgery/hammer))
 		var/healthpercent = health/maxHealth*100
 		to_chat(user, span_notice("[src] seems to be [healthpercent]% healthy."))
 	else
 		..()
 
-/mob/living/simple_mob/proc/removeMobFromPreyExcludes(datum/weakref/target)
+/mob/living/simple_animal/proc/removeMobFromPreyExcludes(datum/weakref/target)
 	if(isweakref(target))
 		var/mob/living/L = target.resolve()
 		LAZYREMOVE(prey_excludes, L) // It's fine to remove a null from the list if we couldn't resolve L
 
-/mob/living/simple_mob/proc/nutrition_heal()
+/mob/living/simple_animal/proc/nutrition_heal()
 	set name = "Nutrition Heal"
 	set category = "Abilities.Mob"
 	set desc = "Slowly regenerate health using nutrition."

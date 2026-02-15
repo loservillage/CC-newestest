@@ -1,5 +1,4 @@
 // Micro Holders - Extends /obj/item/holder
-
 /obj/item/holder/micro
 	name = "micro"
 	desc = "Another crewmember, small enough to fit in your hand."
@@ -11,13 +10,13 @@
 	righthand_file = null
 	pixel_y = 0		  // Override value from parent.
 
-/obj/item/holder/micro/Initialize(mapload, mob/held)
+/*/obj/item/holder/micro/Initialize(mapload, mob/held) //This might not be needed, it was for handling Teshari before on Chomp
 	. = ..()
 	var/mob/living/carbon/human/H = held_mob
 
-/obj/item/holder/micro/make_worn_icon(var/body_type,var/slot_name,var/inhands,var/default_icon,var/default_layer,var/icon/clip_mask = null)
+/obj/item/holder/micro/make_worn_icon(var/body_type,var/slot_name,var/inhands,var/default_icon,var/default_layer,var/icon/clip_mask = null) //Might not be needed at all? Just, whenever we figure how to render worn players...
 	var/mob/living/carbon/human/H = held_mob
-	. = ..()
+	. = ..()*/
 
 /obj/item/holder/examine(mob/user)
 	SHOULD_CALL_PARENT(FALSE)
@@ -37,20 +36,20 @@
 	. = ..(user)
 	if(.)
 		return TRUE
-	user.setClickCooldown(user.get_attack_speed())
+	user.setClickCooldown(CLICK_CD_MELEE)
 	for(var/L in contents)
 		if(ishuman(L))
 			var/mob/living/carbon/human/H = L
 			H.help_shake_act(user)
 		if(isanimal(L))
-			var/mob/living/simple_mob/S = L
-			user.visible_message(span_notice("[user] [S.response_help] \the [S]."))
+			var/mob/living/simple_animal/S = L
+			user.visible_message(span_notice("[user] [S.response_help_continuous] \the [S]."))
 
 //Egg features.
 /obj/item/holder/attack_hand(mob/living/user as mob)
 	if(istype(src.loc, /obj/item/storage/vore_egg)) //Don't scoop up the egged mob
 		src.pickup(user)
-		user.drop_from_inventory(src)
+		user.dropItemToGround(src)
 		return
 	..()
 

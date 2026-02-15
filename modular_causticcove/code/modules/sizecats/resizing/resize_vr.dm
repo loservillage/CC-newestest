@@ -45,8 +45,8 @@
 	if(fuzzy || offset_override || dir == EAST || dir == WEST)
 		cent_offset = 0
 	var/matrix/M = matrix()
-	M.Scale(size_multiplier * icon_scale_x, size_multiplier * icon_scale_y)
-	M.Translate(cent_offset * size_multiplier * icon_scale_x, (vis_height/2)*(size_multiplier-1))
+	M.Scale(size_multiplier, size_multiplier)
+	M.Translate(cent_offset * size_multiplier, (vis_height/2)*(size_multiplier-1))
 	transform = M
 
 /**
@@ -61,27 +61,29 @@
 /mob/living/get_effective_size(var/micro = FALSE)
 	return size_multiplier
 
-/mob/living/carbon/human/get_effective_size(var/micro = FALSE)		// Set micro to TRUE for interactions where you're small, to FALSE for ones where you're large.
+//This whole thing appears to be for differenciating Macro-Micro stuff based on default Species Size? This kinda gets wildly confusing if we did all that... Not even sure if we want to bother?
+/*/mob/living/carbon/human/get_effective_size(var/micro = FALSE)		// Set micro to TRUE for interactions where you're small, to FALSE for ones where you're large.
 	var/effective_size = size_multiplier
 	if(micro)
 		effective_size += species.micro_size_mod
 	else
 		effective_size += species.macro_size_mod
-	return effective_size
-
-/atom/movable/proc/size_range_check(size_select)		//both objects and mobs needs to have that
+	return size_multiplier //effective_size
+*/
+/atom/movable/proc/size_range_check(size_select) //both objects and mobs needs to have that -- Caustic: This is what allows people to bypass the size limits when in specific areas, IE the Dorms in Chomp/Virgo. Commented out for now, since we don't have area flags for this. Lets get it running first.
+												 // -- All the extremes bells and whistles can come after
 	var/area/A = get_area(src) //Get the atom's area to check for size limit.
 	size_select = size_select / 100
-	if((!A?.flag_check(AREA_ALLOW_LARGE_SIZE) && (size_select > RESIZE_MAXIMUM || size_select < RESIZE_MINIMUM)) || (size_select > RESIZE_MAXIMUM_DORMS || size_select < RESIZE_MINIMUM_DORMS))
+	if(/*(!A?.flag_check(AREA_ALLOW_LARGE_SIZE) && */(size_select > RESIZE_MAXIMUM || size_select < RESIZE_MINIMUM)/*) || (size_select > RESIZE_MAXIMUM_DORMS || size_select < RESIZE_MINIMUM_DORMS)*/)
 		return FALSE
 	return TRUE
 
-/atom/movable/proc/has_large_resize_bounds()
+/*/atom/movable/proc/has_large_resize_bounds()
 	var/area/A = get_area(src) //Get the atom's area to check for size limit.
 	return A ? A.flag_check(AREA_ALLOW_LARGE_SIZE) : FALSE
 
 /proc/is_extreme_size(size)
-	return (size < RESIZE_MINIMUM || size > RESIZE_MAXIMUM)
+	return (size < RESIZE_MINIMUM || size > RESIZE_MAXIMUM)*/
 
 
 /**
@@ -97,7 +99,7 @@
  * * allow_stripping - CHANGE_ME.  Default: FALSE
  */
 /mob/living/proc/resize(var/new_size, var/animate = TRUE, var/uncapped = FALSE, var/ignore_prefs = FALSE, var/aura_animation = FALSE, var/allow_stripping = FALSE) //CHOMPEdit - Disable aura_animation. Too expensive for something you can't even see.
-	if(!uncapped)
+	/*if(!uncapped)
 		if((z in using_map.station_levels) && CONFIG_GET(flag/pixel_size_limit))
 			var/size_diff = ((runechat_y_offset() / size_multiplier) * new_size) // This returns 32 multiplied with the new size
 			var/size_cap = world.icon_size * RESIZE_MAXIMUM //Grace for non-humanoids so they don't get forcibly shrunk.
@@ -109,14 +111,16 @@
 			new_size = clamp(new_size, RESIZE_MINIMUM, RESIZE_MAXIMUM)
 		var/datum/component/resize_guard/guard = GetComponent(/datum/component/resize_guard)
 		if(guard)
-			qdel(guard)
-	else if(has_large_resize_bounds())
+			qdel(guard)*/
+	/*else if(has_large_resize_bounds())
 		if(is_extreme_size(new_size))
 			AddComponent(/datum/component/resize_guard)
 		else
 			var/datum/component/resize_guard/guard = GetComponent(/datum/component/resize_guard)
 			if(guard)
-				qdel(guard)
+				qdel(guard)*/
+
+	new_size = clamp(new_size, RESIZE_MINIMUM, RESIZE_MAXIMUM) //Removed the above cause it mainly handles the Dorms oversize stuff. Not really needed yet?
 
 	if(size_multiplier == new_size)
 		return 1
@@ -130,26 +134,26 @@
 		var/special_x = 1
 		var/special_y = 1
 		if(ishuman(src))
-			var/mob/living/carbon/human/H = src
+			/*var/mob/living/carbon/human/H = src
 			var/datum/species/S = H.species
 			special_x = S.icon_scale_x
-			special_y = S.icon_scale_y
+			special_y = S.icon_scale_y*/
 			if(fuzzy || offset_override)
 				center_offset = 0
-			else
-				center_offset = S.center_offset
-		resize.Scale(new_size * icon_scale_x * special_x, new_size * icon_scale_y * special_y) //Change the size of the matrix
-		resize.Translate(center_offset * size_multiplier * icon_scale_x * special_x, (vis_height/2) * (new_size - 1)) //Move the player up in the tile so their feet align with the bottom
+			/*else
+				center_offset = S.center_offset*/
+		resize.Scale(new_size /** icon_scale_x */* special_x, new_size /** icon_scale_y */* special_y) //Change the size of the matrix
+		resize.Translate(center_offset * size_multiplier /** icon_scale_x*/ * special_x, (vis_height/2) * (new_size - 1)) //Move the player up in the tile so their feet align with the bottom
 		animate(src, transform = resize, time = duration) //Animate the player resizing
 
-		if(aura_animation)
+		/*if(aura_animation) //Chomp disabled this according to above, so, lets just comment it out for now.
 			var/aura_grow_to = change > 0 ? 2 : 0.5
 			var/aura_anim_duration = 5
 			var/aura_offset = change > 0 ? 0 : 10
 			var/aura_color = size_multiplier > new_size ? "#FF2222" : "#2222FF"
 			var/aura_loops = round((duration)/aura_anim_duration)
 
-			animate_aura(src, color = aura_color, offset = aura_offset, anim_duration = aura_anim_duration, loops = aura_loops, grow_to = aura_grow_to)
+			animate_aura(src, color = aura_color, offset = aura_offset, anim_duration = aura_anim_duration, loops = aura_loops, grow_to = aura_grow_to)*/
 	else
 		update_transform() //Lame way
 
@@ -161,18 +165,28 @@
 	var/size_difference = previous_scale - size_multiplier
 	if((allow_stripping == TRUE) && (size_difference >= 0.3) || (size_difference <= -0.3))
 		if(size_strip_preference == SIZESTRIP_ITEMS)
-			drop_all_clothing(FALSE)
+			unequip_everything()
 		else if(size_strip_preference == SIZESTRIP_ALL)
-			drop_all_clothing(TRUE)
-	if(!ishuman(temporary_form) && isliving(temporary_form))
+			unequip_everything()
+			if(underwear)
+				var/obj/item/bodypart/chest = get_bodypart(BODY_ZONE_CHEST)
+				chest.remove_bodypart_feature(underwear.undies_feature)
+				underwear.forceMove(loc)
+				underwear = null
+			if(legwear_socks)
+				var/obj/item/bodypart/chest = get_bodypart(BODY_ZONE_CHEST)
+				chest.remove_bodypart_feature(legwear_socks.legwears_feature)
+				legwear_socks.forceMove(loc)
+				legwear_socks = null
+	/*if(!ishuman(temporary_form) && isliving(temporary_form)) //Seems to be for Protean self-transform stuff? Likely the blob form I think? But a generic use of it. Not implemented yet. Perhaps this code might be good for fixing Druid Wildshape!!
 		var/mob/living/temp_form = temporary_form
-		temp_form.resize(new_size, animate, uncapped, ignore_prefs, aura_animation)
-	if(LAZYLEN(hud_list) && has_huds)
+		temp_form.resize(new_size, animate, uncapped, ignore_prefs, aura_animation)*/
+	/*if(LAZYLEN(hud_list) && has_huds) //I believe this is where it offsets the HUDs over mobs from Sec/Med Goggles and such
 		var/new_y_offset = vis_height * (size_multiplier - 1)
 		for(var/index = 1 to hud_list.len)
 			var/image/HI = grab_hud(index)
 			HI.pixel_y = new_y_offset
-			apply_hud(index, HI)
+			apply_hud(index, HI)*/
 
 // Optimize mannequins - never a point to animating or doing HUDs on these.
 /mob/living/carbon/human/dummy/mannequin/resize(var/new_size, var/animate = TRUE, var/uncapped = FALSE, var/ignore_prefs = FALSE, var/aura_animation = TRUE, var/allow_stripping = FALSE)
@@ -180,21 +194,20 @@
 
 /**
  * Verb proc for a command that lets players change their size OOCly.
- * Ace was here! Redid this a little so we'd use math for shrinking characters. This is the old code.
  */
 
 /mob/living/proc/set_size()
-	set name = "Adjust Mass"
-	set category = "Abilities.General" //Seeing as prometheans have an IC reason to be changing mass.
+	set name = "Adjust Size"
+	set category = "OOC" //Seeing as prometheans have an IC reason to be changing mass. <-- Leftover from Chomp!
 
-	var/nagmessage = "Adjust your mass to be a size between 25 to 200% (or 1% to 600% in dormitories). (DO NOT ABUSE)"
+	var/nagmessage = "Adjust your size to be a size between 25 to 200%. (For OOC/Scene purposes!)" //(or 1% to 600% in dormitories)
 	var/default = size_multiplier * 100
 	var/new_size = tgui_input_number(src, nagmessage, "Pick a Size", default, 600, 1)
 	if(size_range_check(new_size))
-		resize(new_size/100, uncapped = has_large_resize_bounds(), ignore_prefs = TRUE)
-		if(temporary_form)
+		resize(new_size/100,/* uncapped = has_large_resize_bounds(),*/ ignore_prefs = TRUE)
+		/*if(temporary_form) //Again the species-specific transformation options, used in Protean's Blob form likely.
 			var/mob/living/L = temporary_form
-			L.resize(new_size/100, uncapped = has_large_resize_bounds(), ignore_prefs = TRUE)
+			L.resize(new_size/100, uncapped = has_large_resize_bounds(), ignore_prefs = TRUE)*/
 		// log_admin("[key_name(src)] used the resize command in-game to be [new_size]% size. [src ? ADMIN_JMP(src) : "null"]") // CHOMPRemove
 
 /**
@@ -206,7 +219,7 @@
 		return FALSE
 	if(!(pickup_pref && M.pickup_pref && M.pickup_active))
 		return FALSE
-	if(!(M.a_intent == I_HELP))
+	if(!(M.a_intent == INTENT_HELP))
 		return FALSE
 	var/size_diff = M.get_effective_size(FALSE) - get_effective_size(TRUE)
 	if(!holder_default && holder_type)
@@ -214,8 +227,8 @@
 	if(!istype(M))
 		return FALSE
 	if(isanimal(M))
-		var/mob/living/simple_mob/SA = M
-		if(!SA.has_hands)
+		var/mob/living/simple_animal/SA = M
+		if(!SA.has_hands())
 			return FALSE
 		if(mob_size < MOB_SMALL && src == M)
 			return FALSE
@@ -238,8 +251,6 @@
  * @return false if normal code should continue, true to prevent normal code.
  */
 /mob/living/proc/handle_micro_bump_helping(mob/living/tmob)
-	if(is_incorporeal() || tmob.is_incorporeal())
-		return FALSE
 	//Riding and being moved to us or something similar
 	if(tmob in buckled_mobs)
 		return TRUE
@@ -258,27 +269,27 @@
 			src_message = "You carefully step over [tmob]."
 			tmob_message = "[src] steps over you carefully!"
 			var/mob/living/carbon/human/H = src
-			if(H.flying)
-				return TRUE //Silently pass without a message.
-			if(istaurtail(H.tail_style))
+			/*if(H.flying) //Caustic - Flight is... fucky in Roguecode. Will have to address it better.
+				return TRUE*/ //Silently pass without a message.
+			/*if(istaurtail(H.tail_style)) //Caustic - I don't believe we have these messages on our taur-parts
 				var/datum/sprite_accessory/tail/taur/tail = H.tail_style
 				src_message = tail.msg_owner_help_run
-				tmob_message = tail.msg_prey_help_run
+				tmob_message = tail.msg_prey_help_run*/
 
 		//Smaller person stepping under larger person
 		else if(get_effective_size(TRUE) < tmob.get_effective_size(TRUE) && ishuman(tmob))
 			src_message = "You run between [tmob]'s legs."
 			tmob_message = "[src] runs between your legs."
-			var/mob/living/carbon/human/H = tmob
+			/*var/mob/living/carbon/human/H = tmob //Caustic - Same as the comment block above!
 			if(istaurtail(H.tail_style))
 				var/datum/sprite_accessory/tail/taur/tail = H.tail_style
 				src_message = tail.msg_prey_stepunder
-				tmob_message = tail.msg_owner_stepunder
+				tmob_message = tail.msg_owner_stepunder*/
 
 		if(src_message)
-			to_chat(src, span_filter_notice("[STEP_TEXT_OWNER(src_message)]"))
+			to_chat(src, span_notice("[STEP_TEXT_OWNER(src_message)]"))
 		if(tmob_message)
-			to_chat(tmob, span_filter_notice("[STEP_TEXT_PREY(tmob_message)]"))
+			to_chat(tmob, span_notice("[STEP_TEXT_PREY(tmob_message)]"))
 		return TRUE
 	return FALSE
 
@@ -291,16 +302,16 @@
 /mob/living/proc/handle_micro_bump_other(mob/living/tmob, nofetish = 0) //CHOMPEDIT - changed a lot in this whole proc tbh, to bring back micro combat balance
 	ASSERT(istype(tmob))
 	//If we're flying, don't do any special interactions.
-	if(flying)
-		return
-	//If the prey is flying, don't smush them.
-	if(tmob.flying)
-		return
+	/*if(flying)
+		return*/
+	//If the prey is flying, don't smush them. //Caustic - For when we want proper flying integration. It's only harpies now.
+	/*if(tmob.flying)
+		return*/
 	//We can't be stepping on anyone
-	if(!canmove || buckled)
+	if(IsParalyzed() || IsKnockdown() || IsStun() || IsImmobilized() || buckled)
 		return
-	if(is_incorporeal() || tmob.is_incorporeal())
-		return
+	/*if(is_incorporeal() || tmob.is_incorporeal())
+		return*/
 
 	//Riding and being moved to us or something similar
 	if(tmob in buckled_mobs)
@@ -314,7 +325,7 @@
 
 	var/mob/living/carbon/human/prey = tmob
 	var/can_pass = TRUE
-	var/size_ratio_needed = (a_intent == I_DISARM || a_intent == I_HURT) ? 0.75 : (a_intent == I_GRAB ? 0.5 : 0)
+	var/size_ratio_needed = (a_intent == INTENT_DISARM || a_intent == INTENT_HARM) ? 0.75 : (a_intent == INTENT_GRAB ? 0.5 : 0)
 	if (isturf(prey.loc))
 		for (var/atom/movable/M in prey.loc)
 			if (prey == M || pred == M)
@@ -333,23 +344,23 @@
 	// We need to be above a certain size ratio in order to do anything to the prey.
 	// For DISARM and HURT intent, this is >=0.75, for GRAB it is >=0.5
 	var/size_ratio = get_effective_size(FALSE) - tmob.get_effective_size(TRUE)
-	if((a_intent == I_GRAB || a_intent == I_DISARM) && size_ratio < 0.5) //CHOMPEDIT - more step changes
+	if((a_intent == INTENT_GRAB || a_intent == INTENT_DISARM) && size_ratio < 0.5) //CHOMPEDIT - more step changes
 		return FALSE
-	if(a_intent == I_HURT && size_ratio < 0.75)
+	if(a_intent == INTENT_HARM && size_ratio < 0.75)
 		return FALSE
-	if(a_intent == I_HELP) // Theoretically not possible, but just in case.
+	if(a_intent == INTENT_HELP) // Theoretically not possible, but just in case.
 		return FALSE
 
 	//CHOMPEdit - removed chance to dodge steppies. Get rng out of my combat.
 	now_pushing = 0
 	forceMove(tmob.loc)
-	if(a_intent != I_HELP)
+	if(a_intent != INTENT_HELP)
 		if(tmob.size_multiplier > 0.75 && nofetish) //So we can stun micros with step mechanics off, but prevent macros from stunning regular heights
 			to_chat(pred, span_danger("You pass over [tmob.name]."))
 			to_chat(prey, span_danger("[src.name] passes over you."))
 			return FALSE
 		tmob.resting = 1
-		tmob.Weaken(3)		//CHOMPEdit - do both regardless of intent, dummy
+		tmob.Knockdown(8)
 		if(nofetish)
 			to_chat(pred, span_danger("You casually knock [tmob.name] over."))
 			to_chat(prey, span_danger("[src.name] casually knocks you over."))
@@ -361,76 +372,76 @@
 	// I_HARM: Rand 1-3 multiplied by 1 min or 1.75 max. 1 min 5.25 max damage to each limb.
 	// I_DISARM: Perform some HALLOSS damage to the smaller.
 	//           Since stunned is broken, let's do this. Rand 15-30 multiplied by 1 min or 1.75 max. 15 holo to 52.5 holo, depending on RNG and size differnece.
-	var/damage = (a_intent == I_DISARM) ? (rand(15, 30) * size_damage_multiplier) : (rand(1, 3) * size_damage_multiplier)
+	var/damage = (a_intent == INTENT_DISARM) ? (rand(15, 30) * size_damage_multiplier) : (rand(1, 3) * size_damage_multiplier)
 	// I_HARM only
 	var/calculated_damage = damage / 2 //This will sting, but not kill. Does .5 to 2.625 damage, randomly, to each limb.
 
 	var/message_pred = null
 	var/message_prey = null
-	var/datum/sprite_accessory/tail/taur/tail = null
+	/*var/datum/sprite_accessory/tail/taur/tail = null
 	if(istaurtail(pred.tail_style))
-		tail = pred.tail_style
+		tail = pred.tail_style*/
 	if(!nofetish)	//CHOMPedit - Brings back mandatory step mechanics, circumvents the fetish stuff if no pref match
-		if(a_intent == I_GRAB)
+		if(a_intent == INTENT_GRAB)
 			// You can only grab prey if you have no shoes on. And both of you are cool with it.
 			if(pred.shoes || !(pred.pickup_pref && prey.pickup_pref))
 				message_pred = "You step down onto [prey], squishing them and forcing them down to the ground!"
 				message_prey = "[pred] steps down and squishes you with their foot, forcing you down to the ground!"
-				if(tail)
+				/*if(tail)
 					message_pred = STEP_TEXT_OWNER(tail.msg_owner_grab_fail)
-					message_prey = STEP_TEXT_PREY(tail.msg_prey_grab_fail)
-				log_attack(pred, prey,"Grabbed underfoot ([tail ? "taur" : "nontaur"], shoes)")
+					message_prey = STEP_TEXT_PREY(tail.msg_prey_grab_fail)*/
+				log_combat(pred, prey,"Grabbed underfoot (with shoes)")
 			else
 				message_pred = "You pin [prey] down onto the floor with your foot and curl your toes up around their body, trapping them inbetween them!"
 				message_prey = "[pred] pins you down to the floor with their foot and curls their toes up around your body, trapping you inbetween them!"
-				if(tail)
+				/*if(tail)
 					message_pred = STEP_TEXT_OWNER(tail.msg_owner_grab_success)
-					message_prey = STEP_TEXT_PREY(tail.msg_prey_grab_success)
-				equip_to_slot_if_possible(prey.get_scooped(pred), slot_shoes, 0, 1)
-				log_attack(pred, prey, "Grabbed underfoot ([tail ? "taur" : "nontaur"], no shoes)")
+					message_prey = STEP_TEXT_PREY(tail.msg_prey_grab_success)*/
+				equip_to_slot_if_possible(prey.get_scooped(pred), SLOT_SHOES, 0, 1)
+				log_combat(pred, prey, "Grabbed underfoot (without shoes)")
 
-		if(m_intent == I_RUN)
+		if(m_intent == MOVE_INTENT_RUN)
 			switch(a_intent)
-				if(I_DISARM)
+				if(INTENT_DISARM)
 					message_pred = "You quickly push [prey] to the ground with your foot!"
 					message_prey = "[pred] pushes you down to the ground with their foot!"
-					if(tail)
+					/*if(tail)
 						message_pred = STEP_TEXT_OWNER(tail.msg_owner_disarm_run)
-						message_prey = STEP_TEXT_PREY(tail.msg_prey_disarm_run)
-					log_attack(pred, prey, "Pinned underfoot (run, no halloss)")
-				if(I_HURT)
+						message_prey = STEP_TEXT_PREY(tail.msg_prey_disarm_run)*/
+					log_combat(pred, prey, "Pinned underfoot (run, no halloss)")
+				if(INTENT_HARM)
 					message_pred = "You carelessly step down onto [prey], crushing them!"
 					message_prey = "[pred] steps carelessly on your body, crushing you!"
-					if(tail)
+					/*if(tail)
 						message_pred = STEP_TEXT_OWNER(tail.msg_owner_harm_run)
-						message_prey = STEP_TEXT_PREY(tail.msg_prey_harm_run)
+						message_prey = STEP_TEXT_PREY(tail.msg_prey_harm_run)*/
 
-					for(var/obj/item/organ/external/I in prey.organs)
-						I.take_damage(calculated_damage, 0) // 5 damage min, 26.25 damage max, depending on size & RNG. If they're only stepped on once, the damage will (probably not...) heal over time.
-					prey.drip(0.1)
-					log_attack(pred, prey, "Crushed underfoot (run, about [calculated_damage] damage)")
+					for(var/obj/item/bodypart/B in prey.bodyparts)
+						B.receive_damage(calculated_damage, 0, calculated_damage) // 5 damage min, 26.25 damage max, depending on size & RNG. If they're only stepped on once, the damage will (probably not...) heal over time.
+					prey.bleed(0.3)
+					log_combat(pred, prey, "Crushed underfoot (run, about [calculated_damage] damage)")
 		else
 			switch(a_intent)
-				if(I_DISARM)
+				if(INTENT_DISARM)
 					message_pred = "You firmly push your foot down on [prey], painfully but harmlessly pinning them to the ground!"
 					message_prey = "[pred] firmly pushes their foot down on you, quite painfully but harmlessly pinning you to the ground!"
-					if(tail)
+					/*if(tail)
 						message_pred = STEP_TEXT_OWNER(tail.msg_owner_disarm_walk)
-						message_prey = STEP_TEXT_PREY(tail.msg_prey_disarm_walk)
-					log_attack(pred, prey, "Pinned underfoot (walk, about [damage] halloss)")
-					tmob.Weaken(2) //Removed halloss because it was being abused
-				if(I_HURT)
+						message_prey = STEP_TEXT_PREY(tail.msg_prey_disarm_walk)*/
+					log_combat(pred, prey, "Pinned underfoot (walk, knocked over for a short moment)")
+					tmob.Knockdown(2 SECONDS)
+				if(INTENT_HARM)
 					message_pred = "You methodically place your foot down upon [prey]'s body, slowly applying pressure, crushing them against the floor below!"
 					message_prey = "[pred] methodically places their foot upon your body, slowly applying pressure, crushing you against the floor below!"
-					if(tail)
+					/*if(tail)
 						message_pred = STEP_TEXT_OWNER(tail.msg_owner_harm_walk)
-						message_prey = STEP_TEXT_PREY(tail.msg_prey_harm_walk)
-					// Multiplies the above damage by 3.5. This means a min of 1.75 damage, or a max of 9.1875. damage to each limb, depending on size and RNG.
+						message_prey = STEP_TEXT_PREY(tail.msg_prey_harm_walk)*/
+					// Multiplies the above damage by 3.5. This means a min of 1.75 damage, or a max of 9.1875. damage to each limb, depending on size and RNG. //Caustic - This seems harsher???
 					calculated_damage *= 3.5
-					for(var/obj/item/organ/I in prey.organs)
-						I.take_damage(calculated_damage, 0)
-					prey.drip(3)
-					log_attack(pred, prey, "Crushed underfoot (walk, about [calculated_damage] damage)")
+					for(var/obj/item/bodypart/B in prey.bodyparts)
+						B.receive_damage(calculated_damage, 0, calculated_damage)
+					prey.bleed(0.8)
+					log_combat(pred, prey, "Crushed underfoot (walk, about [calculated_damage] damage)")
 
 		to_chat(pred, span_danger("[message_pred]"))
 		to_chat(prey, span_danger("[message_prey]"))
@@ -439,10 +450,10 @@
 /mob/living/verb/toggle_pickups()
 	set name = "Toggle Micro Pick-up"
 	set desc = "Toggles whether your help-intent action attempts to pick up the micro or pet/hug/help them. Does not disable participation in pick-up mechanics entirely, refer to Vore Panel preferences for that."
-	set category = "IC.Settings"
+	set category = "IC"
 
 	pickup_active = !pickup_active
-	to_chat(src, span_filter_notice("You will [pickup_active ? "now" : "no longer"] attempt to pick up mobs when clicking them with help intent."))
+	to_chat(src, span_notice("You will [pickup_active ? "now" : "no longer"] attempt to pick up mobs when clicking them with help intent."))
 
 #undef STEP_TEXT_OWNER
 #undef STEP_TEXT_PREY

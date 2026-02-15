@@ -1,4 +1,4 @@
-/mob/living/carbon/human/proc/attempt_scoop(mob/living/carbon/human/grabby)
+/*/mob/living/carbon/human/proc/attempt_scoop(mob/living/carbon/human/grabby)
 	if(!small_enough(grabby))
 		return FALSE
 	if(!can_be_picked_up(grabby))
@@ -9,4 +9,4 @@
 	to_chat(grabby, span_notice("You scoop up \the [src]!"))
 	to_chat(src, span_notice("\The [grabby] scoops you up!"))
 	return friend
-
+*/
