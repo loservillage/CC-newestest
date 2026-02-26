@@ -182,7 +182,7 @@
 			/obj/item/clothing/head/roguetown/helmet=3,
 			/obj/item/clothing/neck/roguetown/chaincoif=2,
 			/obj/item/clothing/under/roguetown/heavy_leather_pants=2,
-			/obj/item/clothing/under/roguetown/splintlegs/iron=3,
+			/obj/item/clothing/under/roguetown/splintlegs=3,
 			/obj/item/clothing/under/roguetown/chainlegs/iron=3,
 			/obj/item/clothing/shoes/roguetown/boots/leather/reinforced=2,
 			/obj/item/clothing/shoes/roguetown/boots/armor/iron=3)
@@ -233,7 +233,7 @@
 /obj/structure/closet/dirthole/closed/loot/proc/noble_chance()
 	var/num_weapon = rand(1,2)
 	
-	var/list/weapon_loot = list(/obj/item/rogueweapon/sword/decorated/blacksteel=1,
+	var/list/weapon_loot = list(/obj/item/rogueweapon/sword/blacksteel=1,
 		/obj/item/rogueweapon/sword/decorated=3,
 		/obj/item/rogueweapon/sword/long/dec=2,
 		/obj/item/rogueweapon/sword/sabre/dec=3,
@@ -242,7 +242,7 @@
 		/obj/item/rogueweapon/huntingknife/idagger/silver/elvish/poopknife=1,
 		/obj/item/rogueweapon/huntingknife/idagger/silver/elvish=3,
 		/obj/item/rogueweapon/huntingknife/idagger/steel/parrying/vaquero=2,
-		/obj/item/rogueweapon/huntingknife/throwingknife/bauernwehr=2,
+		/obj/item/rogueweapon/huntingknife/combat/iron=2,
 		/obj/item/rogueweapon/mace/cudgel/justice=1,
 		/obj/item/rogueweapon/mace/parasol/noble=1,
 		/obj/item/rogueweapon/mace/steel=4,
@@ -267,7 +267,7 @@
 		/obj/item/clothing/suit/roguetown/shirt/dress/royal/prince=1,
 		/obj/item/clothing/suit/roguetown/shirt/dress/silkydress/random=3,
 		/obj/item/clothing/suit/roguetown/shirt/fancyjacket=2,
-		/obj/item/clothing/suit/roguetown/armor/plate/cuirass/elven=2,
+		/obj/item/clothing/suit/roguetown/armor/plate/cuirass=2,
 		/obj/item/clothing/suit/roguetown/armor/plate/cuirass/fencer=3,
 		/obj/item/clothing/suit/roguetown/armor/plate/otavan=1,
 		/obj/item/clothing/suit/roguetown/armor/armordress/winterdress/monarch=2,
