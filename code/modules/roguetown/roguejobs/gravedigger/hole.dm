@@ -1,7 +1,7 @@
 
 /obj/structure/closet/dirthole
 	name = "hole"
-	desc = "Just a small hole..."
+	desc = "A modest hole dug into the dirt."
 	icon_state = "hole1"
 	icon = 'icons/turf/roguefloor.dmi'
 	var/stage = 1
@@ -79,7 +79,7 @@
 		looted = TRUE
 		switch(lootroll)
 			if(1)
-				new /mob/living/carbon/human/species/skeleton/npc(mastert)
+				new /mob/living/carbon/human/species/skeleton/npc(mastert) //Let's go gambling
 			if(2)
 				new /obj/structure/closet/crate/chest/gravechest(mastert)
 			if(3)
@@ -182,7 +182,7 @@
 			/obj/item/clothing/head/roguetown/helmet=3,
 			/obj/item/clothing/neck/roguetown/chaincoif=2,
 			/obj/item/clothing/under/roguetown/heavy_leather_pants=2,
-			/obj/item/clothing/under/roguetown/splintlegs/iron=3,
+			/obj/item/clothing/under/roguetown/splintlegs=3,
 			/obj/item/clothing/under/roguetown/chainlegs/iron=3,
 			/obj/item/clothing/shoes/roguetown/boots/leather/reinforced=2,
 			/obj/item/clothing/shoes/roguetown/boots/armor/iron=3)
@@ -233,7 +233,7 @@
 /obj/structure/closet/dirthole/closed/loot/proc/noble_chance()
 	var/num_weapon = rand(1,2)
 	
-	var/list/weapon_loot = list(/obj/item/rogueweapon/sword/decorated/blacksteel=1,
+	var/list/weapon_loot = list(/obj/item/rogueweapon/sword/blacksteel=1,
 		/obj/item/rogueweapon/sword/decorated=3,
 		/obj/item/rogueweapon/sword/long/dec=2,
 		/obj/item/rogueweapon/sword/sabre/dec=3,
@@ -242,7 +242,7 @@
 		/obj/item/rogueweapon/huntingknife/idagger/silver/elvish/poopknife=1,
 		/obj/item/rogueweapon/huntingknife/idagger/silver/elvish=3,
 		/obj/item/rogueweapon/huntingknife/idagger/steel/parrying/vaquero=2,
-		/obj/item/rogueweapon/huntingknife/throwingknife/bauernwehr=2,
+		/obj/item/rogueweapon/huntingknife/combat/iron=2,
 		/obj/item/rogueweapon/mace/cudgel/justice=1,
 		/obj/item/rogueweapon/mace/parasol/noble=1,
 		/obj/item/rogueweapon/mace/steel=4,
@@ -267,7 +267,7 @@
 		/obj/item/clothing/suit/roguetown/shirt/dress/royal/prince=1,
 		/obj/item/clothing/suit/roguetown/shirt/dress/silkydress/random=3,
 		/obj/item/clothing/suit/roguetown/shirt/fancyjacket=2,
-		/obj/item/clothing/suit/roguetown/armor/plate/cuirass/elven=2,
+		/obj/item/clothing/suit/roguetown/armor/plate/cuirass=2,
 		/obj/item/clothing/suit/roguetown/armor/plate/cuirass/fencer=3,
 		/obj/item/clothing/suit/roguetown/armor/plate/otavan=1,
 		/obj/item/clothing/suit/roguetown/armor/armordress/winterdress/monarch=2,
@@ -338,6 +338,9 @@
 	if(HAS_TRAIT(user, TRAIT_SOUL_EXAMINE))
 		if(lootroll == 1)
 			. += span_warning("Better let this one sleep.")
+	if(HAS_TRAIT(user, TRAIT_GRAVEROBBER))
+		if(lootroll != 1)
+			. += span_warning("There seem to be some loot for me here.")	
 
 /obj/structure/closet/dirthole/insertion_allowed(atom/movable/AM)
 	if(istype(AM, /obj/structure/closet/crate/coffin) || istype(AM, /obj/structure/closet/burial_shroud))
@@ -371,6 +374,8 @@
 					to_chat(user, "I have extracted a strand of luxthread, proof of passing.")
 					playsound(user, 'sound/misc/bellold.ogg', 20)
 					new /obj/item/soulthread((get_turf(user)))
+					SEND_SIGNAL(user, COMSIG_GRAVE_CONSECRATED, src)
+					record_round_statistic(STATS_GRAVES_CONSECRATED)
 					corpse.burialrited = TRUE
 
 
@@ -382,6 +387,10 @@
 		return
 
 	if(attacking_shovel.heldclod)
+		if(stage > 2)
+			visible_message(span_notice("[user] begins filling [src]."))
+			if(!do_after(user, 3 SECONDS, TRUE, src, TRUE))
+				return
 		playsound(loc,'sound/items/empty_shovel.ogg', 100, TRUE)
 		QDEL_NULL(attacking_shovel.heldclod)
 		if(stage == 3) //close grave
@@ -418,15 +427,6 @@
 					playsound(mastert,'sound/items/dig_shovel.ogg', 100, TRUE)
 					mastert.ChangeTurf(/turf/open/transparent/openspace)
 					return
-//					for(var/D in GLOB.cardinals)
-//						var/turf/T = get_step(mastert, D)
-//						if(T)
-//							if(istype(T, /turf/open/water))
-//								attacking_shovel.heldclod = new(attacking_shovel)
-//								attacking_shovel.update_icon()
-//								playsound(mastert,'sound/items/dig_shovel.ogg', 100, TRUE)
-//								mastert.ChangeTurf(T.type, flags = CHANGETURF_INHERIT_AIR)
-//								return
 			to_chat(user, span_warning("I can't dig myself any deeper."))
 			return
 		var/used_str = 10
@@ -536,7 +536,7 @@
 
 /obj/structure/closet/dirthole/dump_contents()
 	for(var/mob/A in contents)
-		if((!A.stat) && (istype(A, /mob/living/carbon/human)))
+		if((istype(A, /mob/living/carbon/human)))
 			var/mob/living/carbon/human/B = A
 			B.buried = FALSE
 	..()
