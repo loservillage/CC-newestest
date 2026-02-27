@@ -71,7 +71,7 @@
 	pants = /obj/item/clothing/under/roguetown/heavy_leather_pants
 	shoes = /obj/item/clothing/shoes/roguetown/boots/leather
 	belt = /obj/item/storage/belt/rogue/leather
-	beltr = /obj/item/rogueweapon/huntingknife/idagger/steel/pestrasickle
+	beltr = /obj/item/rogueweapon/huntingknife/idagger/steel/pestrasickle //CC Edit: Unjakks the soul back into keeper
 	beltl = /obj/item/flashlight/flare/torch/lantern
 	backl = /obj/item/storage/backpack/rogue/backpack
 	//CC Edit
