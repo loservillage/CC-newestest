@@ -10,7 +10,7 @@
 
 /obj/structure/roguemachine/supplyface/attackby(obj/item/P, mob/user, params)
 	if(istype(P, /obj/item/voucher/quest))
-		sfd.favours += 1
+		sfd.favours += 50
 		playsound(loc, 'sound/misc/machinevomit.ogg', 100, TRUE, -1)
 		say("Genuine voucher accepted!")
 

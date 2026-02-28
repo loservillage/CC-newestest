@@ -6,6 +6,9 @@
 	var/list/contents = list(
 		/obj/item/reagent_containers/food/snacks/grown/cabbage/rogue
 	)
+	var/list/datum/job/recipents = list(
+		/datum/job/roguetown/merchant
+	)
 
 
 

@@ -3146,6 +3146,8 @@
 #include "modular_causticcove\code\modules\supplies\supplyface_datum.dm"
 #include "modular_causticcove\code\modules\supplies\supplymail.dm"
 #include "modular_causticcove\code\modules\supplies\voucher.dm"
+#include "modular_causticcove\code\modules\supplies\supplymails\supplymail_ingredients.dm"
+#include "modular_causticcove\code\modules\supplies\supplymails\supplymail_merchant.dm"
 #include "modular_causticcove\code\modules\taurs\taur_bodyparts.dm"
 #include "modular_causticcove\code\modules\taurs\taur_markings.dm"
 #include "modular_causticcove\code\modules\vices\combat_adverse.dm"
