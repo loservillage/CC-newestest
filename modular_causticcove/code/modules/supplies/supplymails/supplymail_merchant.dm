@@ -29,10 +29,10 @@
 		/obj/item/reagent_containers/glass/bottle/rogue/healthpot,
 	)
 
-/datum/supply_mail/potions/health
+/datum/supply_mail/potions/mana
 	name = "Tiny cache of mana potions"
 	desc = "3 blue potions"
-	cost = 30
+	cost = 15
 	supply_tier = SUPPLY_TIER_SLOP
 	contents = list(
 		/obj/item/reagent_containers/glass/bottle/rogue/manapot,
