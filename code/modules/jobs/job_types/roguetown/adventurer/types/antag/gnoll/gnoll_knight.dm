@@ -9,7 +9,7 @@
 	
 	cmode_music = 'sound/music/cmode/antag/combat_thewall.ogg'
 	reset_stats = TRUE
-	subclass_stats = list(
+	subclass_stats = list( //Caustic Edit start. 
 		STATKEY_STR = 2,
 		STATKEY_WIL = 3,
 		STATKEY_CON = 5,
@@ -27,7 +27,7 @@
 		/datum/skill/labor/butchering = SKILL_LEVEL_APPRENTICE,
 		/datum/skill/craft/tanning = SKILL_LEVEL_APPRENTICE,
 		/datum/skill/craft/sewing = SKILL_LEVEL_APPRENTICE
-	)
+	) //Caustic Edit end.
 	cmode_music = 'sound/music/combat_graggar.ogg'
 
 /datum/outfit/job/roguetown/gnoll/knight/pre_equip(mob/living/carbon/human/H)

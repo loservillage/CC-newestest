@@ -4,7 +4,7 @@
 	outfit = /datum/outfit/job/roguetown/gnoll/shaman
 	traits_applied = list(TRAIT_RITUALIST, TRAIT_DODGEEXPERT, TRAIT_ALCHEMY_EXPERT) // Surely this won't be broken.
 	reset_stats = TRUE
-	subclass_stats = list(
+	subclass_stats = list( //Caustic Edit start. 
 		STATKEY_STR = 2,
 		STATKEY_PER = 2,
 		STATKEY_WIL = 2,
@@ -30,7 +30,7 @@
 		/datum/skill/labor/butchering = SKILL_LEVEL_APPRENTICE,
 		/datum/skill/craft/tanning = SKILL_LEVEL_APPRENTICE,
 		/datum/skill/craft/sewing = SKILL_LEVEL_APPRENTICE
-	)
+	) //Caustic Edit end.
 	category_tags = list(CTAG_GNOLL)
 	cmode_music = 'sound/music/combat_graggar.ogg'
 

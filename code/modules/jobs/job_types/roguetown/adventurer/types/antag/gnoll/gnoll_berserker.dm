@@ -8,7 +8,7 @@
 	category_tags = list(CTAG_GNOLL)
 	traits_applied = list()
 	reset_stats = TRUE
-	subclass_stats = list(
+	subclass_stats = list( //Caustic Edit start. 
 		STATKEY_STR = 5,
 		STATKEY_CON = 2,
 		STATKEY_WIL = 3,
@@ -27,7 +27,7 @@
 		/datum/skill/labor/butchering = SKILL_LEVEL_APPRENTICE,
 		/datum/skill/craft/tanning = SKILL_LEVEL_APPRENTICE,
 		/datum/skill/craft/sewing = SKILL_LEVEL_APPRENTICE
-	)
+	) //Caustic Edit end.
 
 /datum/outfit/job/roguetown/gnoll/berserker/pre_equip(mob/living/carbon/human/H)
 	if(H.mind)
