@@ -1645,7 +1645,7 @@
 "Bl" = (
 /obj/structure/toilet{
 	color = "#ffee00";
-	name = "The Royal Shitter"
+	name = "The Stolen Royal Shitter"
 	},
 /turf/open/floor/rogue/dirt,
 /area/rogue/under/cave/inhumen)
@@ -2215,8 +2215,9 @@
 	icon_state = "tablewood2"
 	},
 /obj/item/needle,
-/obj/item/natural/cloth,
-/obj/item/natural/cloth,
+/obj/item/natural/bundle/cloth/bandage/full,
+/obj/item/natural/bundle/cloth/bandage/full,
+/obj/item/needle,
 /turf/open/floor/rogue/hexstone,
 /area/rogue/under/cave/inhumen)
 "PP" = (
