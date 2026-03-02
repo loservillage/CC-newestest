@@ -8,7 +8,7 @@
 	traits_applied = list(TRAIT_HEAVYARMOR)
 	reset_stats = TRUE
 	subclass_stats = list(
-		STATKEY_STR = 2,
+		STATKEY_STR = 4,
 		STATKEY_CON = 3,
 		STATKEY_WIL = 2,
 		STATKEY_SPD = 2
@@ -21,7 +21,10 @@
 		/datum/skill/misc/athletics = SKILL_LEVEL_EXPERT,
 		/datum/skill/misc/climbing = SKILL_LEVEL_JOURNEYMAN,
 		/datum/skill/misc/tracking = SKILL_LEVEL_LEGENDARY,
-		/datum/skill/craft/crafting = SKILL_LEVEL_NOVICE
+		/datum/skill/craft/crafting = SKILL_LEVEL_NOVICE,
+		/datum/skill/labor/butchering = SKILL_LEVEL_APPRENTICE,
+		/datum/skill/craft/tanning = SKILL_LEVEL_APPRENTICE,
+		/datum/skill/craft/sewing = SKILL_LEVEL_APPRENTICE
 	)
 	cmode_music = 'sound/music/combat_graggar.ogg'
 
