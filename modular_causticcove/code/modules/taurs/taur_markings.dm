@@ -125,5 +125,5 @@
 
 /datum/sprite_accessory/tail_feature/taur/biglegsstanced
 	name = "Big Legs, Stanced Marking"
-	icon = 'modular_causticcove/icons/mob/taurs/biglegs_markings.dmi'
+	icon = 'modular_causticcove/icons/mob/taurs/biglegsstanced_markings.dmi'
 	icon_state = "biglegs_stanced"
