@@ -12,7 +12,9 @@
 	subclass_stats = list(
 		STATKEY_CON = 2,
 		STATKEY_WIL = 2,
-		STATKEY_FOR = 2,
+		//CC edit
+		STATKEY_LCK = 2,
+		//CC edit end
 		STATKEY_STR = -1
 	)
 	subclass_skills = list(
