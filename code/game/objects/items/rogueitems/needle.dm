@@ -218,8 +218,10 @@
 		if(target_wound.bleed_rate == 0 && !informed)
 			if(is_simple_animal)
 				patient.visible_message(span_smallgreen("One last drop of blood trickles from the [(target_wound?.name)] on [patient] before it closes."), span_smallgreen("The throbbing warmth coming out of [target_wound] soothes and stops. It no longer bleeds."))
+				record_round_statistic(STATS_WOUNDS_SEWED) // CC Edit
 			else
 				patient.visible_message(span_smallgreen("One last drop of blood trickles from the [(target_wound?.name)] on [patient]'s [affecting.name] before it closes."), span_smallgreen("The throbbing warmth coming out of [target_wound] soothes and stops. It no longer bleeds."))
+				record_round_statistic(STATS_WOUNDS_SEWED) // CC Edit
 			informed = TRUE
 		if(istype(target_wound, /datum/wound/dynamic))
 			var/datum/wound/dynamic/dynwound = target_wound
