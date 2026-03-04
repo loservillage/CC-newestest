@@ -345,6 +345,7 @@ GLOBAL_LIST_INIT(azure_round_stats, list(
 	STATS_RURAL_TAXES_COLLECTED = 0,
 	STATS_BANK_INTEREST_CREATED = 0,
 	STATS_GOLD_TRANSMUTED = 0,
+	STATS_GRAVES_CONSECRATED = 0, //CC edit this was missing?
 ))
 
 GLOBAL_LIST_EMPTY(patron_follower_counts)
