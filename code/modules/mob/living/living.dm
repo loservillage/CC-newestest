@@ -1168,6 +1168,11 @@
 			if(riding_datum)
 				for(var/mob/M in buckled_mobs)
 					riding_datum.force_dismount(M)
+	//Caustic Edit - Allow absorbed resistance
+	else if(absorbed && isbelly(loc))
+		var/obj/belly/B = loc
+		B.relay_absorbed_resist(src)
+	//Caustic Edit End
 
 /mob/living/proc/submit(instant = FALSE)
 	set name = "Yield"
