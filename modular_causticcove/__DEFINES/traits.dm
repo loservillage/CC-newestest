@@ -2,3 +2,4 @@
 #define TRAIT_SMALL "Small"
 #define TRAIT_MICRO "Micro"
 #define TRAIT_NATURAL_ARMOR "Natural Armor"
+#define TRAIT_CRIMSON_CURSE "Crimson Curse"

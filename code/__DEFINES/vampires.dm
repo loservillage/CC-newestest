@@ -2,7 +2,7 @@
 #define VITAE_LEVEL_HUNGRY 250
 #define VITAE_LEVEL_FED 500
 
-#define BLOOD_PREFERENCE_ALL (BLOOD_PREFERENCE_RATS | BLOOD_PREFERENCE_HOLY | BLOOD_PREFERENCE_SLEEPING | BLOOD_PREFERENCE_LIVING | BLOOD_PREFERENCE_FANCY)
+#define BLOOD_PREFERENCE_ALL (BLOOD_PREFERENCE_RATS | BLOOD_PREFERENCE_HOLY | BLOOD_PREFERENCE_SLEEPING | BLOOD_PREFERENCE_LIVING | BLOOD_PREFERENCE_FANCY || BLOOD_PREFERENCE_CC) // Edit: BLOOD_PREFERENCE_CC, for crimson curse
 
 #define BLOOD_PREFERENCE_DEAD (1<<0)
 #define BLOOD_PREFERENCE_LIVING (1<<1)
@@ -33,6 +33,16 @@
 #define CLIENT_VITAE_MULTIPLIER 3
 /// Given to the vampire in case their victim refuses to be converted. Given only once per unique vamp victim.
 #define VITAE_PER_UNIQUE_CONVERSION_REJECT 500
+
+//CC EDIT
+#define BLOOD_PREFERENCE_CC (1<<7)
+#define GENERATION_FAILVAMP (-1)
+/// Research points true vampires get per CC diablerie.
+#define RP_PER_CC_DIABLERIE 2
+/// Research points true vampires get for murdering an ex-CC
+#define RP_PER_CC_MURDER 2
+
+//CC EDIT END
 
 GLOBAL_LIST_INIT(vamp_generation_to_text, list(
 	"Thin Blood",

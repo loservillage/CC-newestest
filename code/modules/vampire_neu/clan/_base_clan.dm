@@ -79,7 +79,10 @@ And it also helps for the character set panel
 
 /datum/clan/proc/handle_bloodsuck(mob/living/carbon/human/drinker, blood_types)
 	var/unwanted_blood = (blood_types & ~blood_preference)
-
+	//CC Edit
+	if(blood_types & BLOOD_PREFERENCE_CC)
+		drinker.apply_status_effect(/datum/status_effect/buff/crimson_curse_blood)
+	//CC Edit End
 	if(!unwanted_blood)
 		return
 	drinker.apply_status_effect(/datum/status_effect/debuff/blood_disgust)
@@ -138,6 +141,9 @@ And it also helps for the character set panel
 	if(!hierarchy_root)
 		initialize_hierarchy()
 
+	if(!HAS_TRAIT(H, TRAIT_CRIMSON_CURSE)) // Sorry, you don't get any fancy toys!!
+		var/datum/action/clan_menu/menu_action2 = new /datum/action/clan_menu(H.mind)
+		menu_action2.Grant(H)
 	handle_member_joining(H, is_vampire)
 	post_gain(H)
 
@@ -175,6 +181,8 @@ And it also helps for the character set panel
 
 /datum/clan/proc/handle_member_joining(mob/living/carbon/human/H, is_vampire = TRUE)
 	// If no clan leader exists, make this person the leader (vampires only)
+	if(HAS_TRAIT(H, TRAIT_CRIMSON_CURSE)) //No crimson curse clan leaders 
+		return FALSE 
 	if(!clan_leader && is_vampire)
 		hierarchy_root.assign_member(H)
 		if(ispath(leader))
@@ -408,6 +416,8 @@ And it also helps for the character set panel
 /datum/clan/proc/post_gain(mob/living/carbon/human/H)
 	SHOULD_CALL_PARENT(TRUE)
 	if(!clan_leader && ispath(leader))
+		if(HAS_TRAIT(H, TRAIT_CRIMSON_CURSE)) // NOOOOOOOOO CRIMSON CURSE LEADERSSSSSSSSSSSS!
+			return FALSE
 		var/datum/clan_leader/new_leader = new leader()
 		leader = new_leader
 		leader.lord_title = leader_title

@@ -498,7 +498,7 @@ GLOBAL_LIST_INIT(roguetraits, list(
 	TRAIT_NATURAL_ARMOR = span_notice("My hide is thick and resilient. It will regenerate so long as I keep it fed..."),
 	TRAIT_FERAL = span_info("The wilds is where I am meant to be. Civilized realms are no place for the likes of me."),
 	TRAIT_NECRAS_ABATEMENT = span_info("The Undermaiden's gaze lingers upon me, and intensifies as I draw closer to hallowed ground."),
-
+	TRAIT_CRIMSON_CURSE = span_bloody("You suffer from the Crimson Curse, a weak form of Vampirism acquired from dark rites or a particularly cruel hex. Unlike a 'true' Vampire, you are incapable of converting others or commiting Diablerie."),
 	//Caustic edit end
 	TRAIT_ENGINEERING_GOGGLES = span_warning("I can see structural details others can't."),
 	TRAIT_ASSASSIN = span_warning("My soul has been tainted by foul spirits, through them I honor my pact."),
