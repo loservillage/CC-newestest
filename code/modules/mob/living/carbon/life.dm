@@ -55,7 +55,7 @@
 	check_cremation()
 
 /mob/living/carbon/handle_random_events()//BP/WOUND BASED PAIN
-	if(HAS_TRAIT(src, TRAIT_NOPAIN) && !HAS_TRAIT(src, TRAIT_CRIMSON_CURSE))
+	if(HAS_TRAIT(src, TRAIT_NOPAIN) && !HAS_TRAIT(src, TRAIT_CRIMSON_CURSE)) //CC EDIT: Accounting for crimson curse
 		return
 	if(!stat)
 		var/painpercent = get_complex_pain() / pain_threshold
@@ -70,6 +70,7 @@
 					emote("painmoan")
 			else
 				if(painpercent >= 100)
+					//CC EDIT
 					if(HAS_TRAIT(src, TRAIT_NOPAIN) && HAS_TRAIT(src, TRAIT_CRIMSON_CURSE))
 						adjust_bloodpool(-250)
 						if(bloodpool < 500)
@@ -79,6 +80,7 @@
 						else
 							to_chat(src, span_warning("The Curse lets me ignore my pain, but at a cost..."))
 						return
+					//CC EDIT END
 					if((HAS_TRAIT(src, TRAIT_PSYDONIAN_GRIT) || STAWIL >= 15) && !TRAIT_NOPAINSTUN)
 						if(prob(25)) // PSYDONIC WEIGHTED COINFLIP. TWEAK THIS AS THOU WILT. DON'T LET THEM BE BROKEN, PSYDON WILLING. THROW CON-MAXXERS A BONE, TOO.
 							Immobilize(15) // EAT A MICROSTUN. YOU'RE AVOIDING A PAINCRIT.

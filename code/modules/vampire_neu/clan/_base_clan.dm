@@ -140,10 +140,11 @@ And it also helps for the character set panel
 
 	if(!hierarchy_root)
 		initialize_hierarchy()
-
+	//CC EDIT
 	if(!HAS_TRAIT(H, TRAIT_CRIMSON_CURSE)) // Sorry, you don't get any fancy toys!!
 		var/datum/action/clan_menu/menu_action2 = new /datum/action/clan_menu(H.mind)
 		menu_action2.Grant(H)
+	//CC EDIT END
 	handle_member_joining(H, is_vampire)
 	post_gain(H)
 
@@ -181,8 +182,10 @@ And it also helps for the character set panel
 
 /datum/clan/proc/handle_member_joining(mob/living/carbon/human/H, is_vampire = TRUE)
 	// If no clan leader exists, make this person the leader (vampires only)
+	//CC EDIT
 	if(HAS_TRAIT(H, TRAIT_CRIMSON_CURSE)) //No crimson curse clan leaders 
-		return FALSE 
+		return FALSE
+	//CC EDIT END 
 	if(!clan_leader && is_vampire)
 		hierarchy_root.assign_member(H)
 		if(ispath(leader))
@@ -416,8 +419,10 @@ And it also helps for the character set panel
 /datum/clan/proc/post_gain(mob/living/carbon/human/H)
 	SHOULD_CALL_PARENT(TRUE)
 	if(!clan_leader && ispath(leader))
+		//CC EDIT
 		if(HAS_TRAIT(H, TRAIT_CRIMSON_CURSE)) // NOOOOOOOOO CRIMSON CURSE LEADERSSSSSSSSSSSS!
 			return FALSE
+		//CC EDIT END
 		var/datum/clan_leader/new_leader = new leader()
 		leader = new_leader
 		leader.lord_title = leader_title

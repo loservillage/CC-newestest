@@ -38,11 +38,12 @@
 
 			if(!in_sunlight)
 				in_sunlight = TRUE
+				//CC EDIT
 				if(HAS_TRAIT(H, TRAIT_CRIMSON_CURSE))
 					to_chat(H, span_danger("I can barely bear this accursed sun's gaze!"))
 				else
 					to_chat(H, span_danger("The sunlight burns my flesh!"))
-
+				//CC EDIT END
 			apply_sunlight_damage(H)
 		else
 			if(in_sunlight)
@@ -52,9 +53,11 @@
 		in_sunlight = FALSE
 
 /datum/component/sunlight_vulnerability/proc/apply_sunlight_damage(mob/living/carbon/human/H)
+	//CC EDIT
 	if(HAS_TRAIT(H, TRAIT_CRIMSON_CURSE))
 		H.apply_status_effect(/datum/status_effect/debuff/sunspurn)
 		return
+	//CC EDIT END
 	H.adjust_bloodpool(-bloodpool_drain)
 	var/datum/component/vampire_disguise/disguise_comp = H.GetComponent(/datum/component/vampire_disguise)
 	if(disguise_comp && disguise_comp.disguised)

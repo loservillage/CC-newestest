@@ -65,12 +65,14 @@
 		return
 
 	if(VVictim)
+		//CC EDIT
 		if(HAS_TRAIT(src, TRAIT_CRIMSON_CURSE))
 			to_chat(src, span_warning("I am too weak to commit Diablerie!."))
 			return
 		if(HAS_TRAIT(victim, TRAIT_CRIMSON_CURSE))
 			to_chat(src, span_warning("Their vitae is too weak for Diablerie!"))
 			return
+		//CC EDIT END
 		to_chat(src, span_userdanger("<b>YOU TRY TO COMMIT DIABLERIE ON [victim].</b>"))
 
 	var/blood_handle
@@ -82,8 +84,10 @@
 	if(HAS_TRAIT(victim, TRAIT_CLERGY) || HAS_TRAIT(victim, TRAIT_INQUISITION))
 		blood_handle |= BLOOD_PREFERENCE_HOLY
 	if(VVictim)
+		//CC EDIT
 		if(VVictim.generation == GENERATION_FAILVAMP)
 			blood_handle |= BLOOD_PREFERENCE_CC
+		//CC EDIT
 		blood_handle |= BLOOD_PREFERENCE_KIN
 		blood_handle  &= ~BLOOD_PREFERENCE_LIVING
 
