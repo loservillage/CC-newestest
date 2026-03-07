@@ -173,6 +173,9 @@
 
 	if(user_to_pred > 1 || user_to_prey > 1)
 		return FALSE
+	
+	if(!prey.mind) //A quick check for if the Prey has no mind datum, it likely wasn't controlled by a player ever, so we don't need to check prefs.
+		return TRUE
 
 	if(!prey.devourable)
 		to_chat(user, span_notice("They aren't able to be devoured."))
