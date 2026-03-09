@@ -102,9 +102,6 @@
 			if(!fits_in_cart(O))
 				to_chat(user, span_warning("[living_mob] doesn't fit into the cart!"))
 				return FALSE
-			if(!insertion_allowed(living_mob))
-				to_chat(user, span_warning("[living_mob] cannot be put into the cart!"))
-				return FALSE
 			put_in(living_mob)
 			play_sound = TRUE
 		else
@@ -286,7 +283,7 @@
 		if(L.anchored || (L.buckled && L.buckled != src) || L.incorporeal_move || L.has_buckled_mobs())
 			return FALSE
 		if(L.mob_size > MOB_SIZE_TINY) // Tiny mobs are treated as items.
-			if(L.cmode && L.stat != DEAD)
+			if(L.cmode)
 				return FALSE
 		L.stop_pulling()
 
