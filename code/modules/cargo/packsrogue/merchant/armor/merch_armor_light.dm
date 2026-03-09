@@ -68,7 +68,7 @@
 
 /datum/supply_pack/rogue/light_armor/sewingkit
 	name = "Sewing Kit"
-	cost = 40
+	cost = 20 //Caustic Edit - Lowered cost from 40 to 20
 	contains = list(/obj/item/repair_kit)
 
 /datum/supply_pack/rogue/light_armor/lightgambeson

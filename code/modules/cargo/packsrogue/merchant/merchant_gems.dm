@@ -47,7 +47,7 @@
 ///CC Edit
 /datum/supply_pack/rogue/gems/reform
 	name = "Gem of Reformation"
-	cost = 70
+	cost = 20 //Lowered cost from 70(?!?!?) to 20, crazy expensive for a scene tool, plus it's cheaper at the Mages College?
 	contains = list(/obj/item/reformation_gem)
 
 ///CC Edit End

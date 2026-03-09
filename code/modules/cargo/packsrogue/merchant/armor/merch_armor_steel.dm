@@ -248,5 +248,5 @@
 
 /datum/supply_pack/rogue/armor_steel/steel/metalkit
 	name = "Armor Plates"
-	cost = 60 // 1 Steel 0.5 iron 1 leather
+	cost = 35 // 1 Steel 0.5 iron 1 leather //Caustic Edit - Lowering cost down from 60 to 35 so that it's a LOT more reasonably priced to buy this and a Tailor's Kit
 	contains = list(/obj/item/repair_kit/metal)
