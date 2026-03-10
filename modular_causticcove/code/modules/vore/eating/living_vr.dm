@@ -530,9 +530,9 @@
 //
 // OOC Escape code for pref-breaking or AFK preds
 //
-/mob/living/proc/escapeOOC()
+/mob/living/verb/escapeOOC()
 	set name = "OOC Escape"
-	set category = "OOC.Vore"
+	set category = "Vore"
 
 	//You're in a belly!
 	if(isbelly(loc))
@@ -840,13 +840,12 @@
 
 	return
 
-/* //Caustic - Do we enable this?
-/mob/living/proc/toggle_trash_catching() //Ported from chompstation
+/mob/living/verb/toggle_trash_catching() //Ported from chompstation
 	set name = "Toggle Trash Catching"
 	set category = "Abilities.Vore"
 	set desc = "Toggle Trash Eater throw vore abilities."
 	trash_catching = !trash_catching
-	to_chat(src, span_warning("Trash catching [trash_catching ? "enabled" : "disabled"]."))*/
+	to_chat(src, span_warning("Trash catching [trash_catching ? "enabled" : "disabled"]."))
 
 /*
 /mob/living/proc/eat_minerals() //Actual eating abstracted so the user isn't given a prompt due to an argument in this verb.
@@ -1107,9 +1106,9 @@
 	icon = 'modular_causticcove/icons/mob/vore_fullscreens/screen_full_vore.dmi'
 	icon_state = ""
 
-/mob/living/proc/vorebelly_printout() //Spew the vorepanel belly messages into chat window for copypasting.
+/mob/living/verb/vorebelly_printout() //Spew the vorepanel belly messages into chat window for copypasting.
 	set name = "X-Print Vorebelly Settings"
-	set category = "Preferences.Vore"
+	set category = "Vore"
 	set desc = "Print out your vorebelly messages into chat for copypasting."
 
 	var/result = tgui_alert(src, "Would you rather open the export panel?", "Selected Belly Export", list("Open Panel", "Print to Chat"))
@@ -1517,30 +1516,30 @@
 	to_chat(src, span_warning("There is no suitable belly for rubs."))
 	return FALSE
 
-/mob/living/proc/mute_entry()
+/mob/living/verb/mute_entry()
 	set name = "Mute Vorgan Entrance"
-	set category = "Preferences.Vore"
+	set category = "Vore"
 	set desc = "Mute the chatlog messages when something enters a vore belly."
 	mute_entry = !mute_entry
 	to_chat(src, span_warning("Entrance logs [mute_entry ? "disabled" : "enabled"]."))
 
-/mob/living/proc/restrict_trasheater()
+/mob/living/proc/restrict_trasheater() //Caustic - This looks like it's intended for Admins to get, and only admins
 	set name = "Restrict Trash Eater"
 	set category = "Abilities.Vore"
 	set desc = "Toggle Trash Eater restriction level."
 	adminbus_trash = !adminbus_trash
 	to_chat(src, span_warning("Trash Eater restriction level set to [adminbus_trash ? "everything not blacklisted" : "only whitelisted items"]."))
 
-/mob/living/proc/liquidbelly_visuals()
+/mob/living/verb/liquidbelly_visuals()
 	set name = "Toggle Liquidbelly Visuals"
-	set category = "Preferences.Vore"
+	set category = "Vore"
 	set desc = "Toggle liquidbelly fullscreen visual effect."
 	liquidbelly_visuals = !liquidbelly_visuals
 	to_chat(src, span_warning("Liquidbelly overlays [liquidbelly_visuals ? "enabled" : "disabled"]."))
 
-/mob/living/proc/fix_vore_effects()
+/mob/living/verb/fix_vore_effects()
 	set name = "Fix Vore Effects"
-	set category = "OOC.Debug"
+	set category = "OOC"
 	set desc = "Fix certain vore effects lingering after you've exited a belly."
 
 	if(!isbelly(src.loc))

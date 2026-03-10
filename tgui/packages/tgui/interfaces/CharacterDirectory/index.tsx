@@ -16,7 +16,6 @@ export const CharacterDirectory = (props) => {
     personalGenderTag,
     personalSexualityTag,
     personalErpTag,
-    personalEventTag,
     directory,
   } = data;
 
@@ -102,16 +101,6 @@ export const CharacterDirectory = (props) => {
                     }
                   >
                     {personalErpTag}
-                  </Button>
-                </LabeledList.Item>
-                <LabeledList.Item label="Event Pref">
-                  <Button
-                    fluid
-                    onClick={() =>
-                      act('setEventTag', { overwrite_prefs: overwritePrefs })
-                    }
-                  >
-                    {personalEventTag}
                   </Button>
                 </LabeledList.Item>
                 <LabeledList.Item label="Advertisement">

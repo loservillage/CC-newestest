@@ -305,6 +305,11 @@
 /mob/living/carbon/human/proc/add_credit(generate_for_adv_class = FALSE) //Evil code to get the proper image for adv classes after they spawn in.
 	if(!mind || !client)
 		return
+	
+	//Caustic Edit - Add in Piggyback Call to Character Directory Photo here!
+	get_chardirectory_photo()
+	//Caustic Edit End
+
 	var/thename = "[real_name]"
 	var/datum/job/J = SSjob.GetJob(mind.assigned_role)
 	var/used_title = get_role_title()

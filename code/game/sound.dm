@@ -143,6 +143,7 @@
 	var/vol2use = vol
 	if(client.prefs)
 		vol2use = vol * (client.prefs.mastervol * 0.01)
+		//Caustic Edit - Ignore this sound if these preferences are off and it's sent as one!
 		if(preference)
 			switch(preference)
 				if("digestion_noises")
@@ -151,6 +152,10 @@
 				if("eating_noises")
 					if(!client.prefs.eating_noises)
 						return
+				if("belch_noises")
+					if(!client.prefs.belch_noises)
+						return
+		//Caustic Edit End
 	vol2use = min(vol2use, 100)
 
 	S.volume = vol2use

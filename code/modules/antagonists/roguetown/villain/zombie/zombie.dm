@@ -374,6 +374,11 @@
 
 	if (!istype(zombie, /mob/living/carbon/human)) // Ensure the zombie is human
 		return
+	
+	//Caustic Edit - Prevent Zombification if currently held within an Observer mob. IE: got digested probably
+	if(istype(zombie.loc, /mob/dead/observer))
+		return
+	//Caustic Edit End
 
 	var/obj/item/bodypart/head = zombie.get_bodypart(BODY_ZONE_HEAD)
 	if (!head) // Missing head

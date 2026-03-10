@@ -206,6 +206,16 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	S["pda_color"]			>> pda_color
 	///Caustic edit
 	S["epilepsy"]			>> epilepsy
+	S["show_in_directory"]	>> show_in_directory
+	S["directory_tag"]		>> directory_tag
+	S["directory_erptag"]	>> directory_erptag
+	S["directory_gendertag"]>> directory_gendertag
+	S["directory_sexualitytag"]	>> directory_sexualitytag
+	S["directory_ad"]		>> directory_ad
+	S["vore_health_bars"]	>> vore_health_bars
+	S["digestion_noises"]	>> digestion_noises
+	S["eating_noises"]		>> eating_noises
+	S["belch_noises"]		>> belch_noises
 	///Caustic edit end
 	// Custom hotkeys
 	S["key_bindings"]		>> key_bindings
@@ -349,6 +359,17 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 
 	///Caustic edit
 	WRITE_FILE(S["epilepsy"], epilepsy)
+	WRITE_FILE(S["show_in_directory"], show_in_directory)
+	WRITE_FILE(S["directory_tag"], directory_tag)
+	WRITE_FILE(S["directory_erptag"], directory_erptag)
+	WRITE_FILE(S["directory_gendertag"], directory_gendertag)
+	WRITE_FILE(S["directory_sexualitytag"], directory_sexualitytag)
+	WRITE_FILE(S["directory_ad"], directory_ad)
+
+	WRITE_FILE(S["vore_health_bars"], vore_health_bars)
+	WRITE_FILE(S["digestion_noises"], digestion_noises)
+	WRITE_FILE(S["eating_noises"], eating_noises)
+	WRITE_FILE(S["belch_noises"], belch_noises)
 	///Caustic edit end
 	
 	return TRUE
