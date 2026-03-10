@@ -219,6 +219,7 @@ GLOBAL_VAR_INIT(year_integer, text2num(year)) // = 2013???
 			if(!is_smart && !is_stupid && ((user.STAINT - 10) + (user.STAPER - 10) + user?.get_skill_level(/datum/skill/misc/reading)) >= 5)
 				is_normal = TRUE
 			var/list/dat = list()
+			///CC Edit start: Makes the UI a bit more readable
 			dat += "<div style='display:flex;width:100%'>"
 			dat += "<span style='width:20%;text-align:center;vertical-align: text-top;box-sizing:border-box'>"
 			if(intellectual && (!obscured_name || H.client?.prefs.masked_examine))
@@ -414,6 +415,7 @@ GLOBAL_VAR_INIT(year_integer, text2num(year)) // = 2013???
 									continue
 			dat += "</span>"
 			dat += "</div>"
+			///CC Edit end
 			var/datum/browser/popup = new(user, "assess", ntitle = "[src] Assesment", nwidth = 1000, nheight = 600)
 			popup.set_content(dat.Join())
 			popup.open(FALSE)
