@@ -4,11 +4,11 @@
 	sort_category = "Shirts"
 
 /datum/loadout_item/sanguine_vest
-	name = "sanguine vest"
+	name = "Sanguine vest"
 	path = /obj/item/clothing/suit/roguetown/shirt/courtphysician
 	sort_category = "Shirts"
 
 /datum/loadout_item/sanguine_blouse
-	name = "sanguine blouse"
+	name = "Sanguine blouse"
 	path = /obj/item/clothing/suit/roguetown/shirt/courtphysician/female
 	sort_category = "Shirts"

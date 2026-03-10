@@ -4,6 +4,6 @@
 	sort_category = "Accessories"
 
 /datum/loadout_item/sanguine_sleeves
-	name = "sanguine sleeves"
+	name = "Sanguine sleeves"
 	path = /datum/crafting_recipe/roguetown/leather/sanguinesleeves
 	sort_category = "Accessories"
