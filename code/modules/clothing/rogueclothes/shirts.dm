@@ -762,7 +762,7 @@
 			name = "open maid dress"
 			body_parts_covered = null
 			open_wear = TRUE
-			flags_inv = HIDEBOOB
+			flags_inv = HIDECROTCH
 			to_chat(usr, span_warning("Now wearing radically!"))
 		if(TRUE)
 			name = "maid dress"
@@ -803,7 +803,7 @@
 			name = "open maid dress"
 			body_parts_covered = null
 			open_wear = TRUE
-			flags_inv = HIDEBOOB
+			flags_inv = HIDECROTCH
 			to_chat(usr, span_warning("Now wearing radically!"))
 		if(TRUE)
 			name = "maid dress"
