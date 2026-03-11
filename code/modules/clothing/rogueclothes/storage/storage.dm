@@ -277,15 +277,11 @@
 //CC Edit: Rot refactor
 /obj/item/storage/backpack/rogue/artibackpack/Entered(atom/movable/arrived, atom/old_loc)
 	. = ..()
-	if(istype(arrived,/obj/item/reagent_containers/food/snacks))
-		var/obj/item/reagent_containers/food/snacks/snacc=arrived
-		snacc.stop_rotting()
+	food_rot_enter()
 
 /obj/item/storage/backpack/rogue/artibackpack/Exited(atom/movable/gone, atom/newLoc)
 	. = ..()
-	if(istype(gone,/obj/item/reagent_containers/food/snacks))
-		var/obj/item/reagent_containers/food/snacks/snacc=gone
-		snacc.begin_rotting()
+	food_rot_leave()
 //CC Edit: End
 
 /obj/item/storage/backpack/rogue/backpack/bagpack

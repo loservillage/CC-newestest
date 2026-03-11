@@ -105,15 +105,11 @@ What it does:
 //CC Edit: Rot refactor
 /obj/item/cooking/platter/Entered(atom/movable/arrived, atom/old_loc)
 	. = ..()
-	if(istype(arrived,/obj/item/reagent_containers/food/snacks))
-		var/obj/item/reagent_containers/food/snacks/snacc=arrived
-		snacc.stop_rotting()
+	food_rot_enter()
 
 /obj/item/cooking/platter/Exited(atom/movable/gone, atom/newLoc)
 	. = ..()
-	if(istype(gone,/obj/item/reagent_containers/food/snacks))
-		var/obj/item/reagent_containers/food/snacks/snacc=gone
-		snacc.begin_rotting()
+	food_rot_leave()
 //CC Edit end
 
 /obj/item/cooking/platter/aalloy
