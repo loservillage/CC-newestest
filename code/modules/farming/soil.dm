@@ -263,6 +263,10 @@ GLOBAL_LIST_EMPTY(soil_list)
 		return
 	if(try_handle_tilling(attacking_item, user, params))
 		return
+	//CC Edit
+	if(try_handle_liquidfertilizer(attacking_item, user, params)) 
+		return
+	//CC Edit end
 	if(try_handle_watering(attacking_item, user, params))
 		return
 	if(try_handle_fertilizing(attacking_item, user, params))
@@ -286,6 +290,8 @@ GLOBAL_LIST_EMPTY(soil_list)
 	if(weeds >= MAX_PLANT_WEEDS * 0.3)
 		playsound(src,"plantcross", 100, FALSE)
 	adjust_weeds(-100)
+	new /obj/item/natural/fibers(loc) //CC Edit: Give a fiber for deweeding
+
 
 /obj/structure/soil/proc/user_till_soil(mob/user)
 	apply_farming_fatigue(user, 10)
@@ -691,8 +697,12 @@ GLOBAL_LIST_EMPTY(soil_list)
 	update_icon()
 
 #undef MAX_PLANT_HEALTH
+//CC Edit: We need these pretty please thank you
+/*
 #undef MAX_PLANT_WATER
 #undef MAX_PLANT_NUTRITION
+*/
+//CC Edit End
 #undef MAX_PLANT_WEEDS
 #undef SOIL_DECAY_TIME
 #undef BLESSING_WEED_DECAY_RATE
