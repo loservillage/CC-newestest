@@ -114,16 +114,18 @@ All foods are distributed among various categories. Use common sense.
 
 /obj/item/reagent_containers/food/snacks/Initialize()
 	if(rotprocess)
-		SSticker.OnRoundstart(CALLBACK(src, PROC_REF(init_rot)))
+		SSticker.OnRoundstart(CALLBACK(src, PROC_REF(init_rot))) //CC Edit: Rot refactor
 	if(cooked_type || fried_type)
 		cooktime = 30 SECONDS
 	..()
 
+//CC Edit: Rot refactor
 /obj/item/reagent_containers/food/snacks/proc/init_rot()
 	if(rotprocess)
 		if(!istype(loc, /obj/structure/closet/crate/chest) && ! istype(loc, /obj/item/cooking/platter)  && !istype(loc, /obj/structure/roguemachine/vendor) && !istype (loc, /obj/item/storage/backpack/rogue/artibackpack)&& !istype (loc, /obj/structure/table/cooling))
 			begin_rotting()
 
+//CC Edit: Rot refactor
 /obj/item/reagent_containers/food/snacks/proc/begin_rotting()
 	//START_PROCESSING(SSobj, src)
 	message_admins("We are trying to rot...")
@@ -132,11 +134,13 @@ All foods are distributed among various categories. Use common sense.
 		timerid = addtimer(CALLBACK(src, PROC_REF(rot)), (1 MINUTES), (TIMER_STOPPABLE | TIMER_LOOP))
 		message_admins("Rot timer added!")
 
+//CC Edit: Rot refactor
 /obj/item/reagent_containers/food/snacks/proc/stop_rotting()
 	if(timerid)
 		deltimer(timerid)
 		timerid = null
 
+//CC Edit: Rot refactor
 /obj/item/reagent_containers/food/snacks/proc/rot()
 	if(!locate(/obj/structure/table) in loc)
 		warming -= 1 MINUTES
@@ -150,6 +154,7 @@ All foods are distributed among various categories. Use common sense.
 		timerid = null
 		become_rotten()
 
+//CC Edit: Technically no longer used, still keeping it around justin case
 /obj/item/reagent_containers/food/snacks/process()
 	..()
 	if(rotprocess)
