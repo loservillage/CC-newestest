@@ -84,7 +84,9 @@
 	// Remove the last turf (target location) from the check
 	if(length(turf_list) > 0)
 		turf_list.len--
-			
+	
+	//CC Edit: Removed wall check since we already check for LOS
+
 	// Check for doors and bars in the path
 	for(var/turf/traversal_turf in turf_list)
 		// Check for mineral doors
