@@ -68,6 +68,20 @@
 			to_chat(user, span_warning("Full."))
 			return
 
+//CC Edit: Rot refactor
+/obj/structure/roguemachine/vendor/Entered(atom/movable/arrived, atom/old_loc)
+	. = ..()
+	if(istype(arrived,/obj/item/reagent_containers/food/snacks))
+		var/obj/item/reagent_containers/food/snacks/snacc=arrived
+		snacc.stop_rotting()
+
+/obj/structure/roguemachine/vendor/Exited(atom/movable/gone, atom/newLoc)
+	. = ..()
+	if(istype(gone,/obj/item/reagent_containers/food/snacks))
+		var/obj/item/reagent_containers/food/snacks/snacc=gone
+		snacc.begin_rotting()
+//CC Edit: End
+
 /obj/structure/roguemachine/vendor/attackby(obj/item/P, mob/user, params)
 	if(istype(P, /obj/item/roguecoin/aalloy))
 		return

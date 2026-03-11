@@ -274,6 +274,20 @@
 	sewrepair = FALSE
 	component_type = /datum/component/storage/concrete/roguetown/backpack
 
+//CC Edit: Rot refactor
+/obj/item/storage/backpack/rogue/artibackpack/Entered(atom/movable/arrived, atom/old_loc)
+	. = ..()
+	if(istype(arrived,/obj/item/reagent_containers/food/snacks))
+		var/obj/item/reagent_containers/food/snacks/snacc=arrived
+		snacc.stop_rotting()
+
+/obj/item/storage/backpack/rogue/artibackpack/Exited(atom/movable/gone, atom/newLoc)
+	. = ..()
+	if(istype(gone,/obj/item/reagent_containers/food/snacks))
+		var/obj/item/reagent_containers/food/snacks/snacc=gone
+		snacc.begin_rotting()
+//CC Edit: End
+
 /obj/item/storage/backpack/rogue/backpack/bagpack
 	name = "rucksack"
 	desc = "A sack tied with some rope. Can be flung over your shoulders, if it's tied shut."

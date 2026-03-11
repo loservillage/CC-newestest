@@ -102,6 +102,20 @@ What it does:
 
 	update_icon()
 
+//CC Edit: Rot refactor
+/obj/item/cooking/platter/Entered(atom/movable/arrived, atom/old_loc)
+	. = ..()
+	if(istype(arrived,/obj/item/reagent_containers/food/snacks))
+		var/obj/item/reagent_containers/food/snacks/snacc=arrived
+		snacc.stop_rotting()
+
+/obj/item/cooking/platter/Exited(atom/movable/gone, atom/newLoc)
+	. = ..()
+	if(istype(gone,/obj/item/reagent_containers/food/snacks))
+		var/obj/item/reagent_containers/food/snacks/snacc=gone
+		snacc.begin_rotting()
+//CC Edit end
+
 /obj/item/cooking/platter/aalloy
 	name = "decrepit platter"
 	desc = "Wrought bronze, flattened to serve. The edge remains wet with red; spilled merlot, meaty juices, or blood?"

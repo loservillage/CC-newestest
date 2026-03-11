@@ -15,6 +15,21 @@
 	mob_storage_capacity = 1
 	allow_dense = FALSE
 
+//CC Edit: Rot refactor
+/obj/structure/closet/crate/chest/Entered(atom/movable/arrived, atom/old_loc)
+	. = ..()
+	if(istype(arrived,/obj/item/reagent_containers/food/snacks))
+		var/obj/item/reagent_containers/food/snacks/snacc=arrived
+		snacc.stop_rotting()
+
+/obj/structure/closet/crate/chest/Exited(atom/movable/gone, atom/newLoc)
+	. = ..()
+	if(istype(gone,/obj/item/reagent_containers/food/snacks))
+		var/obj/item/reagent_containers/food/snacks/snacc=gone
+		snacc.begin_rotting()
+
+//CC Edit End
+
 /obj/structure/closet/crate/chest/gold
 	icon_state = "chest3"
 	base_icon_state = "chest3"

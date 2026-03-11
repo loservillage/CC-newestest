@@ -88,6 +88,8 @@ All foods are distributed among various categories. Use common sense.
 
 	var/cooked_smell
 
+	var/timerid
+
 
 /datum/intent/food
 	name = "feed"
@@ -112,13 +114,41 @@ All foods are distributed among various categories. Use common sense.
 
 /obj/item/reagent_containers/food/snacks/Initialize()
 	if(rotprocess)
-		SSticker.OnRoundstart(CALLBACK(src, PROC_REF(begin_rotting)))
+		SSticker.OnRoundstart(CALLBACK(src, PROC_REF(init_rot)))
 	if(cooked_type || fried_type)
 		cooktime = 30 SECONDS
 	..()
 
+/obj/item/reagent_containers/food/snacks/proc/init_rot()
+	if(rotprocess)
+		if(!istype(loc, /obj/structure/closet/crate/chest) && ! istype(loc, /obj/item/cooking/platter)  && !istype(loc, /obj/structure/roguemachine/vendor) && !istype (loc, /obj/item/storage/backpack/rogue/artibackpack)&& !istype (loc, /obj/structure/table/cooling))
+			begin_rotting()
+
 /obj/item/reagent_containers/food/snacks/proc/begin_rotting()
-	START_PROCESSING(SSobj, src)
+	//START_PROCESSING(SSobj, src)
+	message_admins("We are trying to rot...")
+	message_admins(PROC_REF(rot))
+	if(rotprocess && (!timerid))
+		timerid = addtimer(CALLBACK(src, PROC_REF(rot)), (1 MINUTES), (TIMER_STOPPABLE | TIMER_LOOP))
+		message_admins("Rot timer added!")
+
+/obj/item/reagent_containers/food/snacks/proc/stop_rotting()
+	if(timerid)
+		deltimer(timerid)
+		timerid = null
+
+/obj/item/reagent_containers/food/snacks/proc/rot()
+	if(!locate(/obj/structure/table) in loc)
+		warming -= 1 MINUTES
+	else
+		if(locate(/obj/structure/table/cooling) in loc)
+			warming -= 0
+		else
+			warming -= 30 SECONDS
+	if(warming < (-1*rotprocess))
+		deltimer(timerid)
+		timerid = null
+		become_rotten()
 
 /obj/item/reagent_containers/food/snacks/process()
 	..()
