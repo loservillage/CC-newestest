@@ -277,11 +277,11 @@
 //CC Edit: Rot refactor
 /obj/item/storage/backpack/rogue/artibackpack/Entered(atom/movable/arrived, atom/old_loc)
 	. = ..()
-	food_rot_enter()
+	food_rot_enter(arrived)
 
 /obj/item/storage/backpack/rogue/artibackpack/Exited(atom/movable/gone, atom/newLoc)
 	. = ..()
-	food_rot_leave()
+	food_rot_leave(gone)
 //CC Edit: End
 
 /obj/item/storage/backpack/rogue/backpack/bagpack

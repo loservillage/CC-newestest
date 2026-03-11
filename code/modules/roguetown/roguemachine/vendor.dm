@@ -71,11 +71,11 @@
 //CC Edit: Rot refactor
 /obj/structure/roguemachine/vendor/Entered(atom/movable/arrived, atom/old_loc)
 	. = ..()
-	food_rot_enter()
+	food_rot_enter(arrived)
 
 /obj/structure/roguemachine/vendor/Exited(atom/movable/gone, atom/newLoc)
 	. = ..()
-	food_rot_leave()
+	food_rot_leave(gone)
 //CC Edit: End
 
 /obj/structure/roguemachine/vendor/attackby(obj/item/P, mob/user, params)

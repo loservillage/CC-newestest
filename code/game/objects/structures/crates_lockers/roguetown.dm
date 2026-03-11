@@ -18,11 +18,11 @@
 //CC Edit: Rot refactor
 /obj/structure/closet/crate/chest/Entered(atom/movable/arrived, atom/old_loc)
 	. = ..()
-	food_rot_enter()
+	food_rot_enter(arrived)
 
 /obj/structure/closet/crate/chest/Exited(atom/movable/gone, atom/newLoc)
 	. = ..()
-	food_rot_leave()
+	food_rot_leave(gone)
 
 //CC Edit End
 

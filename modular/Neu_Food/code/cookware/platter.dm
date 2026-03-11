@@ -105,11 +105,11 @@ What it does:
 //CC Edit: Rot refactor
 /obj/item/cooking/platter/Entered(atom/movable/arrived, atom/old_loc)
 	. = ..()
-	food_rot_enter()
+	food_rot_enter(arrived)
 
 /obj/item/cooking/platter/Exited(atom/movable/gone, atom/newLoc)
 	. = ..()
-	food_rot_leave()
+	food_rot_leave(gone)
 //CC Edit end
 
 /obj/item/cooking/platter/aalloy
