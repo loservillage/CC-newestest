@@ -128,11 +128,8 @@ All foods are distributed among various categories. Use common sense.
 //CC Edit: Rot refactor
 /obj/item/reagent_containers/food/snacks/proc/begin_rotting()
 	//START_PROCESSING(SSobj, src)
-	message_admins("We are trying to rot...")
-	message_admins(PROC_REF(rot))
 	if(rotprocess && (!timerid))
 		timerid = addtimer(CALLBACK(src, PROC_REF(rot)), (1 MINUTES), (TIMER_STOPPABLE | TIMER_LOOP))
-		message_admins("Rot timer added!")
 
 //CC Edit: Rot refactor
 /obj/item/reagent_containers/food/snacks/proc/stop_rotting()
