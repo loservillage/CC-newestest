@@ -14,6 +14,19 @@
 
 	var/fertile = FALSE
 
+/obj/item/reagent_containers/food/snacks/egg/rot()
+	..()
+	if(fertile)
+		if(isturf(loc))
+			//CC Edit: Technically we rot every minute, so it's futile to do amount grown, because even in worst case scenario, that's 600 amount grown every tick milord.
+			/*amount_grown += rand(1,2)
+			if(amount_grown >= 100)*/
+			visible_message(span_notice("[src] hatches with a quiet cracking sound."))
+			new /mob/living/simple_animal/chick(get_turf(src))
+			STOP_PROCESSING(SSobj, src)
+			qdel(src)
+
+
 /obj/item/reagent_containers/food/snacks/egg/become_rotten()
 	. = ..()
 	if(.)
