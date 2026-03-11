@@ -312,7 +312,7 @@
 	//var/datum/job/J = SSjob.GetJob(mind.assigned_role)
 	var/used_title = get_role_title()
 	GLOB.credits_icons[thename] = list()
-	var/icon/I = get_flat_icon(list(SOUTH))
+	var/icon/I = icon(get_flat_icon(list(SOUTH)),frame=1)
 	if(I)
 		var/icon/female_s = icon("icon"='icons/mob/clothing/under/masking_helpers.dmi', "icon_state"="credits")
 		I.Blend(female_s, ICON_MULTIPLY)

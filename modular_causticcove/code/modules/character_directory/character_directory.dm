@@ -55,16 +55,14 @@ GLOBAL_LIST_EMPTY(chardirectory_photos)
 /mob/proc/get_chardirectory_photo()
 	if(LAZYACCESS(GLOB.chardirectory_photos, REF(src)))
 		return LAZYACCESS(GLOB.chardirectory_photos, REF(src))
-	
-	//var/datum/job/J = SSjob.GetJob(mind.assigned_role)
-	//var/datum/preferences/P = client?.prefs
+
 	var/icon/F
-	/*if(ishuman(src))
-		F = get_flat_human_icon(null, J, P, DUMMY_HUMAN_SLOT_MANIFEST, list(SOUTH), human_gear_override = src)
-	else if (P)
-		F = get_flat_human_icon(null, J, P, DUMMY_HUMAN_SLOT_MANIFEST, list(SOUTH))
-	else*/
-	F = getFlatIcon(src, defdir = SOUTH, no_anim = TRUE)
+	if(ishuman(src))
+		var/mob/living/carbon/human/H = src
+		F = icon(H.get_flat_icon(list(SOUTH)),frame=1)
+	else
+		F = getFlatIcon(src, defdir = SOUTH, no_anim = TRUE)
+	
 	var/new_base64 = "'data:image/png;base64,[icon2base64(F)]'"
 	set_chardirectory_photo(new_base64)
 	return new_base64
@@ -75,6 +73,7 @@ GLOBAL_LIST_EMPTY(chardirectory_photos)
 
 	GLOB.chardirectory_photos[REF(src)] = null
 	get_chardirectory_photo()
+	to_chat(src, span_notice("Your character directory photo has been updated!"))
 
 /datum/character_directory/ui_static_data(mob/user, datum/tgui/ui, datum/ui_state/state)
 	var/list/data = ..()
