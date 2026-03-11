@@ -139,6 +139,10 @@ All foods are distributed among various categories. Use common sense.
 
 //CC Edit: Rot refactor
 /obj/item/reagent_containers/food/snacks/proc/rot()
+	if(!rotprocess)
+		deltimer(timerid)
+		timerid = null
+		return
 	if(!locate(/obj/structure/table) in loc)
 		warming -= 1 MINUTES
 	else
@@ -202,6 +206,7 @@ All foods are distributed among various categories. Use common sense.
 		slices_num = 0
 		slice_path = null
 		cooktime = 0
+		rotprocess = null //CC Edit
 		if(istype(src.loc, /obj/item/cooking/platter/))
 			src.loc.update_icon()
 		record_round_statistic(STATS_FOOD_ROTTED)
