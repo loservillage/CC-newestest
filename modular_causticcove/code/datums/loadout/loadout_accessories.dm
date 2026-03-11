@@ -5,5 +5,5 @@
 
 /datum/loadout_item/sanguine_sleeves
 	name = "Sanguine sleeves"
-	path = /datum/crafting_recipe/roguetown/leather/sanguinesleeves
+	path = /obj/item/clothing/gloves/roguetown/courtphysician/female
 	sort_category = "Accessories"
