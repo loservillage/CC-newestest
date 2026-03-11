@@ -633,7 +633,7 @@
 	smeltresult = /obj/item/ingot/gold
 	sellprice = 40
 
-/obj/item/clothing/shoes/courtphysician
+/obj/item/clothing/shoes/roguetown/courtphysician
 	name = "sanguine shoes"
 	desc = "Leather shoes, the solemn tap of these bears grim news, or salvation."
 	icon_state = "docshoes"
@@ -642,8 +642,9 @@
 	sleeved = 'icons/roguetown/clothing/onmob/helpers/sleeves_courtphys.dmi'
 	mob_overlay_icon = 'icons/roguetown/clothing/special/onmob/courtphys.dmi'
 	salvage_result = /obj/item/natural/hide/cured
+	sewrepair = TRUE
 
-/obj/item/clothing/shoes/courtphysician/female
+/obj/item/clothing/shoes/roguetown/courtphysician/female
 	name = "sanguine heels"
 	desc = "Leather heels, the solemn tap of these bears grim news, or salvation."
 	icon_state = "docheels"
@@ -654,11 +655,11 @@
 	detail_tag = "_detail"
 	detail_color = CLOTHING_RED
 
-/obj/item/clothing/shoes/courtphysician/female/Initialize()
+/obj/item/clothing/shoes/roguetown/courtphysician/female/Initialize()
 	. = ..()
 	update_icon()
 
-/obj/item/clothing/shoes/courtphysician/female/update_icon()
+/obj/item/clothing/shoes/roguetown/courtphysician/female/update_icon()
 	cut_overlays()
 	if(get_detail_tag())
 		var/mutable_appearance/pic = mutable_appearance(icon(icon, "[icon_state][detail_tag]"))
