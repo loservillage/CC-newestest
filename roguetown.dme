@@ -3022,6 +3022,7 @@
 #include "code\modules\reagents\reagent_containers\rotcure.dm"
 #include "code\modules\reagents\reagent_containers\spider_venom.dm"
 #include "code\modules\spells\minion_order.dm"
+#include "modular_causticcove\code\datums\food_rot.dm"
 #include "code\modules\spells\orison.dm"
 #include "code\modules\spells\warscholar.dm"
 #include "code\modules\spells\pantheon\divine\necra.dm"
