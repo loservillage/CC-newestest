@@ -1026,7 +1026,7 @@
 	restrain undesirable foes if needed."
 	allowed_races = NON_DWARVEN_RACE_TYPES //Clothing has no dwarf sprites.
 	outfit = /datum/outfit/job/roguetown/adventurer/otava_maid
-	cmode_music = 'sound/music/combat_kazengite.ogg'
+	cmode_music = 'sound/music/cmode/adventurer/combat_outlander2.ogg'
 	traits_applied = list(TRAIT_STEELHEARTED, TRAIT_DODGEEXPERT)
 	subclass_stats = list(
 		STATKEY_SPD = 3,
