@@ -84,12 +84,6 @@
 	// Remove the last turf (target location) from the check
 	if(length(turf_list) > 0)
 		turf_list.len--
-	
-	for(var/turf/turf in turf_list)
-		if(turf.density)
-			to_chat(user, span_warning("I cannot blink through walls!"))
-			revert_cast()
-			return
 			
 	// Check for doors and bars in the path
 	for(var/turf/traversal_turf in turf_list)
