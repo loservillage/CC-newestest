@@ -164,33 +164,35 @@
 	. = ..()
 	if(soundloop)
 		soundloop = new(src, FALSE)
+	
+	
 
 /obj/item/flashlight/flare/torch/Destroy()
 	GLOB.weather_act_upon_list -= src
 	. = ..()
 
-/obj/item/flashlight/flare/torch/process()
-	open_flame(heat)
+/obj/item/flashlight/flare/torch/process() //CC Note: This proc basically just... deals with fuel stuff, isn't needed for static torches!
+	//open_flame(heat) CC Edit THIS DOES NOTHING!!
 	if(!fuel || !on)
 		turn_off()
-		STOP_PROCESSING(SSobj, src)
+		//STOP_PROCESSING(SSobj, src) CC Edit: turn_off already stops processing
 		if(!fuel)
 			icon_state = "torch-empty"
 		return
-	if(!istype(loc,/obj/machinery/light/rogue/torchholder))
-		if(!ismob(loc))
+	//CC edit: Removes the loc check for torch holders, since if process is running, they'll never be on a torch holder
+	if(!ismob(loc))
+		if(prob(23))
+			turn_off()
+			//STOP_PROCESSING(SSobj, src) CC Edit: turn_off already stops processing
+			return
+	else
+		var/mob/M = loc
+		if(!(src in M.held_items))
 			if(prob(23))
 				turn_off()
-				STOP_PROCESSING(SSobj, src)
+				//STOP_PROCESSING(SSobj, src) CC Edit: turn_off already stops processing
 				return
-		else
-			var/mob/M = loc
-			if(!(src in M.held_items))
-				if(prob(23))
-					turn_off()
-					STOP_PROCESSING(SSobj, src)
-					return
-		fuel = max(fuel - 10, 0)
+	fuel = max(fuel - 10, 0)
 
 /obj/item/flashlight/flare/torch/attack_self(mob/user)
 
@@ -237,7 +239,8 @@
 			if(ismob(loc))
 				var/mob/M = loc
 				M.update_inv_hands()
-			START_PROCESSING(SSobj, src)
+			if(!istype(loc,/obj/machinery/light/rogue/torchholder)) //CC Edit: Don't process on torchholders
+				START_PROCESSING(SSobj, src)
 			return TRUE
 	return ..()
 

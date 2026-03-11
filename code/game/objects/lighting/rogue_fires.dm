@@ -260,6 +260,17 @@
 	plane = GAME_PLANE_UPPER
 	cookonme = FALSE
 
+//CC Edit: Optimizing torches to only be in SSobj when off a torch holder
+/obj/machinery/light/rogue/torchholder/Entered(atom/movable/arrived, atom/old_loc)
+	. = ..()
+	STOP_PROCESSING(SSobj,arrived)
+
+/obj/machinery/light/rogue/torchholder/Exited(atom/movable/AM, atom/newloc)
+	. = ..()
+	START_PROCESSING(SSobj,AM)
+
+//CC Edit end
+
 /obj/machinery/light/rogue/torchholder/c
 	pixel_y = 32
 

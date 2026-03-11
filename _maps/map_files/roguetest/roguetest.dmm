@@ -464,6 +464,12 @@
 /obj/machinery/light/rogue/cauldron,
 /turf/open/floor/rogue/ruinedwood/herringbone,
 /area/rogue/indoors)
+"qZ" = (
+/obj/machinery/light/rogue/torchholder{
+	pixel_y = 26
+	},
+/turf/open/floor/rogue/cobblerock,
+/area/rogue/outdoors)
 "rb" = (
 /obj/structure/roguemachine/contractledger,
 /turf/open/floor/rogue/grass,
@@ -2399,7 +2405,7 @@ Om
 Om
 Om
 zo
-yK
+qZ
 rT
 rT
 rT
