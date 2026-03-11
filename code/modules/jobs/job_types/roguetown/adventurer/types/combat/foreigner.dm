@@ -1067,3 +1067,4 @@
 	beltr = /obj/item/rogueweapon/huntingknife/idagger/steel
 	beltl = /obj/item/rogueweapon/huntingknife/idagger/steel
 	H.set_blindness(0)
+//CC EDIT END
