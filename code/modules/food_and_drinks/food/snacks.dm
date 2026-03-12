@@ -138,6 +138,14 @@ All foods are distributed among various categories. Use common sense.
 		timerid = null
 
 //CC Edit: Rot refactor
+/obj/item/reagent_containers/food/snacks/Destroy()
+	if(timerid)
+		deltimer(timerid)
+		timerid = null
+	. = ..()
+	
+
+//CC Edit: Rot refactor
 /obj/item/reagent_containers/food/snacks/proc/rot()
 	if(!rotprocess)
 		deltimer(timerid)
