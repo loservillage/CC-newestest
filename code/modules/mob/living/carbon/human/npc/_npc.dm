@@ -194,7 +194,7 @@ GLOBAL_LIST_INIT(eatlines, world.file2list("strings/rt/evileatlines.txt"))
 		emote("idle")
 
 /mob/living/carbon/human/proc/deaggrodel()
-    if(vore_organs.len > 0)
+    if(vore_organs.len)
         for(var/obj/belly/B in vore_organs)
             B.release_all_contents(TRUE)
 	if(aggressive)
