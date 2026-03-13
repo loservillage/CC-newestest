@@ -640,33 +640,3 @@
 	TL.belly_fullscreen = "vboanim_snakebelly1"
 	TL.belly_fullscreen_color = "#823232"
 	TL.belly_fullscreen_color2 = "#823232"
-
-/*
-/datum/special_intent/tongue_pull
-	name = "Tongue"
-	desc = "A long-range lash that coils around the ankles of the target, throwing them toward you."
-	tile_coordinates = list(list(0,0))	//Just one tile exactly where our cursor is.
-	post_icon_state = "strike"
-	pre_icon_state = "trap"
-	sfx_pre_delay = 'sound/combat/flail_sweep.ogg'
-	respect_adjacency = FALSE
-	use_clickloc = TRUE
-	delay = 0.4 SECONDS
-	cooldown = 15 SECONDS
-	range = 4
-	stamcost = 20	//Stamina cost
-	var/immob_dur = 3.5 SECONDS
-	var/pull_distance = 3
-
-/datum/special_intent/tongue_pull/apply_hit(turf/T)
-	for(var/mob/living/L in get_hearers_in_view(0, T))
-		to_chat(howner, span_notice("You pull [L.name] towards you!"))
-		L.visible_message(span_danger("[L.name] is pulled by [howner.name]'s [name]!"))
-
-		// Calculate the direction from the target to the attacker
-		var/pull_dir = get_dir(L, howner)
-		var/turf/current_target_turf = get_turf(L)
-		var/turf/destination_turf = get_ranged_target_turf(current_target_turf, pull_dir, pull_distance)
-		L.throw_at(destination_turf, pull_distance, 1, howner, force = MOVE_FORCE_VERY_STRONG)
-	..()
-*/
