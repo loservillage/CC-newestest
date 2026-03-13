@@ -54,7 +54,7 @@
 	B.human_prey_swallow_time = swallowTime
 	B.nonhuman_prey_swallow_time = swallowTime
 	B.vore_verb = "swallow"
-	B.emote_lists[DM_HOLD] = list( 
+	B.emote_lists[DM_HOLD] = list( // We need more that aren't repetitive. I suck at endo. -Ace
 		"The insides knead at you gently for a moment.",
 		"The guts glorp wetly around you as some air shifts.",
 		"The predator takes a deep breath and sighs, shifting you somewhat.",
@@ -107,7 +107,7 @@
 	M.examine_messages = list(
 		"%pred has %prey's head stuck in their mouth!",
 		"Drool oozes down %prey's frame as they're crudely tasted with their struggling frame shoved ever deeper…")
-	M.emote_lists[DM_HOLD] = list(
+	M.emote_lists[DM_HOLD] = list( // We need more that aren't repetitive. I suck at endo. -Ace
 		"The insides knead at you gently for a moment.",
 		"The guts glorp wetly around you as some air shifts.",
 		"The predator takes a deep breath and sighs, shifting you somewhat.",
@@ -214,7 +214,7 @@
 	B.vore_verb = "swallow"
 	B.digest_brute = 0.5
 	B.digest_burn = 0.5
-	B.emote_lists[DM_HOLD] = list(
+	B.emote_lists[DM_HOLD] = list( // We need more that aren't repetitive. I suck at endo. -Ace
 		"The insides knead at you gently for a moment.",
 		"The guts glorp wetly around you as some air shifts.",
 		"The predator takes a deep breath and sighs, shifting you somewhat.",
@@ -322,7 +322,7 @@
 	T.vore_verb = "swallow"
 	T.examine_messages = list(
 		"%pred has %prey halfway shoved into their maw! The lower half of their body writhes and shifts against their grip, but their upper half is already nothing but a bulge.")
-	T.emote_lists[DM_HOLD] = list(
+	T.emote_lists[DM_HOLD] = list( // We need more that aren't repetitive. I suck at endo. -Ace
 		"You hear %pred's heartbeat through the pulsing walls that hold you.  Their tongue crawls down your midriff as you feel yourself sinking deeper.",
 		"A thick swallow splits the air, another pulse wrings your entire body as you're slowly consumed.",
 		"Hands slide down your lower body, gripping into your hips and ass for a better hold to shove you deeper.",
@@ -493,7 +493,7 @@
 	T.vore_verb = "swallow"
 	T.examine_messages = list(
 		"%pred has %prey halfway shoved down their throat! Their lower body kicks and writhes as their back arches, trying to break free of the tight coils! A thick bulge is visible on the naga’s neck, clearly showing their struggling outline..")
-	T.emote_lists[DM_HOLD] = list(
+	T.emote_lists[DM_HOLD] = list( // We need more that aren't repetitive. I suck at endo. -Ace
 		"A thick pulse of muscle travels over your body, pulling you deeper towards the naga’s stomach.",
 		"Wet drool oozes into your every inch, you can feel the snake’s tongue coil against you just as much as its tail.  It tries its best to drag you in too.",
 		"A hitched sigh oozes up around your lower body, their breath hot against your hips as you slide deeper.",
