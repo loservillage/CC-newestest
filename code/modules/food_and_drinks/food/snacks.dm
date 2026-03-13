@@ -185,6 +185,9 @@ All foods are distributed among various categories. Use common sense.
 	return ..()
 
 /obj/item/reagent_containers/food/snacks/proc/become_rotten(to_color = TRUE, to_rename = TRUE)
+	if(!loc)
+		qdel(src)
+		return
 	if(isturf(loc) && istype(get_area(src),/area/rogue/under/town/sewer))
 		if(!istype(src,/obj/item/reagent_containers/food/snacks/smallrat))
 			new /obj/item/reagent_containers/food/snacks/smallrat(loc)
@@ -198,9 +201,9 @@ All foods are distributed among various categories. Use common sense.
 			NU.reagents.clear_reagents()
 			if(reagents) //CC Edit, more slopfix, because no one thought something can't have reagents
 				reagents.trans_to(NU.reagents, reagents.maximum_volume)
-			qdel(src)
 			if(!location || !SEND_SIGNAL(location, COMSIG_TRY_STORAGE_INSERT, NU, null, TRUE, TRUE))
 				NU.forceMove(get_turf(NU.loc))
+			qdel(src)
 			record_round_statistic(STATS_FOOD_ROTTED)
 			return TRUE
 	else
