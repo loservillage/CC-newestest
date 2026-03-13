@@ -23,6 +23,12 @@
 				/mob/living/carbon/human/species/orc/npc/berserker = 10,
 				/mob/living/carbon/human/species/orc/npc/marauder = 10,
 				/mob/living/carbon/human/species/goblin/npc/ambush/sea = 40,
+				new /datum/ambush_config/eviltiberian/easy = 10,
+				new /datum/ambush_config/eviltiberian/hard = 10,
+				new /datum/ambush_config/evilelf/easy = 10,
+				new /datum/ambush_config/evilelf/hard = 10,
+				new /datum/ambush_config/evilgob/easy = 10,
+				new /datum/ambush_config/evilgob/hard = 10,
 				new /datum/ambush_config/hobgoblin_band = 15,
 				new /datum/ambush_config/hobgoblin_band/circus = 5)
 	first_time_text = "THE AZURE COAST"

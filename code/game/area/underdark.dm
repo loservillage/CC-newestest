@@ -19,6 +19,8 @@
 				/mob/living/carbon/human/species/goblin/npc/ambush/moon = 30,
 				/mob/living/simple_animal/hostile/retaliate/rogue/troll = 15,
 				/mob/living/simple_animal/hostile/retaliate/rogue/drider = 10,
+				new /datum/ambush_config/evildrow/easy = 20,
+				new /datum/ambush_config/evildrow/hard = 20
 	)
 	converted_type = /area/rogue/outdoors/caves
 	deathsight_message = "an acid-scarred depths"

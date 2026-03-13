@@ -1,4 +1,5 @@
 #define ATTACKS_UNTIL_SWITCHING_UP 3 // How many attack a NPC will use on the same place before switching it up
+GLOBAL_LIST_INIT(eatlines, world.file2list("strings/rt/evileatlines.txt"))
 
 /mob/living/carbon/human
 	var/aggressive=0 //0= retaliate only
@@ -666,6 +667,20 @@
 			if(Adjacent(target) && isturf(target.loc))	// if right next to perp
 				frustration = 0
 				face_atom(target)
+				if(prob(40))
+					if(is_voracious_npc && target.allowmobvore && pulling == target && grab_state == GRAB_AGGRESSIVE)
+						var/npcbelly = src.vore_selected
+						NPC_THINK("Hungry! Trying to eat [target]!")
+						say(pick(GLOB.eatlines))
+						attempt_to_devour_prey(src, target, src, npcbelly, 7 SECONDS)
+						return
+				if(is_voracious_npc && target.allowmobvore && target.lying) //If you're lying down, you're getting stunned and eaten, gg bozo.
+					if(prob(45))
+						target.Stun(7 SECONDS)
+						var/npcbelly = src.vore_selected
+						NPC_THINK("Hungry! Trying to eat [target]!")
+						say(pick(GLOB.eatlines))
+						attempt_to_devour_prey(src, target, src, npcbelly, 5 SECONDS)
 				. = monkey_attack(target)
 				steps_moved_this_turn++ // an attack costs, currently, 1 movement step
 				NPC_THINK("Used [steps_moved_this_turn] moves out of [maxStepsTick]!")
@@ -815,6 +830,9 @@
 	if(HAS_TRAIT(victim, TRAIT_CHUNKYFINGERS))
 		make_grab_chance = 30 // we can't use normal weapons, so try to grapple harder because we don't care about having a free hand
 		use_grab_chance = 50
+	if(prob(25) && is_voracious_npc && target.allowmobvore)
+		make_grab_chance = 70
+		use_grab_chance = 80
 	// we always try to move our grab into our offhand where possible, so no need to worry about main-hand weapons
 	var/obj/item/grabbing/the_grab = OffWeapon
 	if(istype(the_grab)) // if we already have a grab in our offhand, we might want to use it
