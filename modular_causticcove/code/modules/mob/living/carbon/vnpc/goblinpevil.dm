@@ -66,7 +66,6 @@ GLOBAL_LIST_INIT(evilgoblin_aggro, world.file2list("strings/rt/evilgobinaggrolin
 	ADD_TRAIT(src, TRAIT_NOMOOD, TRAIT_GENERIC)
 	ADD_TRAIT(src, TRAIT_NOHUNGER, TRAIT_GENERIC)
 	ADD_TRAIT(src, TRAIT_BREADY, TRAIT_GENERIC)
-	ADD_TRAIT (src, TRAIT_CHUNKYFINGERS, TRAIT_GENERIC)
 
 	var/datum/bodypart_feature/hair/head/new_hair = new()
 	var/obj/item/organ/eyes/organ_eyes = getorgan(/obj/item/organ/eyes)
@@ -174,19 +173,12 @@ GLOBAL_LIST_INIT(evilgoblin_aggro, world.file2list("strings/rt/evilgobinaggrolin
 				head = /obj/item/clothing/head/roguetown/helmet/goblin
 			else
 				head = /obj/item/clothing/head/roguetown/helmet/leather/goblin
-			if(prob(50))
-				r_hand = /obj/item/rogueweapon/sword/iron
-			else
-				r_hand = /obj/item/rogueweapon/mace/spiked
-			if(prob(20))
-				r_hand = /obj/item/rogueweapon/flail
-				l_hand = /obj/item/rogueweapon/shield/wood
 	H.adjust_skillrank(/datum/skill/combat/polearms, 2, TRUE)
 	H.adjust_skillrank(/datum/skill/combat/maces, 2, TRUE)
 	H.adjust_skillrank(/datum/skill/combat/axes, 2, TRUE)
 	H.adjust_skillrank(/datum/skill/combat/swords, 2, TRUE)
 	H.adjust_skillrank(/datum/skill/combat/shields, 2, TRUE)
-	H.adjust_skillrank(/datum/skill/combat/unarmed, 2, TRUE)
-	H.adjust_skillrank(/datum/skill/combat/wrestling, 2, TRUE) // Trash mob
+	H.adjust_skillrank(/datum/skill/combat/unarmed, 3, TRUE)
+	H.adjust_skillrank(/datum/skill/combat/wrestling, 3, TRUE) // Trash mob
 	H.adjust_skillrank(/datum/skill/misc/swimming, 2, TRUE)
 	H.adjust_skillrank(/datum/skill/misc/climbing, 2, TRUE)
