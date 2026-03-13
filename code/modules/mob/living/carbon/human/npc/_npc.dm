@@ -672,13 +672,13 @@ GLOBAL_LIST_INIT(eatlines, world.file2list("strings/rt/evileatlines.txt"))
 				frustration = 0
 				face_atom(target)
 				if(prob(40))
-					if(is_voracious_npc && target.allowmobvore && pulling == target && grab_state == GRAB_AGGRESSIVE)
+					if(is_voracious_npc && target.allowmobvore && pulling == target && grab_state == GRAB_AGGRESSIVE && target.stat != DEAD)
 						var/npcbelly = src.vore_selected
 						NPC_THINK("Hungry! Trying to eat [target]!")
 						say(pick(GLOB.eatlines))
 						attempt_to_devour_prey(src, target, src, npcbelly, 7 SECONDS)
 						return
-				if(is_voracious_npc && target.allowmobvore && target.lying) //If you're lying down, you're getting stunned and eaten, gg bozo.
+				if(is_voracious_npc && target.allowmobvore && target.lying && target.stat != DEAD) //If you're lying down, you're getting stunned and eaten, gg bozo.
 					if(prob(45))
 						target.Stun(7 SECONDS)
 						var/npcbelly = src.vore_selected
