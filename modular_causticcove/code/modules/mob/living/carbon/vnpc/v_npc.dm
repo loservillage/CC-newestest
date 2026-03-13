@@ -79,6 +79,7 @@
 	B.belly_fullscreen_color = "#823232"
 	B.belly_fullscreen_color2 = "#823232"
 //--------------------------------------------------------------------------
+//Credit to Syribirb for doing the entirety of the belly descriptions!
 /mob/living/proc/load_gob_bellies()
 	//Loading goblin bellies for goblin NPCs
 	var/obj/belly/M = new /obj/belly(src)
@@ -244,6 +245,7 @@
 	B.belly_fullscreen_color = "#823232"
 	B.belly_fullscreen_color2 = "#823232"
 //--------------------------------------------------------------------------
+//Credit to Syribirb for doing the entirety of the belly descriptions!
 /mob/living/proc/load_generic_bellies()
 	//Loading genderless catchall bellies
 	var/obj/belly/M = new /obj/belly(src)
@@ -408,6 +410,7 @@
 	B.belly_fullscreen_color = "#823232"
 	B.belly_fullscreen_color2 = "#823232"
 //--------------------------------------------------------------------------
+//Credit to Syribirb for doing the entirety of the belly descriptions!
 /mob/living/proc/load_lamia_bellies()
 	//Loading genderless catchall bellies
 	var/obj/belly/M = new /obj/belly(src)
