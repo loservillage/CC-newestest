@@ -125,7 +125,7 @@
 	M.escape_fail_messages_prey = "You managed to slip up, getting further trapped!"
 	M.autotransferable = 1
 	M.autotransferlocation = "throat"
-	M.autotransferwait = 3000
+	M.autotransferwait = 300
 	M.autotransferchance = 100
 	M.autotransfer_min_amount = 1
 	M.autotransfer_whitelist = 53
@@ -186,7 +186,7 @@
 	T.escape_fail_messages_prey = "%pred stifles your escape attempt with another greedy swallow."
 	T.autotransferable = 1
 	T.autotransferlocation = "stomach"
-	T.autotransferwait = 3000
+	T.autotransferwait = 300
 	T.autotransferchance = 100
 	T.autotransfer_min_amount = 1
 	T.autotransfer_whitelist = 53
@@ -292,7 +292,7 @@
 	M.escapechance = 25
 	M.autotransferable = 1
 	M.autotransferlocation = "throat"
-	M.autotransferwait = 3000
+	M.autotransferwait = 300
 	M.autotransferchance = 100
 	M.autotransfer_min_amount = 1
 	M.autotransfer_whitelist = 53
@@ -345,7 +345,7 @@
 	)
 	T.autotransferable = 1
 	T.autotransferlocation = "stomach"
-	T.autotransferwait = 3000
+	T.autotransferwait = 300
 	T.autotransferchance = 100
 	T.autotransfer_min_amount = 1
 	T.autotransfer_whitelist = 53
@@ -464,7 +464,7 @@
 	M.escapechance = 25
 	M.autotransferable = 1
 	M.autotransferlocation = "throat"
-	M.autotransferwait = 3000
+	M.autotransferwait = 300
 	M.autotransferchance = 100
 	M.autotransfer_min_amount = 1
 	M.autotransfer_whitelist = 53
@@ -517,7 +517,7 @@
 	)
 	T.autotransferable = 1
 	T.autotransferlocation = "stomach"
-	T.autotransferwait = 3000
+	T.autotransferwait = 300
 	T.autotransferchance = 100
 	T.autotransfer_min_amount = 1
 	T.autotransfer_whitelist = 53
@@ -554,7 +554,7 @@
 	B.digest_burn = 0
 	B.autotransferable = 1
 	B.autotransferlocation = "tail"
-	B.autotransferwait = 3000
+	B.autotransferwait = 300
 	B.autotransferchance = 100
 	B.autotransfer_min_amount = 1
 	B.autotransfer_whitelist = 53

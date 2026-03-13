@@ -196,7 +196,8 @@ GLOBAL_LIST_INIT(eatlines, world.file2list("strings/rt/evileatlines.txt"))
 /mob/living/carbon/human/proc/deaggrodel()
 	if(vore_organs.len >0)
 		for(var/obj/belly/B in vore_organs)
-			B.release_all_contents(TRUE)
+			if(B.contents > 0)
+				return FALSE
 	if(aggressive)
 		for(var/mob/living/L in view(7)) // scan for enemies
 			if( should_target(L) && (L != src))
