@@ -865,6 +865,11 @@
 		var/obj/item/organ/heart/heart = getorganslot(ORGAN_SLOT_HEART)
 		if(heart?.inscryption && (heart.inscryption_key in maniac.key_nums))
 			. += span_danger("[t_He] know[p_s()] [heart.inscryption_key], I AM SURE OF IT!")
+	
+	//Caustic Edit - Attempt to add a quick AFK tag to examine text!
+	if(client && away_from_keyboard && manual_afk)
+		. += span_warning("\[Away From Keyboard for [round((client.inactivity/10)/60)] minutes.\]")
+	//Caustic Edit End
 
 	var/medical_text = ""
 	if(Adjacent(user))
@@ -965,10 +970,11 @@
 			user.add_stress(/datum/stressevent/hunted)
 
 	if(dna?.species?.type == /datum/species/gnoll)
-		var/mob/living/carbon/human/H = user
-		if(H.dna?.species?.type == /datum/species/gnoll)
-			if(user.advjob)
-				. += span_notice("<i>They are a [advjob] of the pack.</i>")
+		if(istype(user, /mob/living/carbon/human)) //Submitting this one upstream because not our shitcode for once
+			var/mob/living/carbon/human/H = user
+			if(H.dna?.species?.type == /datum/species/gnoll)
+				if(user.advjob)
+					. += span_notice("<i>They are a [advjob] of the pack.</i>")
 
 	var/trait_exam = common_trait_examine()
 	if(!isnull(trait_exam))
