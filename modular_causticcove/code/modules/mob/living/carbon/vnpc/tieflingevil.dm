@@ -71,6 +71,7 @@ GLOBAL_LIST_INIT(generic_vnpc_aggro, world.file2list("strings/rt/vnpcaggrolines.
 
 	src.set_patron(/datum/patron/divine/dendor)
 	ADD_TRAIT(src, TRAIT_LEECHIMMUNE, INNATE_TRAIT)
+	ADD_TRAIT(src, TRAIT_LIGHT_STEP, TRAIT_GENERIC)
 	ADD_TRAIT(src, TRAIT_NOMOOD, TRAIT_GENERIC)
 	ADD_TRAIT(src, TRAIT_NOHUNGER, TRAIT_GENERIC)
 	ADD_TRAIT(src, TRAIT_BREADY, TRAIT_GENERIC)
