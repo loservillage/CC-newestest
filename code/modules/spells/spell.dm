@@ -519,16 +519,13 @@ GLOBAL_LIST_INIT(spells, typesof(/obj/effect/proc_holder/spell)) //needed for th
 			var/atom/A = targets[1]
 			var/turf/target_turf = get_turf(A)
 			var/turf/source_turf = get_turf(user)
-			if(A.z > user.z)
-				source_turf = get_step_multiz(source_turf, UP)
-			if(A.z < user.z)
-				source_turf = get_step_multiz(source_turf, DOWN)
-			if(!(target_turf in view(source_turf)))
+			//CC Edit: No more up and down turf checks, instead get the eye and see it's view
+			if(!(A in view(user.client.eye)))
 				to_chat(user, span_warning("I do not have line of sight! Casting on nearest tile."))
 				var/list/possible_targets = getline(source_turf, target_turf)
 				for(var/i = possible_targets.len; i > 0; i--) // Since turfs added by the getline are in ordered by distance, we need to start from the end
 					var/atom/closest_tile = possible_targets[i]
-					if(closest_tile in view(source_turf))
+					if(closest_tile in view(user.client.eye))//Same here, eye view.
 						targets[1] = closest_tile
 						break; // Found furthest tile, do not self-frag
 
