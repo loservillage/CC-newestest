@@ -1024,7 +1024,7 @@
 	tutorial = "A wolf in sheep's clothing. Formerly followers of Saint Eora in Otava, these servants are trained in all sorts \
 	of tasks. Cooking. Cleaning. And rooting out the infiltrator, no matter the cost. Daggers are your weapon of choice- But your body can certainly \
 	restrain undesirable foes if needed."
-	allowed_races = NON_DWARVEN_RACE_TYPES //Clothing has no dwarf sprites.
+	allowed_races = RACES_ALL_KINDS
 	outfit = /datum/outfit/job/roguetown/adventurer/otava_maid
 	cmode_music = 'sound/music/cmode/adventurer/combat_outlander2.ogg'
 	traits_applied = list(TRAIT_STEELHEARTED, TRAIT_DODGEEXPERT)
