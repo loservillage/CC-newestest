@@ -1,0 +1,4 @@
+author: "Ldip999"
+delete-after: True
+changes:
+  - bugfix: "LOS checking your LOS instead of a turf's for spell"
