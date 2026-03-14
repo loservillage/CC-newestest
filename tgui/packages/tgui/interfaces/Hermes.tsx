@@ -2,6 +2,7 @@ import { useState } from 'react';
 import {
   Box,
   Button,
+  Collapsible,
   Input,
   Section,
   Stack,
@@ -9,7 +10,10 @@ import {
 } from 'tgui-core/components';
 
 import { useBackend } from '../backend';
+import { merchant_supply_pack } from "../data_types/supply_pack";
 import { Window } from '../layouts';
+import { SupplyPackSection } from "./common/SupplyPackStack";
+
 
 type Data = {
   balance: number;
@@ -17,11 +21,26 @@ type Data = {
   quill_cost: number;
   letter_cost: number;
   has_tube?: boolean;
+  travellingmerchant_static?: tm_static;
+  travellingmerchant?: tm;
 };
+
+type tm = {
+  favours: number;
+  unlockedCats: string[];
+  catunlockspending : number;
+}
+
+type tm_static = {
+  supplypacks: merchant_supply_pack[];
+}
+
+
+
 
 export const Hermes = (props: any, context: any) => {
   const { act, data } = useBackend<Data>();
-  const { balance, paper_cost, quill_cost, letter_cost, has_tube } = data;
+  const { balance, paper_cost, quill_cost, letter_cost, has_tube, travellingmerchant_static, travellingmerchant } = data;
 
   const [recipient, setRecipient] = useState('');
   const [sender, setSender] = useState('');
@@ -31,6 +50,19 @@ export const Hermes = (props: any, context: any) => {
   const canBuyPaper = balance >= paper_cost;
   const canBuyQuill = balance >= quill_cost;
   const canSendTube = letterContent.length > 0;
+
+  const packsByCat = travellingmerchant_static ? travellingmerchant_static.supplypacks.reduce(
+    (cat, pacc) => {
+        cat[pacc.group] = cat[pacc.group] || [];
+        cat[pacc.group].push(pacc);
+        return cat;
+    }, Object.create(null)
+  ): null;
+
+  const addToCart = (pack : merchant_supply_pack) => {
+    
+  }
+
 
   return (
     <Window title="HERMES" width={400} height={480}>
@@ -158,6 +190,36 @@ export const Hermes = (props: any, context: any) => {
               </Stack>
             </Section>
           </Stack.Item>
+          {
+            packsByCat && 
+            (
+            <Stack.Item>
+              <Collapsible title="Alternatively... you could make a few deals....">
+                <Collapsible title="Order a drop...">
+                {
+                  packsByCat.map((packcat) => (
+                    <Stack.Item key={packcat}>
+                      <Collapsible title={packcat}>
+                        {travellingmerchant!.unlockedCats.includes(packcat) ? 
+                          <Stack>
+                            {
+                              packsByCat[packcat].map((pacc) => (
+                                <SupplyPackSection pack={pacc} key={pacc.name} budget={travellingmerchant!.favours} currency='Favours' on_buy={() => addToCart(pacc)} on_buy_txt='Add to drop' />
+                              ))
+                            }
+                          </Stack>
+                          : (travellingmerchant!.catunlockspending > 0 ? <Button>Contract supplier</Button> : <Button disabled>Opportunities await...</Button>)
+                          
+                        }
+                      </Collapsible>
+                    </Stack.Item>
+                  ))
+                }
+                </Collapsible>
+              </Collapsible>
+            </Stack.Item>)
+            
+          }
         </Stack>
       </Window.Content>
     </Window>
