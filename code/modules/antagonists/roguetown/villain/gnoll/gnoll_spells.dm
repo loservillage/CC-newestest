@@ -2,6 +2,11 @@
 	name = "Gnoll claws"
 	claw_type = /obj/item/rogueweapon/werewolf_claw/gnoll
 
+/obj/effect/proc_holder/spell/self/claws/gnoll/cast(list/targets, mob/user)//Caustic edit start. prevents gnolls from using their claws while a zombie.
+	if(user.mind.has_antag_datum(/datum/antagonist/zombie))
+		return
+	. = ..()
+//Caustic edit end
 /obj/effect/proc_holder/spell/self/howl/gnoll
 	howl_sounds = list('sound/vo/mobs/gnoll/yeen_howl.ogg')
 	howl_sounds_far = list('sound/vo/mobs/hyena/gnoll_distant.ogg')
