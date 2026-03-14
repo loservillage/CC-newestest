@@ -83,7 +83,7 @@
 	if(target && !(target.mobility_flags & MOBILITY_STAND) && isturf(target.loc)) // find target's bed
 		bed = locate(/obj/structure/bed/rogue) in target.loc
 		target_on_bed = TRUE
-	if(!bed && !(user.mobility_flags & MOBILITY_STAND) && isturf(user.loc)) // find our bed
+	if(!bed && user && !(user.mobility_flags & MOBILITY_STAND) && isturf(user.loc)) // find our bed
 		bed = locate(/obj/structure/bed/rogue) in user.loc
 		target_on_bed = FALSE
 
