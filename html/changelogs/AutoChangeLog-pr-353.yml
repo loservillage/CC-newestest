@@ -1,0 +1,5 @@
+author: "wewman222"
+delete-after: True
+changes:
+  - rscadd: "Adds the Otovan Poignard, a bodyguard that wears plain clothing to confuse would be attackers. The class is under the Nomad section of adventurers"
+  - rscadd: "Adds a padded maid suit (reskinned gambeson) exclusive to the class."
