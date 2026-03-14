@@ -3027,6 +3027,7 @@
 #include "code\modules\spells\pantheon\divine\necra.dm"
 #include "code\modules\spells\pantheon\inhumen\baotha.dm"
 #include "code\modules\spells\pantheon\inhumen\graggar.dm"
+#include "modular_causticcove\code\modules\anvil_recipes\engineering.dm"
 #include "code\modules\spells\pantheon\inhumen\matthios.dm"
 #include "code\modules\spells\pantheon\inhumen\zizo.dm"
 #include "modular\piercing\carbon_defines.dm"
