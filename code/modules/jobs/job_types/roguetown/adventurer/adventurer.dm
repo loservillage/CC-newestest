@@ -74,7 +74,10 @@ GLOBAL_VAR_INIT(adventurer_hugbox_duration_still, 3 MINUTES)
 		///Caustic edit end
 		/datum/advclass/foreigner/shepherd,
 		/datum/advclass/foreigner/fencerguy,
-		/datum/advclass/foreigner/bronzeclad
+		/datum/advclass/foreigner/bronzeclad,
+		//CC edit
+		/datum/advclass/foreigner/otava_maid
+		//CC edit end
 	)
 
 /mob/living/carbon/human/proc/adv_hugboxing_start()

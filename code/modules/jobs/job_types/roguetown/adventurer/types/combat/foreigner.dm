@@ -1017,3 +1017,54 @@
 // THESPIANS - END!     //
 //////////////////////////
 
+//CC EDIT
+//french maid with knives meme. basically a glass cannon- CAN wrestle and use daggers effectively, but can't take hits for shit. Better get a gambeson!!!
+/datum/advclass/foreigner/otava_maid
+	name = "Otavan Poignard"
+	tutorial = "A wolf in sheep's clothing. Formerly followers of Saint Eora in Otava, these servants are trained in all sorts \
+	of tasks. Cooking. Cleaning. And rooting out the infiltrator, no matter the cost. Daggers are your weapon of choice- But your body can certainly \
+	restrain undesirable foes if needed."
+	allowed_races = RACES_ALL_KINDS
+	outfit = /datum/outfit/job/roguetown/adventurer/otava_maid
+	cmode_music = 'sound/music/cmode/adventurer/combat_outlander2.ogg'
+	traits_applied = list(TRAIT_STEELHEARTED, TRAIT_DODGEEXPERT)
+	subclass_stats = list(
+		STATKEY_SPD = 3,
+		STATKEY_STR = 1,
+		STATKEY_WIL = 1,
+	)
+	subclass_skills = list(
+		/datum/skill/misc/climbing = SKILL_LEVEL_EXPERT,
+		/datum/skill/misc/tracking = SKILL_LEVEL_JOURNEYMAN,
+		/datum/skill/misc/swimming = SKILL_LEVEL_APPRENTICE,
+		/datum/skill/combat/wrestling = SKILL_LEVEL_EXPERT,
+		/datum/skill/misc/lockpicking = SKILL_LEVEL_JOURNEYMAN,
+		/datum/skill/combat/unarmed = SKILL_LEVEL_JOURNEYMAN,
+		/datum/skill/misc/athletics = SKILL_LEVEL_EXPERT,
+		/datum/skill/misc/reading = SKILL_LEVEL_NOVICE,
+		/datum/skill/misc/sneaking = SKILL_LEVEL_EXPERT,
+		/datum/skill/combat/knives =  SKILL_LEVEL_EXPERT,
+		/datum/skill/craft/cooking = SKILL_LEVEL_JOURNEYMAN,
+	)
+
+/datum/outfit/job/roguetown/adventurer/otava_maid/pre_equip(mob/living/carbon/human/H)
+	..()
+	to_chat(H, span_warning("A servant that has been elevated to a much more prestigous position. Formerly followers of Saint Eora in Otava, these servants are trained in all sorts \
+	of tasks. Cooking. Cleaning. And rooting out the infiltrator, no matter the cost. Daggers are your weapon of choice- But your body can certainly restrain undesirable foes if \
+	needed."))
+	head = /obj/item/clothing/head/roguetown/maidhead
+	backr = /obj/item/storage/backpack/rogue/satchel
+	backpack_contents = list(
+		/obj/item/flashlight/flare/torch = 1,
+		/obj/item/recipe_book/survival = 1,
+		/obj/item/bomb/smoke = 3,
+		)
+	neck = /obj/item/storage/belt/rogue/pouch/coins/poor
+	belt = /obj/item/storage/belt/rogue/leather/sash/maid
+	shirt = /obj/item/clothing/suit/roguetown/shirt/dress/battlemaid
+	cloak = /obj/item/clothing/cloak/apron/waist/maid
+	shoes = /obj/item/clothing/shoes/roguetown/simpleshoes
+	beltr = /obj/item/rogueweapon/huntingknife/idagger/steel
+	beltl = /obj/item/rogueweapon/huntingknife/idagger/steel
+	H.set_blindness(0)
+//CC EDIT END

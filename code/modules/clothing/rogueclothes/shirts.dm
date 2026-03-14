@@ -762,7 +762,7 @@
 			name = "open maid dress"
 			body_parts_covered = null
 			open_wear = TRUE
-			flags_inv = HIDEBOOB
+			flags_inv = HIDECROTCH
 			to_chat(usr, span_warning("Now wearing radically!"))
 		if(TRUE)
 			name = "maid dress"
@@ -774,7 +774,48 @@
 	if(ismob(loc))
 		var/mob/L = loc
 		L.update_inv_armor()
+//CC EDIT
+/obj/item/clothing/suit/roguetown/shirt/dress/battlemaid
+	slot_flags = ITEM_SLOT_ARMOR|ITEM_SLOT_SHIRT
+	name = "maid dress"
+	desc = "A distinctive black dress that should be kept clean and tidy - unless you want to be disciplined. This one seems to be padded."
+	body_parts_covered = CHEST|GROIN|ARMS|LEGS|VITALS
+	armor = ARMOR_PADDED
+	prevent_crits = PREVENT_CRITS_MOST
+	blocksound = SOFTUNDERHIT
+	blade_dulling = DULLING_BASHCHOP
+	max_integrity = ARMOR_INT_CHEST_LIGHT_MEDIUM
+	armor_class = ARMOR_CLASS_LIGHT
+	break_sound = 'sound/foley/cloth_rip.ogg'
+	drop_sound = 'sound/foley/dropsound/cloth_drop.ogg'
+	material_category = ARMOR_MAT_LEATHER
+	boobed = TRUE
+	item_state = "maiddress"
+	icon_state = "maiddress"
+	icon = 'icons/roguetown/clothing/special/maids.dmi'
+	mob_overlay_icon = 'icons/roguetown/clothing/special/onmob/maids.dmi'
+	sleeved = 'icons/roguetown/clothing/special/onmob/maids.dmi'
+	var/open_wear = FALSE
 
+/obj/item/clothing/suit/roguetown/shirt/dress/battlemaid/attack_right(mob/user)
+	switch(open_wear)
+		if(FALSE)
+			name = "open maid dress"
+			body_parts_covered = null
+			open_wear = TRUE
+			flags_inv = HIDECROTCH
+			to_chat(usr, span_warning("Now wearing radically!"))
+		if(TRUE)
+			name = "maid dress"
+			body_parts_covered = CHEST|GROIN|ARMS|LEGS|VITALS
+			open_wear = FALSE
+			flags_inv = HIDEBOOB|HIDECROTCH
+			to_chat(usr, span_warning("Now wearing normally!"))
+	update_icon()
+	if(ismob(loc))
+		var/mob/L = loc
+		L.update_inv_armor()
+//CC EDIT END
 /obj/item/clothing/suit/roguetown/shirt/courtphysician
 	name = "sanguine vest"
 	desc = "A silk vest, perhaps it will make it another dae without being bloodied."
