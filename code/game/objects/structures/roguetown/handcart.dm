@@ -240,7 +240,7 @@
 		weight = I.w_class
 	if(isliving(atom))
 		var/mob/living/living_atom = atom
-		weight = arbitrary_living_creature_weight * living_atom.mob_size // small critters take 10 space, human sized takes 20, large takes 30
+		weight = /*arbitrary_living_creature_weight **/ living_atom.mob_size // small critters take 10 space, human sized takes 20, large takes 30 //Caustic Edit - Commented out the arbitrary weight bit, since the Chomper's size changes account for this without it!
 	return weight
 
 /obj/structure/handcart/proc/recalculate_capacity()
