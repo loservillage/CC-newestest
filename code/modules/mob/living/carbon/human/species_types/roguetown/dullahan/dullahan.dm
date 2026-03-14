@@ -16,16 +16,12 @@
 	use_skin_tone_wording_for_examine = FALSE
 	max_age = "???"
 
-	///Caustic edit
 	allowed_taur_types = list(
 		/obj/item/bodypart/taur/lamia,
 		/obj/item/bodypart/taur/spider,
 		/obj/item/bodypart/taur/horse,
 		/obj/item/bodypart/taur/goat,
-		/obj/item/bodypart/taur/biglegs,
-		/obj/item/bodypart/taur/biglegsstanced,
 	)
-	///Caustic edit end
 	base_name = "Godtouched"
 	is_subrace = TRUE
 	species_traits = list(EYECOLOR,HAIR,FACEHAIR,LIPS,STUBBLE,OLDGREY,MUTCOLORS)
@@ -205,6 +201,8 @@
 		/obj/item/bodypart/taur/altnagatailmaw,
 		/obj/item/bodypart/taur/fatnaga,
 		/obj/item/bodypart/taur/bunny,
+		/obj/item/bodypart/taur/biglegs,
+		/obj/item/bodypart/taur/biglegsstanced,
 	)
 	///Caustic edit end
 
