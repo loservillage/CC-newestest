@@ -149,10 +149,10 @@
 		r_hand = /obj/item/rogueweapon/huntingknife/idagger/steel/corroded/dirk
 		l_hand = /obj/item/rogueweapon/huntingknife/idagger/steel/corroded/dirk
 
-	H.STASTR = 12 // 6 Points
-	H.STASPD = 13 // 3 points
-	H.STACON = 14 // 4 points
-	H.STAWIL = 12 // 2 points - 14 points spread. Equal to 1 more than a KC accounting for Statpack.
+	H.STASTR = 16
+	H.STASPD = 15
+	H.STACON = 14 
+	H.STAWIL = 12 
 	H.STAPER = 10
 	H.STAINT = 10
 	H.adjust_skillrank(/datum/skill/combat/whipsflails, 4, TRUE)

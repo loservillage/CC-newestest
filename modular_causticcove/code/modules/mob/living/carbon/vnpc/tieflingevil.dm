@@ -173,7 +173,7 @@ GLOBAL_LIST_INIT(generic_vnpc_aggro, world.file2list("strings/rt/vnpcaggrolines.
 	update_body()
 
 /datum/outfit/job/roguetown/tiberianevil/npc/pre_equip(mob/living/carbon/human/H) //gives some default skills and equipment for player controlled elves
-	H.STASTR = 10
+	H.STASTR = 12
 	var/chance_zjumper = 5
 	var/chance_treeclimber = 30
 	H.STASPD = 15
@@ -183,7 +183,7 @@ GLOBAL_LIST_INIT(generic_vnpc_aggro, world.file2list("strings/rt/vnpcaggrolines.
 	if(prob(chance_treeclimber))
 		H.tree_climber = TRUE
 		H.find_targets_above = TRUE // so they can taunt
-	H.STACON = 9
+	H.STACON = 12
 	H.STAWIL = 12
 	H.STAINT = 12
 	H.adjust_skillrank(/datum/skill/combat/polearms, 2, TRUE)

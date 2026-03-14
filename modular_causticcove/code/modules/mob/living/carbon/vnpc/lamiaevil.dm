@@ -177,8 +177,8 @@ GLOBAL_LIST_INIT(lamia_aggro, world.file2list("strings/rt/evillamiaaggrolines.tx
 		neck = /obj/item/clothing/neck/roguetown/leather
 	H.skin_armor = new /obj/item/clothing/suit/roguetown/armor/skin_armor/natural_armor(H)
 	H.STASTR = 14
-	H.STASPD = 14
-	H.STACON = 12
+	H.STASPD = 16
+	H.STACON = 16
 	H.STAWIL = 11
 	H.STAPER = 11
 	H.STAINT = 3 //stupid snakes
