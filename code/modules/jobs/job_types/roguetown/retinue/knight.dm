@@ -52,8 +52,10 @@
 	var/honorary = "Ser"
 	if(H.titles_pref == TITLES_F)
 		honorary = "Dame"
+	//CC EDIT
 	if(H.titles_pref == TITLES_N)
 		honorary = "Knight"
+	//CC EDIT END
 	// check if they already have it to avoid stacking titles
 	if(findtextEx(H.real_name, "[honorary] ") == 0)
 		H.real_name = "[honorary] [prev_real_name]"
