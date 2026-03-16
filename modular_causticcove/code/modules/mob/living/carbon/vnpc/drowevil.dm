@@ -149,7 +149,7 @@
 		r_hand = /obj/item/rogueweapon/huntingknife/idagger/steel/corroded/dirk
 		l_hand = /obj/item/rogueweapon/huntingknife/idagger/steel/corroded/dirk
 
-	H.STASTR = 16
+	H.STASTR = 14
 	H.STASPD = 15
 	H.STACON = 14 
 	H.STAWIL = 12 

@@ -151,7 +151,7 @@
 	update_body()
 
 /datum/outfit/job/roguetown/elfevil/npc/pre_equip(mob/living/carbon/human/H) //gives some default skills and equipment for player controlled elves
-	H.STASTR = 16
+	H.STASTR = 14
 	var/chance_zjumper = 5
 	var/chance_treeclimber = 30
 	H.STASPD = 15
@@ -161,8 +161,8 @@
 	if(prob(chance_treeclimber))
 		H.tree_climber = TRUE
 		H.find_targets_above = TRUE // so they can taunt
-	H.STACON = 14
-	H.STAWIL = 15
+	H.STACON = 13
+	H.STAWIL = 14
 	H.STAINT = 12
 	H.adjust_skillrank(/datum/skill/combat/polearms, 2, TRUE)
 	H.adjust_skillrank(/datum/skill/combat/maces, 2, TRUE)
