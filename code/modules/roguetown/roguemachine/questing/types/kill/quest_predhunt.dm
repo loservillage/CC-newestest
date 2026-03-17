@@ -2,8 +2,8 @@
 /datum/quest/kill/predhunt
 	quest_type = QUEST_PREDHUNT
 	mob_types_to_spawn = QUEST_PREDATOR_HUNT_LIST
-	count_min = 4
-	count_max = 6
+	count_min = 3
+	count_max = 4
 
 /datum/quest/kill/predhunt/get_title()
 	if(title)
