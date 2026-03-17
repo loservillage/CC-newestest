@@ -1,6 +1,6 @@
 /mob/living //Caustic - This MIGHT be able to be removed if the Chompers integration works out
 	//oh no vore time
-	//var/voremode = FALSE
+	var/voremode = FALSE
 
 /mob/living/proc/toggle_vore_mode()
 	if(cmode)
