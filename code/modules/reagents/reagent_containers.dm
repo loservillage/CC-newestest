@@ -105,18 +105,23 @@
 					if(prob(10))
 						visible_message(span_notice("[C.name] struggles to swallow."))
 					var/cur_stage = jaw_wound.stage
-					if(cur_stage >= 4) //Too much pain. If someone force feeds us further we'll be in final stage of pain.
-						to_chat(C, span_warning("I can't consume this! It hurts too much!"))
-						if(C == user)
-							visible_message(span_warning("[C.name] struggles to open their jaw."))
-							return FALSE
-						else //Handle when another player force feeds them. 
-							visible_message(span_warning("[user.name] forces [C.name] to open their mouth."))
-							cur_stage++
-							if(cur_stage > 5)
+					if(cur_stage >= 4) //High pain stage. If you can manage to tolerate the pain however you're good.
+						if(painpercent >= 33)
+							to_chat(C, span_warning("I can't consume this! It hurts too much!"))
+							if(C == user)
+								visible_message(span_warning("[C.name] struggles to open their jaw."))
+								return FALSE
+							else //Handle when another player force feeds them. 
+								visible_message(span_warning("[user.name] forces [C.name] to open their mouth."))
+								cur_stage++
+								if(cur_stage > 5)
+									jaw_wound.refresh()
+									break
+								head.remove_wound(jaw_wound)
+								head.add_wound(jaw_wound.jaw_wounds_ascending[cur_stage])
 								break
-							head.remove_wound(jaw_wound)
-							head.add_wound(jaw_wound.jaw_wounds_ascending[cur_stage])
+						else //Refresh the duration for tolerating the pain.
+							jaw_wound.refresh()
 							break
 					cur_stage++ //Iterate to the next stage on the list.
 					head.remove_wound(jaw_wound)
