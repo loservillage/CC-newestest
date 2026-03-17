@@ -499,7 +499,7 @@ GLOBAL_LIST_INIT(roguetraits, list(
 	TRAIT_NATURAL_ARMOR = span_notice("My hide is thick and resilient. It will regenerate so long as I keep it fed..."),
 	TRAIT_FERAL = span_info("The wilds is where I am meant to be. Civilized realms are no place for the likes of me."),
 	TRAIT_NECRAS_ABATEMENT = span_info("The Undermaiden's gaze lingers upon me, and intensifies as I draw closer to hallowed ground."),
-	TRAIT_MANGLED_JAW = span_info("I have suffered a horrible injury in the past. It's harder to eat, drink, or bite anything."),
+	TRAIT_MANGLED_JAW = span_info("I've suffered a horrible injury to my jaw in the past. It's harder to eat, drink, or bite anything."),
 
 	//Caustic edit end
 	TRAIT_ENGINEERING_GOGGLES = span_warning("I can see structural details others can't."),

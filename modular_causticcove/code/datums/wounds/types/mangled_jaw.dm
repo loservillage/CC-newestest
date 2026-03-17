@@ -29,7 +29,7 @@
 	stage = 1
 
 /datum/wound/jaw_abuse/second_stage
-	name = "aching jaw"
+	name = "strained jaw"
 	check_name = "aching jaw"
 	whp = 4 //4 seconds of pain. Slow your bites.
 	woundpain = 15
@@ -51,14 +51,25 @@
 	woundpain = 45
 	stage = 4
 
+//Stage 5 you cannot bite and your speech is impeded for the time being. This hurts your mouth a lot and makes it hard to articulate words.
 /datum/wound/jaw_abuse/forced_stage
-	name = "severly abused jaw" 
+	name = "severely abused jaw" 
 	check_name = "severely abused jaw"
 	whp = 25 //Someone is force feeding you. More than likely doing it for torture or for medical purposes, either way, this hurts a lot and for a good while.
 	passive_healing = 1
 	woundpain = 100
 	stage = 5
 
-//Resets the whp to its initial value, used for the forced stage when someone repeatedly feeds someone.
+/datum/wound/jaw_abuse/forced_stage/on_mob_gain(mob/living/affected)
+	. = ..()
+	ADD_TRAIT(affected, TRAIT_NO_BITE, "[type]")
+	ADD_TRAIT(affected, TRAIT_GARGLE_SPEECH, "[type]")
+
+/datum/wound/jaw_abuse/forced_stage/on_mob_loss(mob/living/affected)
+	. = ..()
+	ADD_TRAIT(affected, TRAIT_NO_BITE, "[type]")
+	ADD_TRAIT(affected, TRAIT_GARGLE_SPEECH, "[type]")
+
+//Resets the whp to its initial value, used for tolerating the pain and refreshing forced feeding.
 /datum/wound/jaw_abuse/proc/refresh()
 	whp = initial(whp)

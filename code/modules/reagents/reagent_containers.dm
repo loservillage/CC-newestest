@@ -87,12 +87,12 @@
 	// CC Edit Begin
 
 	//This entire section is related to the Mangled Jaw vice. It issues pain via a wounding system with multiple stages.
-	// It uses staged wounds so that people can nullify it with drugs or miracles.
-	// Note that technically people can proc immediate pain by force feeding them something like a drink and cause them to get insane amounts of pain... But... That's why
-	// You wear masks... (Or so I hope they work) That feature is a flaw with item attacks and not waiting for the do_after procs to complete! I like to imagine people are grabbing your jaw.
+	// It uses wounds so that people can nullify it with drugs or miracles.
+	// Note that technically people can proc immediate pain by force feeding them something like a drink and cause them to get insane amounts of pain...
+	// But... That's why you wear masks and helmets... 
 	if(ishuman(C))
 		if(HAS_TRAIT(C, TRAIT_MANGLED_JAW))
-			var/painpercent = C.get_complex_pain() / C.pain_threshold
+			var/painpercent = (C.get_complex_pain() / C.pain_threshold) * 100
 			if(painpercent >= 50)
 				to_chat(C, span_warning("It hurts!"))
 			for(var/obj/item/bodypart/head/head in C.bodyparts)
@@ -121,6 +121,7 @@
 								head.add_wound(jaw_wound.jaw_wounds_ascending[cur_stage])
 								break
 						else //Refresh the duration for tolerating the pain.
+							to_chat(C, span_warning("I manage to tolerate the pain."))
 							jaw_wound.refresh()
 							break
 					cur_stage++ //Iterate to the next stage on the list.
