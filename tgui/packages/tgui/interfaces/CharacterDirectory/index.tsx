@@ -20,7 +20,7 @@ export const CharacterDirectory = (props) => {
   } = data;
 
   const [overlay, setOverlay] = useState<mobEntry | null>(null);
-  const [overwritePrefs, setOverwritePrefs] = useState<boolean>(false);
+  const [overwritePrefs, setOverwritePrefs] = useState<boolean>(true);
 
   return (
     <Window width={816} height={722}>

@@ -127,7 +127,7 @@ GLOBAL_LIST_EMPTY(chardirectory_photos)
 						strangername = "unknown"*/
 			name = strangername
 			species = H.client.prefs.pref_species.sub_name //"[H.custom_species ? H.custom_species : H.species.name]"
-			ooc_notes = H.ooc_notes
+			ooc_notes = H.ooc_notes + "\n\nNSFW OOC Notes\n\n" + H.erpprefs
 			/*if(H.ooc_notes_style && (H.ooc_notes_favs || H.ooc_notes_likes || H.ooc_notes_maybes || H.ooc_notes_dislikes))
 				ooc_notes = H.ooc_notes + "\n\n"
 				ooc_notes_favs = H.ooc_notes_favs
@@ -145,7 +145,7 @@ GLOBAL_LIST_EMPTY(chardirectory_photos)
 				if(H.ooc_notes_dislikes)
 					ooc_notes += "\n\nDISLIKES\n\n[H.ooc_notes_dislikes]"*/
 			if(H.flavortext)
-				flavor_text = H.flavortext
+				flavor_text = H.flavortext + "\n\nNSFW Flavortext\n\n" + H.nsfwflavortext
 			if(H.headshot_link)
 				custom_link = H.headshot_link
 

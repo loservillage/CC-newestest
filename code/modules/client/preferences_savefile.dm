@@ -206,16 +206,19 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	S["pda_color"]			>> pda_color
 	///Caustic edit
 	S["epilepsy"]			>> epilepsy
+	
+	S["vore_health_bars"]	>> vore_health_bars
+	S["digestion_noises"]	>> digestion_noises
+	S["eating_noises"]		>> eating_noises
+	S["belch_noises"]		>> belch_noises
+
+	//This bit should HOPEFULLY recover any copies of this saved to preferences instead of the character. But this can be removed after a good while.
 	S["show_in_directory"]	>> show_in_directory
 	S["directory_tag"]		>> directory_tag
 	S["directory_erptag"]	>> directory_erptag
 	S["directory_gendertag"]>> directory_gendertag
 	S["directory_sexualitytag"]	>> directory_sexualitytag
 	S["directory_ad"]		>> directory_ad
-	S["vore_health_bars"]	>> vore_health_bars
-	S["digestion_noises"]	>> digestion_noises
-	S["eating_noises"]		>> eating_noises
-	S["belch_noises"]		>> belch_noises
 	///Caustic edit end
 	// Custom hotkeys
 	S["key_bindings"]		>> key_bindings
@@ -359,12 +362,6 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 
 	///Caustic edit
 	WRITE_FILE(S["epilepsy"], epilepsy)
-	WRITE_FILE(S["show_in_directory"], show_in_directory)
-	WRITE_FILE(S["directory_tag"], directory_tag)
-	WRITE_FILE(S["directory_erptag"], directory_erptag)
-	WRITE_FILE(S["directory_gendertag"], directory_gendertag)
-	WRITE_FILE(S["directory_sexualitytag"], directory_sexualitytag)
-	WRITE_FILE(S["directory_ad"], directory_ad)
 
 	WRITE_FILE(S["vore_health_bars"], vore_health_bars)
 	WRITE_FILE(S["digestion_noises"], digestion_noises)
@@ -528,6 +525,16 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	S["familiar_ooc_extra"]				>> familiar_prefs.familiar_ooc_extra
 	S["familiar_ooc_extra_link"]		>> familiar_prefs.familiar_ooc_extra_link
 
+//Caustic Edit - Load Character Directory info!
+/datum/preferences/proc/_load_char_directory(S)
+	S["show_in_directory"]	>> show_in_directory
+	S["directory_tag"]		>> directory_tag
+	S["directory_erptag"]	>> directory_erptag
+	S["directory_gendertag"]>> directory_gendertag
+	S["directory_sexualitytag"]	>> directory_sexualitytag
+	S["directory_ad"]		>> directory_ad
+//Caustic Edit End
+
 /datum/preferences/proc/load_character(slot)
 	if(!path)
 		return FALSE
@@ -658,6 +665,9 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	S["body_size"] >> features["body_size"]
 	if (!features["body_size"])
 		features["body_size"] = BODY_SIZE_NORMAL
+	
+	_load_char_directory(S) //Caustic Edit - Add call to load Character Directory info!
+
 	//try to fix any outdated data if necessary
 	if(needs_update >= 0)
 		update_character(needs_update, S)		//needs_update == savefile_version if we need an update (positive integer)
@@ -877,9 +887,14 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	WRITE_FILE(S["familiar_ooc_extra"] , familiar_prefs.familiar_ooc_extra)
 	WRITE_FILE(S["familiar_ooc_extra_link"] , familiar_prefs.familiar_ooc_extra_link)
 
-
-
 	//Caustic edit
+	WRITE_FILE(S["show_in_directory"], show_in_directory)
+	WRITE_FILE(S["directory_tag"], directory_tag)
+	WRITE_FILE(S["directory_erptag"], directory_erptag)
+	WRITE_FILE(S["directory_gendertag"], directory_gendertag)
+	WRITE_FILE(S["directory_sexualitytag"], directory_sexualitytag)
+	WRITE_FILE(S["directory_ad"], directory_ad)
+
 	save_sizecat(S)
 	save_extra_virtue(S)
 	//save_pickupable(S)
