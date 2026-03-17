@@ -3199,4 +3199,6 @@
 #include "modular_causticcove\code\modules\events\adventure\random_bosses\random_boss.dm"
 #include "modular_causticcove\code\modules\spells\spell_types\wizard\conjure\conjure_tool.dm"
 #include "modular_causticcove\code\game\objects\items\clothes\causthats.dm"
+#include "modular_causticcove\code\datums\character_flaw\mangled_jaw_vice.dm"
+#include "modular_causticcove\code\datums\wounds\types\mangled_jaw.dm"
 // END_INCLUDE
