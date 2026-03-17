@@ -176,10 +176,10 @@ GLOBAL_LIST_INIT(lamia_aggro, world.file2list("strings/rt/evillamiaaggrolines.tx
 	if(prob(50))
 		neck = /obj/item/clothing/neck/roguetown/leather
 	H.skin_armor = new /obj/item/clothing/suit/roguetown/armor/skin_armor/natural_armor/dense(H)
-	H.STASTR = 14
-	H.STASPD = 12
+	H.STASTR = 12
+	H.STASPD = 16
 	H.STACON = 14
-	H.STAWIL = 16
+	H.STAWIL = 14
 	H.STAPER = 10
 	H.STAINT = 3 //stupid snakes
 	H.adjust_skillrank(/datum/skill/combat/unarmed, 4, TRUE)

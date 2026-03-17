@@ -137,7 +137,7 @@ GLOBAL_LIST_INIT(evilgoblin_aggro, world.file2list("strings/rt/evilgobinaggrolin
 		H.tree_climber = TRUE
 		H.find_targets_above = TRUE // so they can taunt
 	H.STACON = 14
-	H.STAWIL = 15
+	H.STAWIL = 14
 	H.STAINT = 4
 	var/loadout = rand(1,5)
 	switch(loadout)
