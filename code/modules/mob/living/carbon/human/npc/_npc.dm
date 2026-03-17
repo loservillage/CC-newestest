@@ -672,13 +672,13 @@ GLOBAL_LIST_INIT(eatlines, world.file2list("strings/rt/evileatlines.txt"))
 				frustration = 0
 				face_atom(target)
 				if(prob(40))
-					if(is_voracious_npc && target.allowmobvore && pulling == target && grab_state == GRAB_AGGRESSIVE && target.stat != DEAD)
+					if(is_voracious_npc && target.devourable && target.allowmobvore && pulling == target && grab_state == GRAB_AGGRESSIVE && target.stat != DEAD)
 						var/npcbelly = src.vore_selected
 						NPC_THINK("Hungry! Trying to eat [target]!")
 						say(pick(GLOB.eatlines))
 						attempt_to_devour_prey(src, target, src, npcbelly, 7 SECONDS)
 						return
-				if(is_voracious_npc && target.allowmobvore && target.lying && target.stat != DEAD) //If you're lying down, you're getting stunned and eaten, gg bozo.
+				if(is_voracious_npc && target.devourable && target.allowmobvore && target.lying && target.stat != DEAD) //If you're lying down, you're getting stunned and eaten, gg bozo.
 					if(prob(45))
 						target.Stun(7 SECONDS)
 						var/npcbelly = src.vore_selected
@@ -834,7 +834,7 @@ GLOBAL_LIST_INIT(eatlines, world.file2list("strings/rt/evileatlines.txt"))
 	if(HAS_TRAIT(victim, TRAIT_CHUNKYFINGERS))
 		make_grab_chance = 30 // we can't use normal weapons, so try to grapple harder because we don't care about having a free hand
 		use_grab_chance = 50
-	if(prob(25) && is_voracious_npc && target.allowmobvore)
+	if(prob(25) && is_voracious_npc && target.allowmobvore && target.devourable)
 		make_grab_chance = 70
 		use_grab_chance = 80
 	// we always try to move our grab into our offhand where possible, so no need to worry about main-hand weapons
