@@ -1,13 +1,17 @@
 /mob/living //Caustic - This MIGHT be able to be removed if the Chompers integration works out
 	//oh no vore time
-	var/voremode = FALSE
+	//var/voremode = FALSE
 
 /mob/living/proc/toggle_vore_mode()
 	if(cmode)
 		return FALSE
-	voremode = !voremode
+	//voremode = !voremode
 	//init_vore()
-	if(voremode)
+	if(!client?.prefs_vr)
+		return FALSE
+
+	client.prefs_vr.devourable = !client.prefs_vr.devourable
+	if(client.prefs_vr.devourable)
 		to_chat(src, span_info("I feel voracious."))
 	else
 		to_chat(src, span_info("I no longer feel voracious."))
