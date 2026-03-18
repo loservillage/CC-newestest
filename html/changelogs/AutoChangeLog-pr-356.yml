@@ -1,0 +1,6 @@
+author: "Ghostcoffeee"
+delete-after: True
+changes:
+  - rscadd: "Added beaks to harpies"
+  - balance: "Increased harpies' innate music skill to 3/journeyman, gave them 3/journeyman climbing"
+  - bugfix: "fixed harpies not having the 'Physical Descriptor' option"
