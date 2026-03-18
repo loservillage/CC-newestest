@@ -19,7 +19,8 @@
 	skin_tone_wording = "Heritage"
 	default_color = "FFFFFF"
 
-	species_traits = list(EYECOLOR, HAIR, FACEHAIR, LIPS, STUBBLE, OLDGREY)
+	species_traits = list(EYECOLOR, HAIR, FACEHAIR, LIPS, STUBBLE, OLDGREY, MUTCOLORS)
+	inherent_traits = list(TRAIT_LEAPER, TRAIT_NOFALLDAMAGE1)
 
 	use_skintones = TRUE
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_MAGIC | MIRROR_PRIDE | RACE_SWAP | SLIME_EXTRACT
@@ -73,8 +74,11 @@
 		/datum/customizer/bodypart_feature/accessory,
 		/datum/customizer/bodypart_feature/face_detail,
 		/datum/customizer/bodypart_feature/underwear,
+		/datum/customizer/bodypart_feature/legwear,
+		/datum/customizer/bodypart_feature/piercing,
 		/datum/customizer/organ/tail/harpy,
 		/datum/customizer/organ/wings/harpy,
+		/datum/customizer/organ/snout/harpy,
 		/datum/customizer/organ/testicles/anthro,
 		/datum/customizer/organ/penis/anthro,
 		/datum/customizer/organ/belly/animal,
@@ -125,12 +129,13 @@
 	)
 
 	descriptor_choices = list(
+		/datum/descriptor_choice/trait,
 		/datum/descriptor_choice/height,
 		/datum/descriptor_choice/body,
 		/datum/descriptor_choice/stature,
 		/datum/descriptor_choice/face,
 		/datum/descriptor_choice/face_exp,
-		/datum/descriptor_choice/skin,
+		/datum/descriptor_choice/skin_all, // skin_all has the feather descriptors as well as skin, so I'm giving harpies them all
 		/datum/descriptor_choice/voice,
 		/datum/descriptor_choice/prominent_one_wild,
 		/datum/descriptor_choice/prominent_two_wild,
@@ -174,6 +179,7 @@
 	..()
 	foreign.AddComponent(/datum/component/abberant_eater, list(/obj/item/natural/worms) + typesof(/obj/item/seeds), TRUE)
 	foreign.grant_language(/datum/language/common)
+	foreign.adjust_skillrank_up_to(/datum/skill/misc/climbing, 3, TRUE) // There's probably a better way to do this
 
 /datum/species/harpy/get_skin_list()
 	return list(
