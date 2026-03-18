@@ -16,12 +16,11 @@ export const CharacterDirectory = (props) => {
     personalGenderTag,
     personalSexualityTag,
     personalErpTag,
-    personalEventTag,
     directory,
   } = data;
 
   const [overlay, setOverlay] = useState<mobEntry | null>(null);
-  const [overwritePrefs, setOverwritePrefs] = useState<boolean>(false);
+  const [overwritePrefs, setOverwritePrefs] = useState<boolean>(true);
 
   return (
     <Window width={816} height={722}>
@@ -102,16 +101,6 @@ export const CharacterDirectory = (props) => {
                     }
                   >
                     {personalErpTag}
-                  </Button>
-                </LabeledList.Item>
-                <LabeledList.Item label="Event Pref">
-                  <Button
-                    fluid
-                    onClick={() =>
-                      act('setEventTag', { overwrite_prefs: overwritePrefs })
-                    }
-                  >
-                    {personalEventTag}
                   </Button>
                 </LabeledList.Item>
                 <LabeledList.Item label="Advertisement">

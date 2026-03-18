@@ -165,9 +165,9 @@
 		apply_sizecat(src, new /datum/sizecat/micro)
 	else if(new_size < 0.8) //From 0.35 to 0.8 is Small
 		apply_sizecat(src, new /datum/sizecat/small)
-	else if(new_size < 1.35) //From 0.8 to 1.35 is None (to account for the scale being different on each end cause it's a multiplier)
+	else if(new_size < 1.2) //From 0.8 to 1.2 is None (to account for the scale being different on each end cause it's a multiplier)
 		apply_sizecat(src, new /datum/sizecat/none)
-	else if(new_size < 1.85) //From 1.35 to 1.85 is Large
+	else if(new_size < 1.85) //From 1.2 to 1.85 is Large
 		apply_sizecat(src, new /datum/sizecat/large)
 	else //From 1.85 to 2.5 is Macro
 		apply_sizecat(src, new /datum/sizecat/macro)
@@ -211,7 +211,7 @@
  * Verb proc for a command that lets players change their size OOCly.
  */
 
-/mob/living/proc/set_size()
+/mob/living/verb/set_size()
 	set name = "Adjust Size"
 	set category = "OOC" //Seeing as prometheans have an IC reason to be changing mass. <-- Leftover from Chomp!
 

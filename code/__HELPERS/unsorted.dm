@@ -1211,6 +1211,16 @@ GLOBAL_REAL_VAR(list/stack_trace_storage)
 		compile_icon_states_cache(file)
 	return !isnull(GLOB.icon_states_cache_lookup[file][state])
 
+//Caustic Edit - Attempting to update GetFlatIcon to what Chompers has
+/// Cached, rustg-based alternative to icon_states()
+/proc/icon_states_fast(file)
+	if(isnull(file))
+		return null
+	if(isnull(GLOB.icon_states_cache[file]))
+		compile_icon_states_cache(file)
+	return GLOB.icon_states_cache[file]
+//Caustic Edit End
+
 /// Functions the same as `/proc/icon_exists()`, but with the addition of a stack trace if the
 /// specified file or state doesn't exist.
 ///

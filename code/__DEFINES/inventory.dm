@@ -78,6 +78,7 @@
 	SLOT_GLOVES,\
 	SLOT_RING,\
 	SLOT_WRISTS,\
+	SLOT_BELT,\
 	SLOT_BELT_L,\
 	SLOT_BELT_R,\
 	SLOT_ARMOR,\
@@ -86,7 +87,7 @@
 	SLOT_PANTS,\
 	SLOT_IN_BACKPACK,\
 	SLOT_LEGCUFFED,\
-)
+) //Caustic Edit - Added Slot_Belt onto this list since weirdly enough, it wasn't here!
 
 
 //old slots

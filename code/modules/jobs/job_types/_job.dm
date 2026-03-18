@@ -303,11 +303,16 @@
 //CC Edit: unfucks this entire proc as well by moving from get_flat_human_icon to get_flat_icon for human
 	if(!mind || !client)
 		return
+	
+	//Caustic Edit - Add in Piggyback Call to Character Directory Photo here!
+	get_chardirectory_photo()
+	//Caustic Edit End
+
 	var/thename = "[real_name]"
 	//var/datum/job/J = SSjob.GetJob(mind.assigned_role)
 	var/used_title = get_role_title()
 	GLOB.credits_icons[thename] = list()
-	var/icon/I = get_flat_icon(list(SOUTH))
+	var/icon/I = icon(get_flat_icon(list(SOUTH)),frame=1)
 	if(I)
 		var/icon/female_s = icon("icon"='icons/mob/clothing/under/masking_helpers.dmi', "icon_state"="credits")
 		I.Blend(female_s, ICON_MULTIPLY)

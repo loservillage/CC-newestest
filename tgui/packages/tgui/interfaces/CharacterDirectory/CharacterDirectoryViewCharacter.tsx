@@ -36,9 +36,6 @@ export const ViewCharacter = (props: {
       <Section title="ERP Tag">
         <Box>{overlay.erptag}</Box>
       </Section>
-      <Section title="Event Pref">
-        <Box>{overlay.eventtag}</Box>
-      </Section>
       <Section title="Character Ad">
         <Box style={{ wordBreak: 'break-all' }} preserveWhitespace>
           {overlay.character_ad || 'Unset.'}

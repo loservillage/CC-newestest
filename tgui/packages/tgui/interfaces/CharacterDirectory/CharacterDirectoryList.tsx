@@ -83,15 +83,6 @@ export const CharacterDirectoryList = (props: {
           >
             ERP Tag
           </SortButton>
-          <SortButton
-            ourId="eventtag"
-            sortId={sortId}
-            sortOrder={sortOrder}
-            onSortId={setSortId}
-            onSortOrder={setSortOrder}
-          >
-            Event Pref
-          </SortButton>
           <Table.Cell collapsing textAlign="right">
             View
           </Table.Cell>
@@ -138,9 +129,6 @@ export const CharacterDirectoryList = (props: {
                 {character.sexualitytag}
               </Table.Cell>
               <Table.Cell verticalAlign="middle">{character.erptag}</Table.Cell>
-              <Table.Cell verticalAlign="middle">
-                {character.eventtag}
-              </Table.Cell>
               <Table.Cell verticalAlign="middle" collapsing textAlign="right">
                 <Button
                   onClick={() => onOverlay(character)}
