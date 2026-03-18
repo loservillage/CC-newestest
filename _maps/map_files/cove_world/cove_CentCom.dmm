@@ -800,6 +800,13 @@
 /obj/effect/decal/cleanable/dirt/cobweb{
 	dir = 4
 	},
+/obj/structure/closet/crate/chest/neu,
+/obj/item/rogueore/cinnabar,
+/obj/item/rogueore/cinnabar,
+/obj/item/rogueore/cinnabar,
+/obj/item/rogueore/cinnabar,
+/obj/item/rogueore/cinnabar,
+/obj/item/rogueore/cinnabar,
 /turf/open/floor/rogue/cobble,
 /area/rogue/under/cave/inhumen)
 "gz" = (
@@ -912,10 +919,6 @@
 "jz" = (
 /turf/open/floor/rogue/carpet/lord/left,
 /area/rogue/indoors/eventarea)
-"jA" = (
-/obj/item/reagent_containers/lux_impure,
-/turf/open/floor/rogue/hexstone,
-/area/rogue/under/cave/inhumen)
 "jG" = (
 /turf/open/floor/rogue/woodturned/nosmooth,
 /area/rogue/indoors/eventarea)
@@ -1129,6 +1132,21 @@
 /obj/item/rope,
 /obj/item/rope,
 /obj/item/rope,
+/obj/item/reformation_gem{
+	pixel_y = -6;
+	pixel_x = 8
+	},
+/obj/item/reformation_gem{
+	pixel_y = -6;
+	pixel_x = 8
+	},
+/obj/item/reformation_gem{
+	pixel_y = -6;
+	pixel_x = 8
+	},
+/obj/item/rope/chain,
+/obj/item/rope/chain,
+/obj/item/rope/chain,
 /turf/open/floor/rogue/hexstone,
 /area/rogue/under/cave/inhumen)
 "ou" = (
@@ -1634,7 +1652,7 @@
 /turf/open/floor/rogue/underworld/space/quiet,
 /area/rogue/underworld/dream)
 "Bd" = (
-/obj/structure/roguemachine/scomm{
+/obj/structure/roguemachine/scomm/receive_only{
 	scom_tag = "Unknown Location"
 	},
 /turf/open/floor/rogue/hexstone,
@@ -1645,7 +1663,7 @@
 "Bl" = (
 /obj/structure/toilet{
 	color = "#ffee00";
-	name = "The Royal Shitter"
+	name = "The Stolen Royal Shitter"
 	},
 /turf/open/floor/rogue/dirt,
 /area/rogue/under/cave/inhumen)
@@ -1943,9 +1961,12 @@
 /area/rogue/indoors/eventarea)
 "HV" = (
 /obj/structure/rack/rogue,
-/obj/item/clothing/mask/rogue/sack,
-/obj/item/clothing/mask/rogue/sack,
-/obj/item/clothing/mask/rogue/sack,
+/obj/item/storage/roguebag,
+/obj/item/storage/roguebag,
+/obj/item/storage/roguebag,
+/obj/item/storage/roguebag,
+/obj/item/storage/roguebag,
+/obj/item/storage/roguebag,
 /turf/open/floor/rogue/hexstone,
 /area/rogue/under/cave/inhumen)
 "If" = (
@@ -1969,6 +1990,7 @@
 /obj/structure/closet/crate/drawer,
 /obj/item/clothing/neck/roguetown/collar,
 /obj/item/leash/leather,
+/obj/item/reformation_gem,
 /turf/open/floor/rogue/hexstone,
 /area/rogue/under/cave/inhumen)
 "IE" = (
@@ -1976,6 +1998,10 @@
 /area/rogue/indoors/eventarea)
 "IT" = (
 /obj/structure/rack/rogue/shelf/biggest,
+/obj/item/book/granter/spell/blackstone/mirror_transform,
+/obj/item/book/granter/spell/blackstone/mirror_transform,
+/obj/item/book/granter/spell/blackstone/sizespell,
+/obj/item/book/granter/spell/blackstone/sizespell,
 /turf/open/floor/rogue/hexstone,
 /area/rogue/under/cave/inhumen)
 "IV" = (
@@ -2129,6 +2155,10 @@
 /obj/item/natural/feather{
 	pixel_x = 5
 	},
+/obj/item/handmirror{
+	pixel_x = -5;
+	pixel_y = 6
+	},
 /turf/open/floor/rogue/hexstone,
 /area/rogue/under/cave/inhumen)
 "Mm" = (
@@ -2152,6 +2182,9 @@
 /obj/item/heart_blood_canister/filled,
 /obj/item/heart_blood_canister/filled,
 /obj/item/heart_blood_canister/filled,
+/obj/item/reagent_containers/lux_impure,
+/obj/item/reagent_containers/lux_impure,
+/obj/item/reagent_containers/lux_impure,
 /turf/open/floor/rogue/hexstone,
 /area/rogue/under/cave/inhumen)
 "Nc" = (
@@ -2215,8 +2248,9 @@
 	icon_state = "tablewood2"
 	},
 /obj/item/needle,
-/obj/item/natural/cloth,
-/obj/item/natural/cloth,
+/obj/item/natural/bundle/cloth/bandage/full,
+/obj/item/natural/bundle/cloth/bandage/full,
+/obj/item/needle,
 /turf/open/floor/rogue/hexstone,
 /area/rogue/under/cave/inhumen)
 "PP" = (
@@ -4588,7 +4622,7 @@ ws
 ws
 Lp
 tX
-wN
+XV
 XV
 XV
 XV
@@ -4718,7 +4752,7 @@ ws
 ws
 ws
 DM
-wN
+XV
 XV
 XV
 XV
@@ -4848,7 +4882,7 @@ ws
 ws
 Lp
 tX
-wN
+XV
 XV
 XV
 XV
@@ -4978,7 +5012,7 @@ lq
 Kv
 TY
 xL
-wN
+XV
 XV
 XV
 XV
@@ -5108,7 +5142,7 @@ ws
 Lp
 xL
 xL
-wN
+XV
 XV
 XV
 uJ
@@ -5239,7 +5273,7 @@ ws
 ws
 xL
 BC
-wN
+XV
 XV
 uJ
 uJ
@@ -5369,7 +5403,7 @@ DT
 ws
 ws
 If
-wN
+XV
 XV
 xm
 xm
@@ -6149,7 +6183,7 @@ KG
 ws
 ws
 BC
-wN
+XV
 XV
 Jc
 DQ
@@ -6255,7 +6289,7 @@ wN
 wN
 TS
 pV
-jA
+ws
 MX
 BC
 Bd
@@ -6279,7 +6313,7 @@ ws
 ws
 xL
 If
-wN
+XV
 XV
 XV
 XV
@@ -6408,8 +6442,8 @@ ws
 Lp
 xL
 xL
-wN
-wN
+XV
+XV
 XV
 XV
 XV
@@ -6538,7 +6572,7 @@ lq
 Kv
 Kv
 xL
-wN
+XV
 XV
 XV
 XV
@@ -6668,7 +6702,7 @@ ws
 ws
 Lp
 tX
-wN
+XV
 XV
 XV
 XV
