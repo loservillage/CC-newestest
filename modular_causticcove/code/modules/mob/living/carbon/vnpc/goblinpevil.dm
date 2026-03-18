@@ -351,7 +351,7 @@ GLOBAL_LIST_INIT(evilgoblin_aggro, world.file2list("strings/rt/evilgobinaggrolin
 	B.belly_fullscreen_color = "#823232"
 	B.belly_fullscreen_color2 = "#823232"
 
-/mob/living/carbon/human/species/goblinevil/npc/death(gibbed, nocutscene)
+/*/mob/living/carbon/human/species/goblinevil/npc/death(gibbed, nocutscene)
 	if(vore_organs.len > 0)
 		for(var/obj/belly/B in vore_organs)
-			B.release_all_contents(TRUE)
+			B.release_all_contents(TRUE)*/
