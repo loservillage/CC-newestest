@@ -21,10 +21,6 @@
 				new /datum/ambush_config/mirespiders_ambush = 110,
 				new /datum/ambush_config/mirespiders_crawlers = 25,
 				new /datum/ambush_config/mirespiders_aragn = 10,
-				new /datum/ambush_config/evilamia/easy = 80,
-				new /datum/ambush_config/evilamia/hard = 80,
-				new /datum/ambush_config/evilgob/easy = 20,
-				new /datum/ambush_config/evilgob/hard = 10,
 				new /datum/ambush_config/mirespiders_unfair = 5)
 	first_time_text = "THE TERRORBOG"
 	converted_type = /area/rogue/indoors/shelter/bog

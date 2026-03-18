@@ -17,7 +17,6 @@
 				/mob/living/carbon/human/species/skeleton/npc/ambush = 10,
 				/mob/living/carbon/human/species/human/northern/highwayman/ambush = 5,
 				/mob/living/simple_animal/hostile/retaliate/rogue/direbear = 5,
-				/datum/ambush_config/evilgob/easy =  5,
 				/mob/living/simple_animal/hostile/retaliate/rogue/minotaur = 5)
 	converted_type = /area/rogue/outdoors/caves
 

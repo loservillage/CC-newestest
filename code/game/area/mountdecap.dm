@@ -11,8 +11,6 @@
 				new /datum/ambush_config/duo_treasure_hunter = 2,
 				new /datum/ambush_config/medium_skeleton_party = 10,
 				new /datum/ambush_config/heavy_skeleton_party = 5,
-				new /datum/ambush_config/evilgob/easy = 10,
-				new /datum/ambush_config/evilgob/hard = 10,
 				new /datum/ambush_config/hobgoblin_band = 10,
 				new /datum/ambush_config/hobgoblin_band/circus = 5)
 	droning_sound = 'sound/music/area/decap.ogg'
