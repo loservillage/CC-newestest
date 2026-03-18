@@ -2496,7 +2496,7 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 	//Internal Variable that lists all of the current diets.
 	. = list()
 	if(return_all)
-		diet_types = length(NUTRITIONAL_DIET_TYPES)
+		diet_types = NUTRITIONAL_DIET_TYPES
 	for(var/i in 1 to length(diet_types))
 		switch(diet_types[i])
 			if("Dairy")

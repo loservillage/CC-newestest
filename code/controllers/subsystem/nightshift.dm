@@ -117,7 +117,7 @@ SUBSYSTEM_DEF(nightshift)
 	var/static/list/towner_jobs
 	towner_jobs = GLOB.peasant_positions | GLOB.burgher_positions | GLOB.sidefolk_positions
 	//CC Edit Begin
-	if(mind.assigned_role.title in towner_jobs) //If you play a towner-related role, you get an additonal triumph. Fixed as of 3/18/26.
+	if(mind.assigned_role in towner_jobs) //If you play a towner-related role, you get an additonal triumph. Fixed as of 3/18/26.
 		triumphs_to_add++
 	if(dna.species.dietary_goals_met)
 		triumphs_to_add++
