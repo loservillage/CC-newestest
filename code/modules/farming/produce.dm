@@ -145,6 +145,12 @@
 	var/equippedloc = null
 	var/list/bitten_names = list()
 
+	//CC Edit Begin
+	//Each bite gives 2 diet. One apple gives 6 to the Fruits diet.
+	diet_types = list("Fruits")
+	diet_change_amount = 2
+	//CC Edit End
+
 /obj/item/reagent_containers/food/snacks/grown/apple/On_Consume(mob/living/eater)
 	..()
 	if(ishuman(eater))

@@ -287,6 +287,32 @@ GLOBAL_LIST_EMPTY(personal_objective_minds)
 	popup.set_content(contents)
 	popup.open()
 
+//CC Edit Begin
+/datum/mind/proc/display_dietary_information(mob/user)
+	if(!user)
+		return
+	if(!ishuman(user)) //Human Check Human Check
+		return
+	var/mob/living/carbon/human/H = user
+	var/contents = "<center>My nutritional info:</center><BR>"
+
+	//Note for anyone who may go crazy in the future; Please replace these icons with actual in-game .dmi's I wasn't sure how to do that at the time of making.
+	contents +="<center><font color=#f1d669>𓇢 Grains:</font>[round(H.nutri_grain)]<BR>"
+	contents +="<center><font color=#6aff5d>𖧧 Vegetables:</font>[round(H.nutri_vegetable)]<BR>"
+	contents +="<center><font color=#ff5d5d>𖥸 Fruits:</font>[round(H.nutri_fruit)]<BR>"
+	contents +="<center><font color=#a70000>𐂯 Meats:</font>[round(H.nutri_meat)]<BR>"
+	contents +="<center><font color=#faffe2>𐃯 Dairy:</font>[round(H.nutri_dairy)]<BR>"
+	contents += "<BR>"
+	contents += "<BR>"
+	contents += "<center>Managing your diet is important for good health.<BR>"
+	contents += "<center>100 points must be reached in 3 dietary goals for benefits.<BR>"
+	contents += "<center>If you reach goals in all 5, benefits get a further buff.<BR>"
+	contents += "<BR>"
+
+	var/datum/browser/popup = new(user, "MYNUTRITIONALINFO", "", 260, 400)
+	popup.set_content(contents)
+	popup.open()
+//CC Edit End
 
 /datum/mind/proc/get_language_holder()
 	if(!language_holder)

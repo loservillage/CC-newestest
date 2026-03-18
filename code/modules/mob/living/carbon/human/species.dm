@@ -961,7 +961,10 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 //LIFE//
 ////////
 
-/datum/species/proc/handle_digestion(mob/living/carbon/human/H)
+/datum/species/proc/handle_digestion(mob/living/carbon/human/H) 
+//CC Edit Begin
+	handle_diet(H)
+//CC Edit End
 	//The fucking TRAIT_FAT mutation is the dumbest shit ever. It makes the code so difficult to work with
 //	if(HAS_TRAIT_FROM(H, TRAIT_FAT, OBESITY))//I share my pain, past coder.
 //		if(H.overeatduration < 100)
@@ -2415,3 +2418,88 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 
 /datum/species/proc/get_types_to_preload()
 	return get_organs(FALSE)
+
+//CC Edit Begin
+
+//Defines for nutritional amounts can be located in mobs.dm
+//This handles the rewards via goals met.
+/datum/species/proc/handle_diet(mob/living/carbon/human/H)
+	var/all_diets = find_diet_value(H, return_all = TRUE)
+	var/goals_met = 0
+
+	//Check for every diet first.
+	for(var/i in 1 to length(all_diets))
+		var/cur_val = all_diets[i]
+		if(cur_val > NUTRITIONAL_GOAL)
+			goals_met++
+	
+	//The actual handling of the rewards and diet decay.
+	switch(goals_met)
+		if(NUTRITIONAL_REWARD_MIN) //Heal from wounds, and gives us a bonus triumph if we sustain a good diet at night. Lowers decay rates as well.
+			adjust_diet_value(H, NUTRITIONAL_DIET_TYPES, MIN_REWARD_NUTRITIONAL_DECAY)
+			H.heal_wounds(0.25)
+
+		if(NUTRITIONAL_REWARD_MAX) //Decays slower and has a better wound bonus.
+			adjust_diet_value(H, NUTRITIONAL_DIET_TYPES, FULL_REWARD_NUTRITIONAL_DECAY)
+			H.heal_wounds(0.75)
+
+		if(0) //We've not yet reached a reward goal. Slow down our decay. Has no benefits or downsides.
+			adjust_diet_value(H, NUTRITIONAL_DIET_TYPES, DEFAULT_NUTRITIONAL_DECAY)
+
+
+/datum/species/proc/adjust_diet_value(mob/living/carbon/human/H, diet_types, change)
+	var/cur_diets = diet_types
+	for(var/i in 1 to length(diet_types))
+		var/cur_diet = cur_diets[i]
+		if(HAS_TRAIT(src, TRAIT_NOHUNGER))
+			change = NUTRITIONAL_MIN_AMT // No Hunger? No benefits.
+		switch(cur_diet)
+			if("Dairy")
+				H.nutri_dairy = max(NUTRITIONAL_MIN_AMT, min(NUTRITIONAL_MAX_AMT, H.nutri_dairy) + change)
+			if("Meats")
+				H.nutri_meat = max(NUTRITIONAL_MIN_AMT, min(NUTRITIONAL_MAX_AMT, H.nutri_meat) + change)
+			if("Fruits")
+				H.nutri_fruit = max(NUTRITIONAL_MIN_AMT, min(NUTRITIONAL_MAX_AMT, H.nutri_fruit) + change)
+			if("Vegetables")
+				H.nutri_vegetable = max(NUTRITIONAL_MIN_AMT, min(NUTRITIONAL_MAX_AMT, H.nutri_vegetable) + change)
+			if("Grains")
+				H.nutri_grain = max(NUTRITIONAL_MIN_AMT, min(NUTRITIONAL_MAX_AMT, H.nutri_grain) + change)
+
+/datum/species/proc/set_diet_value(mob/living/carbon/human/H, diet_types, change)
+	var/cur_diets = diet_types
+	for(var/i in 1 to length(diet_types))
+		var/cur_diet = cur_diets[i]
+		if(HAS_TRAIT(src, TRAIT_NOHUNGER))
+			change = NUTRITIONAL_MIN_AMT // No Hunger? No benefits.
+		switch(cur_diet)
+			if("Dairy")
+				H.nutri_dairy = max(NUTRITIONAL_MIN_AMT, change)
+			if("Meats")
+				H.nutri_meat = max(NUTRITIONAL_MIN_AMT, change)
+			if("Fruits")
+				H.nutri_fruit = max(NUTRITIONAL_MIN_AMT, change)
+			if("Vegetables")
+				H.nutri_vegetable = max(NUTRITIONAL_MIN_AMT, change)
+			if("Grains")
+				H.nutri_grain = max(NUTRITIONAL_MIN_AMT, change)
+
+
+/datum/species/proc/find_diet_value(mob/living/carbon/human/H, diet_types, return_all)
+	//Internal Variable that lists all of the current diets.
+	. = list()
+	if(return_all)
+		diet_types = length(NUTRITIONAL_DIET_TYPES)
+	for(var/i in 1 to length(diet_types))
+		switch(diet_types[i])
+			if("Dairy")
+				. += H.nutri_dairy
+			if("Meats")
+				. += H.nutri_meat
+			if("Fruits")
+				. += H.nutri_fruit
+			if("Vegetables")
+				. += H.nutri_vegetable
+			if("Grains")
+				. += H.nutri_grain
+
+//CC Edit End

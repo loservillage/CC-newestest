@@ -14,6 +14,12 @@
 	tastes = list("warm steak" = 1)
 	fried_type = null
 	cooked_type = null
+	
+	//CC Edit Begin
+	//Each bite gives 2 diet. One steak gives 6 to the Meats diet.
+	diet_types = list("Meats")
+	diet_change_amount = 2
+	//CC Edit End
 
 /obj/item/reagent_containers/food/snacks/rogue/meat/steak/fried/attackby(obj/item/I, mob/living/user, params)
 	var/obj/item/reagent_containers/peppermill/mill = I

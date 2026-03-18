@@ -97,4 +97,7 @@
 			H.adjust_hydration(10)
 		if(H.blood_volume < BLOOD_VOLUME_NORMAL)
 			H.blood_volume = min(H.blood_volume+10, BLOOD_VOLUME_NORMAL)
+		//CC Edit Begin
+		H.dna.species.adjust_diet_value(H, list("Dairy"), 0.25)
+		//CC Edit End
 	..()

@@ -1437,6 +1437,11 @@
 				H.mind.display_known_people(H)
 			else
 				to_chat(H, "<span class='warning'>I don't know anyone.</span>")
+		//CC Edit Begin
+		if(modifiers["middle"])
+			H.mind.display_dietary_information(H)
+		//CC Edit End
+
 
 /atom/movable/screen/splash
 	icon = 'icons/blank_title.png'

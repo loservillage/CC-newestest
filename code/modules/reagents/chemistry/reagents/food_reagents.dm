@@ -16,12 +16,25 @@
 	var/hydration_factor = 0
 	var/quality = 0	//affects mood, typically higher for mixed drinks with more complex recipes
 
+	//CC Edit Begin
+	//Handle for dietary adjustment. Can have multiple types.
+	//Default types are "Dairy", "Meats", "Fruits", "Vegetables", "Grains"
+	var/diet_types = null
+
+	//The amount of nutritional diet earned per bite.
+	var/diet_change_amount = 0
+	//CC Edit End
+
 /datum/reagent/consumable/on_mob_life(mob/living/carbon/M)
 	if(ishuman(M))
 		var/mob/living/carbon/human/H = M
 		if(!HAS_TRAIT(H, TRAIT_NOHUNGER))
 			H.adjust_nutrition(nutriment_factor * metabolization_rate)
 			H.adjust_hydration(hydration_factor * metabolization_rate)
+		//CC Edit Begin
+		if(diet_types)
+			H.dna.species.adjust_diet_value(H, diet_types, diet_change_amount)
+		//CC Edit End
 	return ..()
 
 /datum/reagent/consumable/reaction_mob(mob/living/M, method=TOUCH, reac_volume)
