@@ -150,8 +150,9 @@ GLOBAL_LIST_INIT(pronouns_list, list(HE_HIM, SHE_HER, THEY_THEM, IT_ITS))
 
 #define TITLES_M	"Lord / Ser"
 #define TITLES_F	"Lady / Dame"
+#define TITLES_N	"Monarch / Knight (Non-Binary terms!!!)"
 
-GLOBAL_LIST_INIT(titles_list, list(TITLES_M, TITLES_F))
+GLOBAL_LIST_INIT(titles_list, list(TITLES_M, TITLES_F, TITLES_N))
 
 #define CLOTHES_M "Masculine"
 #define CLOTHES_F "Feminine"

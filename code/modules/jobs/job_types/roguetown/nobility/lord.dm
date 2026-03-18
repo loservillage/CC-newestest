@@ -49,6 +49,13 @@ GLOBAL_LIST_EMPTY(lord_titles)
 
 /datum/job/roguetown/lord/after_spawn(mob/living/L, mob/M, latejoin = TRUE)
 	. = ..()
+	//CC EDIT
+	if(!ishuman(L))
+		return
+	var/mob/living/carbon/human/H = L
+	if(H.pronouns == THEY_THEM)
+		display_title = "Monarch"
+	//CC EDIT END
 	if(L)
 		var/list/chopped_name = splittext(L.real_name, " ")
 		if(length(chopped_name) > 1)

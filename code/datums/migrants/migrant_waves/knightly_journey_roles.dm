@@ -22,6 +22,8 @@
 		var/honorary = "Ser"
 		if(H.titles_pref == TITLES_F)
 			honorary = "Dame"
+		if(H.titles_pref == TITLES_N)
+			honorary = "Knight"
 		H.real_name = "[honorary] [prev_real_name]"
 		H.name = "[honorary] [prev_name]"
 
