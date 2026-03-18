@@ -1,0 +1,4 @@
+author: "apple5382"
+delete-after: True
+changes:
+  - bugfix: "Fixed Gnolls not getting the deadite trait due to a secondary file also preventing it."
