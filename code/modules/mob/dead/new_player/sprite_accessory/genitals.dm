@@ -142,7 +142,7 @@
 	//color_key_name = "Breasts"
 	color_keys = 2
 	color_key_names = list("Breasts", "Nipples")
-	relevant_layers = list(BODY_BEHIND_LAYER, BODY_FRONT_LAYER)
+	relevant_layers = list(BODY_BEHIND_LAYER, BODY_FRONTEST_LAYER)
 	//Caustic Edit end
 
 /datum/sprite_accessory/breasts/get_icon_state(obj/item/organ/organ, obj/item/bodypart/bodypart, mob/living/carbon/owner)
