@@ -11,6 +11,10 @@
 	foodtype = MEAT
 	warming = 5 MINUTES
 	dropshrink = 0.6
+	//CC Edit Begin
+	diet_types = list("Meats")
+	diet_change_amount = FOOD_DIETARY_VALUE_GOOD
+	//CC Edit End
 
 /obj/item/reagent_containers/food/snacks/rogue/fryfish/carp
 	name = "cooked carp"

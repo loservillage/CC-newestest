@@ -657,9 +657,9 @@
 
 //CC Edit Begin
 #define NUTRITIONAL_GOAL 100
-#define DEFAULT_NUTRITIONAL_DECAY -0.025
-#define MIN_REWARD_NUTRITIONAL_DECAY -0.02
-#define FULL_REWARD_NUTRITIONAL_DECAY -0.01
+#define DEFAULT_NUTRITIONAL_DECAY -0.025 // (0.025 / 2) * 60 * 30 = 22.5 over 30 minutes. 
+#define MIN_REWARD_NUTRITIONAL_DECAY -0.02 // (0.02 / 2) * 60 * 30 = 18 over 30 minutes. 
+#define FULL_REWARD_NUTRITIONAL_DECAY -0.01 // (0.02 / 2) * 60 * 30 = 9 over 30 minutes. 
 
 //You can go a little over 100 as a means to keep your nutrition for longer. Going over all 5 goals and reaching over 100 will yield a very strong bonus and reduce nutritional drain.
 //Why do we have a minimum? In case we ever decide to add detriments for not maintaining a balanced diet.
