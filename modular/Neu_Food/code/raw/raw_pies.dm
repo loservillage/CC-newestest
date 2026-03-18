@@ -23,6 +23,16 @@
 	var/pumpkinpie
 	var/substitute //There may be a better way to do this
 	cooked_smell = /datum/pollutant/food/pie_base
+	//CC Edit Begin
+	diet_types = list("Grains")
+	diet_change_amount = FOOD_DIETARY_VALUE_BAD
+	
+	//Diet checks
+	var/potpie_cheese
+	var/potpie_potato
+	var/potpie_meat
+	var/crabbage
+	//CC Edit End
 
 /obj/item/reagent_containers/food/snacks/rogue/foodbase/piebottom/update_icon()
 	. = ..()
@@ -123,6 +133,10 @@
 			name = "unfinished fish pie"
 			process_step += 1
 			fishy = TRUE
+			//CC Edit Begin
+			diet_types = list("Grains", "Meats")
+			diet_change_amount = FOOD_DIETARY_VALUE_BAD
+			//CC Edit End
 			update_icon()
 			qdel(I)
 			return
@@ -130,6 +144,9 @@
 			add_sleep_experience(user, /datum/skill/craft/cooking, user.STAINT)
 			to_chat(user, span_notice("Adding filling to the fish pie. Needs more."))
 			process_step += 1
+			//CC Edit Begin
+			diet_change_amount = FOOD_DIETARY_VALUE_GOOD
+			//CC Edit End
 			update_icon()
 			qdel(I)
 			return
@@ -137,6 +154,9 @@
 			add_sleep_experience(user, /datum/skill/craft/cooking, user.STAINT)
 			to_chat(user, span_notice("Filling the fish pie to the brim. Still lacks a pie roof."))
 			process_step += 1
+			//CC Edit Begin
+			diet_change_amount = FOOD_DIETARY_VALUE_GREAT
+			//CC Edit End
 			update_icon()
 			qdel(I)
 			return
@@ -151,6 +171,10 @@
 			name = "unfinished meat pie"
 			process_step += 1
 			meaty = TRUE
+			//CC Edit Begin
+			diet_types = list("Grains", "Meats")
+			diet_change_amount = FOOD_DIETARY_VALUE_BAD
+			//CC Edit End
 			update_icon()
 			qdel(I)
 			return
@@ -158,6 +182,9 @@
 			add_sleep_experience(user, /datum/skill/craft/cooking, user.STAINT)
 			to_chat(user, span_notice("Adding filling to the meat pie. Needs more."))
 			process_step += 1
+			//CC Edit Begin
+			diet_change_amount = FOOD_DIETARY_VALUE_GOOD
+			//CC Edit End
 			update_icon()
 			qdel(I)
 			return
@@ -165,6 +192,9 @@
 			add_sleep_experience(user, /datum/skill/craft/cooking, user.STAINT)
 			to_chat(user, span_notice("Filling the meat pie to the brim. Still lacks a pie roof."))
 			process_step += 1
+			//CC Edit Begin
+			diet_change_amount = FOOD_DIETARY_VALUE_GREAT
+			//CC Edit End
 			update_icon()
 			qdel(I)
 			return
@@ -181,6 +211,10 @@
 			desc = initial(desc) + "\n" + span_smallnotice("It requires some fresh cheese.")
 			process_step += 1
 			pumpkinpie = TRUE
+			//CC Edit Begin
+			diet_types = list("Grains", "Fruits", "Vegetables")
+			diet_change_amount = FOOD_DIETARY_VALUE_POOR //Pumpkins are versatile, multiply this by 3 for each 3 diet types.
+			//CC Edit End
 			update_icon()
 			qdel(I)
 			return
@@ -194,6 +228,9 @@
 				to_chat(user, span_notice("Mixing the pumpkin and cheese in the pie. It needs an egg."))
 				desc = initial(desc) + "\n" + span_smallnotice("It requires an egg.")
 				process_step += 1
+				//CC Edit Begin
+				diet_change_amount = FOOD_DIETARY_VALUE_BAD
+				//CC Edit End
 				update_icon()
 				qdel(I)
 				return
@@ -204,6 +241,10 @@
 				to_chat(user, span_notice("Mixing the filling and egg in the pumpkin pie. It just needs sugar!"))
 				desc = initial(desc) + "\n" + span_smallnotice("It requires some sugar.")
 				process_step += 1
+				//CC Edit Begin
+				diet_types = list("Grains", "Fruits", "Vegetables")
+				diet_change_amount = FOOD_DIETARY_VALUE_BAD
+				//CC Edit End
 				update_icon()
 				qdel(I)
 				return
@@ -216,12 +257,25 @@
 				cooked_type = /obj/item/reagent_containers/food/snacks/rogue/pie/cooked/pumpkin
 				cooked_smell = /datum/pollutant/food/pumpkin_pie
 				process_step += 1
+				//CC Edit Begin
+				diet_types = list("Grains", "Fruits", "Vegetables")
+				diet_change_amount = FOOD_DIETARY_VALUE_GOOD
+				//CC Edit End
 				update_icon()
 				qdel(I)
 
 	if(istype(I, /obj/item/reagent_containers/food/snacks/rogue/cheddarwedge) || istype(I, /obj/item/reagent_containers/food/snacks/rogue/veg/potato_sliced)  || istype(I, /obj/item/reagent_containers/food/snacks/rogue/cheese) )
-		if (process_step > 4)
+		if(process_step > 4)
 			return
+		//CC Edit Begin
+		//Handle Dietary Values
+		if(istype(I, /obj/item/reagent_containers/food/snacks/rogue/cheddarwedge))
+			potpie_cheese = TRUE
+		else if(istype(I, /obj/item/reagent_containers/food/snacks/rogue/veg/potato_sliced))
+			potpie_potato = TRUE
+		else if(istype(I, /obj/item/reagent_containers/food/snacks/rogue/cheese))
+			potpie_cheese = TRUE
+		//CC Edit End
 		playsound(get_turf(user), 'sound/foley/dropsound/food_drop.ogg', 30, TRUE, -1)
 		if(process_step == 1 && do_after(user,short_cooktime, target = src))
 			add_sleep_experience(user, /datum/skill/craft/cooking, user.STAINT)
@@ -250,7 +304,7 @@
 			qdel(I)
 			return
 
-	if(istype(I, /obj/item/reagent_containers/food/snacks/egg) )
+	if(istype(I, /obj/item/reagent_containers/food/snacks/egg))
 		if (process_step > 4)
 			return
 		playsound(get_turf(user), 'sound/foley/dropsound/food_drop.ogg', 30, TRUE, -1)
@@ -281,7 +335,10 @@
 			qdel(I)
 			return
 
-	if(istype(I, /obj/item/reagent_containers/food/snacks/rogue/meat/bacon) || istype(I, /obj/item/reagent_containers/food/snacks/rogue/meat/mince/poultry) || istype(I, /obj/item/reagent_containers/food/snacks/fat) )
+	if(istype(I, /obj/item/reagent_containers/food/snacks/rogue/meat/bacon) || istype(I, /obj/item/reagent_containers/food/snacks/rogue/meat/mince/poultry) || istype(I, /obj/item/reagent_containers/food/snacks/fat))
+		//CC Edit Begin
+		potpie_meat = TRUE
+		//CC Edit End
 		if (process_step > 4)
 			return
 		playsound(get_turf(user), 'sound/foley/dropsound/food_drop.ogg', 30, TRUE, -1)
@@ -329,6 +386,10 @@
 			name = "unfinished crab pie"
 			process_step += 1
 			crabby = TRUE
+			//CC Edit Begin
+			diet_types = list("Grains", "Meats")
+			diet_change_amount = FOOD_DIETARY_VALUE_BAD
+			//CC Edit End
 			update_icon()
 			qdel(I)
 			return
@@ -336,6 +397,9 @@
 			add_sleep_experience(user, /datum/skill/craft/cooking, user.STAINT)
 			to_chat(user, span_notice("Adding filling to the crab pie. Needs more."))
 			process_step += 1
+			//CC Edit Begin
+			diet_change_amount = FOOD_DIETARY_VALUE_GOOD
+			//CC Edit End
 			update_icon()
 			qdel(I)
 			return
@@ -343,6 +407,9 @@
 			add_sleep_experience(user, /datum/skill/craft/cooking, user.STAINT)
 			to_chat(user, span_notice("Filling the crab pie to the brim. Still lacks a pie roof."))
 			process_step += 1
+			//CC Edit Begin
+			diet_change_amount = FOOD_DIETARY_VALUE_GREAT
+			//CC Edit End
 			update_icon()
 			qdel(I)
 			return
@@ -359,6 +426,11 @@
 			to_chat(user, span_notice("Substituting cabbage for crab meat in the crab pie..."))
 			process_step += 1
 			substitute = TRUE
+			//CC Edit Begin
+			diet_types = list("Grains", "Meats", "Vegetables")
+			diet_change_amount = FOOD_DIETARY_VALUE_BAD //Substituted... Will get overridden when cooked.
+			crabbage = TRUE
+			//CC Edit End
 			update_icon()
 			qdel(I)
 			return
@@ -374,6 +446,10 @@
 			name = "unfinished apple pie"
 			process_step += 1
 			applepie = TRUE
+			//CC Edit Begin
+			diet_types = list("Grains", "Fruits")
+			diet_change_amount = FOOD_DIETARY_VALUE_BAD
+			//CC Edit End
 			update_icon()
 			qdel(I)
 			return
@@ -381,6 +457,10 @@
 			add_sleep_experience(user, /datum/skill/craft/cooking, user.STAINT)
 			to_chat(user, span_notice("Adding filling to the apple pie. Needs more."))
 			process_step += 1
+			//CC Edit Begin
+			diet_types = list("Grains", "Fruits")
+			diet_change_amount = FOOD_DIETARY_VALUE_GOOD
+			//CC Edit End
 			update_icon()
 			qdel(I)
 			return
@@ -388,6 +468,10 @@
 			add_sleep_experience(user, /datum/skill/craft/cooking, user.STAINT)
 			to_chat(user, span_notice("Filling the apple pie to the brim. Still lacks a pie roof."))
 			process_step += 1
+			//CC Edit Begin
+			diet_types = list("Grains", "Fruits")
+			diet_change_amount = FOOD_DIETARY_VALUE_GREAT
+			//CC Edit End
 			update_icon()
 			qdel(I)
 			return
@@ -403,6 +487,10 @@
 			process_step += 1
 			berrypie = TRUE
 			poisoning = TRUE
+			//CC Edit Begin
+			diet_types = list("Grains", "Fruits")
+			diet_change_amount = FOOD_DIETARY_VALUE_BAD
+			//CC Edit End
 			update_icon()
 			qdel(I)
 			return
@@ -411,6 +499,10 @@
 			to_chat(user, span_notice("Adding filling to the berry pie. Needs more."))
 			process_step += 1
 			poisoning = TRUE
+			//CC Edit Begin
+			diet_types = list("Grains", "Fruits")
+			diet_change_amount = FOOD_DIETARY_VALUE_GOOD
+			//CC Edit End
 			update_icon()
 			qdel(I)
 			return
@@ -419,6 +511,10 @@
 			to_chat(user, span_notice("Filling the berry pie to the brim. Still lacks a pie roof."))
 			process_step += 1
 			poisoning = TRUE
+			//CC Edit Begin
+			diet_types = list("Grains", "Fruits")
+			diet_change_amount = FOOD_DIETARY_VALUE_GREAT
+			//CC Edit End
 			update_icon()
 			qdel(I)
 			return
@@ -433,6 +529,10 @@
 			name = "unfinished berrypie"
 			process_step += 1
 			berrypie = TRUE
+			//CC Edit Begin
+			diet_types = list("Grains", "Fruits")
+			diet_change_amount = FOOD_DIETARY_VALUE_BAD
+			//CC Edit End
 			update_icon()
 			qdel(I)
 			return
@@ -440,6 +540,10 @@
 			add_sleep_experience(user, /datum/skill/craft/cooking, user.STAINT)
 			to_chat(user, span_notice("Adding filling to the berry pie. Needs more."))
 			process_step += 1
+			//CC Edit Begin
+			diet_types = list("Grains", "Fruits")
+			diet_change_amount = FOOD_DIETARY_VALUE_GOOD
+			//CC Edit End
 			update_icon()
 			qdel(I)
 			return
@@ -447,6 +551,10 @@
 			add_sleep_experience(user, /datum/skill/craft/cooking, user.STAINT)
 			to_chat(user, span_notice("Filling the berry pie to the brim. Still lacks a pie roof."))
 			process_step += 1
+			//CC Edit Begin
+			diet_types = list("Grains", "Fruits")
+			diet_change_amount = FOOD_DIETARY_VALUE_GREAT
+			//CC Edit End
 			update_icon()
 			qdel(I)
 			return
@@ -460,6 +568,10 @@
 			cooked_smell = /datum/pollutant/food/fish_pie
 			filling_color = "#d44197"
 			process_step += 1
+			//CC Edit Begin
+			diet_types = list("Grains", "Meats")
+			diet_change_amount = FOOD_DIETARY_VALUE_AMAZING
+			//CC Edit End
 			update_icon()
 			qdel(I)
 		else if(meaty && process_step == 4 && do_after(user,short_cooktime, target = src))
@@ -469,6 +581,10 @@
 			cooked_smell = /datum/pollutant/food/meat_pie
 			filling_color = "#b43628"
 			process_step += 1
+			//CC Edit Begin
+			diet_types = list("Grains", "Meats")
+			diet_change_amount = FOOD_DIETARY_VALUE_AMAZING
+			//CC Edit End
 			update_icon()
 			qdel(I)
 		else if(potpie && process_step == 4 && do_after(user,short_cooktime, target = src))
@@ -477,6 +593,16 @@
 			cooked_type = /obj/item/reagent_containers/food/snacks/rogue/pie/cooked/pot
 			cooked_smell = /datum/pollutant/food/pot_pie
 			process_step += 1
+			//CC Edit Begin
+			diet_types = list("Grains")
+			if(potpie_cheese)
+				diet_types += list("Dairy")
+			if(potpie_meat)
+				diet_types += list("Meats")
+			if(potpie_potato)
+				diet_types += list("Vegetables")
+			diet_change_amount = FOOD_DIETARY_VALUE_AMAZING
+			//CC Edit End
 			update_icon()
 			qdel(I)
 		else if(applepie && process_step == 4 && do_after(user,short_cooktime, target = src))
@@ -485,6 +611,10 @@
 			cooked_type = /obj/item/reagent_containers/food/snacks/rogue/pie/cooked/apple
 			cooked_smell = /datum/pollutant/food/apple_pie
 			process_step += 1
+			//CC Edit Begin
+			diet_types = list("Grains", "Fruits")
+			diet_change_amount = FOOD_DIETARY_VALUE_AMAZING
+			//CC Edit End
 			update_icon()
 			qdel(I)
 		else if(poisoning && process_step == 4 && do_after(user,short_cooktime, target = src))
@@ -493,6 +623,10 @@
 			cooked_type = /obj/item/reagent_containers/food/snacks/rogue/pie/cooked/poison
 			cooked_smell = /datum/pollutant/food/berry_pie
 			process_step += 1
+			//CC Edit Begin
+			diet_types = list("Grains", "Fruits")
+			diet_change_amount = FOOD_DIETARY_VALUE_AMAZING
+			//CC Edit End
 			update_icon()
 			qdel(I)
 		else if(berrypie && process_step == 4 && do_after(user,short_cooktime, target = src))
@@ -501,6 +635,10 @@
 			cooked_type = /obj/item/reagent_containers/food/snacks/rogue/pie/cooked/berry
 			cooked_smell = /datum/pollutant/food/berry_pie
 			process_step += 1
+			//CC Edit Begin
+			diet_types = list("Grains", "Fruits")
+			diet_change_amount = FOOD_DIETARY_VALUE_AMAZING
+			//CC Edit End
 			update_icon()
 			qdel(I)
 		else if(crabby && process_step == 4 && do_after(user,short_cooktime, target = src))
@@ -509,6 +647,12 @@
 			cooked_type = /obj/item/reagent_containers/food/snacks/rogue/pie/cooked/crab
 			cooked_smell = /datum/pollutant/food/crab_pie
 			process_step += 1
+			//CC Edit Begin
+			diet_types = list("Grains", "Meats")
+			if(crabbage)
+				diet_types += list("Vegetables")
+			diet_change_amount = FOOD_DIETARY_VALUE_AMAZING
+			//CC Edit End
 			update_icon()
 			qdel(I)
 	else

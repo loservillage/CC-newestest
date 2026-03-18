@@ -15,6 +15,10 @@
 	tastes = list("salted meat" = 1)
 	rotprocess = null
 	slice_sound = TRUE
+	//CC Edit Begin
+	diet_types = list("Meats")
+	diet_change_amount = FOOD_DIETARY_VALUE_GOOD
+	//CC Edit End
 
 /obj/item/reagent_containers/food/snacks/rogue/meat/salami/update_icon()
 	if(slices_num)
@@ -44,6 +48,10 @@
 	list_reagents = list(/datum/reagent/consumable/nutriment = SNACK_POOR)
 	bitesize = 2
 	tastes = list("salted meat" = 1)
+	//CC Edit Begin
+	diet_types = list("Meats")
+	diet_change_amount = FOOD_DIETARY_VALUE_BAD + 1 // If you cut it you lose out on 2 dietary value but that's so small.
+	//CC Edit End
 
 // -------------- COPPIETTE (dried meat) -----------------
 /obj/item/reagent_containers/food/snacks/rogue/meat/coppiette
@@ -59,6 +67,10 @@
 	tastes = list("salted meat" = 1)
 	rotprocess = null
 	list_reagents = list(/datum/reagent/consumable/nutriment = SNACK_NUTRITIOUS)
+	//CC Edit Begin
+	diet_types = list("Meats")
+	diet_change_amount = FOOD_DIETARY_VALUE_BAD
+	//CC Edit End
 
 /obj/item/reagent_containers/food/snacks/rogue/meat/coppiette/On_Consume(mob/living/eater)
 	..()
@@ -86,6 +98,10 @@
 	rotprocess = null
 	slice_sound = TRUE
 	eat_effect = null
+	//CC Edit Begin
+	diet_types = list("Meats")
+	diet_change_amount = FOOD_DIETARY_VALUE_BAD
+	//CC Edit End
 
 /obj/item/reagent_containers/food/snacks/fat/salo/update_icon()
 	if(slices_num)
@@ -110,6 +126,10 @@
 	slices_num = FALSE
 	slice_path = FALSE
 	list_reagents = list(/datum/reagent/consumable/nutriment = SNACK_POOR)
+	//CC Edit Begin
+	diet_types = list("Meats")
+	diet_change_amount = FOOD_DIETARY_VALUE_POOR
+	//CC Edit End
 
 // -------------- DRIED FISH FILET -----------------
 /obj/item/reagent_containers/food/snacks/rogue/meat/driedfishfilet
@@ -124,3 +144,7 @@
 	list_reagents = list(/datum/reagent/consumable/nutriment = SNACK_NUTRITIOUS)
 	tastes = list("salted fish" = 1)
 	rotprocess = null
+	//CC Edit Begin
+	diet_types = list("Meats")
+	diet_change_amount = FOOD_DIETARY_VALUE_GOOD
+	//CC Edit End

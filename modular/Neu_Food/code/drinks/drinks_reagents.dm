@@ -7,6 +7,10 @@
 	overdose_threshold = 0
 	metabolization_rate = REAGENTS_METABOLISM
 	alpha = 173
+	//CC Edit Begin
+	diet_types = list("Vegetables")
+	diet_change_amount = FOOD_DIETARY_REAGENT_VALUE_POOR
+	//CC Edit End
 
 /datum/reagent/water/rosewater/on_mob_life(mob/living/carbon/M)
 	. = ..()
@@ -50,6 +54,10 @@
 	taste_description = "caramelized bitterness" // coffee has so many flavors I am going for one
 	metabolization_rate = REAGENTS_METABOLISM
 	alpha = 173
+	//CC Edit Begin
+	diet_types = list("Fruits")
+	diet_change_amount = FOOD_DIETARY_REAGENT_VALUE_POOR
+	//CC Edit End
 
 /datum/reagent/consumable/caffeine/tea
 	name = "Tea"
@@ -59,6 +67,10 @@
 	taste_description = "smooth grassiness" // Yeah, uh.
 	metabolization_rate = REAGENTS_METABOLISM
 	alpha = 173
+	//CC Edit Begin
+	diet_types = list("Vegetables")
+	diet_change_amount = FOOD_DIETARY_REAGENT_VALUE_POOR
+	//CC Edit End
 
 /datum/reagent/consumable/poppy_milk
 	name = "Poppy Milk"
@@ -69,6 +81,10 @@
 	metabolization_rate = REAGENTS_METABOLISM
 	overdose_threshold = 25 // one cup is safe, anything more and it's an OD
 	alpha = 173
+	//CC Edit Begin
+	diet_types = list("Vegetables")
+	diet_change_amount = FOOD_DIETARY_REAGENT_VALUE_POOR
+	//CC Edit End
 
 /datum/reagent/consumable/poppy_milk/on_mob_life(mob/living/carbon/M)
 	M.sate_addiction(/datum/charflaw/addiction/junkie)
@@ -86,6 +102,10 @@
 	description = "A refreshing tea, great to soothe wounds and relieve fatigue."
 	color = "#b38e17"
 	taste_description = "herbal flavor"
+	//CC Edit Begin
+	diet_types = list("Vegetables")
+	diet_change_amount = FOOD_DIETARY_REAGENT_VALUE_BAD
+	//CC Edit End
 
 /datum/reagent/consumable/golden_calendula_tea/on_mob_life(mob/living/carbon/M)
 	if(!HAS_TRAIT(M,TRAIT_INFINITE_STAMINA))
@@ -109,6 +129,10 @@
 	color = "#3b9146"
 	quality = DRINK_FANTASTIC
 	taste_description = "herbal flavor"
+	//CC Edit Begin
+	diet_types = list("Vegetables")
+	diet_change_amount = FOOD_DIETARY_REAGENT_VALUE_BAD
+	//CC Edit End
 
 /datum/reagent/consumable/soothing_valerian_tea/on_mob_life(mob/living/carbon/M)
 	if(!HAS_TRAIT(M,TRAIT_INFINITE_STAMINA))

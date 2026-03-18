@@ -8,6 +8,10 @@
 /*	........   Salting milk (for butter & cheesemaking)   ................ */
 /datum/reagent/consumable/milk/salted
 	taste_description = "salty milk"
+	//CC Edit Begin
+	diet_types = list("Dairy")
+	diet_change_amount = FOOD_DIETARY_REAGENT_VALUE_POOR
+	//CC Edit End
 
 /obj/item/reagent_containers/attackby(obj/item/I, mob/living/user, params) // add cook time to containers & salted milk for butter churning
 	..()
@@ -54,6 +58,10 @@
 	slice_batch = FALSE
 	bitesize = 6
 	slice_sound = TRUE
+	//CC Edit Begin
+	diet_types = list("Dairy")
+	diet_change_amount = FOOD_DIETARY_VALUE_POOR
+	//CC Edit End
 
 /obj/item/reagent_containers/food/snacks/butter/attackby(obj/item/I, mob/living/user, params)
 	update_cooktime(user)
@@ -96,6 +104,10 @@
 	faretype = FARE_IMPOVERISHED
 	foodtype = DAIRY
 	list_reagents = list(/datum/reagent/consumable/nutriment = 2)
+	//CC Edit Begin
+	diet_types = list("Dairy")
+	diet_change_amount = FOOD_DIETARY_VALUE_POOR
+	//CC Edit End
 
 /obj/item/reagent_containers/food/snacks/butterslice/attackby(obj/item/I, mob/living/user, params)
 	var/found_table = locate(/obj/structure/table) in (loc)
@@ -153,6 +165,11 @@
 	w_class = WEIGHT_CLASS_BULKY
 	process_step = 1
 	var/mature_proc = .proc/maturing_done
+	//CC Edit Begin
+	//I don't think this... can be eaten normally? But. Just in case?
+	diet_types = list("Dairy")
+	diet_change_amount = FOOD_DIETARY_VALUE_BAD
+	//CC Edit End
 
 /obj/item/reagent_containers/food/snacks/rogue/foodbase/cheesewheel/attackby(obj/item/I, mob/living/user, params)
 	var/found_table = locate(/obj/structure/table) in (loc)
@@ -176,6 +193,11 @@
 						icon_state = "cheesewheel_end"
 						desc = "Slowly solidifying, best left alone a bit longer."
 						addtimer(CALLBACK(src, mature_proc), 5 MINUTES)
+						//CC Edit Begin
+						//I don't think this... can be eaten normally? But. Just in case?
+						diet_types = list("Dairy")
+						diet_change_amount = FOOD_DIETARY_VALUE_GOOD
+						//CC Edit End
 		else
 			to_chat(user, span_warning("You need to put [src] on a table to work on it."))
 	else
@@ -203,6 +225,10 @@
 	rotprocess = SHELFLIFE_DECENT
 	become_rot_type = null
 	slice_path = null
+	//CC Edit Begin
+	diet_types = list("Dairy")
+	diet_change_amount = FOOD_DIETARY_VALUE_BAD
+	//CC Edit End
 
 /obj/item/reagent_containers/food/snacks/rogue/cheddar
 	name = "wheel of cheese"
@@ -220,6 +246,10 @@
 	slice_path = /obj/item/reagent_containers/food/snacks/rogue/cheddarwedge
 	become_rot_type = /obj/item/reagent_containers/food/snacks/rogue/cheddar/aged
 	slice_sound = TRUE
+	//CC Edit Begin
+	diet_types = list("Dairy")
+	diet_change_amount = FOOD_DIETARY_VALUE_GREAT
+	//CC Edit End
 
 /obj/item/reagent_containers/food/snacks/rogue/cheddar/aged
 	name = "wheel of aged cheese"
@@ -229,6 +259,11 @@
 	faretype = FARE_FINE
 	become_rot_type = null
 	rotprocess = null
+	//CC Edit Begin
+	diet_types = list("Dairy")
+	diet_change_amount = FOOD_DIETARY_VALUE_GOOD //It's aged, tastes great but not as nutritious.
+	//CC Edit End
+
 
 /obj/item/reagent_containers/food/snacks/rogue/cheddarwedge
 	name = "wedge of cheese"
@@ -245,6 +280,11 @@
 	slice_batch = TRUE
 	slice_path = /obj/item/reagent_containers/food/snacks/rogue/cheddarslice
 	become_rot_type = /obj/item/reagent_containers/food/snacks/rogue/cheddarwedge/aged
+	//CC Edit Begin
+	diet_types = list("Dairy")
+	diet_change_amount = FOOD_DIETARY_VALUE_GREAT
+	//CC Edit End
+
 
 /obj/item/reagent_containers/food/snacks/rogue/cheddarwedge/aged
 	name = "wedge of aged cheese"
@@ -254,6 +294,11 @@
 	faretype = FARE_FINE
 	become_rot_type = null
 	rotprocess = null
+	//CC Edit Begin
+	diet_types = list("Dairy")
+	diet_change_amount = FOOD_DIETARY_VALUE_GOOD //It's aged, tastes great but not as nutritious.
+	//CC Edit End
+
 
 /obj/item/reagent_containers/food/snacks/rogue/cheddarslice
 	name = "slice of cheese"
@@ -280,6 +325,10 @@
 		"ceruleanFishingMod" = 0, // 1 on cerulean aril, 0 on everything else
 		"cheeseFishingMod" = 1 // Just for the funny gimmick of a higher chance for rats and rouses.
 	)
+	//CC Edit Begin
+	diet_types = list("Dairy")
+	diet_change_amount = FOOD_DIETARY_VALUE_POOR
+	//CC Edit End
 
 /obj/item/reagent_containers/food/snacks/rogue/cheddarslice/aged
 	name = "slice of aged cheese"
@@ -297,6 +346,10 @@
 		"ceruleanFishingMod" = 0, // 1 on cerulean aril, 0 on everything else
 		"cheeseFishingMod" = 1.5 // Just for the funny gimmick of a higher chance for rats and rouses.
 	)
+	//CC Edit Begin
+	diet_types = list("Dairy")
+	diet_change_amount = FOOD_DIETARY_VALUE_POOR - 1 //Aged, less dietary value.
+	//CC Edit End
 
 // -------------- FROSTING -----------------
 /obj/item/reagent_containers/food/snacks/rogue/frosting
@@ -311,3 +364,7 @@
 	faretype = FARE_NEUTRAL
 	foodtype = DAIRY | SUGAR
 	eat_effect = /datum/status_effect/buff/sweet
+	//CC Edit Begin
+	diet_types = list("Dairy")
+	diet_change_amount = FOOD_DIETARY_VALUE_BAD //Sugar isn't beneficial to your diet!
+	//CC Edit End

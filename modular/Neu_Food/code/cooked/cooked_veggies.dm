@@ -11,6 +11,10 @@
 	list_reagents = list(/datum/reagent/consumable/nutriment = SNACK_DECENT)
 	tastes = list("warm cabbage" = 1)
 	rotprocess = SHELFLIFE_LONG
+	//CC Edit Begin
+	diet_types = list("Vegetables")
+	diet_change_amount = FOOD_DIETARY_VALUE_GOOD
+	//CC Edit End
 
 /obj/item/reagent_containers/food/snacks/rogue/preserved/cabbage_fried/attackby(obj/item/I, mob/living/user, params)
 	var/found_table = locate(/obj/structure/table) in (loc)
@@ -36,6 +40,10 @@
 	bitesize = 4
 	list_reagents = list(/datum/reagent/consumable/nutriment = SNACK_DECENT)
 	rotprocess = SHELFLIFE_LONG
+	//CC Edit Begin
+	diet_types = list("Vegetables")
+	diet_change_amount = FOOD_DIETARY_VALUE_GOOD
+	//CC Edit End
 
 /obj/item/reagent_containers/food/snacks/rogue/preserved/potato_baked/attackby(obj/item/I, mob/living/user, params)
 	var/found_table = locate(/obj/structure/table) in (loc)
@@ -73,6 +81,10 @@
 	list_reagents = list(/datum/reagent/consumable/nutriment = SNACK_DECENT)
 	tastes = list("warm potato" = 1)
 	rotprocess = SHELFLIFE_LONG
+	//CC Edit Begin
+	diet_types = list("Vegetables")
+	diet_change_amount = FOOD_DIETARY_VALUE_GOOD
+	//CC Edit End
 
 /obj/item/reagent_containers/food/snacks/rogue/preserved/potato_fried/attackby(obj/item/I, mob/living/user, params)
 	var/found_table = locate(/obj/structure/table) in (loc)
@@ -108,6 +120,11 @@
 	list_reagents = list(/datum/reagent/consumable/nutriment = SNACK_DECENT)
 	tastes = list("carrot" = 1)
 	rotprocess = SHELFLIFE_DECENT
+	//CC Edit Begin
+	diet_types = list("Vegetables")
+	diet_change_amount = FOOD_DIETARY_VALUE_GOOD
+	//CC Edit End
+
 /obj/item/reagent_containers/food/snacks/rogue/preserved/carrot_baked/attackby(obj/item/I, mob/living/user, params)
 	var/found_table = locate(/obj/structure/table) in (loc)
 	update_cooktime(user)
@@ -144,6 +161,10 @@
 	list_reagents = list(/datum/reagent/consumable/nutriment = SNACK_DECENT)
 	tastes = list("savoury morsel" = 1)
 	rotprocess = SHELFLIFE_DECENT
+	//CC Edit Begin
+	diet_types = list("Vegetables")
+	diet_change_amount = FOOD_DIETARY_VALUE_GOOD
+	//CC Edit End
 
 /obj/item/reagent_containers/food/snacks/rogue/preserved/onion_fried/attackby(obj/item/I, mob/living/user, params)
 	var/found_table = locate(/obj/structure/table) in (loc)
@@ -167,6 +188,10 @@
 	icon_state = "eggplant_carved"
 	desc = "An eggplant with its insides hollowed out, ready to be stuffed with meat."
 	rotprocess = SHELFLIFE_LONG
+	//CC Edit Begin
+	diet_types = list("Vegetables")
+	diet_change_amount = FOOD_DIETARY_VALUE_GOOD
+	//CC Edit End
 
 /obj/item/reagent_containers/food/snacks/rogue/eggplantcarved/attackby(obj/item/I, mob/living/user, params)
 	var/found_table = locate(/obj/structure/table) in (loc)
@@ -189,6 +214,10 @@
 	icon = 'modular/Neu_Food/icons/cooked/cooked_veggies.dmi'
 	icon_state = "eggplantraw"
 	rotprocess = SHELFLIFE_LONG
+	//CC Edit Begin
+	diet_types = list("Vegetables")
+	diet_change_amount = FOOD_DIETARY_VALUE_GOOD
+	//CC Edit End
 
 /obj/item/reagent_containers/food/snacks/rogue/eggplantmeat/attackby(obj/item/I, mob/living/user, params)
 	var/found_table = locate(/obj/structure/table) in (loc)
@@ -212,6 +241,10 @@
 	icon_state = "eggplantrawtom"
 	rotprocess = SHELFLIFE_LONG
 	cooked_type = /obj/item/reagent_containers/food/snacks/rogue/preserved/eggplantstuffed
+	//CC Edit Begin
+	diet_types = list("Vegetables", "Meats")
+	diet_change_amount = FOOD_DIETARY_VALUE_GOOD
+	//CC Edit End
 
 /obj/item/reagent_containers/food/snacks/rogue/preserved/eggplantstuffed
 	list_reagents = list(/datum/reagent/consumable/nutriment = SNACK_CHUNKY)
@@ -223,6 +256,10 @@
 	faretype = FARE_FINE
 	rotprocess = SHELFLIFE_LONG
 	eat_effect = /datum/status_effect/buff/snackbuff
+	//CC Edit Begin
+	diet_types = list("Vegetables", "Meats")
+	diet_change_amount = FOOD_DIETARY_VALUE_GREAT
+	//CC Edit End
 
 /obj/item/reagent_containers/food/snacks/rogue/preserved/eggplantstuffed/attackby(obj/item/I, mob/living/user, params)
 	var/found_table = locate(/obj/structure/table) in (loc)
@@ -249,6 +286,10 @@
 	faretype = FARE_LAVISH
 	rotprocess = SHELFLIFE_LONG
 	eat_effect = /datum/status_effect/buff/greatsnackbuff
+	//CC Edit Begin
+	diet_types = list("Vegetables", "Dairy", "Meats")
+	diet_change_amount = FOOD_DIETARY_VALUE_AMAZING
+	//CC Edit End
 
 /obj/item/reagent_containers/food/snacks/roastseeds
 	list_reagents = list(/datum/reagent/consumable/nutriment = 1)
@@ -261,12 +302,24 @@
 	color = "#e5b175"
 	foodtype = VEGETABLES
 	rotprocess = null
+	//CC Edit Begin
+	diet_types = list("Grains")
+	diet_change_amount = FOOD_DIETARY_VALUE_BAD // Just seeds... Nothing too cray cray.
+	//CC Edit End
 
 /obj/item/reagent_containers/food/snacks/roastseeds/sunflower
 	name = "roasted sunflower seeds"
 	tastes = list("toasted sunflower seeds" = 1)
+	//CC Edit Begin
+	diet_types = list("Grains")
+	diet_change_amount = FOOD_DIETARY_VALUE_GOOD //Ooo sunflower seeds?
+	//CC Edit End
 
 /obj/item/reagent_containers/food/snacks/roastseeds/pumpkin
 	name = "roasted pumpkin seeds"
 	tastes = list("toasted pumpkin seeds" = 1)
 	mill_result = /obj/item/reagent_containers/powder/pumpkin
+	//CC Edit Begin
+	diet_types = list("Grains")
+	diet_change_amount = FOOD_DIETARY_VALUE_GOOD //Ooo pumpkin seeds?
+	//CC Edit End

@@ -5,6 +5,10 @@
 	icon_state = "nitzel_step1"
 	process_step = 1
 	cooked_smell = /datum/pollutant/food/fried_meat
+	//CC Edit Begin
+	diet_types = list("Meats")
+	diet_change_amount = FOOD_DIETARY_VALUE_POOR
+	//CC Edit End
 
 /obj/item/reagent_containers/food/snacks/rogue/foodbase/nitzel/attackby(obj/item/I, mob/living/user, params)
 	update_cooktime(user)
@@ -18,6 +22,9 @@
 			desc = "A nitzel with an egg cracked over it. It awaits toastcrumbs and a hot oil bath."
 			icon_state = "nitzel_step2"
 			process_step = 2
+			//CC Edit Begin
+			diet_change_amount = FOOD_DIETARY_VALUE_BAD //Added Eggy...
+			//CC Edit End
 			update_icon()
 			qdel(I)
 			return
@@ -30,6 +37,10 @@
 			desc = "A nitzel coated in toastcrumbs. It awaits a hot oil bath."
 			icon_state = "nitzel_step3"
 			process_step = 3
+			//CC Edit Begin
+			diet_types = list("Meats", "Grains") //Added crumbs!
+			diet_change_amount = FOOD_DIETARY_VALUE_GOOD
+			//CC Edit End
 			deep_fried_type = /obj/item/reagent_containers/food/snacks/rogue/meat/nitzel
 			update_icon()
 			qdel(I)
@@ -43,6 +54,10 @@
 	icon_state = "schnitzel_step1"
 	process_step = 1
 	cooked_smell = /datum/pollutant/food/fried_meat
+	//CC Edit Begin
+	diet_types = list("Meats")
+	diet_change_amount = FOOD_DIETARY_VALUE_POOR
+	//CC Edit End
 
 // copy paste code to shame my ancestors (some1 refactor this)
 /obj/item/reagent_containers/food/snacks/rogue/foodbase/schnitzel/attackby(obj/item/I, mob/living/user, params)
@@ -57,6 +72,9 @@
 			desc = "A schnitzel with an egg cracked over it. It awaits toastcrumbs and a hot oil bath."
 			icon_state = "schnitzel_step2"
 			process_step = 2
+			//CC Edit Begin
+			diet_change_amount = FOOD_DIETARY_VALUE_BAD
+			//CC Edit End
 			update_icon()
 			qdel(I)
 			return
@@ -69,6 +87,10 @@
 			desc = "A schnitzel coated in toastcrumbs. It awaits a hot oil bath."
 			icon_state = "schnitzel_step3"
 			process_step = 3
+			//CC Edit Begin
+			diet_types = list("Meats", "Grains")
+			diet_change_amount = FOOD_DIETARY_VALUE_GOOD
+			//CC Edit End
 			deep_fried_type = /obj/item/reagent_containers/food/snacks/rogue/meat/nitzel/schnitzel
 			update_icon()
 			qdel(I)
@@ -83,6 +105,10 @@
 	icon_state = "squiresdelight_step1"
 	process_step = 1
 	cooked_smell = /datum/pollutant/food/fried_butter
+	//CC Edit Begin
+	diet_types = ("Dairy") //BUTTER STICK...
+	diet_change_amount = FOOD_DIETARY_VALUE_POOR
+	//CC Edit End
 
 /obj/item/reagent_containers/food/snacks/rogue/foodbase/squires_delight/attackby(obj/item/I, mob/living/user, params)
 	if(istype(I, /obj/item/reagent_containers/food/snacks/rogue/toastcrumbs))
@@ -94,6 +120,10 @@
 			desc = "A butter stick coated in toastcrumbs. It awaits a hot oil bath."
 			icon_state = "squiresdelight_step2"
 			process_step = 2
+			//CC Edit Begin
+			diet_types = list("Grains", "Dairy")
+			diet_change_amount = FOOD_DIETARY_VALUE_GOOD
+			//CC Edit End
 			deep_fried_type = /obj/item/reagent_containers/food/snacks/squiresdelight
 			update_icon()
 			qdel(I)
@@ -106,6 +136,10 @@
 	icon_state = "chickentender_step1"
 	process_step = 1
 	cooked_smell = /datum/pollutant/food/fried_chicken
+	//CC Edit Begin
+	diet_types = ("Meats")
+	diet_change_amount = FOOD_DIETARY_VALUE_POOR
+	//CC Edit End
 
 /obj/item/reagent_containers/food/snacks/rogue/foodbase/chickentender/attackby(obj/item/I, mob/living/user, params)
 	update_cooktime(user)
@@ -119,6 +153,9 @@
 			desc = "A frybard with an egg cracked over it. It awaits toastcrumbs and a hot oil bath."
 			icon_state = "chickentender_step2"
 			process_step = 2
+			//CC Edit Begin
+			diet_change_amount = FOOD_DIETARY_VALUE_BAD
+			//CC Edit End
 			update_icon()
 			qdel(I)
 			return
@@ -131,6 +168,10 @@
 			desc = "A frybird coated in toastcrumbs. It awaits a hot oil bath."
 			icon_state = "chickentender_step3"
 			process_step = 3
+			//CC Edit Begin
+			diet_types = list("Meats", "Grains")
+			diet_change_amount = FOOD_DIETARY_VALUE_GOOD
+			//CC Edit End
 			deep_fried_type = /obj/item/reagent_containers/food/snacks/rogue/meat/nitzel
 			update_icon()
 			qdel(I)
@@ -144,6 +185,10 @@
 	icon_state = "wienernitzel_step1"
 	process_step = 1
 	cooked_smell = /datum/pollutant/food/fried_sausage
+	//CC Edit Begin
+	diet_types = list("Meats")
+	diet_change_amount = FOOD_DIETARY_VALUE_POOR
+	//CC Edit End
 
 /obj/item/reagent_containers/food/snacks/rogue/foodbase/wienernitzel/attackby(obj/item/I, mob/living/user, params)
 	update_cooktime(user)
@@ -157,6 +202,9 @@
 			desc = "A wiener with an egg cracked over it. It awaits toastcrumbs and a hot oil bath."
 			icon_state = "wienernitzel_step2"
 			process_step = 2
+			//CC Edit Begin
+			diet_change_amount = FOOD_DIETARY_VALUE_GOOD
+			//CC Edit End
 			update_icon()
 			qdel(I)
 			return
@@ -169,6 +217,10 @@
 			desc = "A wiener coated in toastcrumbs. It awaits a hot oil bath."
 			icon_state = "wienernitzel_step3"
 			process_step = 3
+			//CC Edit Begin
+			diet_types = list("Meats", "Grains")
+			diet_change_amount = FOOD_DIETARY_VALUE_GREAT
+			//CC Edit End
 			deep_fried_type = /obj/item/reagent_containers/food/snacks/rogue/meat/nitzel/wiener
 			update_icon()
 			qdel(I)

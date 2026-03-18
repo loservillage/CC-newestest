@@ -8,6 +8,10 @@
 	bitesize = 3
 	bonus_reagents = list(/datum/reagent/consumable/nutriment = SNACK_DECENT)
 	rotprocess = SHELFLIFE_LONG
+	//CC Edit Begin
+	diet_types = list("Grains")
+	diet_change_amount = FOOD_DIETARY_VALUE_POOR
+	//CC Edit End
 
 /obj/item/reagent_containers/food/snacks/rogue/preserved/rice_cooked/attackby(obj/item/I, mob/living/user, params)
 	var/found_table = locate(/obj/structure/table) in (loc)
@@ -95,6 +99,10 @@
 	faretype = FARE_FINE
 	rotprocess = SHELFLIFE_LONG
 	eat_effect = /datum/status_effect/buff/mealbuff
+	//CC Edit Begin
+	diet_types = list("Grains", "Meats")
+	diet_change_amount = FOOD_DIETARY_VALUE_GOOD
+	//CC Edit End
 
 /obj/item/reagent_containers/food/snacks/rogue/ricepork/attackby(obj/item/I, mob/living/user, params)
 	var/found_table = locate(/obj/structure/table) in (loc)
@@ -125,6 +133,10 @@
 	faretype = FARE_LAVISH
 	rotprocess = SHELFLIFE_LONG
 	eat_effect = /datum/status_effect/buff/greatmealbuff
+	//CC Edit Begin
+	diet_types = list("Grains", "Meats", "Vegetables")
+	diet_change_amount = FOOD_DIETARY_VALUE_GREAT
+	//CC Edit End
 
 /*	.................   Rice & beef ................... */
 /obj/item/reagent_containers/food/snacks/rogue/ricebeef
@@ -137,6 +149,10 @@
 	faretype = FARE_FINE
 	rotprocess = SHELFLIFE_LONG
 	eat_effect = /datum/status_effect/buff/mealbuff
+	//CC Edit Begin
+	diet_types = list("Grains", "Meats")
+	diet_change_amount = FOOD_DIETARY_VALUE_GOOD
+	//CC Edit End
 
 /obj/item/reagent_containers/food/snacks/rogue/ricebeef/attackby(obj/item/I, mob/living/user, params)
 	var/found_table = locate(/obj/structure/table) in (loc)
@@ -167,6 +183,10 @@
 	faretype = FARE_LAVISH
 	rotprocess = SHELFLIFE_LONG
 	eat_effect = /datum/status_effect/buff/greatmealbuff
+	//CC Edit Begin
+	diet_types = list("Grains", "Meats", "Vegetables")
+	diet_change_amount = FOOD_DIETARY_VALUE_GREAT
+	//CC Edit End
 
 /*	.................   Rice & shrimp ................... */
 /obj/item/reagent_containers/food/snacks/rogue/riceshrimp
@@ -179,6 +199,10 @@
 	faretype = FARE_FINE
 	rotprocess = SHELFLIFE_LONG
 	eat_effect = /datum/status_effect/buff/mealbuff
+	//CC Edit Begin
+	diet_types = list("Grains", "Meats")
+	diet_change_amount = FOOD_DIETARY_VALUE_GOOD
+	//CC Edit End
 
 /obj/item/reagent_containers/food/snacks/rogue/riceshrimp/attackby(obj/item/I, mob/living/user, params)
 	var/found_table = locate(/obj/structure/table) in (loc)
@@ -209,6 +233,10 @@
 	faretype = FARE_LAVISH
 	rotprocess = SHELFLIFE_LONG
 	eat_effect = /datum/status_effect/buff/greatmealbuff
+	//CC Edit Begin
+	diet_types = list("Grains", "Meats", "Vegetables")
+	diet_change_amount = FOOD_DIETARY_VALUE_GREAT
+	//CC Edit End
 
 /*	.................   Rice & bird ................... */
 /obj/item/reagent_containers/food/snacks/rogue/ricebird
@@ -221,6 +249,10 @@
 	faretype = FARE_FINE
 	rotprocess = SHELFLIFE_LONG
 	eat_effect = /datum/status_effect/buff/mealbuff
+	//CC Edit Begin
+	diet_types = list("Grains", "Meats")
+	diet_change_amount = FOOD_DIETARY_VALUE_GOOD
+	//CC Edit End
 
 /obj/item/reagent_containers/food/snacks/rogue/ricebird/attackby(obj/item/I, mob/living/user, params)
 	var/found_table = locate(/obj/structure/table) in (loc)
@@ -251,6 +283,10 @@
 	faretype = FARE_LAVISH
 	rotprocess = SHELFLIFE_LONG
 	eat_effect = /datum/status_effect/buff/greatmealbuff
+	//CC Edit Begin
+	diet_types = list("Grains", "Meats", "Vegetables")
+	diet_change_amount = FOOD_DIETARY_VALUE_GREAT
+	//CC Edit End
 
 /*	.................   Rice & egg ................... */
 /obj/item/reagent_containers/food/snacks/rogue/riceegg
@@ -263,6 +299,10 @@
 	faretype = FARE_FINE
 	rotprocess = SHELFLIFE_LONG
 	eat_effect = /datum/status_effect/buff/mealbuff
+	//CC Edit Begin
+	diet_types = list("Grains")
+	diet_change_amount = FOOD_DIETARY_VALUE_GREAT
+	//CC Edit End
 
 /obj/item/reagent_containers/food/snacks/rogue/riceegg/attackby(obj/item/I, mob/living/user, params)
 	var/found_table = locate(/obj/structure/table) in (loc)
@@ -293,6 +333,10 @@
 	faretype = FARE_FINE
 	rotprocess = SHELFLIFE_LONG
 	eat_effect = /datum/status_effect/buff/mealbuff
+	//CC Edit Begin
+	diet_types = list("Grains", "Dairy")
+	diet_change_amount = FOOD_DIETARY_VALUE_GOOD
+	//CC Edit End
 
 /obj/item/reagent_containers/food/snacks/rogue/ricecheese/attackby(obj/item/I, mob/living/user, params)
 	var/found_table = locate(/obj/structure/table) in (loc)
@@ -324,3 +368,7 @@
 	faretype = FARE_LAVISH
 	rotprocess = SHELFLIFE_LONG
 	eat_effect = /datum/status_effect/buff/greatmealbuff
+	//CC Edit Begin
+	diet_types = list("Grains", "Dairy")
+	diet_change_amount = FOOD_DIETARY_VALUE_AMAZING
+	//CC Edit End

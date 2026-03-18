@@ -14,6 +14,10 @@
 	cooked_smell = /datum/pollutant/food/fried_meat
 	var/fresh_meat = FALSE
 	become_rot_type = /obj/item/reagent_containers/food/snacks/rogue/meat_rotten
+	//CC Edit Begin
+	diet_types = list("Meats")
+	diet_change_amount = FOOD_DIETARY_VALUE_BAD
+	//CC Edit End
 
 /obj/item/reagent_containers/food/snacks/rogue/meat_rotten
 	eat_effect = /datum/status_effect/debuff/rotfood
@@ -57,6 +61,10 @@
 	slices_num = 2
 	slice_path = /obj/item/reagent_containers/food/snacks/rogue/meat/mince/beef
 	slice_bclass = BCLASS_CHOP
+	//CC Edit Begin
+	diet_types = list("Meats")
+	diet_change_amount = FOOD_DIETARY_VALUE_BAD
+	//CC Edit End
 
 /obj/item/reagent_containers/food/snacks/rogue/meat/steak/get_mechanics_examine(mob/user)
     . = ..()
@@ -73,6 +81,10 @@
 	slice_path = /obj/item/reagent_containers/food/snacks/rogue/meat/bacon
 	chopping_sound = TRUE
 	cooked_smell = /datum/pollutant/food/fried_meat
+	//CC Edit Begin
+	diet_types = list("Meats")
+	diet_change_amount = FOOD_DIETARY_VALUE_GOOD //Fatty... Pork...
+	//CC Edit End
 
 /* ............. Bacon ................*/
 /obj/item/reagent_containers/food/snacks/rogue/meat/bacon
@@ -84,6 +96,10 @@
 	cooked_type = /obj/item/reagent_containers/food/snacks/rogue/meat/bacon/fried
 	filling_color = "#8a0000"
 	cooked_smell = /datum/pollutant/food/fried_bacon
+	//CC Edit Begin
+	diet_types = list("Meats")
+	diet_change_amount = FOOD_DIETARY_VALUE_POOR
+	//CC Edit End
 
 /* ............. Spider Meat ................*/
 /obj/item/reagent_containers/food/snacks/rogue/meat/spider // Low-nutrient, kind of gross. Survival food.
@@ -93,6 +109,10 @@
 	cooked_type = /obj/item/reagent_containers/food/snacks/rogue/meat/spider/fried
 	slice_path = null
 	slices_num = 0
+	//CC Edit Begin
+	diet_types = list("Meats")
+	diet_change_amount = FOOD_DIETARY_VALUE_POOR
+	//CC Edit End
 
 /obj/item/reagent_containers/food/snacks/rogue/meat/spider/attackby(obj/item/I, mob/living/user)
 	update_cooktime(user)
@@ -121,6 +141,10 @@
 	slice_sound = TRUE
 	ingredient_size = 4
 	cooked_smell = /datum/pollutant/food/cooked_chicken
+	//CC Edit Begin
+	diet_types = list("Meats")
+	diet_change_amount = FOOD_DIETARY_VALUE_BAD
+	//CC Edit End
 
 /* ............. Chicken Cutlet (Drumstick) ................*/
 /obj/item/reagent_containers/food/snacks/rogue/meat/poultry/cutlet
@@ -132,6 +156,10 @@
 	slice_bclass = BCLASS_CHOP
 	slice_path = /obj/item/reagent_containers/food/snacks/rogue/meat/mince/poultry
 	cooked_type = /obj/item/reagent_containers/food/snacks/rogue/meat/poultry/cutlet/fried
+	//CC Edit Begin
+	diet_types = list("Meats")
+	diet_change_amount = FOOD_DIETARY_VALUE_POOR
+	//CC Edit End
 
 /obj/item/reagent_containers/food/snacks/rogue/meat/poultry/cutlet/attackby(obj/item/I, mob/living/user)
 	update_cooktime(user)
@@ -160,6 +188,10 @@
 	slices_num = null
 	ingredient_size = 1
 	cooked_smell = /datum/pollutant/food/fried_crab
+	//CC Edit Begin
+	diet_types = list("Meats")
+	diet_change_amount = FOOD_DIETARY_VALUE_POOR
+	//CC Edit End
 
 /obj/item/reagent_containers/food/snacks/rogue/meat/crab/attackby(obj/item/I, mob/living/user, params)
 	var/found_table = locate(/obj/structure/table) in (loc)
@@ -186,6 +218,10 @@
 	cooked_type = /obj/item/reagent_containers/food/snacks/rogue/meat/rabbit/fried
 	slices_num = 1
 	ingredient_size = 1
+	//CC Edit Begin
+	diet_types = list("Meats")
+	diet_change_amount = FOOD_DIETARY_VALUE_POOR
+	//CC Edit End
 
 /* ............. Volf Meat ................*/
 /obj/item/reagent_containers/food/snacks/rogue/meat/steak/wolf
@@ -194,6 +230,10 @@
 	slice_path = /obj/item/reagent_containers/food/snacks/rogue/meat/mince/beef		//Honestly, we don't need our own minced type on this one.
 	fried_type = /obj/item/reagent_containers/food/snacks/rogue/meat/steak/wolf/fried
 	cooked_type = /obj/item/reagent_containers/food/snacks/rogue/meat/steak/wolf/fried
+	//CC Edit Begin
+	diet_types = list("Meats")
+	diet_change_amount = FOOD_DIETARY_VALUE_POOR //Very gamey.
+	//CC Edit End
 
 /* ............. fish chop ................*/
 /obj/item/reagent_containers/food/snacks/rogue/meat/fish
@@ -206,6 +246,10 @@
 	slices_num = 1
 	ingredient_size = 1
 	cooked_smell = /datum/pollutant/food/cooked_fish
+	//CC Edit Begin
+	diet_types = list("Meats")
+	diet_change_amount = FOOD_DIETARY_VALUE_BAD //Fish!
+	//CC Edit End
 
 /* .........   Shellfish    ................. */
 /obj/item/reagent_containers/food/snacks/rogue/meat/shellfish
@@ -218,6 +262,10 @@
 	fried_type = /obj/item/reagent_containers/food/snacks/rogue/meat/shellfish/fried
 	cooked_type = /obj/item/reagent_containers/food/snacks/rogue/meat/shellfish/fried
 	cooked_smell = /datum/pollutant/food/fried_shellfish
+	//CC Edit Begin
+	diet_types = list("Meats")
+	diet_change_amount = FOOD_DIETARY_VALUE_POOR
+	//CC Edit End
 
 // MEAT MINCE
 /*	.............   Minced meat & stuffing sausages   ................ */
@@ -230,6 +278,10 @@
 	filling_color = "#8a0000"
 	rotprocess = SHELFLIFE_TINY
 	cooked_type = null
+	//CC Edit Begin
+	diet_types = list("Meats")
+	diet_change_amount = FOOD_DIETARY_VALUE_POOR
+	//CC Edit End
 
 /obj/item/reagent_containers/food/snacks/rogue/meat/mince/throw_impact(atom/hit_atom, datum/thrownthing/thrownthing)
 	new /obj/effect/decal/cleanable/food/mess(get_turf(src))
@@ -299,6 +351,10 @@
 	fried_type = /obj/item/reagent_containers/food/snacks/rogue/meat/sausage/cooked
 	cooked_type = /obj/item/reagent_containers/food/snacks/rogue/meat/sausage/cooked
 	cooked_smell = /datum/pollutant/food/fried_sausage
+	//CC Edit Begin
+	diet_types = list("Meats")
+	diet_change_amount = FOOD_DIETARY_VALUE_BAD
+	//CC Edit End
 
 /obj/item/reagent_containers/food/snacks/rogue/meat/sausage/attackby(obj/item/I, mob/living/user)
 	update_cooktime(user)

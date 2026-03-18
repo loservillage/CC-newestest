@@ -10,6 +10,10 @@
 	cooked_type = /obj/item/reagent_containers/food/snacks/rogue/crackerscooked
 	w_class = WEIGHT_CLASS_NORMAL
 	eat_effect = null
+	//CC Edit Begin
+	diet_types = list("Grains")
+	diet_change_amount = FOOD_DIETARY_VALUE_POOR
+	//CC Edit End
 
 /*	.................   Hardtack   ................... */
 /obj/item/reagent_containers/food/snacks/rogue/crackerscooked
@@ -23,6 +27,10 @@
 	tastes = list("spelt" = 1)
 	bitesize = 6
 	rotprocess = null
+	//CC Edit Begin
+	diet_types = list("Grains")
+	diet_change_amount = FOOD_DIETARY_VALUE_GOOD
+	//CC Edit End
 
 /obj/item/reagent_containers/food/snacks/rogue/crackerscooked/On_Consume(mob/living/eater)
 	..()
@@ -54,6 +62,10 @@
 	slice_batch = FALSE
 	slice_sound = TRUE
 	rotprocess = SHELFLIFE_EXTREME
+	//CC Edit Begin
+	diet_types = list("Grains")
+	diet_change_amount = FOOD_DIETARY_VALUE_GOOD
+	//CC Edit End
 
 /obj/item/reagent_containers/food/snacks/rogue/bread/update_icon()
 	if(slices_num)
@@ -87,6 +99,10 @@
 	bitesize = 2
 	rotprocess = SHELFLIFE_LONG
 	dropshrink = 0.8
+	//CC Edit Begin
+	diet_types = list("Grains")
+	diet_change_amount = FOOD_DIETARY_VALUE_BAD
+	//CC Edit End
 
 /obj/item/reagent_containers/food/snacks/rogue/breadslice/attackby(obj/item/I, mob/living/user, params)
 	update_cooktime(user)
@@ -134,6 +150,10 @@
 	cooked_type = null
 	bitesize = 3
 	rotprocess = null
+	//CC Edit Begin
+	diet_types = list("Grains")
+	diet_change_amount = FOOD_DIETARY_VALUE_POOR //Toasty...
+	//CC Edit End
 
 /obj/item/reagent_containers/food/snacks/rogue/breadslice/toast/attackby(obj/item/I, mob/user, params)
 	var/found_table = locate(/obj/structure/table) in (loc)
@@ -176,6 +196,10 @@
 	faretype = FARE_FINE
 	tastes = list("butter" = 1)
 	list_reagents = list(/datum/reagent/consumable/nutriment = SNACK_DECENT)
+	//CC Edit Begin
+	diet_types = list("Grains", "Dairy")
+	diet_change_amount = FOOD_DIETARY_VALUE_POOR
+	//CC Edit End
 
 /obj/item/reagent_containers/food/snacks/rogue/toastcrumbs
 	name = "toast crumbs"
@@ -190,6 +214,10 @@
 	foodtype = GRAIN
 	bitesize = 1
 	rotprocess = SHELFLIFE_DECENT
+	//CC Edit Begin
+	diet_types = list("Grains")
+	diet_change_amount = FOOD_DIETARY_VALUE_POOR
+	//CC Edit End
 
 // -------------- BREAD WITH FOOD ON IT (not american sandwich) -----------------
 /obj/item/reagent_containers/food/snacks/rogue/sandwich
@@ -207,6 +235,10 @@
 	desc = "A piece of toast with a thin slice of salumoi on top. Often eaten by soldiers on the march. Salty!"
 	icon_state = "bread_salami"
 	foodtype = GRAIN | MEAT
+	//CC Edit Begin
+	diet_types = list("Grains", "Meats")
+	diet_change_amount = FOOD_DIETARY_VALUE_GREAT
+	//CC Edit End
 
 /obj/item/reagent_containers/food/snacks/rogue/sandwich/cheese
 	tastes = list("cheese" = 1,"bread" = 1)
@@ -214,6 +246,10 @@
 	desc = "A slice of toast with a rather thick wedge of cheese melted into the crust."
 	icon_state = "bread_cheese"
 	foodtype = GRAIN | DAIRY
+	//CC Edit Begin
+	diet_types = list("Grains", "Dairy")
+	diet_change_amount = FOOD_DIETARY_VALUE_GREAT
+	//CC Edit End
 
 /obj/item/reagent_containers/food/snacks/rogue/sandwich/egg
 	tastes = list("cheese" = 1,"egg" = 1)
@@ -221,6 +257,10 @@
 	desc = "A piece of toast with a fried egg on top that jiggles gently when prodded."
 	icon_state = "bread_egg"
 	foodtype = GRAIN | MEAT
+	//CC Edit Begin
+	diet_types = list("Grains", "Meats")
+	diet_change_amount = FOOD_DIETARY_VALUE_GREAT
+	//CC Edit End
 
 /obj/item/reagent_containers/food/snacks/rogue/sandwich/salo
 	tastes = list("salty fat" = 1)
@@ -229,6 +269,10 @@
 	faretype = FARE_POOR
 	icon_state = "bread_salo"
 	foodtype = GRAIN | MEAT
+	//CC Edit Begin
+	diet_types = list("Grains", "Meats")
+	diet_change_amount = FOOD_DIETARY_VALUE_GREAT
+	//CC Edit End
 
 /obj/item/reagent_containers/food/snacks/rogue/sandwich/bacon
 	tastes = list("bacon" = 1)
@@ -236,6 +280,10 @@
 	desc = "A slice of bread with crispy bacon on top for the perfect breakfast."
 	icon_state = "toast_bacon"
 	foodtype = GRAIN | MEAT
+	//CC Edit Begin
+	diet_types = list("Grains", "Meats")
+	diet_change_amount = FOOD_DIETARY_VALUE_GREAT
+	//CC Edit End
 /*
 /obj/item/reagent_containers/food/snacks/rogue/sandwich/tartar
 	tastes = list("dissapointment" = 1)
@@ -257,6 +305,10 @@
 	tastes = list("bread" = 1)
 	bitesize = 3
 	rotprocess = SHELFLIFE_EXTREME
+	//CC Edit Begin
+	diet_types = list("Grains")
+	diet_change_amount = FOOD_DIETARY_VALUE_BAD
+	//CC Edit End
 
 /obj/item/reagent_containers/food/snacks/rogue/bun/attackby(obj/item/I, mob/living/user, params)
 	update_cooktime(user)
@@ -288,6 +340,10 @@
 	icon_state = "crossbun_raw"
 	list_reagents = list(/datum/reagent/consumable/nutriment = SMALLDOUGH_NUTRITION)
 	cooked_type = /obj/item/reagent_containers/food/snacks/rogue/crossbun
+	//CC Edit Begin
+	diet_types = list("Grains")
+	diet_change_amount = FOOD_DIETARY_VALUE_POOR
+	//CC Edit End
 
 // Psydon variant
 /obj/item/reagent_containers/food/snacks/rogue/foodbase/psycrossbun_raw
@@ -296,6 +352,10 @@
 	icon = 'modular/Neu_Food/icons/cooked/cooked_baked.dmi'
 	icon_state = "psycrossbun_raw"
 	cooked_type = /obj/item/reagent_containers/food/snacks/rogue/psycrossbun
+	//CC Edit Begin
+	diet_types = list("Grains")
+	diet_change_amount = FOOD_DIETARY_VALUE_POOR
+	//CC Edit End
 
 /* 	.................   Crossbuns   ................... */
 // Astrata variant
@@ -310,6 +370,10 @@
 	tastes = list("bread" = 1)
 	bitesize = 3
 	rotprocess = SHELFLIFE_EXTREME
+	//CC Edit Begin
+	diet_types = list("Grains")
+	diet_change_amount = FOOD_DIETARY_VALUE_GOOD
+	//CC Edit End
 
 /obj/item/reagent_containers/food/snacks/rogue/psycrossbun
 	name = "psycrossbun"
@@ -322,6 +386,10 @@
 	tastes = list("bread" = 1)
 	bitesize = 3
 	rotprocess = SHELFLIFE_EXTREME
+	//CC Edit Begin
+	diet_types = list("Grains")
+	diet_change_amount = FOOD_DIETARY_VALUE_GOOD
+	//CC Edit End
 
 /*	.................   Cheese bun   ................... */
 /obj/item/reagent_containers/food/snacks/rogue/foodbase/cheesebun_raw
@@ -334,6 +402,10 @@
 	list_reagents = list(/datum/reagent/consumable/nutriment = 4)
 	w_class = WEIGHT_CLASS_NORMAL
 	foodtype = GRAIN | DAIRY
+	//CC Edit Begin
+	diet_types = list("Grains", "Dairy")
+	diet_change_amount = FOOD_DIETARY_VALUE_BAD
+	//CC Edit End
 
 /obj/item/reagent_containers/food/snacks/rogue/cheesebun
 	name = "fresh cheese bun"
@@ -348,6 +420,10 @@
 	bitesize = 3
 	rotprocess = SHELFLIFE_DECENT
 	eat_effect = /datum/status_effect/buff/greatsnackbuff
+	//CC Edit Begin
+	diet_types = list("Grains", "Dairy")
+	diet_change_amount = FOOD_DIETARY_VALUE_GOOD
+	//CC Edit End
 
 /obj/item/reagent_containers/food/snacks/rogue/frybread
 	name = "frybread"
@@ -360,6 +436,10 @@
 	w_class = WEIGHT_CLASS_NORMAL
 	bitesize = 4
 	eat_effect = /datum/status_effect/buff/snackbuff
+	//CC Edit Begin
+	diet_types = list("Grains", "Dairy")
+	diet_change_amount = FOOD_DIETARY_VALUE_GOOD
+	//CC Edit End
 
 /*	.................   Raisin bread   ................... */
 /obj/item/reagent_containers/food/snacks/rogue/rbread_half
@@ -370,6 +450,10 @@
 	list_reagents = list(/datum/reagent/consumable/nutriment = 1)
 	w_class = WEIGHT_CLASS_NORMAL
 	rotprocess = SHELFLIFE_DECENT
+	//CC Edit Begin
+	diet_types = list("Grains", "Fruits")
+	diet_change_amount = FOOD_DIETARY_VALUE_GOOD
+	//CC Edit End
 
 /obj/item/reagent_containers/food/snacks/rogue/rbread_half/attackby(obj/item/I, mob/living/user, params)
 	var/found_table = locate(/obj/structure/table) in (loc)
@@ -398,6 +482,10 @@
 	list_reagents = list(/datum/reagent/consumable/nutriment = 1)
 	w_class = WEIGHT_CLASS_NORMAL
 	rotprocess = SHELFLIFE_DECENT
+	//CC Edit Begin
+	diet_types = list("Grains", "Fruits")
+	diet_change_amount = FOOD_DIETARY_VALUE_GOOD
+	//CC Edit End
 
 /obj/item/reagent_containers/food/snacks/rogue/raisinbread
 	name = "raisin loaf"
@@ -414,6 +502,10 @@
 	slice_batch = FALSE
 	slice_sound = TRUE
 	rotprocess = SHELFLIFE_EXTREME
+	//CC Edit Begin
+	diet_types = list("Grains", "Fruits")
+	diet_change_amount = FOOD_DIETARY_VALUE_GREAT //Extra steps merits extra rewards!
+	//CC Edit End
 
 /obj/item/reagent_containers/food/snacks/rogue/raisinbread/update_icon()
 	if(slices_num)
@@ -448,6 +540,10 @@
 	bitesize = 3
 	rotprocess = SHELFLIFE_LONG
 	dropshrink = 0.8
+	//CC Edit Begin
+	diet_types = list("Grains", "Fruits")
+	diet_change_amount = FOOD_DIETARY_VALUE_GOOD
+	//CC Edit End
 
 /obj/item/reagent_containers/food/snacks/rogue/bun_grenz
 	list_reagents = list(/datum/reagent/consumable/nutriment = SAUSAGE_NUTRITION+SMALLDOUGH_NUTRITION)
@@ -461,6 +557,10 @@
 	warming = 5 MINUTES
 	rotprocess = SHELFLIFE_LONG
 	eat_effect = /datum/status_effect/buff/greatsnackbuff
+	//CC Edit Begin
+	diet_types = list("Grains", "Meats")
+	diet_change_amount = FOOD_DIETARY_VALUE_GOOD
+	//CC Edit End
 
 /*	.............   Raston   ................ */
 /obj/item/reagent_containers/food/snacks/rogue/bun_raston
@@ -473,3 +573,7 @@
 	desc = "A slice of cheese melted between two lightly-toasted buns."
 	rotprocess = SHELFLIFE_EXTREME
 	eat_effect = /datum/status_effect/buff/greatsnackbuff
+	//CC Edit Begin
+	diet_types = list("Grains", "Dairy")
+	diet_change_amount = FOOD_DIETARY_VALUE_GOOD
+	//CC Edit End

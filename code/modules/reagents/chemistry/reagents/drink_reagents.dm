@@ -86,6 +86,10 @@
 	glass_icon_state = "glass_white"
 	glass_name = "glass of milk"
 	glass_desc = ""
+	//CC Edit Begin
+	diet_types = list("Dairy")
+	diet_change_amount = FOOD_DIETARY_REAGENT_VALUE_POOR
+	//CC Edit End
 
 /datum/reagent/consumable/milk/on_mob_life(mob/living/carbon/M)
 	if(M.getBruteLoss() && prob(20))
@@ -97,7 +101,4 @@
 			H.adjust_hydration(10)
 		if(H.blood_volume < BLOOD_VOLUME_NORMAL)
 			H.blood_volume = min(H.blood_volume+10, BLOOD_VOLUME_NORMAL)
-		//CC Edit Begin
-		H.dna.species.adjust_diet_value(H, list("Dairy"), 0.25)
-		//CC Edit End
 	..()

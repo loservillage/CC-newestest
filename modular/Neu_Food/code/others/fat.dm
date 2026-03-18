@@ -8,6 +8,10 @@
 	eat_effect = /datum/status_effect/debuff/uncookedfood
 	possible_item_intents = list(/datum/intent/food, /datum/intent/splash)
 	fat_yield = 20
+	//CC Edit Begin
+	diet_types = list("Meats")
+	diet_change_amount = FOOD_DIETARY_VALUE_POOR - 1 //Pure fat isn't... Ideal to your health.
+	//CC Edit End
 
 /obj/item/reagent_containers/food/snacks/fat/attackby(obj/item/I, mob/living/user, params)
 	var/found_table = locate(/obj/structure/table) in (loc)
@@ -56,6 +60,10 @@
 	fat_yield = 5 // 5 per animal fat
 	bitesize = 1
 	dropshrink = 0.75
+	//CC Edit Begin
+	diet_types = list("Dairy")
+	diet_change_amount = FOOD_DIETARY_VALUE_POOR
+	//CC Edit End
 
 /obj/item/reagent_containers/food/snacks/tallow/Initialize()
 	. = ..()

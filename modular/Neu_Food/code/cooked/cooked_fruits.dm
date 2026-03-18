@@ -10,3 +10,7 @@
 	bitesize = 3
 	list_reagents = list(/datum/reagent/consumable/nutriment = SNACK_POOR)
 	rotprocess = SHELFLIFE_LONG
+	//CC Edit Begin
+	diet_types = list("Fruits", "Vegetables") //Versatile.
+	diet_change_amount = FOOD_DIETARY_VALUE_GOOD
+	//CC Edit End

@@ -12,6 +12,10 @@
 	tastes = list("crunchy toastcrumbs" = 1, "molten butter" = 1)
 	eat_effect = /datum/status_effect/buff/greatsnackbuff
 	rotprocess = SHELFLIFE_DECENT
+	//CC Edit Begin
+	diet_types = list("Dairy", "Grains")
+	diet_change_amount = FOOD_DIETARY_VALUE_AMAZING
+	//CC Edit End
 
 // Cooked results
 /obj/item/reagent_containers/food/snacks/rogue/meat/nitzel
@@ -27,6 +31,10 @@
 	cooked_type = null
 	eat_effect = /datum/status_effect/buff/greatsnackbuff
 	rotprocess = SHELFLIFE_DECENT
+	//CC Edit Begin
+	diet_types = list("Meats", "Grains")
+	diet_change_amount = FOOD_DIETARY_VALUE_AMAZING
+	//CC Edit End
 
 // Doesn't matter it was spider meat if you go through the effort it should be as good
 /obj/item/reagent_containers/food/snacks/rogue/meat/nitzel/schnitzel
@@ -34,6 +42,10 @@
 	desc = "A deep-fried schnitzel, coated in toastcrumbs and ready to eat."
 	icon_state = "schnitzel"
 	tastes = list("crunchy toastcrumbs" = 1, "tender spidermeat" = 1)
+	//CC Edit Begin
+	diet_types = list("Meats", "Grains")
+	diet_change_amount = FOOD_DIETARY_VALUE_AMAZING
+	//CC Edit End
 
 /obj/item/reagent_containers/food/snacks/rogue/meat/chickentender
 	name = "tender frybird"
@@ -48,9 +60,17 @@
 	cooked_type = null
 	eat_effect = /datum/status_effect/buff/greatsnackbuff
 	rotprocess = SHELFLIFE_DECENT
+	//CC Edit Begin
+	diet_types = list("Meats", "Grains")
+	diet_change_amount = FOOD_DIETARY_VALUE_AMAZING
+	//CC Edit End
 
 /obj/item/reagent_containers/food/snacks/rogue/meat/nitzel/wiener
 	name = "wiener nitzel"
 	desc = "A deep-fried wiener, coated in toastcrumbs and ready to eat."
 	icon_state = "wienernitzel"
 	tastes = list("crunchy toastcrumbs" = 1, "tender wiener" = 1)
+	//CC Edit Begin
+	diet_types = list("Meats", "Grains")
+	diet_change_amount = FOOD_DIETARY_VALUE_AMAZING
+	//CC Edit End

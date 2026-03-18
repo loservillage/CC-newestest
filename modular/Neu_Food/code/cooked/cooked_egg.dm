@@ -91,6 +91,10 @@
 	name = "stuffed egg"
 	desc = "Egg stuffed with a creamy cheese filling."
 	icon_state = "deviledegg"
+	//CC Edit Begin
+	diet_types = list("Dairy")
+	diet_change_amount = FOOD_DIETARY_VALUE_GOOD
+	//CC Edit End
 
 /*	.............   Tartar   ................ */
 //This doesn't really count as either cooked or egg recipe (it does contain an egg at least) so whatever.
@@ -102,6 +106,10 @@
 	foodtype = MEAT
 	rotprocess = SHELFLIFE_DECENT
 	faretype = FARE_POOR //It's raw meat and egg... come now now
+	//CC Edit Begin
+	diet_types = list("Meats")
+	diet_change_amount = FOOD_DIETARY_VALUE_GOOD
+	//CC Edit End
 
 /* * * * * * * * * * * **
  *						*
@@ -122,6 +130,10 @@
 	icon_state = "omelette"
 	eat_effect = /datum/status_effect/buff/mealbuff
 	rotprocess = SHELFLIFE_DECENT
+	//CC Edit Begin
+	diet_types = list("Grains", "Dairy")
+	diet_change_amount = FOOD_DIETARY_VALUE_GREAT
+	//CC Edit End
 
 /*	.................   Bacon & Eggs   ................... */
 /obj/item/reagent_containers/food/snacks/rogue/friedegg/bacon
@@ -134,6 +146,10 @@
 	eat_effect = /datum/status_effect/buff/mealbuff
 	faretype = FARE_NEUTRAL
 	rotprocess = SHELFLIFE_DECENT
+	//CC Edit Begin
+	diet_types = list("Meats")
+	diet_change_amount = FOOD_DIETARY_VALUE_GREAT
+	//CC Edit End
 
 /obj/item/reagent_containers/food/snacks/rogue/friedegg/bacon/attackby(obj/item/I, mob/living/user, params)
 	var/found_table = locate(/obj/structure/table) in (loc)
@@ -161,6 +177,10 @@
 	eat_effect = /datum/status_effect/buff/mealbuff
 	faretype = FARE_NEUTRAL
 	rotprocess = SHELFLIFE_DECENT
+	//CC Edit Begin
+	diet_types = list("Meats")
+	diet_change_amount = FOOD_DIETARY_VALUE_GREAT
+	//CC Edit End
 
 /obj/item/reagent_containers/food/snacks/rogue/friedegg/sausage/attackby(obj/item/I, mob/living/user, params)
 	var/found_table = locate(/obj/structure/table) in (loc)
@@ -186,6 +206,10 @@
 	eat_effect = /datum/status_effect/buff/mealbuff
 	faretype = FARE_FINE
 	rotprocess = SHELFLIFE_DECENT
+	//CC Edit Begin
+	diet_types = list("Meats")
+	diet_change_amount = FOOD_DIETARY_VALUE_AMAZING
+	//CC Edit End
 
 /obj/item/reagent_containers/food/snacks/rogue/friedegg/sausagebacon/attackby(obj/item/I, mob/living/user, params)
 	var/found_table = locate(/obj/structure/table) in (loc)
@@ -211,3 +235,7 @@
 	eat_effect = /datum/status_effect/buff/greatmealbuff
 	faretype = FARE_LAVISH
 	rotprocess = SHELFLIFE_DECENT
+	//CC Edit Begin
+	diet_types = list("Meats", "Grains")
+	diet_change_amount = FOOD_DIETARY_VALUE_LEGENDARY //The first legendary meal! Eggs are great!
+	//CC Edit End
