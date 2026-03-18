@@ -185,6 +185,11 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 
 	var/preload = TRUE
 
+	//CC Edit Begin
+	//Used for nightshift.dm for bonus triumphs for having a balanced diet.
+	var/dietary_goals_met = FALSE
+	//CC Edit End
+
 ///////////
 // PROCS //
 ///////////
@@ -2438,13 +2443,16 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 		if(NUTRITIONAL_REWARD_MIN) //Heal from wounds, and gives us a bonus triumph if we sustain a good diet at night. Lowers decay rates as well.
 			adjust_diet_value(H, NUTRITIONAL_DIET_TYPES, MIN_REWARD_NUTRITIONAL_DECAY)
 			H.heal_wounds(0.25)
+			dietary_goals_met = TRUE
 
 		if(NUTRITIONAL_REWARD_MAX) //Decays slower and has a better wound bonus.
 			adjust_diet_value(H, NUTRITIONAL_DIET_TYPES, FULL_REWARD_NUTRITIONAL_DECAY)
 			H.heal_wounds(0.75)
+			dietary_goals_met = TRUE
 
 		if(0) //We've not yet reached a reward goal. Slow down our decay. Has no benefits or downsides.
 			adjust_diet_value(H, NUTRITIONAL_DIET_TYPES, DEFAULT_NUTRITIONAL_DECAY)
+			dietary_goals_met = FALSE
 
 
 /datum/species/proc/adjust_diet_value(mob/living/carbon/human/H, diet_types, change)
