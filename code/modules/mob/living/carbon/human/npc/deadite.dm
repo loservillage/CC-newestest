@@ -157,8 +157,8 @@
 		return
 	if(mind.has_antag_datum(/datum/antagonist/werewolf))
 		return
-	if(mind.has_antag_datum(/datum/antagonist/gnoll))
-		return
+	//if(mind.has_antag_datum(/datum/antagonist/gnoll)) Caustic edit, allows gnolls to come back as deadite. Preventing claw use as balance.
+	//	return
 	if(mind.has_antag_datum(/datum/antagonist/skeleton))
 		return
 	if(HAS_TRAIT(src, TRAIT_ZOMBIE_IMMUNE))
