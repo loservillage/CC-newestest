@@ -164,3 +164,8 @@
 	H.adjust_skillrank(/datum/skill/combat/wrestling, 4, TRUE)
 	H.adjust_skillrank(/datum/skill/misc/swimming, 2, TRUE)
 	H.adjust_skillrank(/datum/skill/misc/climbing, 2, TRUE)
+
+/mob/living/carbon/human/species/delfevil/npc/death(gibbed, nocutscene)
+	if(vore_organs.len > 0)
+		for(var/obj/belly/B in vore_organs)
+			B.release_all_contents(TRUE)

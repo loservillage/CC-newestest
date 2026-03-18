@@ -248,3 +248,8 @@ GLOBAL_LIST_INIT(generic_vnpc_aggro, world.file2list("strings/rt/vnpcaggrolines.
 			H.STAINT = 4 //dumbass
 			H.adjust_skillrank(/datum/skill/combat/wrestling, 5, TRUE)
 			H.adjust_skillrank(/datum/skill/combat/unarmed, 4, TRUE)
+
+/mob/living/carbon/human/species/tiberianevil/npc/death(gibbed, nocutscene)
+	if(vore_organs.len > 0)
+		for(var/obj/belly/B in vore_organs)
+			B.release_all_contents(TRUE)
