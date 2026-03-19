@@ -3013,6 +3013,7 @@
 #include "code\modules\clothing\rogueclothes\hats.dm"
 #include "code\modules\mob\living\simple_animal\rogue\creacher\abyssal_monsters.dm"
 #include "code\modules\mob\living\simple_animal\rogue\creacher\dragon.dm"
+#include "modular_causticcove\code\datums\character_flaw\mangled_jaw_vice.dm"
 #include "modular_causticcove\code\datums\loadout\loadout_pants.dm"
 #include "modular_causticcove\code\datums\loadout\loadout_shoes.dm"
 #include "code\modules\mob\living\simple_animal\rogue\creacher\gethsmane.dm"
@@ -3060,6 +3061,7 @@
 #include "modular_causticcove\code\datums\combat_music.dm"
 #include "modular_causticcove\code\datums\loadout.dm"
 #include "modular_causticcove\code\datums\spontaneous_vore.dm"
+#include "modular_causticcove\code\datums\wounds\types\mangled_jaw.dm"
 #include "modular_causticcove\code\game\objects\effects\landmarks.dm"
 #include "modular_causticcove\code\game\objects\items\clothes\stockings.dm"
 #include "modular_causticcove\code\game\objects\items\rogueitems\leash.dm"
@@ -3199,6 +3201,4 @@
 #include "modular_causticcove\code\modules\events\adventure\random_bosses\random_boss.dm"
 #include "modular_causticcove\code\modules\spells\spell_types\wizard\conjure\conjure_tool.dm"
 #include "modular_causticcove\code\game\objects\items\clothes\causthats.dm"
-#include "modular_causticcove\code\datums\character_flaw\mangled_jaw_vice.dm"
-#include "modular_causticcove\code\datums\wounds\types\mangled_jaw.dm"
 // END_INCLUDE
