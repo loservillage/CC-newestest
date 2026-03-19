@@ -15,6 +15,17 @@
 	mob_storage_capacity = 1
 	allow_dense = FALSE
 
+//CC Edit: Rot refactor
+/obj/structure/closet/crate/chest/Entered(atom/movable/arrived, atom/old_loc)
+	. = ..()
+	food_rot_enter(arrived)
+
+/obj/structure/closet/crate/chest/Exited(atom/movable/gone, atom/newLoc)
+	. = ..()
+	food_rot_leave(gone)
+
+//CC Edit End
+
 /obj/structure/closet/crate/chest/gold
 	icon_state = "chest3"
 	base_icon_state = "chest3"

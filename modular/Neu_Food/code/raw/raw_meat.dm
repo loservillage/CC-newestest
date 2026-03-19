@@ -23,6 +23,7 @@
 	of stomachs."
 	icon = 'modular/Neu_Food/icons/raw/raw_meat.dmi'
 	icon_state = "meat_rotten"
+	rotprocess = null //CC Edit
 
 /obj/item/reagent_containers/food/snacks/rogue/meat_rotten/Initialize()
 	. = ..()

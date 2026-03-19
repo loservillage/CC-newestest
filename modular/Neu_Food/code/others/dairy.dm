@@ -23,6 +23,9 @@
 			reagents.remove_reagent(/datum/reagent/consumable/milk, 15)
 			reagents.add_reagent(/datum/reagent/consumable/milk/salted, 15)
 			qdel(I)
+	//CC Edit
+	//Words cannot describe how bad slapcrafting is coded. Alas, this is going into dairy.dm because...???
+	caustic_attackby(I, user, params)
 
 /*	............   Churning butter   ................ */
 /obj/item/reagent_containers/glass/bucket/attackby(obj/item/I, mob/living/user, params)
