@@ -26,7 +26,7 @@ export const SupplyPackSection = (props: SupplyPackSectionProps) => {
   const CanBeBought = (budget ? finalprice <= budget : false);
   const CostColour = (CanBeBought ? "#00ff00" : "#ff0000");
   let moneytype = currency ? currency : "Mammons";
-  const PackContents = () => {
+  /* const PackContents = () => {
     return (
       <Section title="Contents">
         <Stack vertical>
@@ -36,7 +36,7 @@ export const SupplyPackSection = (props: SupplyPackSectionProps) => {
         </Stack>
       </Section>
     );
-  };
+  };*/
 
   const BuyBtn = () => {
     if(disabled) {
@@ -53,33 +53,25 @@ export const SupplyPackSection = (props: SupplyPackSectionProps) => {
 
 
   return(
-    <Section title={pack.name} align="center">
+    <Section title={pack.name}>
       <Stack vertical>
         <Stack.Item>
           Cost: 
         </Stack.Item>
         <Stack.Item>
-          <Stack vertical>
-            <Stack.Item>
-              Price:
-            </Stack.Item>
-            <Stack.Item>
-              <Stack vertical>
-                <Stack.Item>
-                  Base price: {pack.cost}
-                </Stack.Item>
-                {pricemult? "" : (<Stack.Item>Price Multiplier: *{pricemult}</Stack.Item>)}
-                {extramult? "" : (<Stack.Item>Commission Multiplier: *{extramult}</Stack.Item>)}
+          <Stack.Item>
+            <Stack>
+              <Stack.Item>
+                Base price: {pack.cost}
+              </Stack.Item>
+                {pricemult? "" : (<Stack.Item>Price Multiplier: {pricemult}</Stack.Item>)}
+                {extramult? "" : (<Stack.Item>Commission Multiplier: {extramult}</Stack.Item>)}
                 {tax_amt? "" : (paying_tax ? (<Stack.Item>Tax: {tax_amt}</Stack.Item>) : (<Stack.Item textColor="#ff0000" >Tax: {tax_amt}... in theory.</Stack.Item>))}
-                <Stack.Item textColor={CostColour}>
+              <Stack.Item textColor={CostColour}>
                   Final price: {finalprice} {moneytype}
-                </Stack.Item>
-              </Stack>
-            </Stack.Item>
-          </Stack>
-        </Stack.Item>
-        <Stack.Item>
-          <PackContents />
+              </Stack.Item>
+            </Stack>
+          </Stack.Item>
         </Stack.Item>
         <Stack.Item>
           {BuyBtn()}

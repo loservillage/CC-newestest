@@ -237,6 +237,7 @@
 		if("addToCart")
 			var/datum/component/travelling_merchant/tmc = user.GetComponent(/datum/component/travelling_merchant)
 			if(tmc)
+				tmc.add_to_cart(params["pckpath"])
 				return TRUE
 		//CC Edit End
 
@@ -688,11 +689,7 @@
 
 	if(href_list["directory"])
 		view_directory(usr)
-		//CC Edit
 		return
-	
-	Topic_TravellingMerchant()
-	//CC Edit End
 
 /obj/structure/roguemachine/mail/proc/view_directory(mob/user)
 	var/dat

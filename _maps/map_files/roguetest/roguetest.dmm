@@ -392,10 +392,6 @@
 /obj/item/seeds/wheat/oat,
 /turf/open/floor/rogue/grass,
 /area/rogue/outdoors)
-"pj" = (
-/obj/structure/roguemachine/supplyface,
-/turf/open/floor/rogue/grass,
-/area/rogue/outdoors)
 "pk" = (
 /obj/structure/rack/rogue/shelf/big{
 	icon_state = "shelf_biggest";
@@ -2978,7 +2974,7 @@ CZ
 yK
 yK
 rT
-pj
+vq
 rT
 rT
 rT
