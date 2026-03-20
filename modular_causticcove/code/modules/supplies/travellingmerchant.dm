@@ -114,7 +114,8 @@
 		"Exotic Import",
 		"General Labour",
 		"Health and Hygiene",
-		"Self Defense")
+		"Self Defense",
+		"Private Workshop")
 	var/list/unlockedcats = list(
 		"Travelling Merchant",
 		"Private Workshop"
