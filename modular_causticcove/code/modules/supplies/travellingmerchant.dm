@@ -219,6 +219,7 @@
 		var/datum/supply_pack/rogue/currpacccasted = SSmerchant.supply_packs[currpacc]
 		for(var/it in currpacccasted.contains)
 			new it(C)
+			tmc.current_cart -= currpacc
 	C.visible_message("The balloon drops a crate!")
 
 /obj/item/drop_signal_horn/proc/sendCrate(mob/living/user, obj/structure/closet/crate/C)
@@ -259,7 +260,7 @@
 	if(!tmc)
 		to_chat(user, "The horn rejects you...")
 	var/turf/CT = get_turf(src)
-	if(attunedmark && (get_turf(attunedmark) == CT))
+	if(attunedmark && (get_turf(attunedmark) == CT) && (!bloon))
 		user.visible_message("[user] raises the horn to their mouth, preparing to signal for a balloon...")
 		user.playsound_local(get_turf(user), 'sound/items/horn/signalhorn.ogg', 35, FALSE, pressure_affected = FALSE)
 		if(do_after(user, 5 SECONDS))
