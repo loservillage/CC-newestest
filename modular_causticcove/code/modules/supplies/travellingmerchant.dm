@@ -303,7 +303,7 @@
 	if(!lmarkturf.can_see_sky())
 		return FALSE
 	var/area/lmarkarea = get_area(lmarkturf)
-	if(!(lmarkarea.threat_region in list(THREAT_REGION_AZUREAN_COAST, THREAT_REGION_MOUNT_DECAP , THREAT_REGION_TERRORBOG)))
+	if(!(lmarkarea.threat_region in list(THREAT_REGION_AZUREAN_COAST, THREAT_REGION_MOUNT_DECAP)))
 		return FALSE
 	return TRUE
 
