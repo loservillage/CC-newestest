@@ -95,7 +95,11 @@ All foods are distributed among various categories. Use common sense.
 
 	//The amount of nutritional diet earned per bite.
 	var/diet_change_amount = 0
+
+	//Handles unique ID's for each object that is rotting. Faster than using SSProcessing.
+	var/timerid
 	//CC Edit End
+
 
 
 /datum/intent/food
@@ -121,14 +125,56 @@ All foods are distributed among various categories. Use common sense.
 
 /obj/item/reagent_containers/food/snacks/Initialize()
 	if(rotprocess)
-		SSticker.OnRoundstart(CALLBACK(src, PROC_REF(begin_rotting)))
+		SSticker.OnRoundstart(CALLBACK(src, PROC_REF(init_rot))) //CC Edit: Rot refactor
 	if(cooked_type || fried_type)
 		cooktime = 30 SECONDS
 	..()
 
-/obj/item/reagent_containers/food/snacks/proc/begin_rotting()
-	START_PROCESSING(SSobj, src)
+//CC Edit: Rot refactor
+/obj/item/reagent_containers/food/snacks/proc/init_rot()
+	if(rotprocess)
+		if(!istype(loc, /obj/structure/closet/crate/chest) && ! istype(loc, /obj/item/cooking/platter)  && !istype(loc, /obj/structure/roguemachine/vendor) && !istype (loc, /obj/item/storage/backpack/rogue/artibackpack)&& !istype (loc, /obj/structure/table/cooling))
+			begin_rotting()
 
+//CC Edit: Rot refactor
+/obj/item/reagent_containers/food/snacks/proc/begin_rotting()
+	//START_PROCESSING(SSobj, src)
+	if(rotprocess && (!timerid))
+		timerid = addtimer(CALLBACK(src, PROC_REF(rot)), (1 MINUTES), (TIMER_STOPPABLE | TIMER_LOOP))
+
+//CC Edit: Rot refactor
+/obj/item/reagent_containers/food/snacks/proc/stop_rotting()
+	if(timerid)
+		deltimer(timerid)
+		timerid = null
+
+//CC Edit: Rot refactor
+/obj/item/reagent_containers/food/snacks/Destroy()
+	if(timerid)
+		deltimer(timerid)
+		timerid = null
+	. = ..()
+	
+
+//CC Edit: Rot refactor
+/obj/item/reagent_containers/food/snacks/proc/rot()
+	if(!rotprocess)
+		deltimer(timerid)
+		timerid = null
+		return
+	if(!locate(/obj/structure/table) in loc)
+		warming -= 1 MINUTES
+	else
+		if(locate(/obj/structure/table/cooling) in loc)
+			warming -= 0
+		else
+			warming -= 30 SECONDS
+	if(warming < (-1*rotprocess))
+		deltimer(timerid)
+		timerid = null
+		become_rotten()
+
+//CC Edit: Technically no longer used, still keeping it around justin case
 /obj/item/reagent_containers/food/snacks/process()
 	..()
 	if(rotprocess)
@@ -150,6 +196,9 @@ All foods are distributed among various categories. Use common sense.
 	return ..()
 
 /obj/item/reagent_containers/food/snacks/proc/become_rotten(to_color = TRUE, to_rename = TRUE)
+	if(!loc)
+		qdel(src)
+		return
 	if(isturf(loc) && istype(get_area(src),/area/rogue/under/town/sewer))
 		if(!istype(src,/obj/item/reagent_containers/food/snacks/smallrat))
 			new /obj/item/reagent_containers/food/snacks/smallrat(loc)
@@ -163,9 +212,9 @@ All foods are distributed among various categories. Use common sense.
 			NU.reagents.clear_reagents()
 			if(reagents) //CC Edit, more slopfix, because no one thought something can't have reagents
 				reagents.trans_to(NU.reagents, reagents.maximum_volume)
-			qdel(src)
 			if(!location || !SEND_SIGNAL(location, COMSIG_TRY_STORAGE_INSERT, NU, null, TRUE, TRUE))
 				NU.forceMove(get_turf(NU.loc))
+			qdel(src)
 			record_round_statistic(STATS_FOOD_ROTTED)
 			return TRUE
 	else
@@ -179,6 +228,7 @@ All foods are distributed among various categories. Use common sense.
 		slices_num = 0
 		slice_path = null
 		cooktime = 0
+		rotprocess = null //CC Edit
 		if(istype(src.loc, /obj/item/cooking/platter/))
 			src.loc.update_icon()
 		record_round_statistic(STATS_FOOD_ROTTED)

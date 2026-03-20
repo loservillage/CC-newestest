@@ -102,6 +102,16 @@ What it does:
 
 	update_icon()
 
+//CC Edit: Rot refactor
+/obj/item/cooking/platter/Entered(atom/movable/arrived, atom/old_loc)
+	. = ..()
+	food_rot_enter(arrived)
+
+/obj/item/cooking/platter/Exited(atom/movable/gone, atom/newLoc)
+	. = ..()
+	food_rot_leave(gone)
+//CC Edit end
+
 /obj/item/cooking/platter/aalloy
 	name = "decrepit platter"
 	desc = "Wrought bronze, flattened to serve. The edge remains wet with red; spilled merlot, meaty juices, or blood?"
