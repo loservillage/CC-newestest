@@ -10,7 +10,7 @@
 	name = "Small cache of health potion ingredients"
 	desc = "Some odds and ends for brewing health potions"
 	cost = 10
-	supply_tier = SUPPLY_TIER_SLOP
+	supply_tier = SUPPLY_TIER_BUDGET
 	contents = list(
 		/obj/item/alch/symphitum,
 		/obj/item/alch/symphitum,
@@ -40,7 +40,7 @@
 	name = "Small cache of strong health potion ingredients"
 	desc = "Some odds and ends for brewing strong health potions"
 	cost = 30
-	supply_tier = SUPPLY_TIER_SLOP
+	supply_tier = SUPPLY_TIER_BUDGET
 	contents = list(
 		/obj/item/alch/calendula,
 		/obj/item/alch/calendula,
@@ -77,7 +77,7 @@
 	name = "Begineer's summoning supplies"
 	desc = "Some odds and ends for begineer summoners, enough for 4 summons of each category"
 	cost = 10
-	supply_tier = SUPPLY_TIER_SLOP
+	supply_tier = SUPPLY_TIER_BUDGET
 	contents = list(
 		/obj/item/ash,
 		/obj/item/ash,

@@ -20,7 +20,7 @@
 	name = "Small cache of health potions"
 	desc = "5 red potions"
 	cost = 50
-	supply_tier = SUPPLY_TIER_SLOP
+	supply_tier = SUPPLY_TIER_BUDGET
 	contents = list(
 		/obj/item/reagent_containers/glass/bottle/rogue/healthpot,
 		/obj/item/reagent_containers/glass/bottle/rogue/healthpot,
@@ -33,7 +33,7 @@
 	name = "Tiny cache of mana potions"
 	desc = "3 blue potions"
 	cost = 15
-	supply_tier = SUPPLY_TIER_SLOP
+	supply_tier = SUPPLY_TIER_BUDGET
 	contents = list(
 		/obj/item/reagent_containers/glass/bottle/rogue/manapot,
 		/obj/item/reagent_containers/glass/bottle/rogue/manapot,
