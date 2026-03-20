@@ -430,6 +430,7 @@
 	name = "Grenzelcloth"
 
 /obj/item/natural/cloth/presoaked/advanced/Initialize()
+	. = ..()
 	medicine_quality = 1
 	medicine_amount = 60
 	desc += " This one has been imbued masterfully in a mixed medicinal coating..."
