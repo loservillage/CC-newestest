@@ -211,7 +211,7 @@
 		. += "The horn is currently attuned to a landmark at the moment.\n"
 		. += get_target_location()
 	else
-		. += "The horn is currently unattuned. You can attune it by blowing it, signalling your contractor's balloon to pick a place, after which, the horn will lead you to the meeting point. Once there, you'll have to blow the horn again, to signal that it's you. It will then unload cargo meant for you, and give you a minute to fulton up any goods of your own."
+		. += "The horn is currently unattuned. You can attune it by blowing it, signalling your contractor's balloon to pick a place, after which, the horn will lead you to the meeting point. Once there, you'll have to blow the horn again, to signal that it's you. It will then unload cargo meant for you, and give you 10 minutes to fulton up any goods of your own."
 
 /obj/item/drop_signal_horn/proc/createCrate(mob/living/user, datum/component/travelling_merchant/tmc)
 	var/obj/structure/closet/crate/chest/C = new(get_turf(user))
@@ -265,7 +265,7 @@
 		user.playsound_local(get_turf(user), 'sound/items/horn/signalhorn.ogg', 35, FALSE, pressure_affected = FALSE)
 		if(do_after(user, 5 SECONDS))
 			if(user.consider_ambush(TRUE, TRUE))
-				var/additional_ambushes = rand(0,4)
+				var/additional_ambushes = rand(0,1)
 				for(var/i = 0, i<additional_ambushes, i++)
 					user.consider_ambush(TRUE, TRUE)
 				user.visible_message(span_warningbig("[user] blows the horn, loud enough to be heard all the way from the skies! This will surely attract some attention..."))
@@ -274,9 +274,9 @@
 					to_chat(user, span_warningbig("I'll have to blow the horn again aren't I..."))
 					return
 				createCrate(user,tmc)
-				visible_message("The balloon will hang around for a minute, send up stuff in a crate at this spot using fultons to sell them! Simply attach one, and tap it with this horn!")
+				visible_message("The balloon will hang around for around 10 minutes, send up stuff in a crate at this spot using fultons to sell them! Simply attach one, and tap it with this horn!")
 				bloon = TRUE
-				addtimer(CALLBACK(src, PROC_REF(bloongohome)),1 MINUTES)
+				addtimer(CALLBACK(src, PROC_REF(bloongohome)),10 MINUTES)
 			else
 				to_chat(user, span_warning("You blow the horn but no sound comes out... the conditions seem to not be right, ensure there are no unnatural light sources are nearby, those seem to mess with your little magical horn?"))
 		else
