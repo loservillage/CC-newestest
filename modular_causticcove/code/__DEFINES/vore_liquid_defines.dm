@@ -47,7 +47,7 @@
 #define REAGENT_JUICE_JACKBERRY_POISON "Poisonous Jackberry juice"
 #define REAGENT_ID_JUICE_JACKBERRY_POISON /datum/reagent/consumable/juice/jackberry/poisonous
 #define REAGENT_JUICE_APPLE "Apple juice"
-#define REAGENT_ID_JUICE_APPLE /datum/reagent/consumeable/juice/apple
+#define REAGENT_ID_JUICE_APPLE /datum/reagent/consumable/juice/apple
 #define REAGENT_JUICE_TOMATO "Tomato juice"
 #define REAGENT_ID_JUICE_TOMATO /datum/reagent/consumable/juice/tomato
 #define REAGENT_JUICE_STRAWBERRY "Strawberry juice"

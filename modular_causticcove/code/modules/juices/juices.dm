@@ -26,7 +26,7 @@
 	diet_types = list("Fruits")
 	diet_change_amount = FOOD_DIETARY_VALUE_POOR - 1 //Poison.
 
-/datum/reagent/consumeable/juice/apple
+/datum/reagent/consumable/juice/apple
 	name = "Apple juice"
 	description = "A measure of produce juice"
 	taste_description = "starchy apple"
