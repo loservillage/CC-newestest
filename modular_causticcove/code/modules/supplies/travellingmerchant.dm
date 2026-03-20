@@ -294,6 +294,7 @@
 				var/direction_text = get_precise_direction_between(get_turf(src), get_turf(attunedmark))
 				CT.visible_message("A balloon flies overhead, heading towards [direction_text]")
 				user.playsound_local(get_turf(user), 'sound/items/horn/signalhorn.ogg', 35, FALSE, pressure_affected = FALSE)
+				return
 
 /obj/item/drop_signal_horn/proc/locationgood(landmark)
 	var/turf/lmarkturf = get_turf(landmark)
