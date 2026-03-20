@@ -116,7 +116,8 @@
 		"Health and Hygiene",
 		"Self Defense")
 	var/list/unlockedcats = list(
-		"Travelling Merchant"
+		"Travelling Merchant",
+		"Private Workshop"
 	)
 	var/catunlockspending = 6
 	var/list/current_cart = list()
@@ -347,6 +348,116 @@
 	cost = 10
 	contains = list(/obj/item/fulton)
 
+/datum/supply_pack/rogue/travelling_merchant_pw
+	group = "Private Workshop"
+	crate_name = "Private Workshop"
+	crate_type = /obj/structure/closet/crate/chest
+
+/datum/supply_pack/rogue/travelling_merchant_pw/enchanting/woodcutting
+	name = "Woodcutting enchantment scroll"
+	cost = 100 
+	contains = list(/obj/item/enchantmentscroll/woodcut)
+
+/datum/supply_pack/rogue/travelling_merchant_pw/enchanting/mining
+	name = "Mining enchantment scroll"
+	cost = 100 
+	contains = list(/obj/item/enchantmentscroll/mining)
+
+/datum/supply_pack/rogue/travelling_merchant_pw/enchanting/light
+	name = "Light enchantment scroll"
+	cost = 100 
+	contains = list(/obj/item/enchantmentscroll/light)
+	
+/datum/supply_pack/rogue/travelling_merchant_pw/enchanting/holding
+	name = "Holding enchantment scroll"
+	cost = 250
+	contains = list(/obj/item/enchantmentscroll/holding)
+
+/datum/supply_pack/rogue/travelling_merchant_pw/mats/gold
+	name = "Raw gold"
+	cost = 65
+	contains = list(/obj/item/rogueore/gold)
+
+/datum/supply_pack/rogue/travelling_merchant_pw/mats/iron
+	name = "Raw iron"
+	cost = 9
+	contains = list(/obj/item/rogueore/iron)
+
+/datum/supply_pack/rogue/travelling_merchant_pw/mats/coal
+	name = "Coal"
+	cost = 7
+	contains = list(/obj/item/rogueore/coal)
+
+/datum/supply_pack/rogue/travelling_merchant_pw/mats/log
+	name = "Large wooden log"
+	cost = 3
+	contains = list(/obj/item/grown/log/tree)
+
+/datum/supply_pack/rogue/travelling_merchant_pw/usables/repairpoor
+	name = "Budget repair kit"
+	cost = 50
+	contains = list(/obj/item/repair_kit/bad, /obj/item/repair_kit/metal/bad)
+
+/datum/supply_pack/rogue/travelling_merchant_pw/usables/emmed
+	name = "Individual First Aid Pouch"
+	cost = 30
+	contains = list(/obj/item/storage/belt/rogue/pouch/medicine)
+
+/datum/supply_pack/rogue/travelling_merchant_pw/usables/emmed
+	name = "Mercenary First Aid Pouch"
+	cost = 60
+	contains = list(/obj/item/storage/belt/rogue/pouch/medicine/merc)
+
+
+/datum/supply_pack/rogue/travelling_merchant_pw/food/misterymeat
+	name = "Mistery meat...?" //Hehe
+	cost = 1
+	contains = list (/obj/item/ration/misterymeat)
+
+
+
+
+/obj/item/storage/belt/rogue/pouch/medicine/merc
+	populate_contents = list(
+	/obj/item/needle,
+	/obj/item/natural/cloth/presoaked/advanced,
+	/obj/item/natural/cloth/presoaked/advanced,
+	/obj/item/reagent_containers/glass/bottle/alchemical/healthpotnew
+	)
+
+
+/obj/item/natural/cloth/presoaked/advanced
+	name = "Grenzelcloth"
+
+/obj/item/natural/cloth/presoaked/advanced/Initialize()
+	medicine_quality = 1
+	medicine_amount = 60
+	desc += " This one has been imbued masterfully in a mixed medicinal coating..."
+	detail_color = "#820000"
+
+#define MISTERYMEAT_LIST list(\
+	/obj/item/reagent_containers/food/snacks/rogue/meat/steak = 5,\
+	/obj/item/reagent_containers/food/snacks/rogue/meat_rotten = 2,\
+	/obj/item/reagent_containers/food/snacks/rogue/meat/spider = 2,\
+	/obj/item/reagent_containers/food/snacks/rogue/meat/fatty = 1,\
+	/obj/item/reagent_containers/food/snacks/rogue/meat/poultry = 4,\
+	/obj/item/reagent_containers/food/snacks/rogue/meat/crab = 3,\
+	/obj/item/reagent_containers/food/snacks/rogue/meat/rabbit = 4,\
+	/obj/item/reagent_containers/food/snacks/rogue/meat/steak/wolf = 2,\
+	/obj/item/reagent_containers/food/snacks/rogue/meat/fish = 5,\
+	/obj/item/reagent_containers/food/snacks/rogue/meat/shellfish = 4,\
+)
+
+/obj/item/ration/misterymeat/Initialize()
+	. = ..()
+	food = pickweight(MISTERYMEAT_LIST) //LET'S GO GAMBLING!
+	food.rotprocess = FALSE
+	name = "Mistery meat..."
+	desc = "Who knows what's in it..."
+	icon_state = "ration_large"
+	update_icon()
+
+
 
 /obj/structure/closet/crate
 	var/fulton = FALSE
@@ -354,3 +465,5 @@
 
 /obj/item/clothing/suit/roguetown/shirt/tunic/orange
 	color = CLOTHING_ORANGE
+
+
