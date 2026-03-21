@@ -268,7 +268,7 @@
 		user.playsound_local(get_turf(user), 'sound/items/horn/signalhorn.ogg', 35, FALSE, pressure_affected = FALSE)
 		if(do_after(user, 5 SECONDS))
 			if(user.consider_ambush(TRUE, TRUE))
-				var/additional_ambushes = rand(0,1)
+				var/additional_ambushes = rand(0,3)
 				for(var/i = 0, i<additional_ambushes, i++)
 					user.consider_ambush(TRUE, TRUE)
 				user.visible_message(span_warningbig("[user] blows the horn, loud enough to be heard all the way from the skies! This will surely attract some attention..."))
