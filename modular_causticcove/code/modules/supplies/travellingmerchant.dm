@@ -115,6 +115,7 @@
 		"General Labour",
 		"Health and Hygiene",
 		"Self Defense",
+		"Travelling Merchant",
 		"Private Workshop")
 	var/list/unlockedcats = list(
 		"Travelling Merchant",
@@ -452,12 +453,12 @@
 
 /obj/item/ration/misterymeat/Initialize()
 	. = ..()
-	food = pickweight(MISTERYMEAT_LIST) //LET'S GO GAMBLING!
+	var/foodstuffs = pickweight(MISTERYMEAT_LIST) //LET'S GO GAMBLING!
+	food = new foodstuffs(src)
 	food.rotprocess = FALSE
 	name = "Mistery meat..."
 	desc = "Who knows what's in it..."
 	icon_state = "ration_large"
-	update_icon()
 
 
 
