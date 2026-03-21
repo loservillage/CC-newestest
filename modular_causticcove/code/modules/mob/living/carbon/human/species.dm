@@ -13,7 +13,7 @@
 	//The actual handling of the rewards and diet decay.
 	if(goals_met >= NUTRITIONAL_REWARD_MAX) //Decays slower and has a better wound bonus.
 		adjust_diet_value(H, NUTRITIONAL_DIET_TYPES, FULL_REWARD_NUTRITIONAL_DECAY)
-		H.heal_wounds(0.75)
+		H.heal_wounds(1)
 		dietary_goals_met = TRUE
 		return
 
@@ -36,15 +36,15 @@
 			change = NUTRITIONAL_MIN_AMT // No Hunger? No benefits.
 		switch(cur_diet)
 			if("Dairy")
-				H.nutri_dairy = max(NUTRITIONAL_MIN_AMT, min(NUTRITIONAL_MAX_AMT, H.nutri_dairy) + change)
+				H.nutri_dairy = max(NUTRITIONAL_MIN_AMT, (min(NUTRITIONAL_MAX_AMT, H.nutri_dairy) + change))
 			if("Meats")
-				H.nutri_meat = max(NUTRITIONAL_MIN_AMT, min(NUTRITIONAL_MAX_AMT, H.nutri_meat) + change)
+				H.nutri_meat = max(NUTRITIONAL_MIN_AMT, (min(NUTRITIONAL_MAX_AMT, H.nutri_meat) + change))
 			if("Fruits")
-				H.nutri_fruit = max(NUTRITIONAL_MIN_AMT, min(NUTRITIONAL_MAX_AMT, H.nutri_fruit) + change)
+				H.nutri_fruit = max(NUTRITIONAL_MIN_AMT, (min(NUTRITIONAL_MAX_AMT, H.nutri_fruit) + change))
 			if("Vegetables")
-				H.nutri_vegetable = max(NUTRITIONAL_MIN_AMT, min(NUTRITIONAL_MAX_AMT, H.nutri_vegetable) + change)
+				H.nutri_vegetable = max(NUTRITIONAL_MIN_AMT, (min(NUTRITIONAL_MAX_AMT, H.nutri_vegetable) + change))
 			if("Grains")
-				H.nutri_grain = max(NUTRITIONAL_MIN_AMT, min(NUTRITIONAL_MAX_AMT, H.nutri_grain) + change)
+				H.nutri_grain = max(NUTRITIONAL_MIN_AMT, (min(NUTRITIONAL_MAX_AMT, H.nutri_grain) + change))
 
 /datum/species/proc/set_diet_value(mob/living/carbon/human/H, diet_types, change)
 	var/cur_diets = diet_types

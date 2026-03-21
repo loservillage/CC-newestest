@@ -294,24 +294,44 @@ GLOBAL_LIST_EMPTY(personal_objective_minds)
 	if(!ishuman(user)) //Human Check Human Check
 		return
 	var/mob/living/carbon/human/H = user
+	var/grains = H.nutri_grain
+	var/vegetables = H.nutri_vegetable
+	var/fruits = H.nutri_fruit
+	var/meats = H.nutri_meat
+	var/dairy = H.nutri_dairy
 	var/contents = "<center>My nutritional info:</center><BR>"
 
 	//Note for anyone who may go crazy in the future; Please replace these icons with actual in-game .dmi's I wasn't sure how to do that at the time of making.
-	contents +="<center><font color=#f1d669>𓇢 Grains:</font>[round(H.nutri_grain)]<BR>"
-	contents +="<center><font color=#6aff5d>𖧧 Vegetables:</font>[round(H.nutri_vegetable)]<BR>"
-	contents +="<center><font color=#ff5d5d>𖥸 Fruits:</font>[round(H.nutri_fruit)]<BR>"
-	contents +="<center><font color=#a70000>𐂯 Meats:</font>[round(H.nutri_meat)]<BR>"
-	contents +="<center><font color=#faffe2>𐃯 Dairy:</font>[round(H.nutri_dairy)]<BR>"
+	contents +="<center><font color=#f1d669>𓇢 Grains:</font><font color=[get_goal_color_rating(grains)]>[round(grains)]</font> / [NUTRITIONAL_MAX_AMT]<BR>"
+	contents +="<center><font color=#6aff5d>𖧧 Vegetables:</font><font color=[get_goal_color_rating(vegetables)]>[round(vegetables)]</font> / [NUTRITIONAL_MAX_AMT]<BR>"
+	contents +="<center><font color=#ff5d5d>𖥸 Fruits:</font><font color=[get_goal_color_rating(fruits)]>[round(fruits)]</font> / [NUTRITIONAL_MAX_AMT]<BR>"
+	contents +="<center><font color=#a70000>𐂯 Meats:</font><font color=[get_goal_color_rating(meats)]>[round(meats)]</font> / [NUTRITIONAL_MAX_AMT]<BR>"
+	contents +="<center><font color=#faffe2>𐃯 Dairy:</font><font color=[get_goal_color_rating(dairy)]>[round(dairy)]</font> / [NUTRITIONAL_MAX_AMT]<BR>"
 	contents += "<BR>"
 	contents += "<BR>"
-	contents += "<center>Managing your diet is important for good health.<BR>"
-	contents += "<center>100 points must be reached in 3 dietary goals for benefits.<BR>"
-	contents += "<center>If you reach goals in all 5, benefits get a further buff.<BR>"
+	contents += "<center>Bonus Reward includes +1 TRIUMPH every night, as well as bonus (+0.25) wound regeneration.<BR>"
+	contents += "<center>Bonus reached with 3 goals above 100. Wound Bonus Increases to (+1) if all 5 goals are above 100.<BR>"
 	contents += "<BR>"
 
-	var/datum/browser/popup = new(user, "MYNUTRITIONALINFO", "", 260, 400)
+	var/datum/browser/popup = new(user, "MYNUTRITIONALINFO", "", 333, 333)
 	popup.set_content(contents)
 	popup.open()
+
+//Used simply for making the goal colors pretty.
+/datum/mind/proc/get_goal_color_rating(goal_value)
+	if(goal_value < 25)
+		. = GOAL_COLOR_TERRIBLE
+	else if(goal_value > 25)
+		. = GOAL_COLOR_BAD
+	else if(goal_value > 50)
+		. = GOAL_COLOR_OKAY
+	else if(goal_value > 75)
+		. = GOAL_COLOR_GOOD
+	else if(goal_value > 100)
+		. = GOAL_COLOR_ACHIEVED
+	else if(goal_value > 125) //Not the true "max maximum" but you went well and beyond 125 which is great in anyone's books.
+		. = GOAL_COLOR_MAXIMUM
+	
 //CC Edit End
 
 /datum/mind/proc/get_language_holder()
