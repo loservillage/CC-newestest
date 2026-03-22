@@ -309,8 +309,8 @@ GLOBAL_LIST_EMPTY(personal_objective_minds)
 	contents +="<center><font color=#faffe2>𐃯 Dairy:</font><font color=[get_goal_color_rating(dairy)]>[round(dairy)]</font> / [NUTRITIONAL_MAX_AMT]<BR>"
 	contents += "<BR>"
 	contents += "<BR>"
-	contents += "<center>Bonus Reward includes +1 TRIUMPH every night, as well as bonus (+0.25) wound regeneration.<BR>"
-	contents += "<center>Bonus reached with 3 goals above 100. Wound Bonus Increases to (+1) if all 5 goals are above 100.<BR>"
+	contents += "<center>Bonus Reward includes +1 TRIUMPH every night, as well as bonus (+0.3) wound regeneration to moderate wounds.<BR>"
+	contents += "<center>Bonus reached with 3 goals above 100. Wound Bonus Increases to (+0.6) if all 5 goals are above 100.<BR>"
 	contents += "<BR>"
 
 	var/datum/browser/popup = new(user, "MYNUTRITIONALINFO", "", 333, 333)

@@ -13,13 +13,23 @@
 	//The actual handling of the rewards and diet decay.
 	if(goals_met >= NUTRITIONAL_REWARD_MAX) //Decays slower and has a better wound bonus.
 		adjust_diet_value(H, NUTRITIONAL_DIET_TYPES, FULL_REWARD_NUTRITIONAL_DECAY)
-		H.heal_wounds(1)
+
+		//Moderate wounds only. Tweak when necessary.
+		for(var/wounds in  H.wounds)
+			if(wounds <= WOUND_SEVERITY_MODERATE)
+				wound.heal_wound(0.6)
+
 		dietary_goals_met = TRUE
 		return
 
 	if(goals_met >= NUTRITIONAL_REWARD_MIN) //Heal from wounds, and gives us a bonus triumph if we sustain a good diet at night. Lowers decay rates as well.
 		adjust_diet_value(H, NUTRITIONAL_DIET_TYPES, MIN_REWARD_NUTRITIONAL_DECAY)
-		H.heal_wounds(0.25)
+
+		//Moderate wounds only. Tweak when necessary.
+		for(var/wounds in  H.wounds)
+			if(wounds <= WOUND_SEVERITY_MODERATE)
+				wound.heal_wound(0.3)
+
 		dietary_goals_met = TRUE
 		return
 
