@@ -15,8 +15,8 @@
 		adjust_diet_value(H, NUTRITIONAL_DIET_TYPES, FULL_REWARD_NUTRITIONAL_DECAY)
 
 		//Moderate wounds only. Tweak when necessary.
-		for(var/wounds in  H.wounds)
-			if(wounds <= WOUND_SEVERITY_MODERATE)
+		for(var/datum/wound/wound as anything in H.get_wounds())
+			if(wound <= WOUND_SEVERITY_MODERATE)
 				wound.heal_wound(0.6)
 
 		dietary_goals_met = TRUE
@@ -26,8 +26,8 @@
 		adjust_diet_value(H, NUTRITIONAL_DIET_TYPES, MIN_REWARD_NUTRITIONAL_DECAY)
 
 		//Moderate wounds only. Tweak when necessary.
-		for(var/wounds in  H.wounds)
-			if(wounds <= WOUND_SEVERITY_MODERATE)
+		for(var/datum/wound/wound as anything in H.get_wounds())
+			if(wound <= WOUND_SEVERITY_MODERATE)
 				wound.heal_wound(0.3)
 
 		dietary_goals_met = TRUE
