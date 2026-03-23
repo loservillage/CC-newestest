@@ -4,4 +4,8 @@
  * @license MIT
  */
 
+import { Tooltip } from "tgui-core/components";
+
+export type TooltipProps = React.ComponentProps<typeof Tooltip>;
+
 export { NanoMap } from './NanoMap';
