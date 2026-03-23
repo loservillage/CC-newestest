@@ -306,6 +306,8 @@
 	var/area/lmarkarea = get_area(lmarkturf)
 	if(!(lmarkarea.threat_region in list(THREAT_REGION_AZUREAN_COAST, THREAT_REGION_MOUNT_DECAP)))
 		return FALSE
+	if(!lmarkarea.ambush_mobs)
+		return FALSE
 	return TRUE
 
 /obj/item/drop_signal_horn/proc/get_target_location()
