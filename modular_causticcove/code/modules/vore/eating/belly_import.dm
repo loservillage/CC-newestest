@@ -505,7 +505,7 @@
 
 		if(isnum(belly_data["shrink_grow_size"]))
 			var/new_shrink_grow_size = belly_data["shrink_grow_size"]
-			new_belly.shrink_grow_size = CLAMP(new_shrink_grow_size, 0.25, 2)
+			new_belly.shrink_grow_size = CLAMP(new_shrink_grow_size, RESIZE_MINIMUM, RESIZE_MAXIMUM)
 
 		if(isnum(belly_data["vorespawn_blacklist"]))
 			var/new_vorespawn_blacklist = belly_data["vorespawn_blacklist"]
