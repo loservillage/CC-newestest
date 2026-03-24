@@ -1509,3 +1509,14 @@ GLOBAL_LIST_EMPTY(loadout_selected_advclasses)
 		return
 	if(alert(usr, "Are you absolutely sure you want to reload the configuration from the default path on the disk, wiping any in-round modificatoins?", "Really reset?", "No", "Yes") == "Yes")
 		config.admin_reload()
+
+
+//CC Edit: Heck TGUI, seriously, why is this missing!
+/client/proc/allow_broser_inspect()
+	set category = "Debug"
+	set name = "Allow Browser Inspect"
+	set desc = ""
+	if(!check_rights(R_DEBUG))
+		return
+	to_chat(src, span_notice("You can now right click to use inspect on browsers."))
+	winset(src, null, list("browser-options" = "+devtools"))
