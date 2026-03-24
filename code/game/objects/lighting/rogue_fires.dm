@@ -1,4 +1,4 @@
-#define MIN_STEW_TEMPERATURE 374 // For cooking
+#define MIN_STEW_TEMPERATURE 300 // For cooking
 #define VOLUME_PER_STEW_COOK 29 // Volume to cook per ingredient
 #define VOLUME_PER_STEW_COOK_AFTER 1 // Volume to deduct after the sleep is over
 #define DEEP_FRY_TIME 5 SECONDS // Default deep fry time
@@ -565,26 +565,31 @@
 						qdel(S)
 						pot.reagents.remove_reagent(/datum/reagent/consumable/oil/tallow, OIL_CONSUMED)
 						return
+			
+			var/recipe_found = FALSE
 			for(var/datum/stew_recipe/R in GLOB.stew_recipes)
 				for(var/I in R.inputs)
 					if(istype(W, I))
-						if(!pot.reagents.has_reagent(/datum/reagent/water, VOLUME_PER_STEW_COOK + VOLUME_PER_STEW_COOK_AFTER))
-							to_chat(user, span_notice("Not enough water."))
-							return
+						recipe_found = TRUE
 						if(pot.reagents.chem_temp < MIN_STEW_TEMPERATURE)
 							to_chat(user, span_notice("[pot] isn't boiling!</span>"))
 							return
+						if(!pot.reagents.has_reagent(R.req_liquid, VOLUME_PER_STEW_COOK + VOLUME_PER_STEW_COOK_AFTER))
+							continue
 						if(do_after(user, 2 SECONDS / cooktime_divisor, target = src))
 							user.visible_message(span_info("[user] places [W] into the pot.</span>"))
 							add_sleep_experience(user, /datum/skill/craft/cooking, user.STAINT)
 							qdel(W)
 							playsound(src.loc, 'sound/items/Fish_out.ogg', 20, TRUE)
-							pot.reagents.remove_reagent(/datum/reagent/water, VOLUME_PER_STEW_COOK)
+							pot.reagents.remove_reagent(R.req_liquid, VOLUME_PER_STEW_COOK)
 							sleep(R.cooktime / cooktime_divisor)
 							playsound(src, "bubbles", 30, TRUE)
-							pot.reagents.remove_reagent(/datum/reagent/water, VOLUME_PER_STEW_COOK_AFTER) // Remove water first prevent overfill
+							pot.reagents.remove_reagent(R.req_liquid, VOLUME_PER_STEW_COOK_AFTER) // Remove water first prevent overfill
 							pot.reagents.add_reagent(R.output, VOLUME_PER_STEW_COOK + VOLUME_PER_STEW_COOK_AFTER)
 							return
+			if(recipe_found)
+				to_chat(user, span_notice("Not enough liquid to cook with."))
+				return
 	. = ..()
 
 //////////////////////////////////
