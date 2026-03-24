@@ -24,7 +24,7 @@ export function SettingsStatPanel(props) {
       <Stack fill vertical>
         <Stack.Item>
           <LabeledList>
-            <LabeledList.Item label="Tabs" verticalAlign="middle">
+            <LabeledList.Item label="Tabs" verticalAlign="middle" labelWrap>
               {tabViews.map((view) => (
                 <Button
                   key={view}
@@ -36,7 +36,7 @@ export function SettingsStatPanel(props) {
                 </Button>
               ))}
             </LabeledList.Item>
-            <LabeledList.Item label="Font size">
+            <LabeledList.Item label="Font size" labelWrap>
               <Stack.Item grow>
                 {statLinked ? (
                   <LinkedToChat />

@@ -24,7 +24,7 @@ export const TextHighlightSettings = (props) => {
   return (
     <Section fill scrollable height="235px">
       <Section p={0}>
-        <Stack direction="column">
+        <Stack direction="column" wrap="wrap" fill>
           {highlightSettings.map((id, i) => (
             <TextHighlightSetting
               key={i}
@@ -78,8 +78,8 @@ const TextHighlightSetting = (props) => {
     matchCase,
   } = highlightSettingById[id];
   return (
-    <Stack.Item {...rest}>
-      <Stack mb={1} color="label" align="baseline">
+    <Stack.Item {...rest} width="100%">
+      <Stack mb={1} color="label" align="baseline" fill wrap="wrap">
         <Button.Confirm
           icon="times"
           color="transparent"
@@ -104,7 +104,7 @@ const TextHighlightSetting = (props) => {
             </Button.Confirm>
           </Stack.Item>
         )}
-        <Stack.Item grow />
+        <Stack.Item />
         <Stack.Item>
           <Button.Checkbox
             checked={highlightBlacklist}

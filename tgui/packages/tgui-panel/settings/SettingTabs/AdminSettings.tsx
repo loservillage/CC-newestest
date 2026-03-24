@@ -7,7 +7,7 @@ export const AdminSettings = (props) => {
   return (
     <Section>
       <LabeledList>
-        <LabeledList.Item label="Hide Important messages in admin only tabs">
+        <LabeledList.Item label="Hide Important messages in admin only tabs" labelWrap>
           <Button.Checkbox
             checked={settings.hideImportantInAdminTab}
             tooltip="Enabling this will hide all important messages in admin filter exclusive tabs."

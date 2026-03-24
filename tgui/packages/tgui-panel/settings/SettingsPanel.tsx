@@ -24,7 +24,7 @@ export const SettingsPanel = (props) => {
   const { activeTab } = view;
 
   return (
-    <Stack fill>
+    <Stack overflow="scroll">
       <Stack.Item>
         <Section fitted fill minHeight="8em">
           <Tabs vertical>
@@ -47,7 +47,7 @@ export const SettingsPanel = (props) => {
           </Tabs>
         </Section>
       </Stack.Item>
-      <Stack.Item grow basis={0}>
+      <Stack.Item width="100%" overflow="auto">
         {activeTab === 'general' && <SettingsGeneral />}
         {activeTab === 'adminSettings' && <AdminSettings />}
         {activeTab === 'limits' && <MessageLimits />}

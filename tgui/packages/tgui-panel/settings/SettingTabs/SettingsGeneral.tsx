@@ -23,9 +23,9 @@ export function SettingsGeneral(props) {
   const [editingPanes, setEditingPanes] = useState(false);
 
   return (
-    <Section>
+    <Section style={{ display: "flex", overflowWrap: "break-word" }} >
       <LabeledList>
-        <LabeledList.Item label="Theme">
+        <LabeledList.Item label="Theme" labelWrap>
           {THEMES.map((THEME) => (
             <Button
               key={THEME}
@@ -41,7 +41,7 @@ export function SettingsGeneral(props) {
             </Button>
           ))}
         </LabeledList.Item>
-        <LabeledList.Item label="UI sizes">
+        <LabeledList.Item label="UI sizes" labelWrap>
           <Stack>
             <Stack.Item>
               <Button
@@ -64,7 +64,7 @@ export function SettingsGeneral(props) {
             </Stack.Item>
           </Stack>
         </LabeledList.Item>
-        <LabeledList.Item label="Font style">
+        <LabeledList.Item label="Font style" labelWrap>
           <Stack.Item>
             {!freeFont ? (
               <Collapsible
@@ -123,7 +123,7 @@ export function SettingsGeneral(props) {
             )}
           </Stack.Item>
         </LabeledList.Item>
-        <LabeledList.Item label="Font size" verticalAlign="middle">
+        <LabeledList.Item label="Font size" verticalAlign="middle" labelWrap>
           <Stack textAlign="center">
             <Stack.Item grow>
               <Slider
@@ -140,7 +140,7 @@ export function SettingsGeneral(props) {
             </Stack.Item>
           </Stack>
         </LabeledList.Item>
-        <LabeledList.Item label="Line height">
+        <LabeledList.Item label="Line height" labelWrap>
           <Slider
             tickWhileDragging
             width="100%"
@@ -156,7 +156,7 @@ export function SettingsGeneral(props) {
             }
           />
         </LabeledList.Item>{' '}
-        <LabeledList.Item label="Enable disconnection/afk warning">
+        <LabeledList.Item label="Enable disconnection/afk warning" labelWrap>
           <Button.Checkbox
             checked={settings.showReconnectWarning}
             tooltip="Unchecking this will disable the red afk/reconnection warning bar at the bottom of the chat."
@@ -168,7 +168,7 @@ export function SettingsGeneral(props) {
             }
           />
         </LabeledList.Item>
-        <LabeledList.Item label="Interleave messages">
+        <LabeledList.Item label="Interleave messages" labelWrap>
           <Button.Checkbox
             checked={settings.interleave}
             tooltip="Enabling this will interleave messages."
@@ -180,7 +180,7 @@ export function SettingsGeneral(props) {
             }
           />
           <Box inline>
-            <ColorBox mr={1} color={settings.interleaveColor} />
+            <ColorBox mr={1} color={settings.interleaveColor} labelWrap/>
             <Input
               width="5em"
               monospace
@@ -194,7 +194,7 @@ export function SettingsGeneral(props) {
             />
           </Box>
         </LabeledList.Item>
-        <LabeledList.Item label="Enable chat timestamps">
+        <LabeledList.Item label="Enable chat timestamps" labelWrap>
           <Button.Checkbox
             checked={settings.prependTimestamps}
             tooltip="Enabling this will prepend timestamps to all messages."

@@ -35,10 +35,11 @@ export const ExportTab = (props) => {
   const [exportStart, setExportStart] = useAtom(exportStartAtom);
   const [exportEnd, setExportEnd] = useAtom(exportEndAtom);
   return (
-    <Section>
-      <Stack align="baseline">
+    <Section width="100%" style={{ overflowWrap: "break-word" }}>
+      <Stack align="baseline" fill vertical textAlign="center">
         {!game.databaseBackendEnabled &&
           (settings.logEnable ? (
+            <Stack.Item>
             <Button.Confirm
               tooltip="Disable local chat logging"
               icon="ban"
@@ -54,7 +55,9 @@ export const ExportTab = (props) => {
             >
               Disable logging
             </Button.Confirm>
+            </Stack.Item>
           ) : (
+            <Stack.Item>
             <Button
               tooltip="Enable local chat logging"
               icon="download"
@@ -67,8 +70,8 @@ export const ExportTab = (props) => {
             >
               Enable logging
             </Button>
+            </Stack.Item>
           ))}
-        <Stack.Item grow />
         <Stack.Item color="label">Round ID:</Stack.Item>
         <Stack.Item color={game.roundId ? '' : 'red'}>
           {game.roundId ? game.roundId : 'ERROR'}
@@ -80,8 +83,8 @@ export const ExportTab = (props) => {
       </Stack>
       {settings.logEnable && !game.databaseBackendEnabled && (
         <>
-          <LabeledList>
-            <LabeledList.Item label="Amount of rounds to log (1 to 8)">
+          <LabeledList >
+            <LabeledList.Item label="Amount of rounds to log (1 to 8)" labelWrap>
               <NumberInput
                 tickWhileDragging
                 width="5em"
@@ -104,7 +107,8 @@ export const ExportTab = (props) => {
                 </Box>
               )}
             </LabeledList.Item>
-            <LabeledList.Item label="Hardlimit for the log archive (0 = inf. to 50000)">
+            <LabeledList.Item label="Hardlimit for the log archive (0 = inf. to 50000)" labelWrap >
+              <Box>
               <NumberInput
                 tickWhileDragging
                 width="5em"
@@ -119,6 +123,7 @@ export const ExportTab = (props) => {
                     logLimit: value,
                   })
                 }
+                
               />
               &nbsp;
               {settings.logLimit > 0 && (
@@ -132,6 +137,7 @@ export const ExportTab = (props) => {
                     : 'Takes priority above round retention.'}
                 </Box>
               )}
+              </Box>
             </LabeledList.Item>
           </LabeledList>
           <Section>
@@ -157,8 +163,8 @@ export const ExportTab = (props) => {
         </>
       )}
       <LabeledList>
-        <LabeledList.Item label="Export round start (0 = curr.) / end (0 = dis.)">
-          <Stack align="center">
+        <LabeledList.Item label="Export round start (0 = curr.) / end (0 = dis.)" labelWrap>
+          <Stack fill>
             {game.databaseBackendEnabled ? (
               <>
                 <Stack.Item>
@@ -220,7 +226,7 @@ export const ExportTab = (props) => {
             </Stack.Item>
           </Stack>
         </LabeledList.Item>
-        <LabeledList.Item label="Amount of lines to export (0 = inf.)">
+        <LabeledList.Item label="Amount of lines to export (0 = inf.)" labelWrap>
           <NumberInput
             tickWhileDragging
             width="5em"
@@ -238,13 +244,13 @@ export const ExportTab = (props) => {
           />
         </LabeledList.Item>
         {!game.databaseBackendEnabled && (
-          <LabeledList.Item label="Totally stored messages">
+          <LabeledList.Item label="Totally stored messages" labelWrap>
             <Box>{chatRenderer.getStoredMessages()}</Box>
           </LabeledList.Item>
         )}
       </LabeledList>
       <Divider />
-      <Stack fill>
+      <Stack fill overflow="scroll">
         <Stack.Item mt={0.15}>
           <Button
             icon="compact-disc"

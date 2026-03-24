@@ -9,7 +9,7 @@ export const MessageLimits = (props) => {
   return (
     <Section>
       <LabeledList>
-        <LabeledList.Item label="Amount of lines to display 500-10000 (Default: 2500)">
+        <LabeledList.Item label="Amount of lines to display 500-10000 (Default: 2500)" labelWrap>
           <NumberInput
             tickWhileDragging
             width="5em"
@@ -32,7 +32,7 @@ export const MessageLimits = (props) => {
             </Box>
           )}
         </LabeledList.Item>
-        <LabeledList.Item label="Amount of visually persistent lines 0-10000 (Default: 1000)">
+        <LabeledList.Item label="Amount of visually persistent lines 0-10000 (Default: 1000)" labelWrap>
           <NumberInput
             tickWhileDragging
             width="5em"
@@ -55,7 +55,7 @@ export const MessageLimits = (props) => {
             </Box>
           )}
         </LabeledList.Item>
-        <LabeledList.Item label="Amount of different lines in-between to combine 0-10 (Default: 5)">
+        <LabeledList.Item label="Amount of different lines in-between to combine 0-10 (Default: 5)" labelWrap>
           <NumberInput
             tickWhileDragging
             width="5em"
@@ -72,7 +72,7 @@ export const MessageLimits = (props) => {
             }
           />
         </LabeledList.Item>
-        <LabeledList.Item label="Time to combine messages 0-10 (Default: 5 Seconds)">
+        <LabeledList.Item label="Time to combine messages 0-10 (Default: 5 Seconds)" labelWrap>
           <NumberInput
             tickWhileDragging
             width="5em"
@@ -91,7 +91,7 @@ export const MessageLimits = (props) => {
           />
         </LabeledList.Item>
         {!game.databaseBackendEnabled && (
-          <LabeledList.Item label="Message store interval 1-10 (Default: 10 Seconds) [Requires restart]">
+          <LabeledList.Item label="Message store interval 1-10 (Default: 10 Seconds) [Requires restart]" labelWrap>
             <NumberInput
               tickWhileDragging
               width="5em"

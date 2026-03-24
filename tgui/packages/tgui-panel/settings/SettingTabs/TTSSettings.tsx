@@ -18,7 +18,7 @@ export const TTSSettings = (props) => {
     <>
       <Section>
         <LabeledList>
-          <LabeledList.Item label="Voice">
+          <LabeledList.Item label="Voice" labelWrap>
             <Dropdown
               options={voices.map((voice) => voice.name)}
               onSelected={(option) => {
