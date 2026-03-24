@@ -34,6 +34,7 @@ import {
 } from './model';
 import { highlightNode, linkifyNode } from './replaceInTextNode';
 import type { Page, SerializedMessage } from './types';
+import { parse } from 'zod';
 
 const logger = createLogger('chatRenderer');
 
@@ -52,6 +53,7 @@ export const TGUI_CHAT_COMPONENTS = {
 export const TGUI_CHAT_ATTRIBUTES_TO_PROPS = {
   position: 'position',
   content: 'content',
+  html: "html",
 };
 
 function createHighlightNode(text: string, color: string): HTMLElement {
@@ -608,21 +610,26 @@ class ChatRenderer {
             let working_value = attribute.nodeValue;
             // We can't do the "if it has no value it's truthy" trick
             // Because getAttribute returns "", not null. Hate IE
+            let parsed_value: any;
             if (working_value === '$true') {
-              working_value = true;
+              parsed_value = true;
             } else if (working_value === '$false') {
-              working_value = false;
+              parsed_value = false;
             } else if (!Number.isNaN(working_value)) {
               const parsed_float = parseFloat(working_value);
               if (!Number.isNaN(parsed_float)) {
                 working_value = parsed_float;
               }
             }
+            // If it's not anything above then it has to be a string
+            if(!parsed_value) {
+              parsed_value = working_value;
+            }
 
             let canon_name = attribute.nodeName.replace('data-', '');
             // html attributes don't support upper case chars, so we need to map
             canon_name = TGUI_CHAT_ATTRIBUTES_TO_PROPS[canon_name];
-            outputProps[canon_name] = working_value;
+            outputProps[canon_name] = parsed_value;
           }
           const oldHtml = { __html: childNode.innerHTML };
           while (childNode.firstChild) {
