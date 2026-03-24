@@ -38,6 +38,12 @@
 	if(HAS_TRAIT(user, TRAIT_NO_BITE))
 		to_chat(user, span_warning("I can't bite."))
 		return
+	//CC Edit Begin
+	if(HAS_TRAIT(user, TRAIT_MANGLED_JAW))
+		if(prob(33))
+			to_chat(user, span_warning("I struggle to bite down."))
+			return
+	//CC Edit End
 	if(!user_species || (user_species && !user_species.headless))
 		user.face_atom(target)
 	if(iscarbon(user))
