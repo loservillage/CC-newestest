@@ -185,6 +185,11 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 
 	var/preload = TRUE
 
+	//CC Edit Begin
+	//Used for nightshift.dm for bonus triumphs for having a balanced diet.
+	var/dietary_goals_met = FALSE
+	//CC Edit End
+
 ///////////
 // PROCS //
 ///////////
@@ -961,7 +966,10 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 //LIFE//
 ////////
 
-/datum/species/proc/handle_digestion(mob/living/carbon/human/H)
+/datum/species/proc/handle_digestion(mob/living/carbon/human/H) 
+//CC Edit Begin
+	handle_diet(H)
+//CC Edit End
 	//The fucking TRAIT_FAT mutation is the dumbest shit ever. It makes the code so difficult to work with
 //	if(HAS_TRAIT_FROM(H, TRAIT_FAT, OBESITY))//I share my pain, past coder.
 //		if(H.overeatduration < 100)

@@ -116,8 +116,12 @@ SUBSYSTEM_DEF(nightshift)
 	var/triumphs_to_add = 1
 	var/static/list/towner_jobs
 	towner_jobs = GLOB.peasant_positions | GLOB.burgher_positions | GLOB.sidefolk_positions
-	if(mind.assigned_role != "Unassigned" && istype(mind.assigned_role, /datum/job) && (mind.assigned_role.title in towner_jobs)) //If you play a towner-related role, you get an additonal triumph
+	//CC Edit Begin
+	if(mind.assigned_role in towner_jobs) //If you play a towner-related role, you get an additonal triumph. Fixed as of 3/18/26.
 		triumphs_to_add++
+	if(dna.species.dietary_goals_met)
+		triumphs_to_add++
+	//CC Edit End
 	adjust_triumphs(triumphs_to_add)
 	to_chat(src, span_notice("An another dae passes in Azuria...\nNights Survived: \Roman[allmig_reward]. \n"))
 	

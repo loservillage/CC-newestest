@@ -320,3 +320,12 @@
 
 	/// cooldown for the next time this person can offer
 	COOLDOWN_DECLARE(offer_cooldown)
+
+	//CC Edit Begin
+	//Internal nutrient goals and their current amounts. Actual nutritional list is handled in the handle_diet proc within species.dm.
+	var/nutri_grain = 0
+	var/nutri_meat = 0
+	var/nutri_fruit = 0
+	var/nutri_vegetable = 0
+	var/nutri_dairy = 0
+	//CC Edit End

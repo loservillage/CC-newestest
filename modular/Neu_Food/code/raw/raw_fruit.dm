@@ -6,6 +6,10 @@
 	faretype = FARE_FINE
 	tastes = list("airy apple" = 1)
 	list_reagents = list(/datum/reagent/consumable/nutriment = 1)
+	//CC Edit Begin
+	diet_types = list("Fruits")
+	diet_change_amount = FOOD_DIETARY_VALUE_POOR
+	//CC Edit End
 
 /obj/item/reagent_containers/food/snacks/rogue/fruit/pumpkin_sliced
 	name = "pumpkin slice"
@@ -18,3 +22,7 @@
 	fried_type = /obj/item/reagent_containers/food/snacks/rogue/preserved/pumpkin_mashed
 	list_reagents = list(/datum/reagent/consumable/nutriment = 1)
 	rotprocess = SHELFLIFE_LONG
+	//CC Edit Begin
+	diet_types = list("Fruits", "Vegetables") //It's quite universal.
+	diet_change_amount = FOOD_DIETARY_VALUE_POOR - 1
+	//CC Edit End

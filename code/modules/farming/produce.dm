@@ -92,6 +92,10 @@
 	tastes = list("wheat" = 1)
 	grind_results = list(/datum/reagent/floure = 10)
 	mill_result = /obj/item/reagent_containers/powder/flour
+	//CC Edit Begin
+	diet_types = list("Grains")
+	diet_change_amount = FOOD_DIETARY_VALUE_POOR
+	//CC Edit End
 
 /obj/item/reagent_containers/food/snacks/grown/oat
 	seed = /obj/item/seeds/wheat/oat
@@ -106,6 +110,10 @@
 	tastes = list("oat" = 1)
 	grind_results = list(/datum/reagent/floure = 10)
 	mill_result = /obj/item/reagent_containers/powder/flour
+	//CC Edit Begin
+	diet_types = list("Grains")
+	diet_change_amount = FOOD_DIETARY_VALUE_POOR
+	//CC Edit End
 
 /obj/item/reagent_containers/food/snacks/grown/rice
 	seed = /obj/item/seeds/rice
@@ -120,6 +128,10 @@
 	tastes = list("rice" = 1)
 	grind_results = list(/datum/reagent/floure = 10)
 	mill_result = /obj/item/reagent_containers/powder/flour
+	//CC Edit Begin
+	diet_types = list("Grains")
+	diet_change_amount = FOOD_DIETARY_VALUE_POOR
+	//CC Edit End
 
 /obj/item/reagent_containers/food/snacks/grown/apple
 	seed = /obj/item/seeds/apple
@@ -144,6 +156,12 @@
 	chopping_sound = TRUE
 	var/equippedloc = null
 	var/list/bitten_names = list()
+
+	//CC Edit Begin
+	//Each bite gives 2 diet. One apple gives 6 to the Fruits diet.
+	diet_types = list("Fruits")
+	diet_change_amount = FOOD_DIETARY_VALUE_POOR
+	//CC Edit End
 
 /obj/item/reagent_containers/food/snacks/grown/apple/On_Consume(mob/living/eater)
 	..()
@@ -188,6 +206,10 @@
 	faretype = FARE_POOR
 	rotprocess = SHELFLIFE_DECENT
 	splat_type = /obj/effect/decal/cleanable/food/plant_smudge
+	//CC Edit Begin
+	diet_types = list("Fruits")
+	diet_change_amount = FOOD_DIETARY_VALUE_POOR
+	//CC Edit End
 
 /obj/item/reagent_containers/food/snacks/grown/fruit/pear
 	name = "pear"
@@ -273,6 +295,10 @@
 	dropshrink = 0.75
 	var/color_index = "good"
 	rotprocess = SHELFLIFE_SHORT
+	//CC Edit Begin
+	diet_types = list("Fruits")
+	diet_change_amount = FOOD_DIETARY_VALUE_POOR - 1 //Very common and abundant. Also mostly comprised of water. Prepare this in a meal.
+	//CC Edit End
 
 /obj/item/reagent_containers/food/snacks/grown/berries/rogue/examine(mob/user)
 	. = ..()
@@ -338,6 +364,10 @@
 	list_reagents = list(/datum/reagent/consumable/nutriment = 4, /datum/reagent/consumable/acorn_powder = 4, /datum/reagent/drug/nicotine = 1)
 	grind_results = list(/datum/reagent/consumable/acorn_powder = 4)
 	mill_result = /obj/item/reagent_containers/powder/rocknut
+	//CC Edit Begin
+	diet_types = list("Grains")
+	diet_change_amount = FOOD_DIETARY_VALUE_POOR
+	//CC Edit End
 
 /obj/item/reagent_containers/food/snacks/grown/sugarcane
 	seed = /obj/item/seeds/sugarcane
@@ -375,6 +405,10 @@
 	chopping_sound = TRUE
 	dropshrink = 0.9
 	rotprocess = SHELFLIFE_EXTREME
+	//CC Edit Begin
+	diet_types = list("Vegetables")
+	diet_change_amount = FOOD_DIETARY_VALUE_POOR
+	//CC Edit End
 
 /*	..................   Sunflower   ................... */
 /obj/item/reagent_containers/food/snacks/grown/sunflower
@@ -409,6 +443,10 @@
 	w_class = WEIGHT_CLASS_TINY
 	throw_speed = 1
 	throw_range = 3
+	//CC Edit Begin
+	diet_types = list("Vegetables")
+	diet_change_amount = FOOD_DIETARY_VALUE_POOR - 1.5 //This shit is literally burning your guts lol
+	//CC Edit End
 
 /obj/item/reagent_containers/food/snacks/grown/rogue/fyritius/attack(mob/living/carbon/human/M, mob/user)
 	if(M == user)
@@ -464,6 +502,10 @@
 	bitesize = 1
 	list_reagents = list(/datum/reagent/consumable/nutriment = 2, /datum/reagent/toxin/fyritiusnectar = 5)
 	rotprocess = SHELFLIFE_SHORT
+		//CC Edit Begin
+	diet_types = list("Vegetables")
+	diet_change_amount = FOOD_DIETARY_VALUE_POOR - 1.25 //You're crazy.
+	//CC Edit End
 
 /obj/item/reagent_containers/food/snacks/grown/rogue/fyritius/bloodied/become_rotten()
 	visible_message(span_danger("[src] burns into ash!"))
@@ -483,6 +525,10 @@
 	tastes = list("sweet" = 1,"bitterness" = 1)
 	eat_effect = /datum/status_effect/debuff/badmeal
 	rotprocess = SHELFLIFE_SHORT
+	//CC Edit Begin
+	diet_types = list("Vegetables")
+	diet_change_amount = FOOD_DIETARY_VALUE_POOR - 1.75 //Its... Kind of edible...?
+	//CC Edit End
 
 /obj/item/reagent_containers/food/snacks/grown/rogue/pipeweed
 	seed = /obj/item/seeds/pipeweed
@@ -497,6 +543,10 @@
 	grind_results = list(/datum/reagent/drug/nicotine = 5)
 	eat_effect = /datum/status_effect/debuff/badmeal
 	rotprocess = SHELFLIFE_SHORT
+	//CC Edit Begin
+	diet_types = list("Vegetables")
+	diet_change_amount = FOOD_DIETARY_VALUE_POOR - 1.75
+	//CC Edit End
 
 /obj/item/reagent_containers/food/snacks/grown/rogue/pipeweeddry
 	seed = null
@@ -558,6 +608,10 @@
 	list_reagents = list(/datum/reagent/consumable/nutriment = 2)
 	rotprocess = null
 	seed = /obj/item/seeds/onion
+	//CC Edit Begin
+	diet_types = list("Vegetables")
+	diet_change_amount = FOOD_DIETARY_VALUE_POOR
+	//CC Edit End
 
 /obj/item/reagent_containers/food/snacks/grown/cabbage/rogue
 	name = "cabbage"
@@ -571,6 +625,10 @@
 	chopping_sound = TRUE
 	rotprocess = SHELFLIFE_LONG
 	seed = /obj/item/seeds/cabbage
+	//CC Edit Begin
+	diet_types = list("Vegetables")
+	diet_change_amount = FOOD_DIETARY_VALUE_POOR
+	//CC Edit End
 
 /obj/item/reagent_containers/food/snacks/grown/potato/rogue
 	name = "potato"
@@ -586,6 +644,10 @@
 	chopping_sound = TRUE
 	rotprocess = null
 	seed = /obj/item/seeds/potato
+	//CC Edit Begin
+	diet_types = list("Vegetables")
+	diet_change_amount = FOOD_DIETARY_VALUE_POOR
+	//CC Edit End
 
 /obj/item/reagent_containers/food/snacks/grown/garlick/rogue
 	name = "garlick bulb"
@@ -600,6 +662,10 @@
 	rotprocess = null
 	chopping_sound = TRUE
 	seed = /obj/item/seeds/garlick
+	//CC Edit Begin
+	diet_types = list("Vegetables")
+	diet_change_amount = FOOD_DIETARY_VALUE_POOR
+	//CC Edit End
 
 // poppies, from vanderlin
 /obj/item/reagent_containers/food/snacks/grown/rogue/poppy
@@ -614,6 +680,10 @@
 	list_reagents = list(/datum/reagent/consumable/nutriment = 0)
 	dropshrink = 0.5
 	rotprocess = null
+	//CC Edit Begin
+	diet_types = list("Vegetables")
+	diet_change_amount = FOOD_DIETARY_VALUE_POOR - 1.75 //Flower.
+	//CC Edit End
 
 /obj/item/reagent_containers/food/snacks/grown/coffee
 	name = "coffee cherry"
@@ -625,6 +695,10 @@
 	list_reagents = list(/datum/reagent/consumable/nutriment = 1)
 	mill_result = /obj/item/reagent_containers/food/snacks/grown/coffeebeans
 	rotprocess = null
+	//CC Edit Begin
+	diet_types = list("Fruits")
+	diet_change_amount = FOOD_DIETARY_VALUE_POOR - 1
+	//CC Edit End
 
 /obj/item/reagent_containers/food/snacks/grown/tea
 	name = "tea leaves"
@@ -635,6 +709,10 @@
 	bitesize = 1
 	list_reagents = list(/datum/reagent/consumable/nutriment = 1)
 	rotprocess = null
+	//CC Edit Begin
+	diet_types = list("Vegetables")
+	diet_change_amount = FOOD_DIETARY_VALUE_POOR - 1.75 //Not ideal.
+	//CC Edit End
 
 /obj/item/reagent_containers/food/snacks/grown/carrot
 	name = "carrot"
@@ -644,6 +722,10 @@
 	tastes = list("carrot" = 1)
 	dropshrink = 0.75
 	seed = /obj/item/seeds/carrot
+	//CC Edit Begin
+	diet_types = list("Vegetables")
+	diet_change_amount = FOOD_DIETARY_VALUE_POOR
+	//CC Edit End
 
 /*	..................   Cucumber   ................... */
 /obj/item/reagent_containers/food/snacks/grown/cucumber
@@ -655,6 +737,10 @@
 	slice_path = /obj/item/reagent_containers/food/snacks/rogue/veg/cucumber_sliced
 	tastes = list("cucumber" = 1)
 	chopping_sound = TRUE
+	//CC Edit Begin
+	diet_types = list("Vegetables")
+	diet_change_amount = FOOD_DIETARY_VALUE_POOR
+	//CC Edit End
 
 /obj/item/reagent_containers/food/snacks/grown/eggplant
 	name = "eggplant"
@@ -664,3 +750,7 @@
 	slice_path = /obj/item/reagent_containers/food/snacks/rogue/eggplantcarved
 	slice_sound = TRUE
 	seed = /obj/item/seeds/eggplant
+	//CC Edit Begin
+	diet_types = list("Vegetables")
+	diet_change_amount = FOOD_DIETARY_VALUE_POOR
+	//CC Edit End

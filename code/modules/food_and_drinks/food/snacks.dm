@@ -88,7 +88,18 @@ All foods are distributed among various categories. Use common sense.
 
 	var/cooked_smell
 
+	//CC Edit Begin
+	//Handle for dietary adjustment. Can have multiple types.
+	//Default types are "Dairy", "Meats", "Fruits", "Vegetables", "Grains"
+	var/diet_types = null
+
+	//The amount of nutritional diet earned per bite.
+	var/diet_change_amount = 0
+
+	//Handles unique ID's for each object that is rotting. Faster than using SSProcessing.
 	var/timerid
+	//CC Edit End
+
 
 
 /datum/intent/food
@@ -390,6 +401,12 @@ All foods are distributed among various categories. Use common sense.
 		if(extra_eat_effect)
 			eater.apply_status_effect(extra_eat_effect)
 	eater.taste(reagents)
+	//CC Edit Begin
+	if(iscarbon(eater))
+		var/mob/living/carbon/human/H = eater
+		if(diet_types)
+			H.dna.species.adjust_diet_value(H, diet_types, diet_change_amount)
+	//CC Edit End
 
 	if(!reagents.total_volume)
 		if(eat_effect == /datum/status_effect/debuff/rotfood)

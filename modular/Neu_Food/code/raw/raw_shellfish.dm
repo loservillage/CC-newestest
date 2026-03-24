@@ -9,6 +9,10 @@
 	cooked_type = /obj/item/reagent_containers/food/snacks/rogue/fryfish/crab
 	slice_path = /obj/item/reagent_containers/food/snacks/rogue/meat/crab
 	cooked_smell = /datum/pollutant/food/fried_crab
+	//CC Edit Begin
+	diet_types = list("Meats")
+	diet_change_amount = FOOD_DIETARY_VALUE_BAD
+	//CC Edit End
 
 /obj/item/reagent_containers/food/snacks/rogue/meat/crab/attackby(obj/item/I, mob/living/user, params)
 	var/found_table = locate(/obj/structure/table) in (loc)
@@ -34,6 +38,10 @@
 	fried_type = /obj/item/reagent_containers/food/snacks/rogue/fryfish/clam
 	cooked_type = /obj/item/reagent_containers/food/snacks/rogue/fryfish/clam
 	cooked_smell = /datum/pollutant/food/fried_shellfish
+	//CC Edit Begin
+	diet_types = list("Meats")
+	diet_change_amount = FOOD_DIETARY_VALUE_POOR
+	//CC Edit End
 
 /obj/item/reagent_containers/food/snacks/fish/lobster
 	name = "lobster"
@@ -46,6 +54,10 @@
 	cooked_type = /obj/item/reagent_containers/food/snacks/rogue/fryfish/lobster
 	slice_path = /obj/item/reagent_containers/food/snacks/rogue/meat/shellfish
 	cooked_smell = /datum/pollutant/food/fried_shellfish
+	//CC Edit Begin
+	diet_types = list("Meats")
+	diet_change_amount = FOOD_DIETARY_VALUE_GOOD
+	//CC Edit End
 
 /obj/item/reagent_containers/food/snacks/fish/shrimp
 	name = "shrimp"
@@ -55,6 +67,10 @@
 	fried_type = /obj/item/reagent_containers/food/snacks/rogue/fryfish/shrimp
 	cooked_type = /obj/item/reagent_containers/food/snacks/rogue/fryfish/shrimp
 	cooked_smell = /datum/pollutant/food/fried_shellfish
+	//CC Edit Begin
+	diet_types = list("Meats")
+	diet_change_amount = FOOD_DIETARY_VALUE_POOR
+	//CC Edit End
 
 /obj/item/reagent_containers/food/snacks/fish/oyster
 	name = "oyster"
@@ -66,6 +82,10 @@
 	slice_path = /obj/item/reagent_containers/food/snacks/rogue/meat/shellfish
 	trash = /obj/item/oystershell
 	cooked_smell = /datum/pollutant/food/fried_shellfish
+	//CC Edit Begin
+	diet_types = list("Meats")
+	diet_change_amount = FOOD_DIETARY_VALUE_POOR
+	//CC Edit End
 
 /obj/item/reagent_containers/food/snacks/fish/oyster/Initialize()
 	. = ..()
@@ -140,3 +160,7 @@
 	cooked_smell = /datum/pollutant/food/fried_crab_cake
 	w_class = WEIGHT_CLASS_NORMAL
 	dropshrink = 0.8
+	//CC Edit Begin
+	diet_types = list("Grains", "Meats")
+	diet_change_amount = FOOD_DIETARY_VALUE_BAD
+	//CC Edit End

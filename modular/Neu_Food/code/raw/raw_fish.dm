@@ -20,6 +20,10 @@
 	slice_path = /obj/item/reagent_containers/food/snacks/rogue/meat/fish
 	eat_effect = /datum/status_effect/debuff/uncookedfood
 	cooked_smell = /datum/pollutant/food/cooked_fish
+	//CC Edit Begin
+	diet_types = list("Meats")
+	diet_change_amount = FOOD_DIETARY_VALUE_GREAT //Fish are a great source of Omega 3's!
+	//CC Edit End
 
 /obj/item/reagent_containers/food/snacks/fish/dead
 	dead = TRUE

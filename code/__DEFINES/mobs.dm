@@ -654,3 +654,4 @@
 #else
 #define NPC_THINK(message)
 #endif
+

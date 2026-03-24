@@ -6,10 +6,10 @@
 	juice_results = list(/datum/reagent/consumable/juice/jackberry/poisonous = 3)
 
 /obj/item/reagent_containers/food/snacks/grown/apple
-	juice_results = list(/datum/reagent/consumeable/juice/apple = 3)
+	juice_results = list(/datum/reagent/consumable/juice/apple = 3)
 
 /obj/item/reagent_containers/food/snacks/rogue/fruit/apple_sliced
-	juice_results = list(/datum/reagent/consumeable/juice/apple = 1)
+	juice_results = list(/datum/reagent/consumable/juice/apple = 1)
 
 /obj/item/reagent_containers/food/snacks/grown/fruit/tomato
 	juice_results = list(/datum/reagent/consumable/juice/tomato = 3)

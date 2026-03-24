@@ -14,6 +14,10 @@
 	rotprocess = SHELFLIFE_DECENT
 	eat_effect = /datum/status_effect/buff/mealbuff
 	drop_sound = 'sound/foley/dropsound/gen_drop.ogg'
+	//CC Edit Begin
+	diet_types = list("Meats")
+	diet_change_amount = FOOD_DIETARY_VALUE_GREAT
+	//CC Edit End
 
 
 /* salmon st dendor*/
@@ -30,6 +34,10 @@
 	rotprocess = SHELFLIFE_DECENT
 	eat_effect = /datum/status_effect/buff/mealbuff
 	drop_sound = 'sound/foley/dropsound/gen_drop.ogg'
+	//CC Edit Begin
+	diet_types = list("Meats", "Vegetables")
+	diet_change_amount = FOOD_DIETARY_VALUE_GREAT
+	//CC Edit End
 
 
 /* salmon wit the berry on it */
@@ -46,6 +54,10 @@
 	rotprocess = SHELFLIFE_DECENT
 	eat_effect = /datum/status_effect/buff/mealbuff
 	drop_sound = 'sound/foley/dropsound/gen_drop.ogg'
+	//CC Edit Begin
+	diet_types = list("Meats", "Fruits")
+	diet_change_amount = FOOD_DIETARY_VALUE_GREAT
+	//CC Edit End
 
 
 /* lobsta with the pepper all over it*/
@@ -62,6 +74,10 @@
 	rotprocess = SHELFLIFE_DECENT
 	eat_effect = /datum/status_effect/buff/mealbuff
 	drop_sound = 'sound/foley/dropsound/gen_drop.ogg'
+	//CC Edit Begin
+	diet_types = list("Meats")
+	diet_change_amount = FOOD_DIETARY_VALUE_GREAT
+	//CC Edit End
 
 
 /*garlick seabass*/
@@ -78,6 +94,10 @@
 	rotprocess = SHELFLIFE_DECENT
 	eat_effect = /datum/status_effect/buff/mealbuff
 	drop_sound = 'sound/foley/dropsound/gen_drop.ogg'
+	//CC Edit Begin
+	diet_types = list("Meats", "Vegetables")
+	diet_change_amount = FOOD_DIETARY_VALUE_GREAT
+	//CC Edit End
 
 
 /*milk clam*/
@@ -94,6 +114,10 @@
 	rotprocess = SHELFLIFE_DECENT
 	eat_effect = /datum/status_effect/buff/mealbuff
 	drop_sound = 'sound/foley/dropsound/gen_drop.ogg'
+	//CC Edit Begin
+	diet_types = list("Meats", "Dairy")
+	diet_change_amount = FOOD_DIETARY_VALUE_GREAT
+	//CC Edit End
 
 
 /*ale cod*/
@@ -110,6 +134,10 @@
 	rotprocess = SHELFLIFE_DECENT
 	eat_effect = /datum/status_effect/buff/mealbuff
 	drop_sound = 'sound/foley/dropsound/gen_drop.ogg'
+	//CC Edit Begin
+	diet_types = list("Meats")
+	diet_change_amount = FOOD_DIETARY_VALUE_GREAT
+	//CC Edit End
 
 
 /*onion plaice*/
@@ -126,6 +154,10 @@
 	rotprocess = SHELFLIFE_DECENT
 	eat_effect = /datum/status_effect/buff/mealbuff
 	drop_sound = 'sound/foley/dropsound/gen_drop.ogg'
+	//CC Edit Begin
+	diet_types = list("Meats", "Vegetables")
+	diet_change_amount = FOOD_DIETARY_VALUE_GREAT
+	//CC Edit End
 
 
 /*buttery soles*/
@@ -142,6 +174,10 @@
 	rotprocess = SHELFLIFE_DECENT
 	eat_effect = /datum/status_effect/buff/mealbuff
 	drop_sound = 'sound/foley/dropsound/gen_drop.ogg'
+	//CC Edit Begin
+	diet_types = list("Meats", "Dairy")
+	diet_change_amount = FOOD_DIETARY_VALUE_GREAT
+	//CC Edit End
 
 
 /*jellied eel*/
@@ -158,6 +194,10 @@
 	rotprocess = SHELFLIFE_DECENT
 	eat_effect = /datum/status_effect/buff/mealbuff
 	drop_sound = 'sound/foley/dropsound/gen_drop.ogg'
+	//CC Edit Begin
+	diet_types = list("Meats")
+	diet_change_amount = FOOD_DIETARY_VALUE_AMAZING //Fried Eel...
+	//CC Edit End
 
 /* ............ Shellfish ................... */
 /obj/item/reagent_containers/food/snacks/rogue/fryfish/lobster/meal
@@ -172,6 +212,10 @@
 	warming = 5 MINUTES
 	rotprocess = SHELFLIFE_DECENT
 	eat_effect = /datum/status_effect/buff/mealbuff
+	//CC Edit Begin
+	diet_types = list("Meats", "Dairy")
+	diet_change_amount = FOOD_DIETARY_VALUE_GREAT
+	//CC Edit End
 // Close enough crab cake has two steps but it is a whatever
 
 /obj/item/reagent_containers/food/snacks/rogue/crabcake
@@ -186,3 +230,7 @@
 	faretype = FARE_LAVISH
 	rotprocess = null
 	dropshrink = 0.8
+	//CC Edit Begin
+	diet_types = list("Grains", "Dairy", "Meats")
+	diet_change_amount = FOOD_DIETARY_VALUE_GREAT
+	//CC Edit End

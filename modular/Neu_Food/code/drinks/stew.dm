@@ -20,6 +20,10 @@
 	taste_description = "porridge"
 	taste_mult = 3
 	hydration = 2
+	//CC Edit Begin
+	diet_types = list("Grains")
+	diet_change_amount = FOOD_DIETARY_REAGENT_VALUE_BAD
+	//CC Edit End
 
 /datum/reagent/consumable/soup/porridge/oatmeal
 	name = "oatmeal"
@@ -30,6 +34,10 @@
 	name = "congee"
 	description = "Rice boiled in water until it is softened. Eaten by the poor and sick in the east. Here, it is considered a medicinal food."
 	color = "#F8F0E3"
+	//CC Edit Begin
+	diet_types = list("Vegetables")
+	diet_change_amount = FOOD_DIETARY_REAGENT_VALUE_POOR
+	//CC Edit End
 
 /datum/reagent/consumable/soup/veggie
 	name = "vegetable soup"
@@ -38,6 +46,10 @@
 	nutriment_factor = 10
 	taste_mult = 4
 	hydration = 8
+	//CC Edit Begin
+	diet_types = list("Vegetables")
+	diet_change_amount = FOOD_DIETARY_REAGENT_VALUE_POOR //Note that you can combine multiple veggies together to multiply this effect for each one.
+	//CC Edit End
 
 /datum/reagent/consumable/soup/veggie/potato
 	name = "potato soup"
@@ -76,31 +88,55 @@
 	description = "A thick cheese soup. Creamy and comforting."
 	color = "#c4be70"
 	taste_description = "creamy cheese"
+	//CC Edit Begin
+	diet_types = list("Dairy")
+	diet_change_amount = FOOD_DIETARY_REAGENT_VALUE_POOR
+	//CC Edit End
 
 /datum/reagent/consumable/soup/stew/chicken
 	name = "chicken stew"
 	color = "#baa21c"
 	taste_description = "chicken"
+	//CC Edit Begin
+	diet_types = list("Meats")
+	diet_change_amount = FOOD_DIETARY_REAGENT_VALUE_POOR
+	//CC Edit End
 
 /datum/reagent/consumable/soup/stew/meat
 	name = "meat stew"
 	color = "#80432a"
 	taste_description = "meat"
+	//CC Edit Begin
+	diet_types = list("Meats")
+	diet_change_amount = FOOD_DIETARY_REAGENT_VALUE_POOR
+	//CC Edit End
 
 /datum/reagent/consumable/soup/stew/fish
 	name = "fish stew"
 	color = "#c7816e"
 	taste_description = "fish"
+	//CC Edit Begin
+	diet_types = list("Meats")
+	diet_change_amount = FOOD_DIETARY_REAGENT_VALUE_POOR
+	//CC Edit End
 
 /datum/reagent/consumable/soup/stew/rabbit
 	name = "cabbit stew"
 	color = "#c59182"
 	taste_description = "cabbit"
+	//CC Edit Begin
+	diet_types = list("Meats")
+	diet_change_amount = FOOD_DIETARY_REAGENT_VALUE_POOR
+	//CC Edit End
 
 /datum/reagent/consumable/soup/stew/bisque
 	name = "bisque"
 	color = "#ffb74f" // Bisque like color I know bisque's more complicated than that 
 	taste_description = "shellfish"
+	//CC Edit Begin
+	diet_types = list("Meats")
+	diet_change_amount = FOOD_DIETARY_REAGENT_VALUE_POOR
+	//CC Edit End
 
 /datum/reagent/consumable/soup/stew/yucky
 	name = "yucky stew"
@@ -111,52 +147,92 @@
 	name = "berry stew"
 	color = "#863333"
 	taste_description = "sweet berries"
+	//CC Edit Begin
+	diet_types = list("Fruits")
+	diet_change_amount = FOOD_DIETARY_REAGENT_VALUE_POOR
+	//CC Edit End
 
 /datum/reagent/consumable/soup/stew/berry_poisoned
 	name = "berry stew"
 	color = "#863333"
 	taste_description = "suspiciously bitter berries"
+	//CC Edit Begin
+	diet_types = list("Fruits")
+	diet_change_amount = FOOD_DIETARY_REAGENT_VALUE_POOR - 0.2 //0.05 ... Poison...
+	//CC Edit End
 
 /datum/reagent/consumable/soup/stew/garlick_soup
 	name = "garlick soup"
 	color = "#FAF9F6"
 	taste_description = "clear sinuses"
+	//CC Edit Begin
+	diet_types = list("Vegetables")
+	diet_change_amount = FOOD_DIETARY_REAGENT_VALUE_POOR
+	//CC Edit End
 
 /datum/reagent/consumable/soup/stew/cucumber_soup
 	name = "cucumber soup"
 	color = "#98fb98"
 	taste_description = "rich cucumber"
+	//CC Edit Begin
+	diet_types = list("Vegetables")
+	diet_change_amount = FOOD_DIETARY_REAGENT_VALUE_POOR
+	//CC Edit End
 
 /datum/reagent/consumable/soup/stew/eggplant_soup
 	name = "eggplant soup"
 	color = "#fff8e3"
 	taste_description = "tasty eggplant"
+	//CC Edit Begin
+	diet_types = list("Vegetables")
+	diet_change_amount = FOOD_DIETARY_REAGENT_VALUE_POOR
+	//CC Edit End
 
 /datum/reagent/consumable/soup/stew/carrot_stew
 	name = "carrot stew"
 	color = "#f26818"
 	taste_description = "savory carrot"
+	//CC Edit Begin
+	diet_types = list("Vegetables")
+	diet_change_amount = FOOD_DIETARY_REAGENT_VALUE_POOR
+	//CC Edit End
 
 /datum/reagent/consumable/soup/stew/nutty_stew
 	name = "nutty stew"
 	color = "#807b78"
 	taste_description = "nutty"
+	//CC Edit Begin
+	diet_types = list("Grains")
+	diet_change_amount = FOOD_DIETARY_REAGENT_VALUE_POOR
+	//CC Edit End
 
 /datum/reagent/consumable/soup/stew/tomato_soup
 	name = "tomato soup"
 	color = "#db5230"
 	taste_description = "home"
 	metabolization_rate = 0.5 // half as fast as normal, last twice as long - it is the best soup after all
+	//CC Edit Begin
+	diet_types = list("Vegetables")
+	diet_change_amount = FOOD_DIETARY_REAGENT_VALUE_POOR
+	//CC Edit End
 
 /datum/reagent/consumable/soup/stew/plum_soup
 	name = "plum soup"
 	color = "#9c305b"
 	taste_description = "sweet plums"
+	//CC Edit Begin
+	diet_types = list("Fruits")
+	diet_change_amount = FOOD_DIETARY_REAGENT_VALUE_POOR
+	//CC Edit End
 
 /datum/reagent/consumable/soup/stew/tangerine_marmalade
 	name = "tangerine marmalade"
 	color = "#f0935d"
 	taste_description = "extremely sweet tangerine"
+	//CC Edit Begin
+	diet_types = list("Fruits")
+	diet_change_amount = FOOD_DIETARY_REAGENT_VALUE_POOR
+	//CC Edit End
 
 // Copy pasted from berry poison, but stew metabolizes much faster so it is less deadly. You CAN use it as a source of hydration / nutrition if you are desperate enough???
 /datum/reagent/consumable/soup/stew/berry_poisoned/on_mob_life(mob/living/carbon/M)

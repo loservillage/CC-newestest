@@ -11,6 +11,11 @@
 	faretype = FARE_FINE
 	rotprocess = null
 	eat_effect = /datum/status_effect/buff/snackbuff
+	//CC Edit Begin
+	//Like honey, if this is weird, do change. Chocolates are often under Carbohydrates.
+	diet_types = list("Grains")
+	diet_change_amount = FOOD_DIETARY_VALUE_GOOD
+	//CC Edit End
 
 /obj/item/reagent_containers/food/snacks/chocolate/On_Consume(mob/living/eater)
 	if(islupian(eater) || isvulp(eater))

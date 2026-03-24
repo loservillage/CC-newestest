@@ -10,6 +10,10 @@
 	w_class = WEIGHT_CLASS_NORMAL
 	foodtype = GRAIN | DAIRY
 	rotprocess = SHELFLIFE_LONG
+	//CC Edit Begin
+	diet_types = list("Grains", "Dairy")
+	diet_change_amount = FOOD_DIETARY_VALUE_GOOD
+	//CC Edit End
 
 /obj/item/reagent_containers/food/snacks/rogue/cake_base/attackby(obj/item/I, mob/living/user, params)
 	var/found_table = locate(/obj/structure/table) in (loc)
@@ -68,6 +72,10 @@
 	rotprocess = SHELFLIFE_LONG
 	eat_effect = /datum/status_effect/buff/snackbuff
 	bitesize = 16
+	//CC Edit Begin
+	diet_types = list("Grains", "Dairy")
+	diet_change_amount = FOOD_DIETARY_VALUE_GOOD //Huge cake all for one person...
+	//CC Edit End
 
 /obj/item/reagent_containers/food/snacks/rogue/cake/attackby(obj/item/I, mob/living/user, params)
 	var/found_table = locate(/obj/structure/table) in (loc)
@@ -100,6 +108,10 @@
 	bitesize = 3
 	eat_effect = /datum/status_effect/buff/snackbuff
 	rotprocess = SHELFLIFE_LONG
+	//CC Edit Begin
+	diet_types = list("Grains", "Dairy")
+	diet_change_amount = FOOD_DIETARY_VALUE_BAD //Same amount as a whole cake.
+	//CC Edit End
 
 //	.................   Frosted cake   .................
 //	.................        Raw       .................
@@ -114,6 +126,10 @@
 	w_class = WEIGHT_CLASS_NORMAL
 	foodtype = GRAIN | DAIRY | SUGAR
 	rotprocess = SHELFLIFE_LONG
+	//CC Edit Begin
+	diet_types = list("Grains", "Dairy")
+	diet_change_amount = FOOD_DIETARY_VALUE_GREAT
+	//CC Edit End
 
 //	.................   Cooked   .................
 /obj/item/reagent_containers/food/snacks/rogue/frostedcake
@@ -134,6 +150,10 @@
 	eat_effect = /datum/status_effect/buff/snackbuff
 	extra_eat_effect = /datum/status_effect/buff/sweet
 	bitesize = 16
+	//CC Edit Begin
+	diet_types = list("Grains", "Dairy")
+	diet_change_amount = FOOD_DIETARY_VALUE_GOOD
+	//CC Edit End
 
 /obj/item/reagent_containers/food/snacks/rogue/frostedcake/attackby(obj/item/I, mob/living/user, params)
 	var/found_table = locate(/obj/structure/table) in (loc)
@@ -312,6 +332,10 @@
 	eat_effect = /datum/status_effect/buff/snackbuff
 	extra_eat_effect = /datum/status_effect/buff/sweet
 	rotprocess = SHELFLIFE_LONG
+	//CC Edit Begin
+	diet_types = list("Grains", "Dairy")
+	diet_change_amount = FOOD_DIETARY_VALUE_BAD
+	//CC Edit End
 
 //	..................   Apple cake   ..................
 /obj/item/reagent_containers/food/snacks/rogue/applecake
@@ -332,6 +356,10 @@
 	eat_effect = /datum/status_effect/buff/snackbuff
 	extra_eat_effect = /datum/status_effect/buff/sweet
 	bitesize = 16
+	//CC Edit Begin
+	diet_types = list("Grains", "Dairy", "Fruits")
+	diet_change_amount = FOOD_DIETARY_VALUE_GREAT
+	//CC Edit End
 
 /obj/item/reagent_containers/food/snacks/rogue/applecake/attackby(obj/item/I, mob/living/user, params)
 	var/found_table = locate(/obj/structure/table) in (loc)
@@ -366,6 +394,10 @@
 	eat_effect = /datum/status_effect/buff/snackbuff
 	extra_eat_effect = /datum/status_effect/buff/sweet
 	rotprocess = SHELFLIFE_LONG
+	//CC Edit Begin
+	diet_types = list("Grains", "Dairy", "Fruits")
+	diet_change_amount = FOOD_DIETARY_VALUE_GOOD
+	//CC Edit End
 
 //	..................   Applenut cake   ..................
 /obj/item/reagent_containers/food/snacks/rogue/applenutcake
@@ -386,6 +418,10 @@
 	eat_effect = /datum/status_effect/buff/snackbuff
 	extra_eat_effect = /datum/status_effect/buff/sweet
 	bitesize = 16
+	//CC Edit Begin
+	diet_types = list("Grains", "Dairy", "Fruits")
+	diet_change_amount = FOOD_DIETARY_VALUE_GREAT
+	//CC Edit End
 
 /obj/item/reagent_containers/food/snacks/rogue/applenutcakeslice
 	name = "applenut cake slice"
@@ -403,6 +439,10 @@
 	eat_effect = /datum/status_effect/buff/snackbuff
 	extra_eat_effect = /datum/status_effect/buff/sweet
 	rotprocess = SHELFLIFE_LONG
+	//CC Edit Begin
+	diet_types = list("Grains", "Dairy", "Fruits")
+	diet_change_amount = FOOD_DIETARY_VALUE_GOOD
+	//CC Edit End
 
 //	..................   Berry cake   ..................
 /obj/item/reagent_containers/food/snacks/rogue/berrycake
@@ -423,6 +463,10 @@
 	eat_effect = /datum/status_effect/buff/snackbuff
 	extra_eat_effect = /datum/status_effect/buff/sweet
 	bitesize = 16
+	//CC Edit Begin
+	diet_types = list("Grains", "Dairy", "Fruits")
+	diet_change_amount = FOOD_DIETARY_VALUE_GREAT
+	//CC Edit End
 
 /obj/item/reagent_containers/food/snacks/rogue/berrycake/poison
 	slice_path = /obj/item/reagent_containers/food/snacks/rogue/berrycakeslice/poison
@@ -444,6 +488,10 @@
 	eat_effect = /datum/status_effect/buff/snackbuff
 	extra_eat_effect = /datum/status_effect/buff/sweet
 	rotprocess = SHELFLIFE_LONG
+	//CC Edit Begin
+	diet_types = list("Grains", "Dairy", "Fruits")
+	diet_change_amount = FOOD_DIETARY_VALUE_GOOD
+	//CC Edit End
 
 /obj/item/reagent_containers/food/snacks/rogue/berrycakeslice/poison
 	list_reagents = list(/datum/reagent/berrypoison = 1, /datum/reagent/consumable/nutriment = SNACK_DECENT, /datum/reagent/water = 1)
@@ -467,6 +515,10 @@
 	eat_effect = /datum/status_effect/buff/snackbuff
 	extra_eat_effect = /datum/status_effect/buff/sweet
 	bitesize = 16
+	//CC Edit Begin
+	diet_types = list("Grains", "Dairy", "Fruits")
+	diet_change_amount = FOOD_DIETARY_VALUE_GREAT
+	//CC Edit End
 
 /obj/item/reagent_containers/food/snacks/rogue/blackberrycakeslice
 	name = "blackberry cake slice"
@@ -484,6 +536,10 @@
 	eat_effect = /datum/status_effect/buff/snackbuff
 	extra_eat_effect = /datum/status_effect/buff/sweet
 	rotprocess = SHELFLIFE_LONG
+	//CC Edit Begin
+	diet_types = list("Grains", "Dairy", "Fruits")
+	diet_change_amount = FOOD_DIETARY_VALUE_GOOD
+	//CC Edit End
 
 //	..................   Carrot cake   ..................
 //         This could've been a berry cake too.
@@ -505,6 +561,10 @@
 	eat_effect = /datum/status_effect/buff/snackbuff
 	extra_eat_effect = /datum/status_effect/buff/sweet
 	bitesize = 16
+	//CC Edit Begin
+	diet_types = list("Grains", "Dairy", "Fruits")
+	diet_change_amount = FOOD_DIETARY_VALUE_GREAT
+	//CC Edit End
 
 /obj/item/reagent_containers/food/snacks/rogue/carrotcakeslice
 	name = "carrot cake slice"
@@ -522,6 +582,10 @@
 	eat_effect = /datum/status_effect/buff/snackbuff
 	extra_eat_effect = /datum/status_effect/buff/sweet
 	rotprocess = SHELFLIFE_LONG
+	//CC Edit Begin
+	diet_types = list("Grains", "Dairy", "Fruits")
+	diet_change_amount = FOOD_DIETARY_VALUE_GOOD
+	//CC Edit End
 
 //	..................   Lemon cake   ..................
 /obj/item/reagent_containers/food/snacks/rogue/lemoncake
@@ -542,6 +606,10 @@
 	eat_effect = /datum/status_effect/buff/snackbuff
 	extra_eat_effect = /datum/status_effect/buff/sweet
 	bitesize = 16
+	//CC Edit Begin
+	diet_types = list("Grains", "Dairy", "Fruits")
+	diet_change_amount = FOOD_DIETARY_VALUE_GREAT
+	//CC Edit End
 
 /obj/item/reagent_containers/food/snacks/rogue/lemoncakeslice
 	name = "lemon cake slice"
@@ -559,6 +627,10 @@
 	eat_effect = /datum/status_effect/buff/snackbuff
 	extra_eat_effect = /datum/status_effect/buff/sweet
 	rotprocess = SHELFLIFE_LONG
+	//CC Edit Begin
+	diet_types = list("Grains", "Dairy", "Fruits")
+	diet_change_amount = FOOD_DIETARY_VALUE_GOOD
+	//CC Edit End
 
 //	..................   Lime cake   ..................
 /obj/item/reagent_containers/food/snacks/rogue/limecake
@@ -579,6 +651,10 @@
 	eat_effect = /datum/status_effect/buff/snackbuff
 	extra_eat_effect = /datum/status_effect/buff/sweet
 	bitesize = 16
+	//CC Edit Begin
+	diet_types = list("Grains", "Dairy", "Fruits")
+	diet_change_amount = FOOD_DIETARY_VALUE_GREAT
+	//CC Edit End
 
 /obj/item/reagent_containers/food/snacks/rogue/limecakeslice
 	name = "lime cake slice"
@@ -596,6 +672,10 @@
 	eat_effect = /datum/status_effect/buff/snackbuff
 	extra_eat_effect = /datum/status_effect/buff/sweet
 	rotprocess = SHELFLIFE_LONG
+	//CC Edit Begin
+	diet_types = list("Grains", "Dairy", "Fruits")
+	diet_change_amount = FOOD_DIETARY_VALUE_GOOD
+	//CC Edit End
 
 /*
 //	..................   Manabloom cake   ..................
@@ -658,6 +738,10 @@
 	eat_effect = /datum/status_effect/buff/snackbuff
 	extra_eat_effect = /datum/status_effect/buff/sweet
 	bitesize = 16
+	//CC Edit Begin
+	diet_types = list("Grains", "Dairy", "Vegetables")
+	diet_change_amount = FOOD_DIETARY_VALUE_GREAT
+	//CC Edit End
 
 /obj/item/reagent_containers/food/snacks/rogue/menthacakeslice
 	name = "mentha cake slice"
@@ -675,6 +759,10 @@
 	eat_effect = /datum/status_effect/buff/snackbuff
 	extra_eat_effect = /datum/status_effect/buff/sweet
 	rotprocess = SHELFLIFE_LONG
+	//CC Edit Begin
+	diet_types = list("Grains", "Dairy", "Vegetables")
+	diet_change_amount = FOOD_DIETARY_VALUE_GOOD
+	//CC Edit End
 
 //	..................   Peace cake   ..................
 // Peaceflower cake has the drawback of turning its eater into a pacifist for a few minutes.
@@ -696,6 +784,10 @@
 	eat_effect = /datum/status_effect/buff/snackbuff
 	extra_eat_effect = /datum/status_effect/buff/sweet
 	bitesize = 16
+	//CC Edit Begin
+	diet_types = list("Grains", "Dairy", "Vegetables")
+	diet_change_amount = FOOD_DIETARY_VALUE_GREAT
+	//CC Edit End
 
 /obj/item/reagent_containers/food/snacks/rogue/peacecake/On_Consume(mob/living/eater)
 	if(iscarbon(eater))
@@ -718,6 +810,10 @@
 	eat_effect = /datum/status_effect/buff/snackbuff
 	extra_eat_effect = /datum/status_effect/buff/sweet
 	rotprocess = SHELFLIFE_LONG
+	//CC Edit Begin
+	diet_types = list("Grains", "Dairy", "Vegetables")
+	diet_change_amount = FOOD_DIETARY_VALUE_GOOD
+	//CC Edit End
 
 /obj/item/reagent_containers/food/snacks/rogue/peacecakeslice/On_Consume(mob/living/eater)
 	if(iscarbon(eater))
@@ -743,6 +839,10 @@
 	eat_effect = /datum/status_effect/buff/snackbuff
 	extra_eat_effect = /datum/status_effect/buff/sweet
 	bitesize = 16
+	//CC Edit Begin
+	diet_types = list("Grains", "Dairy", "Fruits")
+	diet_change_amount = FOOD_DIETARY_VALUE_GREAT
+	//CC Edit End
 
 /obj/item/reagent_containers/food/snacks/rogue/raspberrycakeslice
 	name = "raspberry cake slice"
@@ -760,6 +860,10 @@
 	eat_effect = /datum/status_effect/buff/snackbuff
 	extra_eat_effect = /datum/status_effect/buff/sweet
 	rotprocess = SHELFLIFE_LONG
+	//CC Edit Begin
+	diet_types = list("Grains", "Dairy", "Fruits")
+	diet_change_amount = FOOD_DIETARY_VALUE_GOOD
+	//CC Edit End
 
 //	..................   Rocknut cake   ..................
 /obj/item/reagent_containers/food/snacks/rogue/rocknutcake
@@ -780,6 +884,10 @@
 	eat_effect = /datum/status_effect/buff/snackbuff
 	extra_eat_effect = /datum/status_effect/buff/sweet
 	bitesize = 16
+	//CC Edit Begin
+	diet_types = list("Grains", "Dairy", "Fruits")
+	diet_change_amount = FOOD_DIETARY_VALUE_GREAT
+	//CC Edit End
 
 /obj/item/reagent_containers/food/snacks/rogue/rocknutcake/attackby(obj/item/I, mob/living/user, params)
 	var/found_table = locate(/obj/structure/table) in (loc)
@@ -814,6 +922,10 @@
 	eat_effect = /datum/status_effect/buff/snackbuff
 	extra_eat_effect = /datum/status_effect/buff/sweet
 	rotprocess = SHELFLIFE_LONG
+	//CC Edit Begin
+	diet_types = list("Grains", "Dairy", "Fruits")
+	diet_change_amount = FOOD_DIETARY_VALUE_GOOD
+	//CC Edit End
 
 //	..................   Strawberry cake   ..................
 /obj/item/reagent_containers/food/snacks/rogue/strawberrycake
@@ -834,6 +946,10 @@
 	eat_effect = /datum/status_effect/buff/snackbuff
 	extra_eat_effect = /datum/status_effect/buff/sweet
 	bitesize = 16
+	//CC Edit Begin
+	diet_types = list("Grains", "Dairy", "Fruits")
+	diet_change_amount = FOOD_DIETARY_VALUE_GREAT
+	//CC Edit End
 
 /obj/item/reagent_containers/food/snacks/rogue/strawberrycakeslice
 	name = "strawberry cake slice"
@@ -851,6 +967,10 @@
 	eat_effect = /datum/status_effect/buff/snackbuff
 	extra_eat_effect = /datum/status_effect/buff/sweet
 	rotprocess = SHELFLIFE_LONG
+	//CC Edit Begin
+	diet_types = list("Grains", "Dairy", "Fruits")
+	diet_change_amount = FOOD_DIETARY_VALUE_GOOD
+	//CC Edit End
 
 //	..................   Tangerine cake   ..................
 /obj/item/reagent_containers/food/snacks/rogue/tangerinecake
@@ -871,6 +991,10 @@
 	eat_effect = /datum/status_effect/buff/snackbuff
 	extra_eat_effect = /datum/status_effect/buff/sweet
 	bitesize = 16
+	//CC Edit Begin
+	diet_types = list("Grains", "Dairy", "Fruits")
+	diet_change_amount = FOOD_DIETARY_VALUE_GREAT
+	//CC Edit End
 
 /obj/item/reagent_containers/food/snacks/rogue/tangerinecakeslice
 	name = "tangerine cake slice"
@@ -888,6 +1012,10 @@
 	eat_effect = /datum/status_effect/buff/snackbuff
 	extra_eat_effect = /datum/status_effect/buff/sweet
 	rotprocess = SHELFLIFE_LONG
+	//CC Edit Begin
+	diet_types = list("Grains", "Dairy", "Fruits")
+	diet_change_amount = FOOD_DIETARY_VALUE_GOOD
+	//CC Edit End
 
 //	..................   Honey cake (Zybantu)   ..................
 //	..................           Raw            ..................
@@ -902,6 +1030,10 @@
 	w_class = WEIGHT_CLASS_NORMAL
 	foodtype = GRAIN | DAIRY | SUGAR
 	rotprocess = SHELFLIFE_DECENT
+	//CC Edit Begin
+	diet_types = list("Grains", "Dairy")
+	diet_change_amount = FOOD_DIETARY_VALUE_GOOD
+	//CC Edit End
 
 //	.................   Cooked   .................
 /obj/item/reagent_containers/food/snacks/rogue/hcake
@@ -922,6 +1054,10 @@
 	eat_effect = /datum/status_effect/buff/snackbuff
 	extra_eat_effect = /datum/status_effect/buff/sweet
 	bitesize = 16
+	//CC Edit Begin
+	diet_types = list("Grains", "Dairy")
+	diet_change_amount = FOOD_DIETARY_VALUE_GOOD
+	//CC Edit End
 
 /obj/item/reagent_containers/food/snacks/rogue/hcakeslice
 	name = "zybantine cake slice"
@@ -939,6 +1075,10 @@
 	eat_effect = /datum/status_effect/buff/snackbuff
 	extra_eat_effect = /datum/status_effect/buff/sweet
 	rotprocess = SHELFLIFE_LONG
+	//CC Edit Begin
+	diet_types = list("Grains", "Dairy")
+	diet_change_amount = FOOD_DIETARY_VALUE_BAD
+	//CC Edit End
 
 //	..................   Cheesecake   ..................
 //	..................      Raw       ..................
@@ -953,6 +1093,10 @@
 	w_class = WEIGHT_CLASS_NORMAL
 	foodtype = GRAIN | DAIRY
 	rotprocess = SHELFLIFE_DECENT
+	//CC Edit Begin
+	diet_types = list("Grains", "Dairy")
+	diet_change_amount = FOOD_DIETARY_VALUE_GOOD
+	//CC Edit End
 
 //	.................   Cooked   .................
 /obj/item/reagent_containers/food/snacks/rogue/ccake
@@ -972,6 +1116,10 @@
 	rotprocess = SHELFLIFE_LONG
 	eat_effect = /datum/status_effect/buff/snackbuff
 	bitesize = 16
+	//CC Edit Begin
+	diet_types = list("Grains", "Dairy")
+	diet_change_amount = FOOD_DIETARY_VALUE_GREAT
+	//CC Edit End
 
 /obj/item/reagent_containers/food/snacks/rogue/ccakeslice
 	name = "cheesecake slice"
@@ -988,3 +1136,7 @@
 	bitesize = 2
 	eat_effect = /datum/status_effect/buff/snackbuff
 	rotprocess = SHELFLIFE_LONG
+	//CC Edit Begin
+	diet_types = list("Grains", "Dairy")
+	diet_change_amount = FOOD_DIETARY_VALUE_GOOD
+	//CC Edit End

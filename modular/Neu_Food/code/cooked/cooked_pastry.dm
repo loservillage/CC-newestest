@@ -12,6 +12,10 @@
 	bitesize = 3
 	rotprocess = SHELFLIFE_EXTREME
 	eat_effect = /datum/status_effect/buff/snackbuff
+	//CC Edit Begin
+	diet_types = list("Grains", "Dairy")
+	diet_change_amount = FOOD_DIETARY_VALUE_BAD
+	//CC Edit End
 
 /obj/item/reagent_containers/food/snacks/rogue/foodbase/biscuit_raw
 	name = "uncooked raisin biscuit"
@@ -21,6 +25,10 @@
 	cooked_type = /obj/item/reagent_containers/food/snacks/rogue/biscuit
 	w_class = WEIGHT_CLASS_NORMAL
 	eat_effect = null
+	//CC Edit Begin
+	diet_types = list("Grains")
+	diet_change_amount = FOOD_DIETARY_VALUE_BAD
+	//CC Edit End
 
 /obj/item/reagent_containers/food/snacks/rogue/biscuit
 	name = "raisin biscuit"
@@ -34,6 +42,10 @@
 	bitesize = 3
 	tastes = list("crispy butterdough" = 1, "raisins" = 1)
 	eat_effect = /datum/status_effect/buff/snackbuff
+	//CC Edit Begin
+	diet_types = list("Grains", "Dairy", "Fruits")
+	diet_change_amount = FOOD_DIETARY_VALUE_BAD
+	//CC Edit End
 
 // MISSING RECIPE
 /obj/item/reagent_containers/food/snacks/rogue/cookie		//It's a biscuit.......
@@ -44,6 +56,10 @@
 	color = "#ecce61"
 	w_class = WEIGHT_CLASS_NORMAL
 	eat_effect = null
+	//CC Edit Begin
+	diet_types = list("Grains")
+	diet_change_amount = FOOD_DIETARY_VALUE_POOR
+	//CC Edit End
 
 /obj/item/reagent_containers/food/snacks/rogue/foodbase/prezzel_raw
 	name = "uncooked prezzel"
@@ -52,6 +68,10 @@
 	cooked_type = /obj/item/reagent_containers/food/snacks/rogue/prezzel
 	w_class = WEIGHT_CLASS_NORMAL
 	eat_effect = null
+	//CC Edit Begin
+	diet_types = list("Grains")
+	diet_change_amount = FOOD_DIETARY_VALUE_BAD
+	//CC Edit End
 
 /obj/item/reagent_containers/food/snacks/rogue/prezzel
 	name = "prezzel"
@@ -64,6 +84,10 @@
 	w_class = WEIGHT_CLASS_NORMAL
 	bitesize = 3
 	eat_effect = /datum/status_effect/buff/snackbuff
+	//CC Edit Begin
+	diet_types = list("Grains")
+	diet_change_amount = FOOD_DIETARY_VALUE_GOOD
+	//CC Edit End
 
 /*	.............   Pumpkin balls   ................ */
 /obj/item/reagent_containers/food/snacks/rogue/foodbase/pumpkinball_raw
@@ -76,6 +100,10 @@
 	fried_type = /obj/item/reagent_containers/food/snacks/rogue/pumpkinball
 	w_class = WEIGHT_CLASS_SMALL
 	eat_effect = null
+	//CC Edit Begin
+	diet_types = list("Grains", "Fruits", "Vegetables")
+	diet_change_amount = FOOD_DIETARY_VALUE_BAD //Versatile.
+	//CC Edit End
 
 /obj/item/reagent_containers/food/snacks/rogue/pumpkinball
 	name = "pumpkin balls"
@@ -90,6 +118,10 @@
 	portable = TRUE
 	tastes = list("crispy butterdough" = 1, "pumpkin" = 1)
 	eat_effect = /datum/status_effect/buff/snackbuff
+	//CC Edit Begin
+	diet_types = list("Grains", "Fruits", "Vegetables", "Dairy")
+	diet_change_amount = FOOD_DIETARY_VALUE_GOOD //Versatile.
+	//CC Edit End
 
 /obj/item/reagent_containers/food/snacks/rogue/pumpkinball/On_Consume(mob/living/eater)
 	. = ..()
@@ -110,6 +142,10 @@
 	list_reagents = list(/datum/reagent/consumable/nutriment = 1)
 	w_class = WEIGHT_CLASS_NORMAL
 	rotprocess = SHELFLIFE_DECENT
+	//CC Edit Begin
+	diet_types = list("Grains", "Fruits", "Vegetables")
+	diet_change_amount = FOOD_DIETARY_VALUE_BAD //Versatile.
+	//CC Edit End
 
 /obj/item/reagent_containers/food/snacks/rogue/pumpkinloaf
 	name = "pumpkin loaf"
@@ -128,6 +164,10 @@
 	slice_sound = TRUE
 	rotprocess = SHELFLIFE_EXTREME
 	eat_effect = /datum/status_effect/buff/snackbuff
+	//CC Edit Begin
+	diet_types = list("Grains", "Fruits", "Vegetables")
+	diet_change_amount = FOOD_DIETARY_VALUE_BAD //Versatile.
+	//CC Edit End
 
 /obj/item/reagent_containers/food/snacks/rogue/pumpkinloaf/update_icon()
 	if(slices_num)
@@ -164,6 +204,10 @@
 	rotprocess = SHELFLIFE_LONG
 	eat_effect = /datum/status_effect/buff/snackbuff
 	dropshrink = 0.8
+	//CC Edit Begin
+	diet_types = list("Grains", "Fruits", "Vegetables")
+	diet_change_amount = FOOD_DIETARY_VALUE_POOR //Versatile.
+	//CC Edit End
 
 /*	.............   Pumpkin balls   ................ */
 /obj/item/reagent_containers/food/snacks/rogue/foodbase/pumpkinball_raw
@@ -176,6 +220,10 @@
 	fried_type = /obj/item/reagent_containers/food/snacks/rogue/pumpkinball
 	w_class = WEIGHT_CLASS_SMALL
 	eat_effect = null
+	//CC Edit Begin
+	diet_types = list("Grains", "Fruits", "Vegetables")
+	diet_change_amount = FOOD_DIETARY_VALUE_BAD //Versatile.
+	//CC Edit End
 
 /obj/item/reagent_containers/food/snacks/rogue/pumpkinball
 	name = "pumpkin balls"
@@ -190,6 +238,10 @@
 	portable = TRUE
 	tastes = list("crispy butterdough" = 1, "pumpkin" = 1)
 	eat_effect = /datum/status_effect/buff/snackbuff
+	//CC Edit Begin
+	diet_types = list("Grains", "Fruits", "Vegetables")
+	diet_change_amount = FOOD_DIETARY_VALUE_BAD //Versatile.
+	//CC Edit End
 
 /obj/item/reagent_containers/food/snacks/rogue/pumpkinball/On_Consume(mob/living/eater)
 	. = ..()
@@ -210,6 +262,10 @@
 	list_reagents = list(/datum/reagent/consumable/nutriment = 1)
 	w_class = WEIGHT_CLASS_NORMAL
 	rotprocess = SHELFLIFE_DECENT
+	//CC Edit Begin
+	diet_types = list("Grains", "Fruits", "Vegetables")
+	diet_change_amount = FOOD_DIETARY_VALUE_BAD //Versatile.
+	//CC Edit End
 
 /obj/item/reagent_containers/food/snacks/rogue/pumpkinloaf
 	name = "pumpkin loaf"
@@ -228,6 +284,10 @@
 	slice_sound = TRUE
 	rotprocess = SHELFLIFE_EXTREME
 	eat_effect = /datum/status_effect/buff/snackbuff
+	//CC Edit Begin
+	diet_types = list("Grains", "Fruits", "Vegetables")
+	diet_change_amount = FOOD_DIETARY_VALUE_BAD //Versatile.
+	//CC Edit End
 
 /obj/item/reagent_containers/food/snacks/rogue/pumpkinloaf/update_icon()
 	if(slices_num)
@@ -264,6 +324,10 @@
 	rotprocess = SHELFLIFE_LONG
 	eat_effect = /datum/status_effect/buff/snackbuff
 	dropshrink = 0.8
+	//CC Edit Begin
+	diet_types = list("Grains", "Fruits", "Vegetables")
+	diet_change_amount = FOOD_DIETARY_VALUE_BAD //Versatile.
+	//CC Edit End
 
 /obj/item/reagent_containers/food/snacks/rogue/foodbase/handpieraw
 	name = "raw handpie"
@@ -274,6 +338,10 @@
 	fried_type = /obj/item/reagent_containers/food/snacks/rogue/handpie
 	w_class = WEIGHT_CLASS_NORMAL
 	dropshrink = 0.8
+	//CC Edit Begin
+	diet_types = list("Grains")
+	diet_change_amount = FOOD_DIETARY_VALUE_BAD //Versatile.
+	//CC Edit End
 
 /obj/item/reagent_containers/food/snacks/rogue/foodbase/handpieraw/mushroom
 	name = "raw mushroom handpie"
@@ -282,6 +350,10 @@
 	list_reagents = list(/datum/reagent/consumable/nutriment = SNACK_POOR)
 	foodtype = GRAIN | VEGETABLES
 	tastes = list("mushrooms" = 1)
+	//CC Edit Begin
+	diet_types = list("Grains", "Vegetables")
+	diet_change_amount = FOOD_DIETARY_VALUE_BAD
+	//CC Edit End
 
 /obj/item/reagent_containers/food/snacks/rogue/foodbase/handpieraw/fish
 	name = "raw fish handpie"
@@ -289,6 +361,10 @@
 	fried_type = /obj/item/reagent_containers/food/snacks/rogue/handpie/fish
 	foodtype = GRAIN | MEAT
 	tastes = list("fish" = 1)
+	//CC Edit Begin
+	diet_types = list("Grains", "Meats")
+	diet_change_amount = FOOD_DIETARY_VALUE_BAD
+	//CC Edit End
 
 /obj/item/reagent_containers/food/snacks/rogue/foodbase/handpieraw/meat
 	name = "raw meat handpie"
@@ -296,6 +372,10 @@
 	fried_type = /obj/item/reagent_containers/food/snacks/rogue/handpie/meat
 	foodtype = GRAIN | MEAT
 	tastes = list("meat" = 1)
+	//CC Edit Begin
+	diet_types = list("Grains", "Meats")
+	diet_change_amount = FOOD_DIETARY_VALUE_BAD
+	//CC Edit End
 
 /obj/item/reagent_containers/food/snacks/rogue/foodbase/handpieraw/crab
 	name = "raw crab handpie"
@@ -303,6 +383,10 @@
 	fried_type = /obj/item/reagent_containers/food/snacks/rogue/handpie/crab
 	foodtype = GRAIN | MEAT
 	tastes = list("crab" = 1)
+	//CC Edit Begin
+	diet_types = list("Grains", "Meats")
+	diet_change_amount = FOOD_DIETARY_VALUE_BAD
+	//CC Edit End
 
 /obj/item/reagent_containers/food/snacks/rogue/foodbase/handpieraw/berry
 	name = "raw berry handpie"
@@ -310,6 +394,10 @@
 	fried_type = /obj/item/reagent_containers/food/snacks/rogue/handpie/berry
 	foodtype = GRAIN | FRUIT
 	tastes = list("berry" = 1)
+	//CC Edit Begin
+	diet_types = list("Grains", "Fruits")
+	diet_change_amount = FOOD_DIETARY_VALUE_BAD
+	//CC Edit End
 
 /obj/item/reagent_containers/food/snacks/rogue/foodbase/handpieraw/poison
 	name = "raw berry handpie"
@@ -318,6 +406,10 @@
 	list_reagents = list(/datum/reagent/berrypoison = 5)
 	foodtype = GRAIN | FRUIT
 	tastes = list("bitter berry" = 1)
+	//CC Edit Begin
+	diet_types = list("Grains", "Fruits")
+	diet_change_amount = FOOD_DIETARY_VALUE_BAD
+	//CC Edit End
 
 /obj/item/reagent_containers/food/snacks/rogue/foodbase/handpieraw/apple
 	name = "raw apple handpie"
@@ -325,6 +417,10 @@
 	fried_type = /obj/item/reagent_containers/food/snacks/rogue/handpie/apple
 	foodtype = GRAIN | FRUIT
 	tastes = list("apple" = 1)
+	//CC Edit Begin
+	diet_types = list("Grains", "Fruits")
+	diet_change_amount = FOOD_DIETARY_VALUE_BAD
+	//CC Edit End
 
 /obj/item/reagent_containers/food/snacks/rogue/foodbase/handpieraw/potato
 	name = "raw potato handpie"
@@ -332,6 +428,10 @@
 	fried_type = /obj/item/reagent_containers/food/snacks/rogue/handpie/potato
 	foodtype = GRAIN | VEGETABLES
 	tastes = list("potato" = 1)
+	//CC Edit Begin
+	diet_types = list("Grains", "Vegetables")
+	diet_change_amount = FOOD_DIETARY_VALUE_BAD
+	//CC Edit End
 
 /obj/item/reagent_containers/food/snacks/rogue/foodbase/handpieraw/cabbage//These two are classics no idea how it didn't already exist.
 	name = "raw cabbage handpie"
@@ -339,6 +439,10 @@
 	fried_type = /obj/item/reagent_containers/food/snacks/rogue/handpie/cabbage
 	foodtype = GRAIN | VEGETABLES
 	tastes = list("cabbage" = 1)
+	//CC Edit Begin
+	diet_types = list("Grains", "Vegetables")
+	diet_change_amount = FOOD_DIETARY_VALUE_BAD
+	//CC Edit End
 
 /obj/item/reagent_containers/food/snacks/rogue/handpie
 	name = "handpie"
@@ -352,33 +456,73 @@
 	tastes = list("crispy dough" = 1)
 	rotprocess = null
 	dropshrink = 0.8
+	//CC Edit Begin
+	diet_types = list("Grains")
+	diet_change_amount = FOOD_DIETARY_VALUE_GOOD
+	//CC Edit End
 
 /obj/item/reagent_containers/food/snacks/rogue/handpie/mushroom
 	name = "mushroom handpie"
+	//CC Edit Begin
+	diet_types = list("Grains", "Vegetables")
+	diet_change_amount = FOOD_DIETARY_VALUE_GOOD
+	//CC Edit End
 
 /obj/item/reagent_containers/food/snacks/rogue/handpie/fish
 	name = "fish handpie"
+	//CC Edit Begin
+	diet_types = list("Grains", "Meats")
+	diet_change_amount = FOOD_DIETARY_VALUE_GOOD
+	//CC Edit End
 
 /obj/item/reagent_containers/food/snacks/rogue/handpie/meat
 	name = "meat handpie"
+	//CC Edit Begin
+	diet_types = list("Grains", "Meats")
+	diet_change_amount = FOOD_DIETARY_VALUE_GOOD
+	//CC Edit End
 
 /obj/item/reagent_containers/food/snacks/rogue/handpie/potato
 	name = "potato handpie"
+	//CC Edit Begin
+	diet_types = list("Grains", "Vegetables")
+	diet_change_amount = FOOD_DIETARY_VALUE_GOOD
+	//CC Edit End
 
 /obj/item/reagent_containers/food/snacks/rogue/handpie/cabbage
 	name = "cabbage handpie"
+	//CC Edit Begin
+	diet_types = list("Grains", "Vegetables")
+	diet_change_amount = FOOD_DIETARY_VALUE_GOOD
+	//CC Edit End
 
 /obj/item/reagent_containers/food/snacks/rogue/handpie/crab
 	name = "crab handpie"
+	//CC Edit Begin
+	diet_types = list("Grains", "Meats")
+	diet_change_amount = FOOD_DIETARY_VALUE_GOOD
+	//CC Edit End
 
 /obj/item/reagent_containers/food/snacks/rogue/handpie/berry
 	name = "berry handpie"
+	//CC Edit Begin
+	diet_types = list("Grains", "Fruits")
+	diet_change_amount = FOOD_DIETARY_VALUE_GOOD
+	//CC Edit End
 
 /obj/item/reagent_containers/food/snacks/rogue/handpie/poison
 	name = "berry handpie"
+	//CC Edit Begin
+	diet_types = list("Grains", "Fruits")
+	diet_change_amount = FOOD_DIETARY_VALUE_GOOD
+	//CC Edit End
 
 /obj/item/reagent_containers/food/snacks/rogue/handpie/apple
 	name = "apple handpie"
+	//CC Edit Begin
+	diet_types = list("Grains", "Fruits")
+	diet_change_amount = FOOD_DIETARY_VALUE_GOOD
+	//CC Edit End
 
 /obj/item/reagent_containers/food/snacks/rogue/handpie/On_Consume(mob/living/eater)
 	..()
@@ -400,6 +544,10 @@
 	bitesize = 3
 	rotprocess = SHELFLIFE_DECENT
 	eat_effect = /datum/status_effect/buff/snackbuff
+	//CC Edit Begin
+	diet_types = list("Grains")
+	diet_change_amount = FOOD_DIETARY_VALUE_BAD
+	//CC Edit End
 
 /obj/item/reagent_containers/food/snacks/rogue/muffin/attackby(obj/item/I, mob/living/user, params)
 	var/found_table = locate(/obj/structure/table) in (loc)
@@ -435,6 +583,10 @@
 	icon_state = "muffin_cheese_raw"
 	cooked_type = /obj/item/reagent_containers/food/snacks/rogue/muffin/cheese/baked
 	cooked_smell = /datum/pollutant/food/muffin
+	//CC Edit Begin
+	diet_types = list("Grains", "Dairy")
+	diet_change_amount = FOOD_DIETARY_VALUE_BAD
+	//CC Edit End
 
 /obj/item/reagent_containers/food/snacks/rogue/muffin/cheese/baked
 	name = "cheese muffin"
@@ -444,6 +596,10 @@
 	tastes = list("crispy butterdough" = 1, "cheese" = 1)
 	faretype = FARE_FINE
 	cooked_type = null
+	//CC Edit Begin
+	diet_types = list("Grains", "Dairy")
+	diet_change_amount = FOOD_DIETARY_VALUE_GOOD
+	//CC Edit End
 
 /obj/item/reagent_containers/food/snacks/rogue/muffin/honey
 	name = "raw honey muffin"
@@ -451,6 +607,10 @@
 	icon_state = "muffin_honey_raw"
 	cooked_type = /obj/item/reagent_containers/food/snacks/rogue/muffin/honey/baked
 	cooked_smell = /datum/pollutant/food/muffin
+	//CC Edit Begin
+	diet_types = list("Grains")
+	diet_change_amount = FOOD_DIETARY_VALUE_GOOD
+	//CC Edit End
 
 /obj/item/reagent_containers/food/snacks/rogue/muffin/honey/baked
 	name = "honey muffin"
@@ -460,6 +620,10 @@
 	cooked_smell = /datum/pollutant/food/muffin
 	faretype = FARE_FINE
 	cooked_type = null
+	//CC Edit Begin
+	diet_types = list("Grains")
+	diet_change_amount = FOOD_DIETARY_VALUE_GREAT
+	//CC Edit End
 
 /*	.................   Strudel   ................... */
 /obj/item/reagent_containers/food/snacks/rogue/strudel
@@ -479,6 +643,10 @@
 	slice_path = /obj/item/reagent_containers/food/snacks/rogue/strudelslice
 	slice_batch = TRUE
 	slice_sound = TRUE
+	//CC Edit Begin
+	diet_types = list("Grains", "Fruits")
+	diet_change_amount = FOOD_DIETARY_VALUE_GREAT
+	//CC Edit End
 
 /obj/item/reagent_containers/food/snacks/rogue/strudelslice
 	name = "strudel slice"
@@ -495,6 +663,10 @@
 	bitesize = 3
 	eat_effect = /datum/status_effect/buff/snackbuff
 	rotprocess = SHELFLIFE_LONG
+	//CC Edit Begin
+	diet_types = list("Grains", "Fruits")
+	diet_change_amount = FOOD_DIETARY_VALUE_GOOD
+	//CC Edit End
 
 /obj/item/reagent_containers/food/snacks/rogue/strudel/attackby(obj/item/I, mob/living/user, params)
 	var/found_table = locate(/obj/structure/table) in (loc)
@@ -520,6 +692,10 @@
 	tastes = list("crispy apples" = 1, "rocknut" = 1 ,"sugar" = 1)
 	faretype = FARE_LAVISH
 	slice_path = /obj/item/reagent_containers/food/snacks/rogue/strudelslice/sugar
+	//CC Edit Begin
+	diet_types = list("Grains", "Fruits")
+	diet_change_amount = FOOD_DIETARY_VALUE_AMAZING
+	//CC Edit End
 
 /obj/item/reagent_containers/food/snacks/rogue/strudelslice/sugar
 	name = "coated strudel slice"
@@ -527,3 +703,7 @@
 	icon_state = "strudel_sugar_slice"
 	tastes = list("crispy apples" = 1, "rocknut" = 1 ,"sugar" = 1)
 	faretype = FARE_LAVISH
+	//CC Edit Begin
+	diet_types = list("Grains", "Fruits")
+	diet_change_amount = FOOD_DIETARY_VALUE_GREAT
+	//CC Edit End

@@ -9,6 +9,10 @@
 	list_reagents = list(/datum/reagent/consumable/nutriment = 2)
 	rotprocess = null
 	w_class = WEIGHT_CLASS_TINY
+	//CC Edit Begin
+	diet_types = list("Vegetables")
+	diet_change_amount = FOOD_DIETARY_VALUE_POOR
+	//CC Edit End
 
 /obj/item/reagent_containers/food/snacks/grown/rogue/rosa_petals_dried
 	name = "dried rosa petals"
@@ -20,6 +24,10 @@
 	list_reagents = list(/datum/reagent/consumable/nutriment = 2)
 	rotprocess = null
 	w_class = WEIGHT_CLASS_TINY
+	//CC Edit Begin
+	diet_types = list("Vegetables")
+	diet_change_amount = FOOD_DIETARY_VALUE_POOR
+	//CC Edit End
 
 /obj/item/reagent_containers/food/snacks/grown/coffeebeans
 	name = "coffee beans"
@@ -33,6 +41,10 @@
 	cooked_type = /obj/item/reagent_containers/food/snacks/grown/coffeebeansroasted
 	rotprocess = null
 	w_class = WEIGHT_CLASS_TINY
+	//CC Edit Begin
+	diet_types = list("Fruits")
+	diet_change_amount = FOOD_DIETARY_VALUE_POOR
+	//CC Edit End
 
 /obj/item/reagent_containers/food/snacks/grown/coffeebeansroasted
 	name = "roasted coffee beans"
@@ -44,6 +56,10 @@
 	list_reagents = list(/datum/reagent/consumable/nutriment = 2)
 	rotprocess = null
 	w_class = WEIGHT_CLASS_TINY
+	//CC Edit Begin
+	diet_types = list("Fruits")
+	diet_change_amount = FOOD_DIETARY_VALUE_POOR
+	//CC Edit End
 
 /obj/item/reagent_containers/food/snacks/grown/rogue/tealeaves_dry
 	name = "dried tea leaves"
@@ -57,6 +73,10 @@
 	rotprocess = null
 	w_class = WEIGHT_CLASS_TINY
 	mill_result = /obj/item/reagent_containers/food/snacks/grown/rogue/tealeaves_ground
+	//CC Edit Begin
+	diet_types = list("Vegetables")
+	diet_change_amount = FOOD_DIETARY_VALUE_POOR
+	//CC Edit End
 
 /obj/item/reagent_containers/food/snacks/grown/rogue/tealeaves_ground
 	name = "ground tea leaves"
@@ -68,3 +88,7 @@
 	list_reagents = list(/datum/reagent/consumable/nutriment = 2)
 	rotprocess = null
 	w_class = WEIGHT_CLASS_TINY
+	//CC Edit Begin
+	diet_types = list("Vegetables")
+	diet_change_amount = FOOD_DIETARY_VALUE_POOR
+	//CC Edit End
