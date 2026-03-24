@@ -3196,4 +3196,6 @@
 #include "modular_causticcove\code\modules\events\adventure\random_bosses\random_boss.dm"
 #include "modular_causticcove\code\modules\spells\spell_types\wizard\conjure\conjure_tool.dm"
 #include "modular_causticcove\code\game\objects\items\clothes\causthats.dm"
+#include "modular_causticcove\code\modules\chemistry\reagents\caustic_sauces.dm"
+#include "modular_causticcove\code\modules\chemistry\reagents\caustic_sauces_reactions.dm"
 // END_INCLUDE

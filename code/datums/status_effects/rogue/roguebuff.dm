@@ -2059,3 +2059,61 @@
 	name = "Broken Scales"
 	desc = "My natural defenses are gone! I am lighter, but far weaker."
 	icon_state = "buff"
+
+//Sauce effects
+
+/datum/status_effect/buff/spicy_sauce
+	id = "spicy_buff"
+	alert_type = /atom/movable/screen/alert/status_effect/buff/spicy_sauce
+	effectedstats = list("strength" = 1)
+	duration = 1 MINUTES
+
+/datum/status_effect/buff/spicy_sauce/on_apply()
+	return ..()
+
+/atom/movable/screen/alert/status_effect/buff/spicy_sauce
+	name = "Spicy!"
+	desc = "Firey flavors strengthen me!"
+	icon_state = "buff"
+
+/datum/status_effect/buff/savory_sauce
+	id = "savory_buff"
+	alert_type = /atom/movable/screen/alert/status_effect/buff/savory_sauce
+	effectedstats = list("constitution" = 1)
+	duration = 1 MINUTES
+
+/datum/status_effect/buff/savory_sauce/on_apply()
+	return ..()
+
+/atom/movable/screen/alert/status_effect/buff/savory_sauce
+	name = "savory sauce"
+	desc = "Hearty flavors fortify me!"
+	icon_state = "buff"
+
+/datum/status_effect/buff/sweet_sauce
+	id = "sweet_buff"
+	alert_type = /atom/movable/screen/alert/status_effect/buff/sweet_sauce
+	effectedstats = list("speed" = 1)
+	duration = 1 MINUTES
+
+/datum/status_effect/buff/sweet_sauce/on_apply()
+	return ..()
+
+/atom/movable/screen/alert/status_effect/buff/sweet_sauce
+	name = "sweet sauce"
+	desc = "Sweet flavors spur me to action!"
+	icon_state = "buff"
+
+/datum/status_effect/buff/sour_sauce
+	id = "sour_buff"
+	alert_type = /atom/movable/screen/alert/status_effect/buff/sour_sauce
+	effectedstats = list("intelligence" = 1)
+	duration = 1 MINUTES
+
+/datum/status_effect/buff/sour_sauce/on_apply()
+	return ..()
+
+/atom/movable/screen/alert/status_effect/buff/sour_sauce
+	name = "sour sauce"
+	desc = "Sour flavors clear my mind!"
+	icon_state = "buff"
