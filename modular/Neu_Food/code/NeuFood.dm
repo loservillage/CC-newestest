@@ -334,13 +334,13 @@
 /datum/component/sauced_food/proc/on_food_eaten(datum/source, mob/living/eater, mob/living/feeder)
 	SIGNAL_HANDLER
 	if(sauce_effect == 1)
-		eater.apply_status_effect(/datum/status_effect/buff/spicy_sauce, (15 * sauce_power))
+		eater.apply_status_effect(/datum/status_effect/buff/spicy_sauce, sauce_power * 60 SECONDS)
 	if(sauce_effect == 2)
-		eater.apply_status_effect(/datum/status_effect/buff/savory_sauce, (15 * sauce_power))
+		eater.apply_status_effect(/datum/status_effect/buff/savory_sauce, sauce_power * 60 SECONDS)
 	if(sauce_effect == 3)
-		eater.apply_status_effect(/datum/status_effect/buff/sweet_sauce, (15 * sauce_power))
+		eater.apply_status_effect(/datum/status_effect/buff/sweet_sauce, sauce_power * 60 SECONDS)
 	if(sauce_effect == 4)
-		eater.apply_status_effect(/datum/status_effect/buff/sour_sauce, (15 * sauce_power))
+		eater.apply_status_effect(/datum/status_effect/buff/sour_sauce, sauce_power * 60 SECONDS)
 		
 
 /obj/item/reagent_containers/food/snacks/rogue/sauce // base sauce, TECHNICALLY SPICES due to their solid nature

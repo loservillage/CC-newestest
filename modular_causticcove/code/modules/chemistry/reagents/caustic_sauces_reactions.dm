@@ -472,7 +472,7 @@
 	bottle_name = "sour cream"
 	bottle_desc = "A container of soured cream."
 	reagent_to_brew = /datum/reagent/consumable/sauce/sour_cream
-	needed_reagents = list(milk = 100)
+	needed_reagents = list(/datum/reagent/consumable/milk = 100)
 	needed_items = list(/obj/item/reagent_containers/food/snacks/grown/fruit/lime = 4)
 	brewed_amount = 3
 	brew_time = 3 MINUTES
