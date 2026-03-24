@@ -321,13 +321,13 @@ GLOBAL_LIST_EMPTY(personal_objective_minds)
 /datum/mind/proc/get_goal_color_rating(goal_value)
 	if(goal_value < 25)
 		. = GOAL_COLOR_TERRIBLE
-	else if(goal_value > 25)
+	else if(goal_value > 25 && goal_value < 50)
 		. = GOAL_COLOR_BAD
-	else if(goal_value > 50)
+	else if(goal_value > 50 && goal_value < 75)
 		. = GOAL_COLOR_OKAY
-	else if(goal_value > 75)
+	else if(goal_value > 75 && goal_value < 100)
 		. = GOAL_COLOR_GOOD
-	else if(goal_value > 100)
+	else if(goal_value > 100 && goal_value < 125)
 		. = GOAL_COLOR_ACHIEVED
 	else if(goal_value > 125) //Not the true "max maximum" but you went well and beyond 125 which is great in anyone's books.
 		. = GOAL_COLOR_MAXIMUM
