@@ -1,0 +1,6 @@
+author: "wewman222"
+delete-after: True
+changes:
+  - rscadd: "5 VNPCs"
+  - rscadd: "1 new medium quest \"Predator Hunt\""
+  - rscadd: "Various ambushes in the land relating with these NPCs!"
