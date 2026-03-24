@@ -21,12 +21,6 @@
 				/mob/living/carbon/human/species/goblin/npc/ambush = 30,
 				/mob/living/carbon/human/species/human/northern/militia/deserter = 20,
 				/mob/living/carbon/human/species/human/northern/highwayman/ambush = 10,
-				new /datum/ambush_config/eviltiberian/easy = 10,
-				new /datum/ambush_config/eviltiberian/hard = 10,
-				new /datum/ambush_config/evilelf/easy = 10,
-				new /datum/ambush_config/evilelf/hard = 10,
-				new /datum/ambush_config/evilgob/easy = 20,
-				new /datum/ambush_config/evilgob/hard = 10,
 				new /datum/ambush_config/hobgoblin_woods = 20)
 	first_time_text = "THE AZURE GROVE"
 	converted_type = /area/rogue/indoors/shelter/woods

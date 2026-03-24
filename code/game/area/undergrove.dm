@@ -17,7 +17,6 @@
 				/mob/living/carbon/human/species/goblin/npc/sea = 20,
 				/mob/living/carbon/human/species/human/northern/highwayman/ambush = 20,
 				/mob/living/simple_animal/hostile/retaliate/rogue/troll = 15)
-				
 	converted_type = /area/rogue/outdoors/caves
 	deathsight_message = "root-bound caverns"
 	detail_text = DETAIL_TEXT_UNDERGROVE
