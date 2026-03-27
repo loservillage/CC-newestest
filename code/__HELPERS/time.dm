@@ -39,13 +39,13 @@ GLOBAL_VAR_INIT(date_override_offset, 0)
 	var/oldtod = GLOB.tod
 	if(time >= SSnightshift.nightshift_start_time || time <= SSnightshift.nightshift_dawn_start)
 		GLOB.tod = "night"
-	if(time > SSnightshift.nightshift_dawn_start && time <= SSnightshift.nightshift_day_start)
+	else if(time > SSnightshift.nightshift_dawn_start && time <= SSnightshift.nightshift_day_start)
 		GLOB.tod = "dawn"
-	if(time > SSnightshift.nightshift_day_start && time <= SSnightshift.nightshift_dusk_start)
+	else if(time > SSnightshift.nightshift_day_start && time <= SSnightshift.nightshift_dusk_start)
 		GLOB.tod = "day"
-	if(time > SSnightshift.nightshift_dusk_start && time <= SSnightshift.nightshift_start_time)
+	else if(time > SSnightshift.nightshift_dusk_start && time <= SSnightshift.nightshift_start_time)
 		GLOB.tod = "dusk"
-	if(GLOB.todoverride)
+	else if(GLOB.todoverride)
 		GLOB.tod = GLOB.todoverride
 	if((GLOB.tod != oldtod) && !GLOB.todoverride && (GLOB.dayspassed>1)) //weather check on tod changes
 		if(!GLOB.forecast)
