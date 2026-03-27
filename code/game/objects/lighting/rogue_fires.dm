@@ -271,7 +271,7 @@
 
 //This thing does NOT light! I am NOT wanting to process this!
 /obj/machinery/light/rogue/torchholder/process()
-	STOP_PROCESSING(SSMAchines, src)
+	STOP_PROCESSING(SSMachines, src)
 	
 
 //CC Edit end
